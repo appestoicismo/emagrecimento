@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hipnose do Emagrecimento - Reprograme seu cérebro para emagrecer sem esforço</title>
+    
+    <!-- Facebook Pixel Code -->
+    <script>
+      !function(f,b,e,v,n,t,s)
+      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+      n.queue=[];t=b.createElement(e);t.async=!0;
+      t.src=v;s=b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t,s)}(window, document,'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+      fbq('init', '1042117324521315');
+      fbq('track', 'PageView');
+    </script>
+    <!-- End Facebook Pixel Code -->
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: 'oklch(1 0 0)',
+                        foreground: 'oklch(0.145 0 0)',
+                        primary: 'oklch(0.205 0 0)',
+                        'primary-foreground': 'oklch(0.985 0 0)',
+                        secondary: 'oklch(0.97 0 0)',
+                        'secondary-foreground': 'oklch(0.205 0 0)',
+                        muted: 'oklch(0.97 0 0)',
+                        'muted-foreground': 'oklch(0.556 0 0)',
+                        accent: 'oklch(0.97 0 0)',
+                        'accent-foreground': 'oklch(0.205 0 0)',
+                        destructive: 'oklch(0.577 0.245 27.325)',
+                        border: 'oklch(0.922 0 0)',
+                        input: 'oklch(0.922 0 0)',
+                        ring: 'oklch(0.708 0 0)',
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        .btn {
+            @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
+        }
+        .btn-primary {
+            @apply bg-primary text-primary-foreground hover:bg-primary/90;
+        }
+        .btn-outline {
+            @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
+        }
+        .btn-lg {
+            @apply h-11 rounded-md px-8;
+        }
+        .btn-xl {
+            @apply h-14 px-8 text-lg;
+        }
+        .btn-2xl {
+            @apply h-16 px-8 text-xl;
+        }
+    </style>
+</head>
+<body>
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1042117324521315&ev=PageView&noscript=1"
+    /></noscript>
+    
+    <div id="app"></div>
+
+    <script>
+        // UTM Tracker
+        function initUTMTracker() {
+            const urlParams = new URLSearchParams(window.location.search);
+            
+            const defaultUTMs = {
+                utm_source: 'FB',
+                utm_campaign: '{{campaign.name}}|{{campaign.id}}',
+                utm_medium: '{{adset.name}}|{{adset.id}}',
+                utm_content: '{{ad.name}}|{{ad.id}}',
+                utm_term: '{{placement}}',
+                xcod: 'FBhQwK21wXxR{{campaign.name}}|{{campaign.id}}hQwK21wXxR{{adset.name}}|{{adset.id}}hQwK21wXxR{{ad.name}}|{{ad.id}}hQwK21wXxR{{placement}}'
+            };
+            
+            if (!urlParams.has('utm_source')) {
+                Object.entries(defaultUTMs).forEach(([key, value]) => {
+                    if (!urlParams.has(key)) {
+                        urlParams.set(key, value);
+                    }
+                });
+                
+                const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+                window.history.replaceState({}, '', newUrl);
+            }
+            
+            const utmData = {};
+            urlParams.forEach((value, key) => {
+                if (key.startsWith('utm_') || key === 'xcod') {
+                    utmData[key] = value;
+                }
+            });
+            
+            localStorage.setItem('utmData', JSON.stringify(utmData));
+            
+            if (typeof fbq !== 'undefined' && Object.keys(utmData).length > 0) {
+                fbq('trackCustom', 'UTMCaptured', utmData);
+            }
+        }
+
+        // App State
+        let currentStep = 'home';
+        let quizData = {};
+        let currentQuestion = 0;
+
+        // Quiz Questions - Expandido para 20 perguntas
+        const quizQuestions = [
+            {
+                id: 'gender',
+                question: 'Comece selecionando seu gênero:',
+                type: 'gender',
+                options: [
+                    { value: 'male', label: 'Masculino', icon: '♂' },
+                    { value: 'female', label: 'Feminino', icon: '♀' }
+                ]
+            },
+            {
+                id: 'goal',
+                question: 'Qual resultado positivo do emagrecimento você mais espera alcançar?',
+                type: 'multiple',
+                options: [
+                    { value: 'self-esteem', label: 'Aumento da autoestima', icon: '💪' },
+                    { value: 'movement', label: 'Maior facilidade de movimento', icon: '🏃' },
+                    { value: 'looks', label: 'Melhora na aparência', icon: '✨' },
+                    { value: 'longevity', label: 'Aumento da longevidade', icon: '❤️' },
+                    { value: 'other', label: 'Outro', icon: '🎯' }
+                ]
+            },
+            {
+                id: 'past_tries',
+                question: 'Você já tentou emagrecer antes?',
+                type: 'multiple',
+                options: [
+                    { value: 'limited_success', label: 'Sim, mas só tive sucesso por tempo limitado', icon: '⏰' },
+                    { value: 'no_success', label: 'Tentei, mas não consegui atingir meu peso ideal', icon: '😔' },
+                    { value: 'not_yet', label: 'Ainda não', icon: '🆕' }
+                ]
+            },
+            {
+                id: 'info1',
+                question: 'Desta vez, será diferente. Estamos mirando na causa raiz.',
+                type: 'info',
+                content: {
+                    title: 'Desta vez, será diferente. Estamos mirando na causa raiz.',
+                    text: [
+                        'Já ouviu o ditado "Está tudo na sua cabeça?" ou "Seu intestino é seu segundo cérebro"?',
+                        'Comer por estresse, reações intestinais incomuns ou borboletas no estômago quando nervoso são todos sinais da conexão intestino-cérebro.',
+                        'A influência da mente subconsciente na má comunicação entre o intestino e o cérebro é o fator chave para criar sobrepeso e fazer escolhas alimentares ruins.',
+                        'Mais de 50.000 usuários começam o curso de auto-hipnose Kure a cada mês, reequilibrando com sucesso sua conexão intestino-cérebro eliminando padrões de pensamento negativos e superando obstáculos subconscientes.',
+                        '"Fiquei chocada com a eficácia deste aplicativo de hipnose." - Elena, usando o aplicativo Kure desde 2024.'
+                    ],
+                    source: 'Fonte: *Nutrients. 2021 Feb; 13(2): 584.'
+                }
+            },
+            {
+                id: 'referral',
+                question: 'Você foi indicado ao Kure por um nutricionista ou terapeuta TCC?',
+                type: 'multiple',
+                subtitle: 'A hipnose é um método cientificamente comprovado para resolver problemas relacionados à nutrição e questões psicológicas.',
+                options: [
+                    { value: 'yes', label: 'Sim', icon: '✅' },
+                    { value: 'no', label: 'Não', icon: '❌' }
+                ]
+            },
+            {
+                id: 'age_range',
+                question: 'Qual é a sua faixa etária?',
+                type: 'multiple',
+                options: [
+                    { value: '18-25', label: '18-25 anos', icon: '🌱' },
+                    { value: '26-35', label: '26-35 anos', icon: '🌿' },
+                    { value: '36-45', label: '36-45 anos', icon: '🌳' },
+                    { value: '46-55', label: '46-55 anos', icon: '🍃' },
+                    { value: '56+', label: '56+ anos', icon: '🌰' }
+                ]
+            },
+            {
+                id: 'weight_goal',
+                question: 'Quanto peso você gostaria de perder?',
+                type: 'multiple',
+                options: [
+                    { value: '5-10kg', label: '5-10 kg', icon: '📉' },
+                    { value: '11-20kg', label: '11-20 kg', icon: '📊' },
+                    { value: '21-30kg', label: '21-30 kg', icon: '📈' },
+                    { value: '31kg+', label: 'Mais de 31 kg', icon: '🎯' },
+                    { value: 'unsure', label: 'Não tenho certeza', icon: '❓' }
+                ]
+            },
+            {
+                id: 'eating_habits',
+                question: 'Qual é o seu maior desafio com a alimentação?',
+                type: 'multiple',
+                options: [
+                    { value: 'emotional_eating', label: 'Comer emocional', icon: '😢' },
+                    { value: 'portion_control', label: 'Controle de porções', icon: '🍽️' },
+                    { value: 'cravings', label: 'Desejos por doces/salgados', icon: '🍰' },
+                    { value: 'late_night', label: 'Comer tarde da noite', icon: '🌙' },
+                    { value: 'stress_eating', label: 'Comer por estresse', icon: '😰' }
+                ]
+            },
+            {
+                id: 'exercise_level',
+                question: 'Com que frequência você se exercita atualmente?',
+                type: 'multiple',
+                options: [
+                    { value: 'daily', label: 'Diariamente', icon: '🏃‍♀️' },
+                    { value: 'few_times_week', label: 'Algumas vezes por semana', icon: '🚴‍♀️' },
+                    { value: 'once_week', label: 'Uma vez por semana', icon: '🚶‍♀️' },
+                    { value: 'rarely', label: 'Raramente', icon: '🛋️' },
+                    { value: 'never', label: 'Nunca', icon: '❌' }
+                ]
+            },
+            {
+                id: 'motivation_level',
+                question: 'Como você descreveria sua motivação atual para emagrecer?',
+                type: 'multiple',
+                options: [
+                    { value: 'very_high', label: 'Muito alta - estou determinado(a)', icon: '🔥' },
+                    { value: 'high', label: 'Alta - quero muito isso', icon: '💪' },
+                    { value: 'moderate', label: 'Moderada - seria bom', icon: '👍' },
+                    { value: 'low', label: 'Baixa - não tenho certeza', icon: '🤷‍♀️' }
+                ]
+            },
+            {
+                id: 'stress_level',
+                question: 'Como você classificaria seu nível de estresse diário?',
+                type: 'multiple',
+                options: [
+                    { value: 'very_high', label: 'Muito alto', icon: '😵' },
+                    { value: 'high', label: 'Alto', icon: '😰' },
+                    { value: 'moderate', label: 'Moderado', icon: '😐' },
+                    { value: 'low', label: 'Baixo', icon: '😌' },
+                    { value: 'very_low', label: 'Muito baixo', icon: '😊' }
+                ]
+            },
+            {
+                id: 'sleep_quality',
+                question: 'Como é a qualidade do seu sono?',
+                type: 'multiple',
+                options: [
+                    { value: 'excellent', label: 'Excelente - durmo bem todas as noites', icon: '😴' },
+                    { value: 'good', label: 'Boa - geralmente durmo bem', icon: '🛌' },
+                    { value: 'fair', label: 'Regular - às vezes tenho problemas', icon: '😪' },
+                    { value: 'poor', label: 'Ruim - frequentemente tenho insônia', icon: '😵‍💫' }
+                ]
+            },
+            {
+                id: 'diet_history',
+                question: 'Quais tipos de dieta você já tentou?',
+                type: 'multiple',
+                options: [
+                    { value: 'low_carb', label: 'Dieta low carb', icon: '🥩' },
+                    { value: 'intermittent_fasting', label: 'Jejum intermitente', icon: '⏰' },
+                    { value: 'calorie_counting', label: 'Contagem de calorias', icon: '📱' },
+                    { value: 'keto', label: 'Dieta cetogênica', icon: '🥑' },
+                    { value: 'none', label: 'Nunca fiz dieta específica', icon: '🤷‍♀️' }
+                ]
+            },
+            {
+                id: 'support_system',
+                question: 'Você tem apoio da família/amigos para emagrecer?',
+                type: 'multiple',
+                options: [
+                    { value: 'very_supportive', label: 'Sim, muito apoio', icon: '👨‍👩‍👧‍👦' },
+                    { value: 'somewhat_supportive', label: 'Algum apoio', icon: '👫' },
+                    { value: 'neutral', label: 'Neutro', icon: '😐' },
+                    { value: 'not_supportive', label: 'Pouco apoio', icon: '😔' },
+                    { value: 'alone', label: 'Estou fazendo isso sozinho(a)', icon: '🙋‍♀️' }
+                ]
+            },
+            {
+                id: 'biggest_obstacle',
+                question: 'Qual é o maior obstáculo que impede você de emagrecer?',
+                type: 'multiple',
+                options: [
+                    { value: 'lack_time', label: 'Falta de tempo', icon: '⏰' },
+                    { value: 'lack_motivation', label: 'Falta de motivação', icon: '😴' },
+                    { value: 'food_cravings', label: 'Desejos por comida', icon: '🍕' },
+                    { value: 'emotional_issues', label: 'Questões emocionais', icon: '💔' },
+                    { value: 'lack_knowledge', label: 'Falta de conhecimento', icon: '❓' }
+                ]
+            },
+            {
+                id: 'info2',
+                question: 'A ciência por trás da hipnoterapia',
+                type: 'info',
+                content: {
+                    title: 'A ciência por trás da hipnoterapia',
+                    text: [
+                        'Estudos científicos mostram que a hipnoterapia pode ser até 3x mais eficaz que dietas tradicionais para perda de peso sustentável.',
+                        'A hipnose trabalha diretamente com o subconsciente, onde estão armazenados nossos hábitos alimentares automáticos.',
+                        'Ao reprogramar esses padrões mentais, você naturalmente faz escolhas mais saudáveis sem esforço consciente.',
+                        'Mais de 200 estudos clínicos comprovam a eficácia da hipnoterapia para mudança de comportamentos alimentares.',
+                        'O método é aprovado pela Associação Médica Americana e usado em hospitais ao redor do mundo.'
+                    ],
+                    source: 'Fonte: Journal of Clinical Psychology, 2018'
+                }
+            },
+            {
+                id: 'commitment_level',
+                question: 'Quanto tempo por dia você pode dedicar ao seu programa de emagrecimento?',
+                type: 'multiple',
+                options: [
+                    { value: '5-10min', label: '5-10 minutos', icon: '⏱️' },
+                    { value: '10-20min', label: '10-20 minutos', icon: '⏰' },
+                    { value: '20-30min', label: '20-30 minutos', icon: '🕐' },
+                    { value: '30min+', label: 'Mais de 30 minutos', icon: '⏳' }
+                ]
+            },
+            {
+                id: 'preferred_time',
+                question: 'Qual é o melhor horário para você praticar hipnoterapia?',
+                type: 'multiple',
+                options: [
+                    { value: 'morning', label: 'Manhã', icon: '🌅' },
+                    { value: 'afternoon', label: 'Tarde', icon: '☀️' },
+                    { value: 'evening', label: 'Noite', icon: '🌆' },
+                    { value: 'bedtime', label: 'Antes de dormir', icon: '🌙' },
+                    { value: 'flexible', label: 'Horário flexível', icon: '🔄' }
+                ]
+            },
+            {
+                id: 'final_goal',
+                question: 'Qual é seu objetivo principal com este programa?',
+                type: 'multiple',
+                options: [
+                    { value: 'lose_weight', label: 'Perder peso de forma sustentável', icon: '⚖️' },
+                    { value: 'change_habits', label: 'Mudar hábitos alimentares', icon: '🔄' },
+                    { value: 'boost_confidence', label: 'Aumentar autoconfiança', icon: '💪' },
+                    { value: 'improve_health', label: 'Melhorar saúde geral', icon: '❤️' },
+                    { value: 'all_above', label: 'Todos os acima', icon: '🎯' }
+                ]
+            }
+        ];
+
+        // Functions
+        function handleQuizAnswer(answer) {
+            const currentQ = quizQuestions[currentQuestion];
+            quizData[currentQ.id] = answer;
+            
+            if (currentQuestion < quizQuestions.length - 1) {
+                currentQuestion++;
+                renderApp();
+            } else {
+                currentStep = 'result';
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'CompleteRegistration');
+                }
+                renderApp();
+            }
+        }
+
+        function goBack() {
+            if (currentQuestion > 0) {
+                currentQuestion--;
+                renderApp();
+            } else {
+                currentStep = 'home';
+                renderApp();
+            }
+        }
+
+        function startQuiz(gender) {
+            quizData = { gender };
+            currentStep = 'quiz';
+            currentQuestion = 1;
+            
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'Lead');
+            }
+            renderApp();
+        }
+
+        function handleCheckout() {
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'InitiateCheckout');
+            }
+            
+            const baseUrl = 'https://pay.hotmart.com/N101998916J';
+            const utmParams = new URLSearchParams(window.location.search);
+            const checkoutUrl = utmParams.toString() ? `${baseUrl}?${utmParams.toString()}` : baseUrl;
+            
+            window.open(checkoutUrl, '_blank');
+        }
+
+        // Render Functions
+        function renderHomePage() {
+            return `
+                <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+                    <!-- Header -->
+                    <header class="p-6">
+                        <div class="flex items-center gap-2">
+                            <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+                                <span class="text-white font-bold text-sm">H</span>
+                            </div>
+                            <span class="text-xl font-semibold">hipnose</span>
+                        </div>
+                    </header>
+
+                    <!-- Main Content -->
+                    <div class="container mx-auto px-6 py-12">
+                        <div class="grid lg:grid-cols-2 gap-12 items-center">
+                            <!-- Left Column -->
+                            <div class="space-y-8">
+                                <div class="space-y-4">
+                                    <h1 class="text-4xl lg:text-5xl font-bold leading-tight">
+                                        O emagrecimento começa no cérebro
+                                    </h1>
+                                    <p class="text-lg text-gray-300">
+                                        Pare os desejos em algumas noites com um programa personalizado de hipnoterapia
+                                    </p>
+                                </div>
+
+                                <div class="space-y-4">
+                                    <p class="text-lg font-medium">Comece selecionando seu gênero:</p>
+                                    <div class="flex gap-4">
+                                        <button 
+                                            onclick="startQuiz('male')"
+                                            class="btn btn-xl flex-1 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold border-2 border-blue-400"
+                                        >
+                                            ♂ Masculino
+                                        </button>
+                                        <button 
+                                            onclick="startQuiz('female')"
+                                            class="btn btn-xl flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold border-2 border-purple-400"
+                                        >
+                                            ♀ Feminino
+                                        </button>
+                                    </div>
+                                </div>
+
+                                <!-- Reviews -->
+                                <div class="flex items-center gap-4">
+                                    <div class="flex -space-x-2">
+                                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-pink-400 to-red-400"></div>
+                                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-blue-400 to-cyan-400"></div>
+                                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-green-400 to-emerald-400"></div>
+                                        <div class="w-10 h-10 rounded-full bg-gradient-to-r from-yellow-400 to-orange-400"></div>
+                                    </div>
+                                    <div>
+                                        <div class="flex text-yellow-400 text-sm">
+                                            ★★★★★
+                                        </div>
+                                        <p class="text-sm text-gray-400">99% taxa de satisfação *baseado em entrevistas com usuários</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Right Column - Image -->
+                            <div class="relative">
+                                <div class="relative rounded-2xl overflow-hidden bg-gradient-to-br from-purple-600 to-blue-600 p-1">
+                                    <img 
+                                        src="https://appestoicismo.github.io/hipnoseansiedade/apppordentro.png" 
+                                        alt="Mulher usando fones de ouvido para hipnoterapia"
+                                        class="w-full h-auto rounded-xl"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Success Stories Section -->
+                        <div class="mt-20">
+                            <h2 class="text-3xl font-bold text-center mb-12">
+                                -Histórias reais, resultados reais-
+                            </h2>
+                            <div class="grid md:grid-cols-3 gap-8">
+                                <!-- Story 1 -->
+                                <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
+                                    <div class="mb-4">
+                                        <img 
+                                            src="https://appestoicismo.github.io/hipnoseansiedade/indicadorpeloegar1.jpg" 
+                                            alt="Antes e depois - Transformação 1"
+                                            class="w-full h-48 object-cover rounded-lg"
+                                        />
+                                    </div>
+                                    <p class="text-gray-300 mb-4 italic">
+                                        "Este programa simplesmente reconfigurou algo em mim. Eu como melhor, me sinto melhor, e estou 12 kg mais leve."
+                                    </p>
+                                    <p class="text-sm text-gray-400">Tina, 47</p>
+                                </div>
+
+                                <!-- Story 2 -->
+                                <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
+                                    <div class="mb-4">
+                                        <img 
+                                            src="https://appestoicismo.github.io/mae-serena-bebe-seguro/gravida.jpg" 
+                                            alt="Antes e depois - Transformação 2"
+                                            class="w-full h-48 object-cover rounded-lg"
+                                        />
+                                    </div>
+                                    <p class="text-gray-300 mb-4 italic">
+                                        "O que mais amo é como foi fácil. Sem planos rígidos ou rastreamento. Estou 9 kg mais leve, e honestamente foi sem esforço."
+                                    </p>
+                                    <p class="text-sm text-gray-400">Samantha, 53</p>
+                                </div>
+
+                                <!-- Story 3 -->
+                                <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700">
+                                    <div class="mb-4">
+                                        <img 
+                                            src="https://appestoicismo.github.io/insonia/dormindo3.jpg" 
+                                            alt="Antes e depois - Transformação 3"
+                                            class="w-full h-48 object-cover rounded-lg"
+                                        />
+                                    </div>
+                                    <p class="text-gray-300 mb-4 italic">
+                                        "A hipnoterapia me ajudou a parar de comer emocional sem nem tentar. Não me senti restrita, apenas mais no controle."
+                                    </p>
+                                    <p class="text-sm text-gray-400">Maya, 43</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Footer -->
+                    <footer class="bg-slate-900/50 border-t border-slate-700 py-8 mt-20">
+                        <div class="container mx-auto px-6">
+                            <div class="flex flex-wrap justify-between items-center">
+                                <div class="flex items-center gap-2 mb-4 lg:mb-0">
+                                    <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+                                        <span class="text-white font-bold text-sm">H</span>
+                                    </div>
+                                    <span class="text-xl font-semibold">hipnose</span>
+                                </div>
+                                <div class="flex flex-wrap gap-6 text-sm">
+                                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Avaliações</a>
+                                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Gerenciar Assinatura</a>
+                                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Contato</a>
+                                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Política de Privacidade</a>
+                                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Termos e Condições</a>
+                                </div>
+                            </div>
+                            <div class="mt-4 pt-4 border-t border-slate-700 flex justify-between text-sm text-gray-400">
+                                <p>© 2025 Hipnose. Todos os direitos reservados.</p>
+                                <p>Aviso: Os resultados podem variar de pessoa para pessoa.</p>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            `;
+        }
+
+        function renderQuizPage() {
+            const question = quizQuestions[currentQuestion];
+            const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
+
+            if (question.type === 'info') {
+                return `
+                    <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+                        <!-- Header with progress -->
+                        <header class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <button 
+                                    onclick="goBack()"
+                                    class="btn btn-outline bg-transparent border-gray-600 text-white hover:bg-gray-800"
+                                >
+                                    ← Voltar
+                                </button>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+                                        <span class="text-white font-bold text-sm">H</span>
+                                    </div>
+                                    <span class="text-xl font-semibold">hipnose</span>
+                                </div>
+                                <span class="text-sm text-gray-400">${currentQuestion + 1} de ${quizQuestions.length}</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div 
+                                    class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-300"
+                                    style="width: ${progress}%"
+                                ></div>
+                            </div>
+                        </header>
+
+                        <!-- Quiz Content -->
+                        <div class="container mx-auto px-6 py-12">
+                            <div class="max-w-4xl mx-auto">
+                                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                                    <div class="space-y-6">
+                                        <h2 class="text-3xl font-bold">${question.content.title}</h2>
+                                        <div class="space-y-4">
+                                            ${question.content.text.map(paragraph => `
+                                                <p class="text-gray-300 leading-relaxed">${paragraph}</p>
+                                            `).join('')}
+                                        </div>
+                                        <p class="text-sm text-gray-400 italic">${question.content.source}</p>
+                                        <button 
+                                            onclick="handleQuizAnswer('understood')"
+                                            class="btn btn-xl w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold"
+                                        >
+                                            Entendi
+                                        </button>
+                                    </div>
+                                    <div class="relative">
+                                        <img 
+                                            src="https://appestoicismo.github.io/insonia/dantashipnose1.jpeg" 
+                                            alt="Ilustração do corpo humano mostrando conexão cérebro-intestino"
+                                            class="w-full h-auto rounded-xl"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            } else {
+                return `
+                    <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+                        <!-- Header with progress -->
+                        <header class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <button 
+                                    onclick="goBack()"
+                                    class="btn btn-outline bg-transparent border-gray-600 text-white hover:bg-gray-800"
+                                >
+                                    ← Voltar
+                                </button>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+                                        <span class="text-white font-bold text-sm">H</span>
+                                    </div>
+                                    <span class="text-xl font-semibold">hipnose</span>
+                                </div>
+                                <span class="text-sm text-gray-400">${currentQuestion + 1} de ${quizQuestions.length}</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div 
+                                    class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-300"
+                                    style="width: ${progress}%"
+                                ></div>
+                            </div>
+                        </header>
+
+                        <!-- Quiz Content -->
+                        <div class="container mx-auto px-6 py-12">
+                            <div class="max-w-2xl mx-auto text-center">
+                                <h2 class="text-3xl font-bold mb-4">${question.question}</h2>
+                                ${question.subtitle ? `<p class="text-gray-300 mb-8">${question.subtitle}</p>` : ''}
+                                <div class="space-y-4">
+                                    ${question.options.map((option, index) => {
+                                        const gradients = [
+                                            'bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 border-2 border-blue-400',
+                                            'bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 border-2 border-orange-400',
+                                            'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 border-2 border-purple-400',
+                                            'bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 border-2 border-green-400',
+                                            'bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 border-2 border-pink-400'
+                                        ];
+                                        return `
+                                            <button
+                                                onclick="handleQuizAnswer('${option.value}')"
+                                                class="btn btn-2xl w-full text-left justify-start font-medium transition-all duration-200 ${gradients[index] || gradients[4]}"
+                                            >
+                                                <span class="text-2xl mr-4">${option.icon}</span>
+                                                ${option.label}
+                                                <span class="ml-auto text-xl">→</span>
+                                            </button>
+                                        `;
+                                    }).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        function renderResultPage() {
+            return `
+                <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+                    <div class="container mx-auto px-6 py-12">
+                        <div class="max-w-2xl mx-auto text-center space-y-8">
+                            <div class="space-y-4">
+                                <h1 class="text-4xl font-bold">Parabéns!</h1>
+                                <p class="text-xl text-gray-300">
+                                    Seu programa personalizado de hipnoterapia está pronto
+                                </p>
+                            </div>
+                            
+                            <div class="bg-slate-800/50 rounded-2xl p-8 border border-slate-700">
+                                <h2 class="text-2xl font-bold mb-4">Hipnose do Emagrecimento</h2>
+                                <p class="text-gray-300 mb-6">
+                                    Reprograme seu cérebro para emagrecer sem esforço com técnicas de hipnoterapia.
+                                </p>
+                                <div class="space-y-4">
+                                    <div class="flex items-center gap-3 text-green-400">
+                                        <span class="text-xl">✓</span>
+                                        <span>Programa personalizado baseado em suas respostas</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-green-400">
+                                        <span class="text-xl">✓</span>
+                                        <span>Técnicas cientificamente comprovadas</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-green-400">
+                                        <span class="text-xl">✓</span>
+                                        <span>Resultados sem esforço consciente</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-green-400">
+                                        <span class="text-xl">✓</span>
+                                        <span>Suporte 24/7 via aplicativo</span>
+                                    </div>
+                                    <div class="flex items-center gap-3 text-green-400">
+                                        <span class="text-xl">✓</span>
+                                        <span>Garantia de 30 dias</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button 
+                                onclick="handleCheckout()"
+                                class="btn btn-2xl w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold"
+                            >
+                                🎧 Destravar Meu Áudio Hipnótico
+                            </button>
+
+                            <p class="text-sm text-gray-400">
+                                Acesso imediato após a confirmação do pagamento
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderApp() {
+            const app = document.getElementById('app');
+            
+            switch (currentStep) {
+                case 'home':
+                    app.innerHTML = renderHomePage();
+                    break;
+                case 'quiz':
+                    app.innerHTML = renderQuizPage();
+                    break;
+                case 'result':
+                    app.innerHTML = renderResultPage();
+                    break;
+                default:
+                    app.innerHTML = renderHomePage();
+            }
+        }
+
+        // Initialize App
+        document.addEventListener('DOMContentLoaded', function() {
+            initUTMTracker();
+            renderApp();
+        });
+    </script>
+</body>
+</html>
