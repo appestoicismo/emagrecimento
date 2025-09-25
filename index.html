@@ -158,13 +158,13 @@
                 content: {
                     title: 'Desta vez, será diferente. Estamos mirando na causa raiz.',
                     text: [
-                        'Já ouviu o ditado "Está tudo na sua cabeça?" ou "Seu intestino é seu segundo cérebro"?',
-                        'Comer por estresse, reações intestinais incomuns ou borboletas no estômago quando nervoso são todos sinais da conexão intestino-cérebro.',
-                        'A influência da mente subconsciente na má comunicação entre o intestino e o cérebro é o fator chave para criar sobrepeso e fazer escolhas alimentares ruins.',
-                        'Mais de 50.000 usuários começam o curso de auto-hipnose Kure a cada mês, reequilibrando com sucesso sua conexão intestino-cérebro eliminando padrões de pensamento negativos e superando obstáculos subconscientes.',
-                        '"Fiquei chocada com a eficácia deste aplicativo de hipnose." - Elena, usando o aplicativo Kure desde 2024.'
+                        'Você já percebeu como suas emoções afetam diretamente sua fome? Como o estresse pode despertar uma vontade incontrolável de comer?',
+                        'Isso acontece porque existe uma comunicação constante entre seu cérebro e seu sistema digestivo - uma conexão que influencia diretamente seus hábitos alimentares.',
+                        'Quando essa comunicação está desregulada por padrões mentais negativos, seu corpo recebe sinais confusos sobre fome, saciedade e escolhas alimentares.',
+                        'A hipnoterapia trabalha diretamente nesses padrões subconscientes, restaurando o equilíbrio natural entre mente e corpo para decisões alimentares mais saudáveis.',
+                        'Milhares de pessoas descobriram que, ao reprogramar esses padrões profundos, as mudanças acontecem de forma natural - sem forçar dietas ou exercícios extremos.'
                     ],
-                    source: 'Fonte: *Nutrients. 2021 Feb; 13(2): 584.'
+                    source: 'Baseado em pesquisas sobre neuroplasticidade e psicologia comportamental'
                 }
             },
             {
@@ -299,16 +299,17 @@
                 id: 'info2',
                 question: 'A ciência por trás da hipnoterapia',
                 type: 'info',
+                image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/assaltogeladeira.png',
                 content: {
                     title: 'A ciência por trás da hipnoterapia',
                     text: [
-                        'Estudos científicos mostram que a hipnoterapia pode ser até 3x mais eficaz que dietas tradicionais para perda de peso sustentável.',
-                        'A hipnose trabalha diretamente com o subconsciente, onde estão armazenados nossos hábitos alimentares automáticos.',
-                        'Ao reprogramar esses padrões mentais, você naturalmente faz escolhas mais saudáveis sem esforço consciente.',
-                        'Mais de 200 estudos clínicos comprovam a eficácia da hipnoterapia para mudança de comportamentos alimentares.',
-                        'O método é aprovado pela Associação Médica Americana e usado em hospitais ao redor do mundo.'
+                        'Imagine se as decisões alimentares que você toma hoje... não fossem realmente *suas*. E se os hábitos automáticos que sabotam sua saúde estivessem profundamente codificados no seu subconsciente — fora do seu controle racional?',
+                        'A hipnoterapia não é mágica. É neurociência aplicada. Estudos conduzidos por instituições como Harvard e publicados em periódicos como *Journal of Clinical Psychology* mostram que a hipnose pode ser até 3x mais eficaz do que dietas tradicionais, porque não luta contra a sua mente... ela a reprograma.',
+                        'Durante o transe hipnótico, áreas críticas do cérebro entram em estado de receptividade. É como se, por alguns minutos, você tivesse acesso ao "código-fonte" dos seus comportamentos alimentares.',
+                        'Mais de 200 estudos clínicos já confirmaram: a hipnoterapia funciona — e o melhor — sem sofrimento, sem força de vontade, sem resistência.',
+                        'O que antes parecia difícil, começa a acontecer de forma natural. **A pergunta é:** você está pronto para deixar seu subconsciente fazer o trabalho por você?'
                     ],
-                    source: 'Fonte: Journal of Clinical Psychology, 2018'
+                    source: 'Baseado em pesquisas de neurociência e psicologia comportamental'
                 }
             },
             {
@@ -560,6 +561,9 @@
             const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
 
             if (question.type === 'info') {
+                const imageUrl = question.image || 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/cerebrointestino.jpeg';
+                const altText = question.id === 'info2' ? 'Ilustração sobre controle de hábitos alimentares' : 'Ilustração do corpo humano mostrando conexão cérebro-intestino';
+                
                 return `
                     <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
                         <!-- Header with progress -->
@@ -608,8 +612,8 @@
                                     </div>
                                     <div class="relative">
                                         <img 
-                                            src="https://appestoicismo.github.io/insonia/dantashipnose1.jpeg" 
-                                            alt="Ilustração do corpo humano mostrando conexão cérebro-intestino"
+                                            src="${imageUrl}" 
+                                            alt="${altText}"
                                             class="w-full h-auto rounded-xl"
                                         />
                                     </div>
@@ -634,7 +638,7 @@
                                     <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
                                         <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/AppAutoconhecimento.jpg" alt="Logo" class="w-8 h-8 rounded-full object-cover">
                                     </div>
-                                    <span class="text-xl font-semibold">AppAutooHipnose</span>
+                                    <span class="text-xl font-semibold">AppAutoHipnose</span>
                                 </div>
                                 <span class="text-sm text-gray-400">${currentQuestion + 1} de ${quizQuestions.length}</span>
                             </div>
@@ -762,4 +766,3 @@
     </script>
 </body>
 </html>
-
