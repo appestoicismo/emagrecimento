@@ -265,9 +265,6 @@
                     prevSlide();
                 }
             }
-
-            // Auto-play (optional)
-            // setInterval(nextSlide, 5000);
         }
 
         // App State
@@ -275,7 +272,51 @@
         let quizData = {};
         let currentQuestion = 0;
 
-        // Quiz Questions
+        // Conditional follow-up questions for eating habits
+        const eatingHabitsFollowUp = {
+            'emotional_eating': {
+                question: 'O que mais boicota sua dieta?',
+                options: [
+                    { value: 'emotional_eating_boredom', label: 'Manter meus hábitos atuais', icon: '😐' },
+                    { value: 'emotional_eating_stress', label: 'Não resistir às tentações', icon: '😰' },
+                    { value: 'emotional_eating_sadness', label: 'Ter sempre várias desculpas', icon: '😢' }
+                ]
+            },
+            'portion_control': {
+                question: 'O que mais te leva a comer doces?',
+                options: [
+                    { value: 'portion_control_chocolate', label: 'Comer doce como prêmio, conforto, válvula de escape', icon: '🎁' },
+                    { value: 'portion_control_baked', label: 'Comer doce para gerenciar tensão, ansiedade', icon: '😰' },
+                    { value: 'portion_control_candy', label: 'Comer doce por falta de propósito, distração, solidão', icon: '😐' }
+                ]
+            },
+            'cravings': {
+                question: 'Em que momento a ansiedade mais te faz comer?',
+                options: [
+                    { value: 'cravings_work', label: 'Durante o estresse do trabalho', icon: '💼' },
+                    { value: 'cravings_evening', label: 'Por questões familiares', icon: '🌙' },
+                    { value: 'cravings_social', label: 'Em situações sociais', icon: '👥' }
+                ]
+            },
+            'late_night': {
+                question: 'O que mais dificulta manter sua rotina de exercícios?',
+                options: [
+                    { value: 'late_night_lack_time', label: 'Sair da zona de conforto', icon: '⏰' },
+                    { value: 'late_night_lack_energy', label: 'Falta de energia/disposição', icon: '😴' },
+                    { value: 'late_night_lack_motivation', label: 'Falta de motivação', icon: '😔' }
+                ]
+            },
+            'stress_eating': {
+                question: 'Qual informação você sente que mais falta para emagrecer?',
+                options: [
+                    { value: 'stress_eating_diet', label: 'O que comer exatamente', icon: '🥗' },
+                    { value: 'stress_eating_exercise', label: 'Quais exercícios fazer', icon: '🏋️' },
+                    { value: 'stress_eating_mental', label: 'Como mudar meus hábitos e comportamentos', icon: '🧠' }
+                ]
+            }
+        };
+
+        // Quiz Questions (agora com apenas 12 perguntas)
         const quizQuestions = [
             {
                 id: 'gender',
@@ -309,21 +350,21 @@
                 ]
             },
             {
-    id: 'info1',
-    question: 'Desta vez, será diferente. Estamos mirando na causa raiz.',
-    type: 'info',
-    content: {
-        title: 'Desta vez, será diferente. Estamos mirando na causa raiz.',
-        text: [
-            'Você já tentou dietas, atividade física, chás, já prometeu para si mesmo que dessa vez seria diferente… e sempre acabou derrotado pelo aumento de peso.',
-            'Por que ainda não conseguiu emagrecer? É porque todos esses métodos atacam apenas o corpo, quando a verdadeira causa está na mente.',
-            'O que realmente faz você repetir os mesmos hábitos que te mantém acima do peso não é falta de conhecimento sobre o que comer ou como se exercitar. É o subconsciente, rodando padrões automáticos que sabotam suas escolhas antes mesmo de você perceber.',
-            'Mas, dessa vez você vai conseguir, pois vamos focar na raiz do problema, ou seja, nos padrões que devem ser reprogramados na mente de quem deseja emagrecer. E, quando isso acontece, o que antes parecia difícil, como por exemplo, comer saudável, manter a consistência na atividade física, resistir a um impulso de comer doce, manter a promessa de mudar os hábitos e comportamentos — passa a acontecer naturalmente.',
-            'É por isso que agora vai ser diferente.'
-        ],
-        source: 'Baseado em pesquisas de neurociência e hipnoterapia clínica'
-    }
-},
+                id: 'info1',
+                question: 'Desta vez, será diferente. Estamos mirando na causa raiz.',
+                type: 'info',
+                content: {
+                    title: 'Desta vez, será diferente. Estamos mirando na causa raiz.',
+                    text: [
+                        'Você já tentou dietas, atividade física, chás, já prometeu para si mesmo que dessa vez seria diferente… e sempre acabou derrotado pelo aumento de peso.',
+                        'Por que ainda não conseguiu emagrecer? É porque todos esses métodos atacam apenas o corpo, quando a verdadeira causa está na mente.',
+                        'O que realmente faz você repetir os mesmos hábitos que te mantém acima do peso não é falta de conhecimento sobre o que comer ou como se exercitar. É o subconsciente, rodando padrões automáticos que sabotam suas escolhas antes mesmo de você perceber.',
+                        'Mas, dessa vez você vai conseguir, pois vamos focar na raiz do problema, ou seja, nos padrões que devem ser reprogramados na mente de quem deseja emagrecer. E, quando isso acontece, o que antes parecia difícil, como por exemplo, comer saudável, manter a consistência na atividade física, resistir a um impulso de comer doce, manter a promessa de mudar os hábitos e comportamentos — passa a acontecer naturalmente.',
+                        'É por isso que agora vai ser diferente.'
+                    ],
+                    source: 'Baseado em pesquisas de neurociência e hipnoterapia clínica'
+                }
+            },
             {
                 id: 'referral',
                 question: 'Você foi indicado ao AppAutoHipnose por um nutricionista ou terapeuta TCC?',
@@ -362,94 +403,13 @@
                 id: 'eating_habits',
                 question: 'Qual é o seu maior desafio com o emagrecimento?',
                 type: 'multiple',
+                hasFollowUp: true,
                 options: [
                     { value: 'emotional_eating', label: 'Seguir a dieta', icon: '😢' },
                     { value: 'portion_control', label: 'Deixar de comer doces', icon: '🍽️' },
-                    { value: 'cravings', label: 'Comer por ansiedade/estresse', icon: '🍰' },
-                    { value: 'late_night', label: 'Manter disciplina na atividade física', icon: '🌙' },
+                    { value: 'cravings', label: 'Comer por ansiedade', icon: '🍰' },
+                    { value: 'late_night', label: 'Manter atividade física', icon: '🌙' },
                     { value: 'stress_eating', label: 'Não saber como emagrecer', icon: '😰' }
-                ]
-            },
-            {
-                id: 'exercise_level',
-                question: 'Com que frequência você se exercita atualmente?',
-                type: 'multiple',
-                options: [
-                    { value: 'daily', label: 'Diariamente', icon: '🏃‍♀️' },
-                    { value: 'few_times_week', label: 'Algumas vezes por semana', icon: '🚴‍♀️' },
-                    { value: 'once_week', label: 'Uma vez por semana', icon: '🚶‍♀️' },
-                    { value: 'rarely', label: 'Raramente', icon: '🛋️' },
-                    { value: 'never', label: 'Nunca', icon: '❌' }
-                ]
-            },
-            {
-                id: 'motivation_level',
-                question: 'Como você descreveria sua motivação atual para emagrecer?',
-                type: 'multiple',
-                options: [
-                    { value: 'very_high', label: 'Muito alta - estou determinado(a)', icon: '🔥' },
-                    { value: 'high', label: 'Alta - quero muito isso', icon: '💪' },
-                    { value: 'moderate', label: 'Moderada - seria bom', icon: '👍' },
-                    { value: 'low', label: 'Baixa - não tenho certeza', icon: '🤷‍♀️' }
-                ]
-            },
-            {
-                id: 'stress_level',
-                question: 'Como você classificaria seu nível de estresse diário?',
-                type: 'multiple',
-                options: [
-                    { value: 'very_high', label: 'Muito alto', icon: '😵' },
-                    { value: 'high', label: 'Alto', icon: '😰' },
-                    { value: 'moderate', label: 'Moderado', icon: '😐' },
-                    { value: 'low', label: 'Baixo', icon: '😌' },
-                    { value: 'very_low', label: 'Muito baixo', icon: '😊' }
-                ]
-            },
-            {
-                id: 'sleep_quality',
-                question: 'Como é a qualidade do seu sono?',
-                type: 'multiple',
-                options: [
-                    { value: 'excellent', label: 'Excelente - durmo bem todas as noites', icon: '😴' },
-                    { value: 'good', label: 'Boa - geralmente durmo bem', icon: '🛌' },
-                    { value: 'fair', label: 'Regular - às vezes tenho problemas', icon: '😪' },
-                    { value: 'poor', label: 'Ruim - frequentemente tenho insônia', icon: '😵‍💫' }
-                ]
-            },
-            {
-                id: 'diet_history',
-                question: 'Quais tipos de dieta você já tentou?',
-                type: 'multiple',
-                options: [
-                    { value: 'low_carb', label: 'Dieta low carb', icon: '🥩' },
-                    { value: 'intermittent_fasting', label: 'Jejum intermitente', icon: '⏰' },
-                    { value: 'calorie_counting', label: 'Contagem de calorias', icon: '📱' },
-                    { value: 'keto', label: 'Dieta cetogênica', icon: '🥑' },
-                    { value: 'none', label: 'Nunca fiz dieta específica', icon: '🤷‍♀️' }
-                ]
-            },
-            {
-                id: 'support_system',
-                question: 'Você tem apoio da família/amigos para emagrecer?',
-                type: 'multiple',
-                options: [
-                    { value: 'very_supportive', label: 'Sim, muito apoio', icon: '👨‍👩‍👧‍👦' },
-                    { value: 'somewhat_supportive', label: 'Algum apoio', icon: '👫' },
-                    { value: 'neutral', label: 'Neutro', icon: '😐' },
-                    { value: 'not_supportive', label: 'Pouco apoio', icon: '😔' },
-                    { value: 'alone', label: 'Estou fazendo isso sozinho(a)', icon: '🙋‍♀️' }
-                ]
-            },
-            {
-                id: 'biggest_obstacle',
-                question: 'Qual é o maior obstáculo que impede você de emagrecer?',
-                type: 'multiple',
-                options: [
-                    { value: 'lack_time', label: 'Falta de tempo', icon: '⏰' },
-                    { value: 'lack_motivation', label: 'Falta de motivação', icon: '😴' },
-                    { value: 'food_cravings', label: 'Desejos por comida', icon: '🍕' },
-                    { value: 'emotional_issues', label: 'Questões emocionais', icon: '💔' },
-                    { value: 'lack_knowledge', label: 'Falta de conhecimento', icon: '❓' }
                 ]
             },
             {
@@ -509,22 +469,56 @@
         // Functions
         function handleQuizAnswer(answer) {
             const currentQ = quizQuestions[currentQuestion];
-            quizData[currentQ.id] = answer;
             
-            if (currentQuestion < quizQuestions.length - 1) {
-                currentQuestion++;
-                renderApp();
+            // Check if this question has a follow-up
+            if (currentQ.hasFollowUp && eatingHabitsFollowUp[answer]) {
+                // Save the main answer
+                quizData[currentQ.id] = answer;
+                // Show follow-up question
+                showFollowUpQuestion(answer);
             } else {
-                currentStep = 'result';
-                if (typeof fbq !== 'undefined') {
-                    fbq('track', 'CompleteRegistration');
+                // Normal flow
+                quizData[currentQ.id] = answer;
+                
+                if (currentQuestion < quizQuestions.length - 1) {
+                    currentQuestion++;
+                    renderApp();
+                } else {
+                    currentStep = 'result';
+                    if (typeof fbq !== 'undefined') {
+                        fbq('track', 'CompleteRegistration');
+                    }
+                    renderApp();
                 }
+            }
+        }
+
+        function handleFollowUpAnswer(mainAnswer, followUpAnswer) {
+            // Save both answers
+            quizData[`eating_habits_detail`] = followUpAnswer;
+            
+            // Find index of info2 question
+            const info2Index = quizQuestions.findIndex(q => q.id === 'info2');
+            
+            // Go directly to info2
+            if (info2Index !== -1) {
+                currentQuestion = info2Index;
+                currentStep = 'quiz';
                 renderApp();
             }
         }
 
+        function showFollowUpQuestion(mainAnswer) {
+            const followUp = eatingHabitsFollowUp[mainAnswer];
+            currentStep = 'followup';
+            renderApp();
+        }
+
         function goBack() {
-            if (currentQuestion > 0) {
+            if (currentStep === 'followup') {
+                currentStep = 'quiz';
+                renderApp();
+            } else if (currentQuestion > 0) {
                 currentQuestion--;
                 renderApp();
             } else {
@@ -644,12 +638,12 @@
                                     <div class="carousel-slide">
                                         <div class="bg-slate-800/50 rounded-2xl p-6 border border-slate-700 h-full">
                                             <div class="mb-4">
-    <img 
-        src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/adriana.png" 
-        alt="Antes e depois - Transformação 1"
-        class="w-full h-auto object-contain rounded-lg"
-    />
-</div>
+                                                <img 
+                                                    src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/adriana.png" 
+                                                    alt="Antes e depois - Transformação 1"
+                                                    class="w-full h-auto object-contain rounded-lg"
+                                                />
+                                            </div>
                                             <p class="text-gray-300 mb-4 italic">
                                                 "Este programa simplesmente reconfigurou algo em mim. Eu como melhor, me sinto melhor, e estou 6 kg mais leve."
                                             </p>
@@ -734,6 +728,67 @@
                             </div>
                         </div>
                     </footer>
+                </div>
+            `;
+        }
+
+        function renderFollowUpPage() {
+            const mainAnswer = quizData['eating_habits'];
+            const followUp = eatingHabitsFollowUp[mainAnswer];
+            const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
+
+            return `
+                <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+                    <!-- Header with progress -->
+                    <header class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <button 
+                                onclick="goBack()"
+                                class="btn btn-outline bg-transparent border-gray-600 text-white hover:bg-gray-800"
+                            >
+                                ← Voltar
+                            </button>
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+                                    <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/AppAutoconhecimento.jpg" alt="Logo" class="w-8 h-8 rounded-full object-cover">
+                                </div>
+                                <span class="text-xl font-semibold">AppAutoHipnose</span>
+                            </div>
+                            <span class="text-sm text-gray-400">${currentQuestion + 1} de ${quizQuestions.length}</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div 
+                                class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-300"
+                                style="width: ${progress}%"
+                            ></div>
+                        </div>
+                    </header>
+
+                    <!-- Quiz Content -->
+                    <div class="container mx-auto px-6 py-12">
+                        <div class="max-w-2xl mx-auto text-center">
+                            <h2 class="text-3xl font-bold mb-8">${followUp.question}</h2>
+                            <div class="space-y-4">
+                                ${followUp.options.map((option, index) => {
+                                    const gradients = [
+                                        'bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 border-2 border-blue-400',
+                                        'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 border-2 border-purple-400',
+                                        'bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 border-2 border-green-400'
+                                    ];
+                                    return `
+                                        <button
+                                            onclick="handleFollowUpAnswer('${mainAnswer}', '${option.value}')"
+                                            class="btn btn-2xl w-full text-left justify-start font-medium transition-all duration-200 ${gradients[index]}"
+                                        >
+                                            <span class="text-2xl mr-4">${option.icon}</span>
+                                            ${option.label}
+                                            <span class="ml-auto text-xl">→</span>
+                                        </button>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </div>
+                    </div>
                 </div>
             `;
         }
@@ -932,6 +987,9 @@
                     break;
                 case 'quiz':
                     app.innerHTML = renderQuizPage();
+                    break;
+                case 'followup':
+                    app.innerHTML = renderFollowUpPage();
                     break;
                 case 'result':
                     app.innerHTML = renderResultPage();
