@@ -272,6 +272,67 @@
         let quizData = {};
         let currentQuestion = 0;
 
+        // Função para gerar conteúdo personalizado do info1
+        function getPersonalizedInfo1Content(userAnswer) {
+    const contentVariations = {
+        'limited_success': {
+            title: 'Desta vez, será diferente. Estamos mirando na causa raiz.',
+            text: [
+                'Você já tentou dietas, atividade física, chás, já prometeu para si mesmo que dessa vez seria diferente… e sempre acabou voltando a engordar rápido — às vezes até mais do que perdeu. Esse efeito sanfona não é culpa sua. É um padrão automático programado no subconsciente.',
+                
+                'O problema não está na sua força de vontade. Está no fato de que todos os métodos que você tentou atacam apenas os sintomas — o corpo, a comida, o exercício — mas ignoram completamente a causa: os circuitos neurais que fazem você repetir os mesmos comportamentos automaticamente.',
+                
+                'Seu cérebro aprendeu que comer traz conforto emocional, que desistir é mais seguro do que tentar de novo, que aquele doce é uma recompensa merecida. São padrões tão profundos que rodam no piloto automático, sem você nem perceber.',
+                
+                'A hipnoterapia reprograma exatamente esses padrões. Durante o estado de transe hipnótico, acessamos o subconsciente — onde essas memórias e hábitos estão armazenados — e implantamos novas instruções. É como atualizar o sistema operacional da sua mente.',
+                
+                'Quando isso acontece, algo surpreendente se revela: comer saudável deixa de ser um esforço consciente. Resistir ao impulso de comer por emoção se torna natural. Manter a atividade física vira prazeroso. E a balança começa a baixar, semana após semana — dessa vez, sem o efeito sanfona.',
+                
+                'É por isso que agora vai ser diferente. Você não vai mais lutar contra você mesmo.'
+            ],
+            source: 'Baseado em pesquisas de neurociência e hipnoterapia clínica'
+        },
+
+        'no_success': {
+            title: 'Desta vez, será diferente. Estamos mirando na causa raiz.',
+            text: [
+                'Você já tentou de tudo — dietas restritivas, academia, aplicativos, grupos de apoio — mas nunca chegou ao seu peso ideal. Isso não significa falta de disciplina ou força de vontade. A verdade é que nenhum desses métodos atacou a verdadeira causa: os padrões automáticos do seu subconsciente que sabotam cada tentativa.',
+                
+                'Pense bem: você sabe o que deveria comer. Sabe que precisa se exercitar. Então por que é tão difícil manter na prática? Porque o conhecimento consciente é apenas 5% do que controla suas decisões. Os outros 95% vêm do subconsciente — onde estão seus hábitos, traumas, recompensas emocionais e padrões automáticos.',
+                
+                'É como tentar mudar o sistema operacional de um computador apenas mexendo nos ícones da tela. Você pode reorganizar, excluir, adicionar novos programas… mas se o código-fonte continua o mesmo, o sistema sempre volta ao estado anterior.',
+                
+                'A hipnoterapia vai direto no código-fonte: o subconsciente. Durante o transe hipnótico, seu cérebro entra em um estado de neuroplasticidade elevada — é quando as conexões neurais podem ser reescritas. Implantamos novas instruções que criam hábitos saudáveis de forma natural, sem que você precise "forçar" conscientemente.',
+                
+                'O resultado? Pela primeira vez, você vai sentir que está no controle. Comer bem se torna automático. Exercitar-se deixa de ser um sacrifício. Os impulsos que antes te dominavam simplesmente perdem força. E a balança finalmente responde — não por esforço heroico, mas porque sua mente foi reprogramada para o emagrecimento.',
+                
+                'Agora você vai conseguir. Porque dessa vez estamos atacando o problema pela raiz.'
+            ],
+            source: 'Baseado em pesquisas de neurociência e hipnoterapia clínica'
+        },
+
+        'not_yet': {
+            title: 'Desta vez, será diferente. Você vai começar pela causa raiz.',
+            text: [
+                'Você ainda não tentou emagrecer antes, e isso te coloca em uma posição privilegiada. Diferente da maioria, você não vai repetir os erros comuns: atacar apenas o corpo quando a transformação real começa na mente. Você pode começar do jeito certo — pela causa raiz.',
+                
+                'A maioria das pessoas perde anos tentando dietas, aplicativos, academias… tudo focado no corpo. E quando falham, acham que é falta de disciplina. Mas não é. O verdadeiro problema está nos padrões automáticos do subconsciente que controlam 95% das nossas decisões diárias.',
+                
+                'É o subconsciente que decide se você vai comer aquele doce quando está ansioso. Que faz você desistir da dieta na primeira dificuldade. Que programa seu cérebro para associar comida com conforto emocional. Esses padrões são invisíveis, mas determinam completamente seus resultados.',
+                
+                'A hipnoterapia age exatamente aí: reprogramando o subconsciente antes que hábitos destrutivos se instalem. Durante o transe hipnótico, implantamos instruções que criam uma mentalidade naturalmente voltada para o emagrecimento — sem sacrifício, sem esforço heroico, sem "lutar contra você mesmo".',
+                
+                'Ao começar pela mente, você não vai precisar testar dez dietas diferentes para descobrir que nenhuma funciona. Não vai passar pela frustração do efeito sanfona. Você vai construir, desde o início, uma base sólida onde comer saudável é natural, atividade física é prazerosa, e a balança baixa de forma consistente.',
+                
+                'Essa é a vantagem de começar certo. E é por isso que seu resultado será diferente da maioria.'
+            ],
+            source: 'Baseado em pesquisas de neurociência e hipnoterapia clínica'
+        }
+    };
+
+    return contentVariations[userAnswer] || contentVariations['limited_success'];
+}
+
         // Conditional follow-up questions for eating habits
         const eatingHabitsFollowUp = {
             'emotional_eating': {
@@ -316,7 +377,7 @@
             }
         };
 
-        // Quiz Questions (agora com 9 perguntas - removidas 3)
+        // Quiz Questions
         const quizQuestions = [
             {
                 id: 'gender',
@@ -353,17 +414,7 @@
                 id: 'info1',
                 question: 'Desta vez, será diferente. Estamos mirando na causa raiz.',
                 type: 'info',
-                content: {
-                    title: 'Desta vez, será diferente. Estamos mirando na causa raiz.',
-                    text: [
-                        'Você já tentou dietas, atividade física, chás, já prometeu para si mesmo que dessa vez seria diferente… e sempre acabou derrotado pelo aumento de peso.',
-                        'Por que ainda não conseguiu emagrecer? É porque todos esses métodos atacam apenas o corpo, quando a verdadeira causa está na mente.',
-                        'O que realmente faz você repetir os mesmos hábitos que te mantém acima do peso não é falta de conhecimento sobre o que comer ou como se exercitar. É o subconsciente, rodando padrões automáticos que sabotam suas escolhas antes mesmo de você perceber.',
-                        'Mas, dessa vez você vai conseguir, pois vamos focar na raiz do problema, ou seja, nos padrões que devem ser reprogramados na mente de quem deseja emagrecer. E, quando isso acontece, o que antes parecia difícil, como por exemplo, comer saudável, manter a consistência na atividade física, resistir a um impulso de comer doce, manter a promessa de mudar os hábitos e comportamentos — passa a acontecer naturalmente.',
-                        'É por isso que agora vai ser diferente.'
-                    ],
-                    source: 'Baseado em pesquisas de neurociência e hipnoterapia clínica'
-                }
+                isDynamic: true
             },
             {
                 id: 'referral',
@@ -781,6 +832,11 @@
             const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
 
             if (question.type === 'info') {
+                // Se a pergunta é dinâmica, busca o conteúdo personalizado
+                const content = question.isDynamic 
+                    ? getPersonalizedInfo1Content(quizData['past_tries'])
+                    : question.content;
+                
                 const imageUrl = question.image || 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/cerebrointestino.jpeg';
                 const altText = question.id === 'info2' ? 'Ilustração sobre controle de hábitos alimentares' : 'Ilustração do corpo humano mostrando conexão cérebro-intestino';
                 
@@ -816,13 +872,13 @@
                             <div class="max-w-4xl mx-auto">
                                 <div class="grid lg:grid-cols-2 gap-12 items-center">
                                     <div class="space-y-6">
-                                        <h2 class="text-3xl font-bold">${question.content.title}</h2>
+                                        <h2 class="text-3xl font-bold">${content.title}</h2>
                                         <div class="space-y-4">
-                                            ${question.content.text.map(paragraph => `
+                                            ${content.text.map(paragraph => `
                                                 <p class="text-gray-300 leading-relaxed">${paragraph}</p>
                                             `).join('')}
                                         </div>
-                                        <p class="text-sm text-gray-400 italic">${question.content.source}</p>
+                                        <p class="text-sm text-gray-400 italic">${content.source}</p>
                                         <button 
                                             onclick="handleQuizAnswer('understood')"
                                             class="btn btn-xl w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold"
