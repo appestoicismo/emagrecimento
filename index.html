@@ -316,7 +316,7 @@
             }
         };
 
-        // Quiz Questions (agora com apenas 12 perguntas)
+        // Quiz Questions (agora com 9 perguntas - removidas 3)
         const quizQuestions = [
             {
                 id: 'gender',
@@ -414,55 +414,38 @@
             },
             {
                 id: 'info2',
-                question: 'A ciência por trás da hipnoterapia',
+                question: 'A verdadeira raiz do emagrecimento está no cérebro',
                 type: 'info',
                 image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/assaltogeladeira.png',
                 content: {
-                    title: 'A ciência por trás da hipnoterapia',
+                    title: 'A verdadeira raiz do emagrecimento está no cérebro',
                     text: [
-                        'Imagine se as decisões alimentares que você toma hoje... não fossem realmente *suas*. E se os hábitos automáticos que sabotam sua saúde estivessem profundamente codificados no seu subconsciente — fora do seu controle racional?',
-                        'A hipnoterapia não é mágica. É neurociência aplicada. Estudos conduzidos por instituições como Harvard e publicados em periódicos como *Journal of Clinical Psychology* mostram que a hipnose pode ser até 3x mais eficaz do que dietas tradicionais, porque não luta contra a sua mente... ela a reprograma.',
-                        'Durante o transe hipnótico, áreas críticas do cérebro entram em estado de receptividade. É como se, por alguns minutos, você tivesse acesso ao "código-fonte" dos seus comportamentos alimentares.',
-                        'Mais de 200 estudos clínicos já confirmaram: a hipnoterapia funciona — e o melhor — sem sofrimento, sem força de vontade, sem resistência.',
-                        'O que antes parecia difícil, começa a acontecer de forma natural. **A pergunta é:** você está pronto para deixar seu subconsciente fazer o trabalho por você?'
+                        'Você já sabe que precisa comer melhor e se exercitar. Mas, por que isso é tão difícil de manter na prática? A resposta está na neurociência.',
+                        'Pesquisas com ressonância magnética mostram que nossas escolhas alimentares são fortemente influenciadas pelo subconsciente — onde estão memórias, traumas, recompensas emocionais e hábitos automáticos. É como se sua mente estivesse "programada" para repetir comportamentos que te sabotam.',
+                        'A hipnoterapia atua exatamente nesse ponto: reprogramando as conexões neurais que controlam o apetite emocional, a compulsão por doces, o sedentarismo e os padrões de auto-sabotagem.',
+                        'Durante o transe hipnótico, seu cérebro entra em um estado de foco profundo, permitindo acessar o "código-fonte" do comportamento. É nesse momento que implantamos sugestões e visualizações que criam novos hábitos alimentares — de forma natural, sem esforço consciente.',
+                        'Mais de 200 estudos confirmam: a hipnoterapia é até 3x mais eficaz do que métodos tradicionais. E o melhor? Você não precisa "lutar contra você mesmo". A mudança acontece de dentro para fora.',
+                        '**Resultado?** Comer saudável deixa de ser um sacrifício. Exercitar-se vira algo prazeroso. A balança começa a descer — como consequência da nova mente que você desenvolveu.'
                     ],
-                    source: 'Baseado em pesquisas de neurociência e psicologia comportamental'
+                    source: 'Baseado em estudos de Harvard, Stanford e literatura clínica de hipnoterapia'
                 }
             },
             {
-                id: 'commitment_level',
-                question: 'Quanto tempo por dia você pode dedicar ao seu programa de emagrecimento?',
-                type: 'multiple',
-                options: [
-                    { value: '5-10min', label: '5-10 minutos', icon: '⏱️' },
-                    { value: '10-20min', label: '10-20 minutos', icon: '⏰' },
-                    { value: '20-30min', label: '20-30 minutos', icon: '🕐' },
-                    { value: '30min+', label: 'Mais de 30 minutos', icon: '⏳' }
-                ]
-            },
-            {
-                id: 'preferred_time',
-                question: 'Qual é o melhor horário para você praticar hipnoterapia?',
-                type: 'multiple',
-                options: [
-                    { value: 'morning', label: 'Manhã', icon: '🌅' },
-                    { value: 'afternoon', label: 'Tarde', icon: '☀️' },
-                    { value: 'evening', label: 'Noite', icon: '🌆' },
-                    { value: 'bedtime', label: 'Antes de dormir', icon: '🌙' },
-                    { value: 'flexible', label: 'Horário flexível', icon: '🔄' }
-                ]
-            },
-            {
-                id: 'final_goal',
-                question: 'Qual é seu objetivo principal com este programa?',
-                type: 'multiple',
-                options: [
-                    { value: 'lose_weight', label: 'Perder peso de forma sustentável', icon: '⚖️' },
-                    { value: 'change_habits', label: 'Mudar hábitos alimentares', icon: '🔄' },
-                    { value: 'boost_confidence', label: 'Aumentar autoconfiança', icon: '💪' },
-                    { value: 'improve_health', label: 'Melhorar saúde geral', icon: '❤️' },
-                    { value: 'all_above', label: 'Todos os acima', icon: '🎯' }
-                ]
+                id: 'info3',
+                question: 'Como funciona na prática?',
+                type: 'info_steps',
+                image: 'https://appestoicismo.github.io/hipnoseansiedade/apppordentro.png',
+                content: {
+                    title: 'Como funciona na prática?',
+                    subtitle: 'É mais simples do que você imagina',
+                    steps: [
+                        { icon: '📱', text: 'Acesse o aplicativo AutoHipnose no seu celular' },
+                        { icon: '🎧', text: 'Coloque seu fone de ouvido e dê play no áudio' },
+                        { icon: '🌙', text: 'Pode ser na hora de dormir, no momento mais confortável' },
+                        { icon: '🧠', text: 'Ouça minha voz e deixe seu subconsciente trabalhar' }
+                    ],
+                    footer: 'Apenas 15 minutos por dia durante 21 dias para reprogramar sua mente'
+                }
             }
         ];
 
@@ -859,6 +842,78 @@
                         </div>
                     </div>
                 `;
+            } else if (question.type === 'info_steps') {
+                return `
+                    <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+                        <!-- Header with progress -->
+                        <header class="p-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <button 
+                                    onclick="goBack()"
+                                    class="btn btn-outline bg-transparent border-gray-600 text-white hover:bg-gray-800"
+                                >
+                                    ← Voltar
+                                </button>
+                                <div class="flex items-center gap-2">
+                                    <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+                                        <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/AppAutoconhecimento.jpg" alt="Logo" class="w-8 h-8 rounded-full object-cover">
+                                    </div>
+                                    <span class="text-xl font-semibold">AppAutoHipnose</span>
+                                </div>
+                                <span class="text-sm text-gray-400">${currentQuestion + 1} de ${quizQuestions.length}</span>
+                            </div>
+                            <div class="w-full bg-gray-700 rounded-full h-2">
+                                <div 
+                                    class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-300"
+                                    style="width: ${progress}%"
+                                ></div>
+                            </div>
+                        </header>
+
+                        <!-- Quiz Content -->
+                        <div class="container mx-auto px-6 py-12">
+                            <div class="max-w-4xl mx-auto">
+                                <div class="grid lg:grid-cols-2 gap-12 items-center">
+                                    <div class="space-y-6">
+                                        <div>
+                                            <h2 class="text-3xl font-bold mb-2">${question.content.title}</h2>
+                                            <p class="text-xl text-gray-300">${question.content.subtitle}</p>
+                                        </div>
+                                        
+                                        <div class="space-y-5">
+                                            ${question.content.steps.map((step, index) => `
+                                                <div class="flex items-start gap-4 bg-slate-800/30 p-4 rounded-lg border border-slate-700">
+                                                    <span class="text-4xl flex-shrink-0">${step.icon}</span>
+                                                    <div class="flex-1">
+                                                        <p class="text-lg text-gray-200">${step.text}</p>
+                                                    </div>
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                        
+                                        <div class="bg-gradient-to-r from-blue-900/50 to-purple-900/50 p-4 rounded-lg border border-blue-700/50">
+                                            <p class="text-center text-gray-200 font-medium">${question.content.footer}</p>
+                                        </div>
+                                        
+                                        <button 
+                                            onclick="handleQuizAnswer('understood')"
+                                            class="btn btn-xl w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold"
+                                        >
+                                            Entendi, Vamos Continuar
+                                        </button>
+                                    </div>
+                                    <div class="relative">
+                                        <img 
+                                            src="${question.image}" 
+                                            alt="Interface do aplicativo AutoHipnose"
+                                            class="w-full h-auto rounded-xl shadow-2xl"
+                                        />
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
             } else {
                 return `
                     <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
@@ -956,7 +1011,7 @@
                                     </div>
                                     <div class="flex items-center gap-3 text-green-400">
                                         <span class="text-xl">✓</span>
-                                        <span>Garantia de 30 dias</span>
+                                        <span>Garantia de 7 dias</span>
                                     </div>
                                 </div>
                             </div>
