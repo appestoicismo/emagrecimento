@@ -274,64 +274,145 @@
 
         // Função para gerar conteúdo personalizado do info1
         function getPersonalizedInfo1Content(userAnswer) {
-    const contentVariations = {
-        'limited_success': {
-            title: 'Desta vez, será diferente. Estamos mirando na causa raiz.',
-            text: [
-                'Você já tentou dietas, atividade física, chás, já prometeu para si mesmo que dessa vez seria diferente… e sempre acabou voltando a engordar rápido — às vezes até mais do que perdeu. Esse efeito sanfona não é culpa sua. É um padrão automático programado no subconsciente.',
-                
-                'O problema não está na sua força de vontade. Está no fato de que todos os métodos que você tentou atacam apenas os sintomas — o corpo, a comida, o exercício — mas ignoram completamente a causa: os circuitos neurais que fazem você repetir os mesmos comportamentos automaticamente.',
-                
-                'Seu cérebro aprendeu que comer traz conforto emocional, que desistir é mais seguro do que tentar de novo, que aquele doce é uma recompensa merecida. São padrões tão profundos que rodam no piloto automático, sem você nem perceber.',
-                
-                'A hipnoterapia reprograma exatamente esses padrões. Durante o estado de transe hipnótico, acessamos o subconsciente — onde essas memórias e hábitos estão armazenados — e implantamos novas instruções. É como atualizar o sistema operacional da sua mente.',
-                
-                'Quando isso acontece, algo surpreendente se revela: comer saudável deixa de ser um esforço consciente. Resistir ao impulso de comer por emoção se torna natural. Manter a atividade física vira prazeroso. E a balança começa a baixar, semana após semana — dessa vez, sem o efeito sanfona.',
-                
-                'É por isso que agora vai ser diferente. Você não vai mais lutar contra você mesmo.'
-            ],
-            source: 'Baseado em pesquisas de neurociência e hipnoterapia clínica'
-        },
+            const contentVariations = {
+                'limited_success': {
+                    title: 'Desta vez, será diferente. Estamos mirando na causa raiz.',
+                    text: [
+                        'Você já emagreceu antes, mas sempre voltou a engordar rápido — às vezes recuperando ainda mais peso. Esse efeito sanfona acontece por um motivo específico: dietas tratam apenas o sintoma (o que você come), não a causa (por que você come).',
+                        
+                        'Pesquisas da Universidade de Stanford mostram que 85% das nossas escolhas alimentares são automáticas — o cérebro decide antes mesmo de você perceber. Quando você faz dieta, está lutando conscientemente contra padrões inconscientes. É uma batalha desigual que você sempre perde no longo prazo.',
+                        
+                        'A hipnoterapia reprograma esses padrões automáticos. Durante 21 dias, 15 minutos por dia, você ouve um áudio que acessa o subconsciente — onde esses comportamentos estão gravados — e instala novas instruções. Não é força de vontade. É reprogramação neural.',
+                        
+                        'O resultado prático? Pessoas que passaram pelo programa relatam: comer saudável sem esforço consciente, resistir a doces naturalmente, manter atividade física com prazer. A perda de peso acontece como consequência — 3 a 8kg no primeiro mês, de forma sustentável, sem o efeito sanfona.',
+                        
+                        'Desta vez você não vai lutar contra você mesmo. A mudança acontece de dentro para fora.'
+                    ],
+                    source: 'Baseado em estudos de Stanford, Harvard e literatura clínica de hipnoterapia'
+                },
 
-        'no_success': {
-            title: 'Desta vez, será diferente. Estamos mirando na causa raiz.',
-            text: [
-                'Você já tentou de tudo — dietas restritivas, academia, aplicativos, grupos de apoio — mas nunca chegou ao seu peso ideal. Isso não significa falta de disciplina ou força de vontade. A verdade é que nenhum desses métodos atacou a verdadeira causa: os padrões automáticos do seu subconsciente que sabotam cada tentativa.',
-                
-                'Pense bem: você sabe o que deveria comer. Sabe que precisa se exercitar. Então por que é tão difícil manter na prática? Porque o conhecimento consciente é apenas 5% do que controla suas decisões. Os outros 95% vêm do subconsciente — onde estão seus hábitos, traumas, recompensas emocionais e padrões automáticos.',
-                
-                'É como tentar mudar o sistema operacional de um computador apenas mexendo nos ícones da tela. Você pode reorganizar, excluir, adicionar novos programas… mas se o código-fonte continua o mesmo, o sistema sempre volta ao estado anterior.',
-                
-                'A hipnoterapia vai direto no código-fonte: o subconsciente. Durante o transe hipnótico, seu cérebro entra em um estado de neuroplasticidade elevada — é quando as conexões neurais podem ser reescritas. Implantamos novas instruções que criam hábitos saudáveis de forma natural, sem que você precise "forçar" conscientemente.',
-                
-                'O resultado? Pela primeira vez, você vai sentir que está no controle. Comer bem se torna automático. Exercitar-se deixa de ser um sacrifício. Os impulsos que antes te dominavam simplesmente perdem força. E a balança finalmente responde — não por esforço heroico, mas porque sua mente foi reprogramada para o emagrecimento.',
-                
-                'Agora você vai conseguir. Porque dessa vez estamos atacando o problema pela raiz.'
-            ],
-            source: 'Baseado em pesquisas de neurociência e hipnoterapia clínica'
-        },
+                'no_success': {
+                    title: 'Desta vez, será diferente. Estamos mirando na causa raiz.',
+                    text: [
+                        'Você já tentou dietas, academia, aplicativos — mas nunca chegou ao seu peso ideal. Não é falta de disciplina. É que todos esses métodos atacam apenas o comportamento consciente, quando 95% das suas decisões alimentares vêm do inconsciente.',
+                        
+                        'Pense: você já sabe o que deveria comer. Sabe que precisa se exercitar. O problema não é conhecimento — é execução. E execução depende de padrões automáticos que estão programados no seu cérebro há anos: comer quando está ansioso, desistir na primeira dificuldade, associar comida com recompensa emocional.',
+                        
+                        'A hipnoterapia acessa diretamente esses padrões. Estudos clínicos mostram que a hipnose pode ser até 3 vezes mais eficaz que métodos tradicionais porque trabalha no nível onde as decisões realmente acontecem: o subconsciente. São 21 dias, 15 minutos por dia, reprogramando sua mente para o emagrecimento.',
+                        
+                        'O que muda na prática? Pessoas relatam que pela primeira vez sentem controle real: não precisam "resistir" a tentações porque a vontade diminui naturalmente, exercitar-se deixa de ser sacrifício, comer bem se torna automático. A perda média é de 3 a 8kg no primeiro mês — dessa vez, de forma sustentável.',
+                        
+                        'Você vai conseguir porque agora está atacando o problema pela raiz.'
+                    ],
+                    source: 'Baseado em estudos de Stanford, Harvard e literatura clínica de hipnoterapia'
+                },
 
-        'not_yet': {
-            title: 'Desta vez, será diferente. Você vai começar pela causa raiz.',
-            text: [
-                'Você ainda não tentou emagrecer antes, e isso te coloca em uma posição privilegiada. Diferente da maioria, você não vai repetir os erros comuns: atacar apenas o corpo quando a transformação real começa na mente. Você pode começar do jeito certo — pela causa raiz.',
-                
-                'A maioria das pessoas perde anos tentando dietas, aplicativos, academias… tudo focado no corpo. E quando falham, acham que é falta de disciplina. Mas não é. O verdadeiro problema está nos padrões automáticos do subconsciente que controlam 95% das nossas decisões diárias.',
-                
-                'É o subconsciente que decide se você vai comer aquele doce quando está ansioso. Que faz você desistir da dieta na primeira dificuldade. Que programa seu cérebro para associar comida com conforto emocional. Esses padrões são invisíveis, mas determinam completamente seus resultados.',
-                
-                'A hipnoterapia age exatamente aí: reprogramando o subconsciente antes que hábitos destrutivos se instalem. Durante o transe hipnótico, implantamos instruções que criam uma mentalidade naturalmente voltada para o emagrecimento — sem sacrifício, sem esforço heroico, sem "lutar contra você mesmo".',
-                
-                'Ao começar pela mente, você não vai precisar testar dez dietas diferentes para descobrir que nenhuma funciona. Não vai passar pela frustração do efeito sanfona. Você vai construir, desde o início, uma base sólida onde comer saudável é natural, atividade física é prazerosa, e a balança baixa de forma consistente.',
-                
-                'Essa é a vantagem de começar certo. E é por isso que seu resultado será diferente da maioria.'
-            ],
-            source: 'Baseado em pesquisas de neurociência e hipnoterapia clínica'
+                'not_yet': {
+                    title: 'Você está começando certo. Pela causa raiz.',
+                    text: [
+                        'Você ainda não tentou emagrecer, e isso é uma vantagem. A maioria das pessoas perde anos testando dietas e academias — tudo focado no corpo — para depois descobrir que o verdadeiro problema está na mente. Você pode começar direto pela solução.',
+                        
+                        'Estudos da Universidade de Stanford mostram que 85% das escolhas alimentares são automáticas — decididas pelo subconsciente antes de você perceber. Por isso a maioria falha: tenta controlar conscientemente algo que é automático. É como tentar dirigir um carro pensando em cada movimento do pé no acelerador.',
+                        
+                        'A hipnoterapia programa sua mente desde o início para hábitos saudáveis. São 21 dias, 15 minutos por dia, instalando instruções direto no subconsciente: comer bem sem esforço, resistir a impulsos naturalmente, sentir prazer em se movimentar. Você constrói a base certa desde o começo.',
+                        
+                        'O resultado? Você não vai passar pela frustração que a maioria passa. Não vai testar dez dietas diferentes. Não vai viver o efeito sanfona. Vai emagrecer de 3 a 8kg no primeiro mês de forma natural — porque sua mente já está programada para isso.',
+                        
+                        'Essa é a vantagem de começar pela causa raiz. Você evita anos de tentativa e erro.'
+                    ],
+                    source: 'Baseado em estudos de Stanford, Harvard e literatura clínica de hipnoterapia'
+                }
+            };
+
+            return contentVariations[userAnswer] || contentVariations['limited_success'];
         }
-    };
 
-    return contentVariations[userAnswer] || contentVariations['limited_success'];
-}
+        // Função para gerar conteúdo personalizado do info2
+        function getPersonalizedInfo2Content(userAnswer) {
+            const contentVariations = {
+                'emotional_eating': {
+                    title: 'Por que é tão difícil seguir a dieta?',
+                    text: [
+                        'Você revelou que seu maior desafio é seguir a dieta. Isso não acontece por falta de informação ou disciplina. Acontece porque seu cérebro aprendeu padrões automáticos de comer em resposta a emoções.',
+                        
+                        'Pesquisas de neurociência mostram que quando você sente estresse, tédio ou frustração, o cérebro busca recompensa imediata através da comida. É um circuito neural automático: emoção negativa → comer → alívio temporário. Esse padrão foi reforçado milhares de vezes ao longo dos anos.',
+                        
+                        'Quando você tenta seguir uma dieta usando apenas força de vontade consciente, está lutando contra anos de condicionamento automático. É por isso que você "quebra" a dieta — não é fraqueza, é biologia.',
+                        
+                        'A hipnoterapia reprograma esse circuito neural. Durante o estado hipnótico, implantamos novas associações: quando emoções negativas surgem, seu cérebro aprende respostas saudáveis — respirar fundo, caminhar, beber água. A comida deixa de ser a válvula de escape automática.',
+                        
+                        'O resultado prático? Pessoas relatam que conseguem seguir o plano alimentar naturalmente, sem aquela sensação de estar se privando. Os gatilhos emocionais perdem força. Seguir a dieta deixa de ser uma batalha diária e se torna um comportamento natural.'
+                    ],
+                    source: 'Baseado em estudos sobre comportamento alimentar e neuroplasticidade'
+                },
+
+                'portion_control': {
+                    title: 'Por que você não consegue parar de comer doces?',
+                    text: [
+                        'Você revelou que seu maior desafio é parar de comer doces. Isso não é falta de força de vontade. Estudos mostram que o açúcar ativa os mesmos circuitos de recompensa no cérebro que substâncias viciantes.',
+                        
+                        'Quando você come doce, seu cérebro libera dopamina — o neurotransmissor do prazer. Com o tempo, o cérebro associa doce com alívio emocional, conforto, recompensa. É um padrão neural profundo: sentiu emoção → quer doce → come → alívio temporário → padrão reforçado.',
+                        
+                        'Toda vez que você "resiste" conscientemente ao doce, está gastando energia mental lutando contra um impulso automático. É desgastante. E na primeira queda de energia ou estresse, o impulso vence.',
+                        
+                        'A hipnoterapia desliga essa conexão neural. Durante o transe hipnótico, reprogramamos a associação entre emoções e doce. Implantamos novas preferências alimentares e fontes alternativas de prazer. Seu cérebro deixa de pedir doce automaticamente.',
+                        
+                        'O resultado? Pessoas relatam que a vontade de comer doce simplesmente diminui. Não é que você está resistindo com força de vontade — a vontade genuinamente some. Você passa na frente do doce e não sente aquele impulso avassalador. É libertador.'
+                    ],
+                    source: 'Baseado em estudos sobre dependência de açúcar e neurociência comportamental'
+                },
+
+                'cravings': {
+                    title: 'Por que a ansiedade te faz comer?',
+                    text: [
+                        'Você revelou que come por ansiedade. Isso acontece porque seu sistema nervoso aprendeu a usar a comida como regulador emocional — é neurobiologia, não falta de controle.',
+                        
+                        'Quando você sente ansiedade, seu cérebro entra em modo de alerta. Comer — especialmente carboidratos — ativa o sistema parassimpático, que acalma o corpo. É um mecanismo de sobrevivência que foi distorcido: seu cérebro aprendeu que comida = segurança = calma.',
+                        
+                        'Esse padrão é tão automático que você muitas vezes nem percebe. Sentiu ansiedade, já está comendo. É um reflexo condicionado que roda sem você decidir conscientemente. Tentar controlar isso com força de vontade é como tentar não piscar.',
+                        
+                        'A hipnoterapia instala novos reguladores emocionais no seu subconsciente. Durante o transe, ensinamos seu cérebro outras formas de processar ansiedade — respiração, movimento, presença. Desativamos o reflexo automático de comer quando ansioso.',
+                        
+                        'O resultado? Pessoas relatam que quando a ansiedade surge, não sentem mais aquela compulsão de comer. O corpo aprende a se acalmar de outras formas. Você ganha controle real sobre a ansiedade sem usar comida como muleta emocional.'
+                    ],
+                    source: 'Baseado em estudos sobre ansiedade, regulação emocional e comportamento alimentar'
+                },
+
+                'late_night': {
+                    title: 'Por que é tão difícil manter a atividade física?',
+                    text: [
+                        'Você revelou que seu maior desafio é manter a rotina de exercícios. Isso não acontece por preguiça. Acontece porque seu cérebro associa exercício com esforço, desconforto e sacrifício — e o cérebro humano é programado para evitar desconforto.',
+                        
+                        'Estudos de neurociência mostram que quando você pensa em se exercitar, áreas do cérebro ligadas ao esforço e desconforto são ativadas antes mesmo de você começar. Seu subconsciente cria resistência automática: arruma desculpas, sente preguiça, deixa para depois.',
+                        
+                        'Você pode até começar uma rotina de exercícios com motivação, mas motivação é consciente e temporária. Quando ela acaba, sobra apenas o padrão automático do cérebro: evitar desconforto. É por isso que você sempre para depois de algumas semanas.',
+                        
+                        'A hipnoterapia reprograma sua relação com movimento. Durante o transe, implantamos novas associações: exercício = energia, prazer, bem-estar. Seu subconsciente passa a buscar movimento, não evitar. A resistência automática desaparece.',
+                        
+                        'O resultado? Pessoas relatam que começam a sentir vontade genuína de se movimentar. Não é disciplina forçada — é que o corpo pede movimento. Exercício deixa de ser obrigação e vira fonte natural de prazer e energia.'
+                    ],
+                    source: 'Baseado em estudos sobre motivação, neuroplasticidade e comportamento motor'
+                },
+
+                'stress_eating': {
+                    title: 'Por que saber não é suficiente para emagrecer?',
+                    text: [
+                        'Você revelou que sente falta de informação sobre como emagrecer. Mas a verdade é: você provavelmente já sabe mais do que precisa. O problema não é falta de informação — é que informação não muda comportamento automático.',
+                        
+                        'Estudos mostram que apenas 5% das nossas ações diárias são conscientes. Os outros 95% são automáticos, controlados pelo subconsciente. Você pode saber exatamente o que comer e como se exercitar, mas se o subconsciente não está programado para isso, você não consegue executar.',
+                        
+                        'É como saber dirigir teoricamente mas nunca ter treinado os reflexos automáticos. Ou saber que não deveria fumar, mas o corpo pede automaticamente. Conhecimento consciente não tem poder sobre padrões subconscientes.',
+                        
+                        'A hipnoterapia programa o subconsciente com os comportamentos que você já sabe que deveria ter. Durante o transe, transformamos conhecimento em ação automática. Instalamos os hábitos saudáveis como reflexos naturais, não como decisões que você precisa tomar conscientemente a cada momento.',
+                        
+                        'O resultado? Pessoas relatam que finalmente conseguem fazer o que sempre souberam que deveriam fazer. Não é força de vontade — é que o corpo executa automaticamente. Você age como uma pessoa naturalmente magra age, sem esforço consciente.'
+                    ],
+                    source: 'Baseado em estudos sobre formação de hábitos e mudança comportamental'
+                }
+            };
+
+            return contentVariations[userAnswer] || contentVariations['emotional_eating'];
+        }
 
         // Conditional follow-up questions for eating habits
         const eatingHabitsFollowUp = {
@@ -468,18 +549,7 @@
                 question: 'A verdadeira raiz do emagrecimento está no cérebro',
                 type: 'info',
                 image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/assaltogeladeira.png',
-                content: {
-                    title: 'A verdadeira raiz do emagrecimento está no cérebro',
-                    text: [
-                        'Você já sabe que precisa comer melhor e se exercitar. Mas, por que isso é tão difícil de manter na prática? A resposta está na neurociência.',
-                        'Pesquisas com ressonância magnética mostram que nossas escolhas alimentares são fortemente influenciadas pelo subconsciente — onde estão memórias, traumas, recompensas emocionais e hábitos automáticos. É como se sua mente estivesse "programada" para repetir comportamentos que te sabotam.',
-                        'A hipnoterapia atua exatamente nesse ponto: reprogramando as conexões neurais que controlam o apetite emocional, a compulsão por doces, o sedentarismo e os padrões de auto-sabotagem.',
-                        'Durante o transe hipnótico, seu cérebro entra em um estado de foco profundo, permitindo acessar o "código-fonte" do comportamento. É nesse momento que implantamos sugestões e visualizações que criam novos hábitos alimentares — de forma natural, sem esforço consciente.',
-                        'Mais de 200 estudos confirmam: a hipnoterapia é até 3x mais eficaz do que métodos tradicionais. E o melhor? Você não precisa "lutar contra você mesmo". A mudança acontece de dentro para fora.',
-                        '**Resultado?** Comer saudável deixa de ser um sacrifício. Exercitar-se vira algo prazeroso. A balança começa a descer — como consequência da nova mente que você desenvolveu.'
-                    ],
-                    source: 'Baseado em estudos de Harvard, Stanford e literatura clínica de hipnoterapia'
-                }
+                isDynamic: true
             },
             {
                 id: 'info3',
@@ -833,9 +903,16 @@
 
             if (question.type === 'info') {
                 // Se a pergunta é dinâmica, busca o conteúdo personalizado
-                const content = question.isDynamic 
-                    ? getPersonalizedInfo1Content(quizData['past_tries'])
-                    : question.content;
+                let content;
+                if (question.isDynamic) {
+                    if (question.id === 'info1') {
+                        content = getPersonalizedInfo1Content(quizData['past_tries']);
+                    } else if (question.id === 'info2') {
+                        content = getPersonalizedInfo2Content(quizData['eating_habits']);
+                    }
+                } else {
+                    content = question.content;
+                }
                 
                 const imageUrl = question.image || 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/cerebrointestino.jpeg';
                 const altText = question.id === 'info2' ? 'Ilustração sobre controle de hábitos alimentares' : 'Ilustração do corpo humano mostrando conexão cérebro-intestino';
