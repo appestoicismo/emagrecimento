@@ -143,6 +143,25 @@
         .carousel-container {
             touch-action: pan-y;
         }
+
+        /* Step number badge */
+        .step-number {
+            position: absolute;
+            top: -12px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+            font-weight: bold;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
     </style>
 </head>
 <body>
@@ -555,15 +574,26 @@
                 id: 'info3',
                 question: 'Como funciona na prática?',
                 type: 'info_steps',
-                image: 'https://appestoicismo.github.io/hipnoseansiedade/apppordentro.png',
                 content: {
                     title: 'Como funciona na prática?',
                     subtitle: 'É mais simples do que você imagina',
                     steps: [
-                        { icon: '📱', text: 'Acesse o aplicativo AutoHipnose no seu celular' },
-                        { icon: '🎧', text: 'Coloque seu fone de ouvido e dê play no áudio' },
-                        { icon: '🌙', text: 'Pode ser na hora de dormir, no momento mais confortável' },
-                        { icon: '🧠', text: 'Ouça minha voz e deixe seu subconsciente trabalhar' }
+                        { 
+                            image: 'https://appestoicismo.github.io/hipnoseansiedade/apppordentro.png',
+                            text: 'Acesse o aplicativo AutoHipnose no seu celular'
+                        },
+                        { 
+                            image: 'https://appestoicismo.github.io/hipnoseansiedade/apppordentro.png',
+                            text: 'Coloque seu fone de ouvido e dê play no áudio'
+                        },
+                        { 
+                            image: 'https://appestoicismo.github.io/hipnoseansiedade/apppordentro.png',
+                            text: 'Pode ser na hora de dormir, no momento mais confortável'
+                        },
+                        { 
+                            image: 'https://appestoicismo.github.io/hipnoseansiedade/apppordentro.png',
+                            text: 'Ouça minha voz e deixe seu subconsciente trabalhar'
+                        }
                     ],
                     footer: 'Apenas 15 minutos por dia durante 21 dias para reprogramar sua mente'
                 }
@@ -1005,44 +1035,47 @@
 
                         <!-- Quiz Content -->
                         <div class="container mx-auto px-6 py-12">
-                            <div class="max-w-4xl mx-auto">
-                                <div class="grid lg:grid-cols-2 gap-12 items-center">
-                                    <div class="space-y-6">
-                                        <div>
-                                            <h2 class="text-3xl font-bold mb-2">${question.content.title}</h2>
-                                            <p class="text-xl text-gray-300">${question.content.subtitle}</p>
-                                        </div>
-                                        
-                                        <div class="space-y-5">
-                                            ${question.content.steps.map((step, index) => `
-                                                <div class="flex items-start gap-4 bg-slate-800/30 p-4 rounded-lg border border-slate-700">
-                                                    <span class="text-4xl flex-shrink-0">${step.icon}</span>
-                                                    <div class="flex-1">
-                                                        <p class="text-lg text-gray-200">${step.text}</p>
-                                                    </div>
-                                                </div>
-                                            `).join('')}
-                                        </div>
-                                        
-                                        <div class="bg-gradient-to-r from-blue-900/50 to-purple-900/50 p-4 rounded-lg border border-blue-700/50">
-                                            <p class="text-center text-gray-200 font-medium">${question.content.footer}</p>
-                                        </div>
-                                        
-                                        <button 
-                                            onclick="handleQuizAnswer('understood')"
-                                            class="btn btn-xl w-full bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold"
-                                        >
-                                            Entendi, Vamos Continuar
-                                        </button>
-                                    </div>
-                                    <div class="relative">
-                                        <img 
-                                            src="${question.image}" 
-                                            alt="Interface do aplicativo AutoHipnose"
-                                            class="w-full h-auto rounded-xl shadow-2xl"
-                                        />
-                                    </div>
+                            <div class="max-w-2xl mx-auto">
+                                <!-- Title and Subtitle -->
+                                <div class="text-center mb-12">
+                                    <h2 class="text-3xl font-bold mb-2">${question.content.title}</h2>
+                                    <p class="text-xl text-gray-300">${question.content.subtitle}</p>
                                 </div>
+                                
+                                <!-- Steps List (vertical for mobile) -->
+                                <div class="space-y-6">
+                                    ${question.content.steps.map((step, index) => `
+                                        <div class="relative bg-slate-800/30 p-6 rounded-xl border border-slate-700">
+                                            <!-- Step Number Badge -->
+                                            <div class="step-number">${index + 1}</div>
+                                            
+                                            <!-- Step Image -->
+                                            <div class="mb-4 mt-2">
+                                                <img 
+                                                    src="${step.image}" 
+                                                    alt="Passo ${index + 1}"
+                                                    class="w-full h-48 object-cover rounded-lg"
+                                                />
+                                            </div>
+                                            
+                                            <!-- Step Text -->
+                                            <p class="text-lg text-gray-200 text-center">${step.text}</p>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                                
+                                <!-- Footer Box -->
+                                <div class="mt-8 bg-gradient-to-r from-blue-900/50 to-purple-900/50 p-6 rounded-xl border border-blue-700/50">
+                                    <p class="text-center text-gray-200 font-medium text-lg">${question.content.footer}</p>
+                                </div>
+                                
+                                <!-- CTA Button -->
+                                <button 
+                                    onclick="handleQuizAnswer('understood')"
+                                    class="btn btn-xl w-full mt-8 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600 text-white font-semibold"
+                                >
+                                    Entendi, Vamos Continuar
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -1056,7 +1089,7 @@
                                 <button 
                                     onclick="goBack()"
                                     class="btn btn-outline bg-transparent border-gray-600 text-white hover:bg-gray-800"
-                                >
+                               >
                                     ← Voltar
                                 </button>
                                 <div class="flex items-center gap-2">
