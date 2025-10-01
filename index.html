@@ -309,174 +309,158 @@
         function getPersonalizedInfo1Content(userAnswer) {
             const contentVariations = {
                 'limited_success': {
-                    title: 'Desta vez, será diferente. Estamos mirando na causa raiz.',
-                    text: [
-                        'Você já emagreceu antes, mas sempre voltou a engordar. O efeito sanfona não é falta de disciplina — é porque dietas atacam apenas o sintoma (o que você come), ignorando a causa (por que você come).',
-                        
-                        'Estudos de Stanford revelam: 85% das escolhas alimentares são automáticas. Seu cérebro decide antes de você perceber. Quando faz dieta, você luta conscientemente contra padrões inconscientes. É uma batalha que sempre termina em recaída.',
-                        
-                        'A hipnoterapia reprograma esses padrões na origem. Em 21 dias, 15 minutos por dia, o áudio acessa seu subconsciente e instala novas instruções automáticas. O resultado? Comer saudável sem esforço, resistir a doces naturalmente, exercitar-se com prazer. Perda de 0,5kg a 1kg por semana, sustentável, sem sanfona. Desta vez a mudança vem de dentro.'
-                    ],
-                    source: 'Baseado em estudos de Stanford, Harvard e literatura clínica de hipnoterapia'
-                },
+    title: 'Desta vez será diferente — porque vamos direto na causa raiz.',
+    text: [
+        'Você já conseguiu emagrecer, mas acabou voltando ao mesmo peso. Isso não é falta de disciplina.',
+        'É o chamado efeito sanfona — acontece porque dietas e treinos atacam só o sintoma (o que você come e porque você não se exercita), mas não mudam a causa (por que você come e porque evita se exercitar).',
+        'A ciência é clara: 85% das escolhas alimentares e de movimento são automáticas. Ou seja, o cérebro decide antes de você perceber. Enquanto você tenta se controlar no consciente, seu subconsciente mantém os velhos padrões. E cedo ou tarde, a recaída acontece.',
+        'A hipnoterapia resolve isso na raiz. Em apenas 21 dias, com 15 minutos por dia, você reprograma o subconsciente.',
+        'O resultado? Resistir a doces sem esforço, sentir prazer em se movimentar e manter o peso de forma natural — sem sanfona.'
+    ],
+    source: 'Baseado em estudos de Stanford, Harvard e literatura clínica de hipnoterapia'
+},
 
                 'no_success': {
-                    title: 'Desta vez, será diferente. Estamos mirando na causa raiz.',
-                    text: [
-                        'Você tentou dietas, academia, apps — mas nunca chegou ao peso ideal. O problema não é você. É que todos esses métodos atacam o comportamento consciente, quando 95% das decisões alimentares vêm do inconsciente.',
-                        
-                        'Você já sabe o que comer e que precisa se exercitar. O problema não é conhecimento — é execução. Execução depende de padrões automáticos gravados há anos: comer por ansiedade, desistir na primeira barreira, usar comida como recompensa emocional.',
-                        
-                        'A hipnoterapia acessa onde as decisões realmente acontecem: o subconsciente. Estudos mostram que pode ser até 3x mais eficaz que métodos tradicionais. São 21 dias reprogramando sua mente. O resultado? Controle real — a vontade de comer mal desaparece, exercício deixa de ser sacrifício. Perda de 0,5kg a 1kg por semana. Sustentável. Você vai conseguir porque agora ataca a raiz.'
-                    ],
-                    source: 'Baseado em estudos de Stanford, Harvard e literatura clínica de hipnoterapia'
-                },
+    title: 'Você não fracassou. Foram os métodos que não atacaram a causa real.',
+    text: [
+        'Você já tentou dieta, academia, aplicativos… e mesmo assim não chegou ao peso que queria.',
+        'O problema não é você. O problema é que tudo isso atua só no comportamento consciente.',
+        'Mas 95% das suas decisões diárias — o que você come e se exercita ou não — vêm do inconsciente. É por isso que você sabe o que precisa fazer, mas não consegue manter: seu subconsciente ainda está programado para buscar comida como alívio e evitar esforço físico.',
+        'A hipnoterapia acessa exatamente onde as escolhas acontecem: o subconsciente. Estudos mostram que pode ser até 3x mais eficaz do que métodos tradicionais.',
+        'Em 21 dias, 15 minutos por dia, você instala novos padrões automáticos. O resultado? Comer saudável sem esforço, ter vontade de se exercitar e finalmente chegar ao peso ideal.'
+    ],
+    source: 'Baseado em estudos de Stanford, Harvard e literatura clínica de hipnoterapia'
+},
 
                 'not_yet': {
-                    title: 'Você está começando certo. Pela causa raiz.',
-                    text: [
-                        'Você ainda não tentou emagrecer — e isso é vantagem estratégica. A maioria perde anos testando dietas para depois descobrir que o problema está na mente. Você pode começar direto pela solução.',
-                        
-                        'Stanford comprova: 85% das escolhas alimentares são automáticas, decididas antes de você perceber. Por isso a maioria falha — tenta controlar conscientemente algo que é automático. É como dirigir pensando em cada movimento do pé.',
-                        
-                        'A hipnoterapia programa sua mente desde o início para hábitos saudáveis. 21 dias instalando instruções no subconsciente: comer bem sem esforço, resistir impulsos naturalmente, sentir prazer em movimento. O resultado? Você evita anos de frustração. Não testa dez dietas. Não vive sanfona. Emagrece 0,5kg a 1kg por semana — porque sua mente já está programada. Essa é a vantagem de começar pela raiz.'
-                    ],
-                    source: 'Baseado em estudos de Stanford, Harvard e literatura clínica de hipnoterapia'
-                }
+    title: 'Você está começando pelo caminho certo: direto na causa raiz.',
+    text: [
+        'Você ainda não tentou emagrecer — e isso pode ser uma grande vantagem.',
+        'A maioria perde anos testando dietas e academias antes de descobrir que o problema está na mente. Você já pode começar do jeito certo.',
+        'Pesquisas de Stanford mostram: 85% das escolhas alimentares e de movimento são automáticas. Ou seja, não é falta de conhecimento, é falta de reprogramação mental.',
+        'A hipnoterapia resolve isso desde o início. Durante 21 dias, ouvindo apenas 15 minutos por dia, você instala no subconsciente hábitos magros: comer bem sem esforço, resistir a impulsos naturalmente, sentir prazer em se movimentar.',
+        'Assim, você evita anos de frustração e já inicia sua jornada com a estratégia mais eficaz para emagrecer de forma sustentável.'
+    ],
+    source: 'Baseado em estudos de Stanford, Harvard e literatura clínica de hipnoterapia'
+}
             };
 
             return contentVariations[userAnswer] || contentVariations['limited_success'];
         }
 
         // Função para gerar conteúdo personalizado do info2
-        function getPersonalizedInfo2Content(userAnswer) {
-            const contentVariations = {
-                'emotional_eating': {
-                    title: 'Por que é tão difícil seguir a dieta?',
-                    text: [
-                        'Você revelou que seu maior desafio é seguir a dieta. Isso não acontece por falta de informação ou disciplina. Acontece porque seu cérebro aprendeu padrões automáticos de comer em resposta a emoções.',
-                        
-                        'Pesquisas de neurociência mostram que quando você sente estresse, tédio ou frustração, o cérebro busca recompensa imediata através da comida. É um circuito neural automático: emoção negativa → comer → alívio temporário. Esse padrão foi reforçado milhares de vezes ao longo dos anos.',
-                        
-                        'Quando você tenta seguir uma dieta usando apenas força de vontade consciente, está lutando contra anos de condicionamento automático. É por isso que você "quebra" a dieta — não é fraqueza, é biologia.',
-                        
-                        'A hipnoterapia reprograma esse circuito neural. Durante o estado hipnótico, implantamos novas associações: quando emoções negativas surgem, seu cérebro aprende respostas saudáveis — respirar fundo, caminhar, beber água. A comida deixa de ser a válvula de escape automática.',
-                        
-                        'O resultado prático? Pessoas relatam que conseguem seguir o plano alimentar naturalmente, sem aquela sensação de estar se privando. Os gatilhos emocionais perdem força. Seguir a dieta deixa de ser uma batalha diária e se torna um comportamento natural.'
-                    ],
-                    source: 'Baseado em estudos sobre comportamento alimentar e neuroplasticidade'
-                },
+function getPersonalizedInfo2Content(userAnswer) {
+    const contentVariations = {
+        'emotional_eating': {
+            title: 'Por que é tão difícil seguir a dieta?',
+            text: [
+                'Você contou que seu maior desafio é seguir a dieta. Isso não acontece por falta de disciplina.',
+                'O que acontece é que seu cérebro aprendeu padrões automáticos: comer em resposta a emoções negativas e evitar esforço físico quando sente cansaço ou estresse.',
+                'A neurociência mostra que, em situações de estresse, tédio ou frustração, o cérebro busca recompensa imediata — muitas vezes na comida ou evitando movimento.',
+                'A hipnoterapia quebra esse circuito. Durante o transe, implantamos novas respostas: ao invés de buscar comida ou evitar exercício, seu subconsciente passa a escolher opções saudáveis automaticamente.',
+                'Na prática, você segue o plano alimentar com naturalidade e sente vontade de se movimentar. Sem batalha interna, sem sabotagem.'
+            ],
+            source: 'Baseado em estudos sobre comportamento alimentar, atividade física e neuroplasticidade'
+        },
 
-                'portion_control': {
-                    title: 'Por que você não consegue parar de comer doces?',
-                    text: [
-                        'Você revelou que seu maior desafio é parar de comer doces. Isso não é falta de força de vontade. Estudos mostram que o açúcar ativa os mesmos circuitos de recompensa no cérebro que substâncias viciantes.',
-                        
-                        'Quando você come doce, seu cérebro libera dopamina — o neurotransmissor do prazer. Com o tempo, o cérebro associa doce com alívio emocional, conforto, recompensa. É um padrão neural profundo: sentiu emoção → quer doce → come → alívio temporário → padrão reforçado.',
-                        
-                        'Toda vez que você "resiste" conscientemente ao doce, está gastando energia mental lutando contra um impulso automático. É desgastante. E na primeira queda de energia ou estresse, o impulso vence.',
-                        
-                        'A hipnoterapia desliga essa conexão neural. Durante o transe hipnótico, reprogramamos a associação entre emoções e doce. Implantamos novas preferências alimentares e fontes alternativas de prazer. Seu cérebro deixa de pedir doce automaticamente.',
-                        
-                        'O resultado? Pessoas relatam que a vontade de comer doce simplesmente diminui. Não é que você está resistindo com força de vontade — a vontade genuinamente some. Você passa na frente do doce e não sente aquele impulso avassalador. É libertador.'
-                    ],
-                    source: 'Baseado em estudos sobre dependência de açúcar e neurociência comportamental'
-                },
+        'portion_control': {
+            title: 'Por que é tão difícil parar de comer doces?',
+            text: [
+                'Você contou que o doce é o maior desafio. Isso não é falta de força de vontade.',
+                'O açúcar ativa os mesmos circuitos de recompensa do cérebro que vícios químicos. Com o tempo, ele se torna a forma automática de aliviar emoções negativas.',
+                'O mesmo acontece com a falta de movimento: o cérebro associa esforço a desconforto e evita se exercitar de forma automática.',
+                'A hipnoterapia reprograma essas associações. No estado hipnótico, implantamos novas conexões: prazer em escolhas saudáveis e em se movimentar, e indiferença em relação ao doce.',
+                'O resultado? A compulsão simplesmente perde força. Você passa na frente do doce sem sentir aquela urgência, e começa a desejar se movimentar porque o corpo pede.'
+            ],
+            source: 'Baseado em estudos sobre dependência de açúcar e comportamento motor'
+        },
 
-                'cravings': {
-                    title: 'Por que a ansiedade te faz comer?',
-                    text: [
-                        'Você revelou que come por ansiedade. Isso acontece porque seu sistema nervoso aprendeu a usar a comida como regulador emocional — é neurobiologia, não falta de controle.',
-                        
-                        'Quando você sente ansiedade, seu cérebro entra em modo de alerta. Comer — especialmente carboidratos — ativa o sistema parassimpático, que acalma o corpo. É um mecanismo de sobrevivência que foi distorcido: seu cérebro aprendeu que comida = segurança = calma.',
-                        
-                        'Esse padrão é tão automático que você muitas vezes nem percebe. Sentiu ansiedade, já está comendo. É um reflexo condicionado que roda sem você decidir conscientemente. Tentar controlar isso com força de vontade é como tentar não piscar.',
-                        
-                        'A hipnoterapia instala novos reguladores emocionais no seu subconsciente. Durante o transe, ensinamos seu cérebro outras formas de processar ansiedade — respiração, movimento, presença. Desativamos o reflexo automático de comer quando ansioso.',
-                        
-                        'O resultado? Pessoas relatam que quando a ansiedade surge, não sentem mais aquela compulsão de comer. O corpo aprende a se acalmar de outras formas. Você ganha controle real sobre a ansiedade sem usar comida como muleta emocional.'
-                    ],
-                    source: 'Baseado em estudos sobre ansiedade, regulação emocional e comportamento alimentar'
-                },
+        'cravings': {
+            title: 'Por que a ansiedade te faz comer e evitar exercícios?',
+            text: [
+                'Você revelou que a ansiedade te leva a comer. Isso não é falta de controle, é biologia.',
+                'Quando a ansiedade ativa o sistema de alerta, o cérebro busca segurança: comida como calmante rápido e inatividade como forma de economizar energia.',
+                'Esse reflexo condicionado roda de forma automática, sem decisão consciente.',
+                'A hipnoterapia instala novos reguladores emocionais. O subconsciente aprende a responder à ansiedade de formas mais saudáveis: respirar, se movimentar, beber água, caminhar.',
+                'Assim, você controla a ansiedade sem usar comida como válvula de escape — e ainda transforma o movimento em fonte de alívio.'
+            ],
+            source: 'Baseado em estudos sobre ansiedade, regulação emocional e comportamento motor'
+        },
 
-                'late_night': {
-                    title: 'Por que é tão difícil manter a atividade física?',
-                    text: [
-                        'Você revelou que seu maior desafio é manter a rotina de exercícios. Isso não acontece por preguiça. Acontece porque seu cérebro associa exercício com esforço, desconforto e sacrifício — e o cérebro humano é programado para evitar desconforto.',
-                        
-                        'Estudos de neurociência mostram que quando você pensa em se exercitar, áreas do cérebro ligadas ao esforço e desconforto são ativadas antes mesmo de você começar. Seu subconsciente cria resistência automática: arruma desculpas, sente preguiça, deixa para depois.',
-                        
-                        'Você pode até começar uma rotina de exercícios com motivação, mas motivação é consciente e temporária. Quando ela acaba, sobra apenas o padrão automático do cérebro: evitar desconforto. É por isso que você sempre para depois de algumas semanas.',
-                        
-                        'A hipnoterapia reprograma sua relação com movimento. Durante o transe, implantamos novas associações: exercício = energia, prazer, bem-estar. Seu subconsciente passa a buscar movimento, não evitar. A resistência automática desaparece.',
-                        
-                        'O resultado? Pessoas relatam que começam a sentir vontade genuína de se movimentar. Não é disciplina forçada — é que o corpo pede movimento. Exercício deixa de ser obrigação e vira fonte natural de prazer e energia.'
-                    ],
-                    source: 'Baseado em estudos sobre motivação, neuroplasticidade e comportamento motor'
-                },
+        'late_night': {
+            title: 'Por que é tão difícil manter a rotina de exercícios?',
+            text: [
+                'Você contou que seu desafio é manter atividade física. Isso não é preguiça.',
+                'A ciência mostra que o cérebro humano evita desconforto automaticamente. E como associamos exercício a esforço, a mente cria resistência antes mesmo de começar.',
+                'Essa resistência é inconsciente: aparecem desculpas, falta de energia, procrastinação.',
+                'A hipnoterapia reprograma essa associação. Durante o transe, implantamos no subconsciente: exercício = energia, prazer e bem-estar.',
+                'Com isso, a resistência desaparece e surge vontade genuína de se movimentar — sem depender de motivação passageira.'
+            ],
+            source: 'Baseado em estudos sobre motivação, neuroplasticidade e hábitos motores'
+        },
 
-                'stress_eating': {
-                    title: 'Por que saber não é suficiente para emagrecer?',
-                    text: [
-                        'Você revelou que sente falta de informação sobre como emagrecer. Mas a verdade é: você provavelmente já sabe mais do que precisa. O problema não é falta de informação — é que informação não muda comportamento automático.',
-                        
-                        'Estudos mostram que apenas 5% das nossas ações diárias são conscientes. Os outros 95% são automáticos, controlados pelo subconsciente. Você pode saber exatamente o que comer e como se exercitar, mas se o subconsciente não está programado para isso, você não consegue executar.',
-                        
-                        'É como saber dirigir teoricamente mas nunca ter treinado os reflexos automáticos. Ou saber que não deveria fumar, mas o corpo pede automaticamente. Conhecimento consciente não tem poder sobre padrões subconscientes.',
-                        
-                        'A hipnoterapia programa o subconsciente com os comportamentos que você já sabe que deveria ter. Durante o transe, transformamos conhecimento em ação automática. Instalamos os hábitos saudáveis como reflexos naturais, não como decisões que você precisa tomar conscientemente a cada momento.',
-                        
-                        'O resultado? Pessoas relatam que finalmente conseguem fazer o que sempre souberam que deveriam fazer. Não é força de vontade — é que o corpo executa automaticamente. Você age como uma pessoa naturalmente magra age, sem esforço consciente.'
-                    ],
-                    source: 'Baseado em estudos sobre formação de hábitos e mudança comportamental'
-                }
-            };
-
-            return contentVariations[userAnswer] || contentVariations['emotional_eating'];
+        'stress_eating': {
+            title: 'Por que saber não é suficiente para emagrecer?',
+            text: [
+                'Você revelou que sente falta de informação para emagrecer. Mas, na verdade, você provavelmente já sabe o bastante.',
+                'O problema não é falta de conhecimento, é que conhecimento consciente não muda padrões automáticos.',
+                '95% das nossas ações são inconscientes: desde pegar um doce sem pensar até arrumar desculpas para não se exercitar.',
+                'A hipnoterapia transforma conhecimento em ação. Durante o transe, hábitos saudáveis são instalados como reflexos automáticos — comer bem e se exercitar passam a acontecer naturalmente.',
+                'Assim, você finalmente faz o que já sabia que deveria fazer, sem depender só de força de vontade.'
+            ],
+            source: 'Baseado em estudos sobre hábitos automáticos e mudança comportamental'
         }
+    };
+
+    return contentVariations[userAnswer] || contentVariations['emotional_eating'];
+}
 
         // Conditional follow-up questions for eating habits
         const eatingHabitsFollowUp = {
             'emotional_eating': {
-                question: 'O que mais boicota sua dieta?',
-                options: [
-                    { value: 'emotional_eating_boredom', label: 'Manter meus hábitos atuais', icon: '😐' },
-                    { value: 'emotional_eating_stress', label: 'Não resistir às tentações', icon: '😰' },
-                    { value: 'emotional_eating_sadness', label: 'Ter sempre várias desculpas', icon: '😢' }
-                ]
-            },
+    question: 'O que mais faz você sair da dieta?',
+    options: [
+        { value: 'emotional_eating_boredom', label: 'Acabo caindo nos mesmos velhos hábitos', icon: '🔄' },
+        { value: 'emotional_eating_stress', label: 'As tentações parecem mais fortes do que eu', icon: '🍩' },
+        { value: 'emotional_eating_sadness', label: 'Sempre arrumo uma desculpa para adiar', icon: '🙈' }
+    ]
+},
+
             'portion_control': {
-                question: 'O que mais te leva a comer doces?',
-                options: [
-                    { value: 'portion_control_chocolate', label: 'Comer doce como prêmio, conforto, válvula de escape', icon: '🎁' },
-                    { value: 'portion_control_baked', label: 'Comer doce para gerenciar tensão, ansiedade', icon: '😰' },
-                    { value: 'portion_control_candy', label: 'Comer doce por falta de propósito, distração, solidão', icon: '😐' }
-                ]
-            },
+    question: 'Quando você mais sente vontade de comer doces?',
+    options: [
+        { value: 'portion_control_chocolate', label: 'Uso doce como recompensa ou conforto', icon: '🎁' },
+        { value: 'portion_control_baked', label: 'Corro pros doces quando estou ansioso(a) ou estressado(a)', icon: '😰' },
+        { value: 'portion_control_candy', label: 'Acabo comendo doce por tédio ou solidão', icon: '🍬' }
+    ]
+},
+
             'cravings': {
-                question: 'Em que momento a ansiedade mais te faz comer?',
-                options: [
-                    { value: 'cravings_work', label: 'Durante o estresse do trabalho', icon: '💼' },
-                    { value: 'cravings_evening', label: 'Por questões familiares', icon: '🌙' },
-                    { value: 'cravings_social', label: 'Em situações sociais', icon: '👥' }
-                ]
-            },
+    question: 'Quando a ansiedade bate, em que situação você mais acaba descontando na comida?',
+    options: [
+        { value: 'cravings_work', label: 'No estresse do trabalho, acabo beliscando sem parar', icon: '💼' },
+        { value: 'cravings_evening', label: 'Em casa, acabo comendo por causa de problemas familiares', icon: '🏠' },
+        { value: 'cravings_social', label: 'Em encontros sociais, como para aliviar a ansiedade', icon: '👥' }
+    ]
+},
+
             'late_night': {
-                question: 'O que mais dificulta manter sua rotina de exercícios?',
-                options: [
-                    { value: 'late_night_lack_time', label: 'Sair da zona de conforto', icon: '⏰' },
-                    { value: 'late_night_lack_energy', label: 'Falta de energia/disposição', icon: '😴' },
-                    { value: 'late_night_lack_motivation', label: 'Falta de motivação', icon: '😔' }
-                ]
-            },
+    question: 'Por que você sente que acaba abandonando os exercícios?',
+    options: [
+        { value: 'late_night_lack_time', label: 'Sempre arrumo uma desculpa e deixo pra depois', icon: '⏰' },
+        { value: 'late_night_lack_energy', label: 'Chego cansado(a) e sem energia para treinar', icon: '😴' },
+        { value: 'late_night_lack_motivation', label: 'Perco a motivação depois de algumas semanas', icon: '📉' }
+    ]
+},
+
             'stress_eating': {
-                question: 'Qual informação você sente que mais falta para emagrecer?',
-                options: [
-                    { value: 'stress_eating_diet', label: 'O que comer exatamente', icon: '🥗' },
-                    { value: 'stress_eating_exercise', label: 'Quais exercícios fazer', icon: '🏋️' },
-                    { value: 'stress_eating_mental', label: 'Como mudar meus hábitos e comportamentos', icon: '🧠' }
-                ]
-            }
+    question: 'Se você já sabe o que deveria fazer, o que mais te impede de colocar em prática no dia a dia?',
+    options: [
+        { value: 'stress_eating_diet', label: 'Eu sei o que deveria comer, mas não consigo seguir sempre', icon: '🥗' },
+        { value: 'stress_eating_exercise', label: 'Eu sei que preciso me exercitar, mas falta consistência', icon: '🏋️' },
+        { value: 'stress_eating_mental', label: 'O difícil é mudar os hábitos automáticos que me puxam pra trás', icon: '🧠' }
+    ]
+}
         };
 
         // Quiz Questions
@@ -491,27 +475,29 @@
                 ]
             },
             {
-                id: 'goal',
-                question: 'Qual resultado positivo do emagrecimento você mais espera alcançar?',
-                type: 'multiple',
-                options: [
-                    { value: 'self-esteem', label: 'Aumento da autoestima', icon: '💪' },
-                    { value: 'movement', label: 'Mais disposição no dia', icon: '🏃' },
-                    { value: 'looks', label: 'Melhora na aparência', icon: '✨' },
-                    { value: 'longevity', label: 'Prevenção de doenças', icon: '❤️' },
-                    { value: 'other', label: 'Outro', icon: '🎯' }
-                ]
-            },
+    id: 'goal',
+    question: 'Quando você imagina emagrecendo, qual é o resultado que mais te faria sorrir de verdade?',
+    type: 'multiple',
+    options: [
+        { value: 'self-esteem', label: 'Olhar no espelho e sentir orgulho', icon: '💪' },
+        { value: 'movement', label: 'Acordar leve e cheio(a) de energia', icon: '⚡' },
+        { value: 'looks', label: 'Receber elogios pela mudança no corpo', icon: '✨' },
+        { value: 'longevity', label: 'Cuidar da saúde e viver mais tempo', icon: '❤️' },
+        { value: 'other', label: 'Outro objetivo pessoal', icon: '🎯' }
+    ]
+},
+
             {
-                id: 'past_tries',
-                question: 'Você já tentou emagrecer antes?',
-                type: 'multiple',
-                options: [
-                    { value: 'limited_success', label: 'Sim, mas sempre volto a engordar rápido', icon: '⏰' },
-                    { value: 'no_success', label: 'Tentei de tudo, mas nunca cheguei no meu peso ideal', icon: '😔' },
-                    { value: 'not_yet', label: 'Ainda não', icon: '🆕' }
-                ]
-            },
+    id: 'past_tries',
+    question: 'E na sua história com o emagrecimento… como tem sido até aqui?',
+    type: 'multiple',
+    options: [
+        { value: 'limited_success', label: 'Já emagreci, mas acabo voltando tudo (efeito sanfona)', icon: '🔄' },
+        { value: 'no_success', label: 'Já tentei várias vezes, mas nunca consegui chegar lá', icon: '😔' },
+        { value: 'not_yet', label: 'Nunca tentei de verdade (vou começar agora)', icon: '🚀' }
+    ]
+},
+
             {
                 id: 'info1',
                 question: 'Desta vez, será diferente. Estamos mirando na causa raiz.',
@@ -553,18 +539,19 @@
                 ]
             },
             {
-                id: 'eating_habits',
-                question: 'Qual é o seu maior desafio com o emagrecimento?',
-                type: 'multiple',
-                hasFollowUp: true,
-                options: [
-                    { value: 'emotional_eating', label: 'Seguir a dieta', icon: '😢' },
-                    { value: 'portion_control', label: 'Deixar de comer doces', icon: '🍽️' },
-                    { value: 'cravings', label: 'Comer por ansiedade', icon: '🍰' },
-                    { value: 'late_night', label: 'Manter atividade física', icon: '🌙' },
-                    { value: 'stress_eating', label: 'Não saber como emagrecer', icon: '😰' }
-                ]
-            },
+    id: 'eating_habits',
+    question: 'O que mais atrapalha você quando tenta emagrecer?',
+    type: 'multiple',
+    hasFollowUp: true,
+    options: [
+        { value: 'emotional_eating', label: 'Até começo dieta ou treino… mas não consigo manter', icon: '🥗' },
+        { value: 'portion_control', label: 'Não resisto a doces (sempre me derrubam)', icon: '🍫' },
+        { value: 'cravings', label: 'Quando bate ansiedade, acabo descontando na comida ou pulando exercícios', icon: '😰' },
+        { value: 'late_night', label: 'Começo animado(a), mas logo abandono os exercícios', icon: '🏃' },
+        { value: 'stress_eating', label: 'Já vi tanta coisa diferente que nem sei por onde começar', icon: '🤯' }
+    ]
+},
+
             {
                 id: 'info2',
                 question: 'A verdadeira raiz do emagrecimento está no cérebro',
@@ -573,33 +560,33 @@
                 isDynamic: true
             },
             {
-                id: 'info3',
-                question: 'Como funciona na prática?',
-                type: 'info_steps',
-                content: {
-                    title: 'Como funciona na prática?',
-                    subtitle: 'É mais simples do que você imagina',
-                    steps: [
-                        { 
-                            image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/5.png',
-                            text: 'Acesse o aplicativo AutoHipnose no seu celular'
-                        },
-                        { 
-                            image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/2.png',
-                            text: 'Coloque seu fone de ouvido e dê play no áudio'
-                        },
-                        { 
-                            image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/3.png',
-                            text: 'Pode ser na hora de dormir, no momento mais confortável'
-                        },
-                        { 
-                            image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/4.png',
-                            text: 'Ouça minha voz e deixe seu subconsciente trabalhar'
-                        }
-                    ],
-                    footer: 'Apenas 15 minutos por dia durante 21 dias para reprogramar sua mente'
-                }
+    id: 'info3',
+    question: 'Como funciona na prática?',
+    type: 'info_steps',
+    content: {
+        title: 'Como funciona na prática?',
+        subtitle: 'Você só precisa de 15 minutos por dia — o resto o subconsciente faz por você',
+        steps: [
+            { 
+                image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/5.png',
+                text: 'Baixe o aplicativo AutoHipnose no seu celular e escolha seu programa de emagrecimento'
+            },
+            { 
+                image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/2.png',
+                text: 'Coloque seus fones de ouvido e dê play no áudio hipnótico'
+            },
+            { 
+                image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/3.png',
+                text: 'Relaxe: pode ser na hora de dormir, ou em qualquer momento tranquilo do dia'
+            },
+            { 
+                image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/4.png',
+                text: 'Enquanto você descansa, a voz guia reprograma seu subconsciente para novos hábitos automáticos'
             }
+        ],
+        footer: 'São apenas 21 dias, 15 minutos por dia. Sem esforço, sem disciplina forçada. Seu cérebro passa a escolher automaticamente o que emagrece — comer melhor, se movimentar com prazer e rejeitar o que te afasta do resultado.'
+    }
+}
         ];
 
         // Functions
@@ -696,8 +683,8 @@
                                 Elimine de 0,5 a 1 kg por semana com apenas 15 minutos por dia
                             </h1>
                             <p class="text-lg text-gray-300">
-                                O segredo está na sua mente: enquanto dietas e academias lutam contra o consciente, seu subconsciente continua reforçando hábitos que engordam. Nosso áudio hipnótico reprograma seus hábitos e comportamentos em 21 dias — para emagrecer de forma automática e prazerosa.
-                            </p>
+    O segredo está na sua mente: enquanto dietas e academias lutam contra o consciente, seu subconsciente continua reforçando hábitos que engordam e te afastam da atividade física. Nosso áudio hipnótico reprograma seus hábitos e comportamentos em 21 dias — para emagrecer de forma automática e prazerosa.
+</p>
                         </div>
 
                         <div class="mb-16">
@@ -730,9 +717,11 @@
                                             <div class="mb-4">
                                                 <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/armando.png" alt="Antes e depois" class="w-full h-auto object-contain rounded-lg"/>
                                             </div>
-                                            <p class="text-gray-300 mb-4 italic">"Ouvi o áudio por uma semana antes de dormir e simplesmente acordava com outras atitudes e desejos. Foi surpreendente pra mim."</p>
-                                            <p class="text-sm text-gray-400">Antônio, 57</p>
-                                        </div>
+                                            <p class="text-gray-300 mb-4 italic">
+    "Ouvi o áudio por uma semana antes de dormir e simplesmente acordava com outras atitudes e desejos. Passei a comer melhor e, sem perceber, ganhei disposição para caminhar todos os dias."
+</p>
+<p class="text-sm text-gray-400">Antônio, 57</p>
+                                            </div>
                                     </div>
                                 </div>
                                 <button class="carousel-button prev">‹</button>
@@ -966,45 +955,53 @@
         }
 
         function renderResultPage() {
-            return `
-                <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
-                    <div class="container mx-auto px-6 py-12">
-                        <div class="max-w-2xl mx-auto text-center space-y-8">
-                            <div class="space-y-4">
-                                <h1 class="text-4xl font-bold">Parabéns!</h1>
-                                <p class="text-xl text-gray-300">Seu programa personalizado de hipnoterapia está pronto</p>
+    return `
+        <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+            <div class="container mx-auto px-6 py-12">
+                <div class="max-w-2xl mx-auto text-center space-y-8">
+                    <div class="space-y-4">
+                        <h1 class="text-4xl font-bold">Parabéns!</h1>
+                        <p class="text-xl text-gray-300">Seu Áudio Hipnótico de Mudança de Hábitos e Comportamentos Para o Emagrecimento Está Pronto</p>
+                    </div>
+                    <div class="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 text-white space-y-6">
+                        <div class="text-center space-y-3">
                             </div>
-                            <div class="bg-slate-800/50 rounded-2xl p-8 border border-slate-700 text-white space-y-6">
-                                <div class="text-center space-y-3">
-                                    <h2 class="text-3xl font-bold">Seu Programa Está Pronto!</h2>
-                                    <p class="text-lg text-gray-300">Áudio Hipnótico de Emagrecimento personalizado</p>
-                                </div>
-                                <div class="space-y-4">
-                                    <h3 class="text-xl font-semibold text-center">O que você recebe hoje:</h3>
-                                    <div class="space-y-3 text-gray-300">
-                                        <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span><strong>Áudio Hipnótico completo</strong> - pode ouvir quantas vezes quiser</span></div>
-                                        <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span><strong>Acesso</strong> ao aplicativo AppAutoHipnose</span></div>
-                                        <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span><strong>Lições e Instruções</strong> de hipnoterapia diretamente no aplicativo</span></div>
-                                        <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span><strong>Atualizações gratuitas</strong> incluídas</span></div>
-                                        <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span><strong>Baseado em ciência</strong> - estudos de Stanford e Harvard</span></div>
-                                    </div>
-                                </div>
-                                <div class="text-center py-4">
-                                    <p class="text-4xl font-bold text-green-400">R$ 37,90</p>
-                                    <p class="text-sm text-gray-400 mt-2">Pagamento único - acesso imediato</p>
-                                </div>
-                                <div class="bg-green-900/30 border border-green-600 rounded-xl p-5 text-center">
-                                    <p class="text-green-400 font-semibold text-lg mb-2">🔒 Garantia de 7 dias</p>
-                                    <p class="text-gray-300 text-sm">Experimente sem risco. Se não gostar, devolvemos seu dinheiro</p>
-                                </div>
+                        <div class="space-y-4">
+                            <h3 class="text-xl font-semibold text-center">O que você recebe hoje:</h3>
+                            <div class="space-y-3 text-gray-300">
+                                <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span><strong>Áudio Hipnótico completo</strong> - pode ouvir quantas vezes quiser</span></div>
+                                <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span><strong>Acesso</strong> ao aplicativo AppAutoHipnose</span></div>
+                                <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span><strong>Lições e Instruções</strong> de hipnoterapia diretamente no aplicativo</span></div>
+                                <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span><strong>Atualizações gratuitas</strong> incluídas</span></div>
+                                <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span><strong>Baseado em ciência</strong> - estudos de Stanford e Harvard</span></div>
                             </div>
-                            <button onclick="handleCheckout()" class="btn btn-2xl w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold pulse-button">🎧 Começar Agora por R$ 37,90</button>
-                            <p class="text-sm text-gray-400">Acesso imediato após a confirmação do pagamento</p>
+                        </div>
+                        
+                        <!-- Selo de desconto -->
+                        <div class="flex justify-center">
+                            <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/desconto%20valido%20hoje1.png" alt="Desconto válido hoje" class="mx-auto w-64 h-auto mb-2">
+                        </div>
+
+                        <div class="text-center py-4">
+                            <p class="text-4xl font-bold text-green-400">R$ 37,90</p>
+                            <p class="text-sm text-gray-400 mt-2">Pagamento único - acesso imediato</p>
+                        </div>
+                        <div class="bg-green-900/30 border border-green-600 rounded-xl p-5 text-center">
+                            <p class="text-green-400 font-semibold text-lg mb-2">🔒 Teste sem risco por 7 dias</p>
+                            <p class="text-gray-300 text-sm">Se não sentir diferença nos seus hábitos em até 7 dias, devolvemos cada centavo. Sem burocracia, sem letras miúdas.</p>
                         </div>
                     </div>
+                    
+                    <!-- Botão CTA reforçado -->
+                    <button onclick="handleCheckout()" class="btn btn-2xl w-full bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold pulse-button">
+                        🎧 Reprograme seu cérebro e comece a emagrecer hoje — R$ 37,90
+                    </button>
+                    <p class="text-sm text-gray-400">Acesso imediato após a confirmação do pagamento</p>
                 </div>
-            `;
-        }
+            </div>
+        </div>
+    `;
+}
 
         function renderApp() {
             const app = document.getElementById('app');
