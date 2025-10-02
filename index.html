@@ -657,7 +657,7 @@ function getPersonalizedInfo2Content(userAnswer) {
                 fbq('track', 'InitiateCheckout');
             }
             
-            const baseUrl = 'https://pay.hotmart.com/N101998916J';
+            const baseUrl = 'https://pay.hotmart.com/N101998916J?checkoutMode=10';
             const utmParams = new URLSearchParams(window.location.search);
             const checkoutUrl = utmParams.toString() ? `${baseUrl}?${utmParams.toString()}` : baseUrl;
             
@@ -1089,3 +1089,4 @@ function getPersonalizedInfo2Content(userAnswer) {
     </script>
 </body>
 </html>
+
