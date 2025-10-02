@@ -565,26 +565,26 @@ function getPersonalizedInfo2Content(userAnswer) {
     type: 'info_steps',
     content: {
         title: 'Como funciona na prática?',
-        subtitle: 'Você só precisa de 15 minutos por dia — o resto o subconsciente faz por você',
+        subtitle: 'Basta 15 minutos por dia — o resto o seu subconsciente faz sozinho',
         steps: [
             { 
                 image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/5.png',
-                text: 'Baixe o aplicativo AutoHipnose no seu celular e escolha seu programa de emagrecimento'
+                text: 'Baixe o AppAutoHipnose e escolha o programa de emagrecimento que já começa a reprogramar sua mente no primeiro play.'
             },
             { 
                 image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/2.png',
-                text: 'Coloque seus fones de ouvido e dê play no áudio hipnótico'
+                text: 'Coloque seus fones, dê o play e deixe a voz hipnótica guiar seu cérebro para novos hábitos saudáveis.'
             },
             { 
                 image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/3.png',
-                text: 'Relaxe: pode ser na hora de dormir, ou em qualquer momento tranquilo do dia'
+                text: 'Relaxe sem esforço: pode ouvir antes de dormir ou em qualquer momento tranquilo do dia.'
             },
             { 
                 image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/4.png',
-                text: 'Enquanto você descansa, a voz guia reprograma seu subconsciente para novos hábitos automáticos'
+                text: 'Enquanto você descansa, sua mente recebe comandos automáticos: menos desejo por comida que engorda, mais prazer em se movimentar.'
             }
         ],
-        footer: 'São apenas 21 dias, 15 minutos por dia. Sem esforço, sem disciplina forçada. Seu cérebro passa a escolher automaticamente o que emagrece — comer melhor, se movimentar com prazer e rejeitar o que te afasta do resultado.'
+        footer: 'Em apenas 21 dias, dedicando 15 minutos por dia, seu cérebro passa a escolher automaticamente o que emagrece — comer melhor, ter energia para se movimentar e resistir ao que atrapalha seus resultados.'
     }
 }
         ];
@@ -835,7 +835,7 @@ function getPersonalizedInfo2Content(userAnswer) {
                 if (question.isDynamic) {
                     if (question.id === 'info1') {
                         content = getPersonalizedInfo1Content(quizData['past_tries']);
-                        const imageMap = {'limited_success': 'https://appestoicismo.github.io/insonia/dormindo3.jpg','no_success': 'https://appestoicismo.github.io/insonia/dantashipnose1.jpeg','not_yet': 'https://appestoicismo.github.io/insonia/garantia.png'};
+                        const imageMap = {'limited_success': 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/34r.jpeg','no_success': 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/35.jpeg','not_yet': 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/36.jpeg'};
                         imageUrl = imageMap[quizData['past_tries']] || imageMap['limited_success'];
                     } else if (question.id === 'info2') {
                         content = getPersonalizedInfo2Content(quizData['eating_habits']);
