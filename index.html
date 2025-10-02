@@ -508,7 +508,7 @@ function getPersonalizedInfo2Content(userAnswer) {
                 id: 'referral',
                 question: 'Você foi indicado ao AppAutoHipnose por um nutricionista ou terapeuta TCC?',
                 type: 'multiple',
-                subtitle: 'A hipnose é um método cientificamente comprovado para resolver problemas relacionados à nutrição e questões psicológicas.',
+                subtitle: 'A hipnose é um método que acessa diretamente a mente subconsciente, promovendo mudanças profundas de forma natural e segura.',
                 options: [
                     { value: 'yes', label: 'Sim', icon: '✅' },
                     { value: 'no', label: 'Não', icon: '❌' }
@@ -657,7 +657,7 @@ function getPersonalizedInfo2Content(userAnswer) {
                 fbq('track', 'InitiateCheckout');
             }
             
-            const baseUrl = 'https://pay.hotmart.com/N101998916J?checkoutMode=10';
+            const baseUrl = 'https://pay.hotmart.com/N101998916J?off=6kcihxpj&checkoutMode=10';
             const utmParams = new URLSearchParams(window.location.search);
             const checkoutUrl = utmParams.toString() ? `${baseUrl}?${utmParams.toString()}` : baseUrl;
             
@@ -771,16 +771,13 @@ function getPersonalizedInfo2Content(userAnswer) {
                                     <span class="text-xl font-semibold">AppAutoHipnose</span>
                                 </div>
                                 <div class="flex flex-wrap gap-6 text-sm">
-                                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Avaliações</a>
-                                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Gerenciar Assinatura</a>
-                                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Contato</a>
-                                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Política de Privacidade</a>
-                                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Termos e Condições</a>
-                                </div>
+                                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Hipnoterapeuta responsável: Alex Andreoli Dantas</a>
+                                    <a href="#" class="text-gray-400 hover:text-white transition-colors">WhatsApp: (19) 974010028</a>
+                                    </div>
                             </div>
                             <div class="mt-4 pt-4 border-t border-slate-700 flex justify-between text-sm text-gray-400">
                                 <p>© 2025 AppAutoHipnose. Todos os direitos reservados.</p>
-                                <p>Aviso: Os resultados podem variar de pessoa para pessoa.</p>
+                                <p>Aviso: Não substitui médico e medicamentos.</p>
                             </div>
                         </div>
                     </footer>
@@ -1048,7 +1045,7 @@ function getPersonalizedInfo2Content(userAnswer) {
                 </div>
 
                 <!-- CTA -->
-                <button class="btn btn-2xl mt-6 mx-auto block w-full max-w-sm bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold pulse-button">
+                <button onclick="handleCheckout()" class="btn btn-2xl mt-6 mx-auto block w-full max-w-sm bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold pulse-button">
     🎧 Quero ativar meu áudio agora
 </button>
 
@@ -1089,4 +1086,3 @@ function getPersonalizedInfo2Content(userAnswer) {
     </script>
 </body>
 </html>
-
