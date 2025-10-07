@@ -175,7 +175,7 @@
             animation: pulse 2s infinite;
         }
 
-        /* Hero section - Primeira dobra otimizada */
+        /* Hero section */
         .hero-section {
             min-height: 100vh;
             display: flex;
@@ -190,7 +190,7 @@
             margin-bottom: 3rem;
         }
 
-        /* Footer com melhor contraste */
+        /* Footer */
         .footer-improved {
             background: linear-gradient(to bottom, #1e1b4b, #0f0a2e);
             border-top: 2px solid #4c1d95;
@@ -212,6 +212,46 @@
         .footer-text-secondary {
             color: #9ca3af;
         }
+
+        /* Day card locked effect */
+        .day-card-locked {
+            position: relative;
+            filter: grayscale(0.3);
+        }
+
+        .day-card-locked::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 0.5rem;
+            pointer-events: none;
+        }
+
+        /* Profile cards hover effect */
+        .profile-card {
+            transition: all 0.3s ease;
+        }
+
+        .profile-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        /* Benefit card animation */
+        .benefit-card {
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .benefit-card:hover {
+            border-left-color: #a855f7;
+            transform: translateX(5px);
+            background: rgba(168, 85, 247, 0.1);
+        }
     </style>
 </head>
 <body>
@@ -219,7 +259,7 @@
 
     <script>
         // ========================================
-        // UTM TRACKER - Com verificação de origem
+        // UTM TRACKER
         // ========================================
         function initUTMTracker() {
             try {
@@ -234,7 +274,6 @@
                     xcod: 'FBhQwK21wXxR{{campaign.name}}|{{campaign.id}}hQwK21wXxR{{adset.name}}|{{adset.id}}hQwK21wXxR{{ad.name}}|{{ad.id}}hQwK21wXxR{{placement}}'
                 };
                 
-                // Só adiciona defaults se vier do Facebook (fbclid presente)
                 const fbclid = urlParams.get('fbclid');
                 const hasUtmSource = urlParams.has('utm_source');
                 
@@ -249,7 +288,6 @@
                     window.history.replaceState({}, '', newUrl);
                 }
                 
-                // Captura todos os parâmetros de rastreamento
                 const utmData = {};
                 urlParams.forEach((value, key) => {
                     if (key.startsWith('utm_') || key === 'xcod' || key === 'fbclid') {
@@ -257,7 +295,6 @@
                     }
                 });
                 
-                // Salva no localStorage se houver dados
                 if (Object.keys(utmData).length > 0) {
                     localStorage.setItem('utmData', JSON.stringify(utmData));
                     
@@ -272,7 +309,7 @@
         }
 
         // ========================================
-        // SCROLL SUAVE - Para melhor UX
+        // SCROLL SUAVE
         // ========================================
         function scrollToTop(smooth = true) {
             setTimeout(() => {
@@ -286,7 +323,6 @@
                     window.scrollTo(0, 0);
                 }
                 
-                // Fallback para dispositivos móveis
                 document.body.scrollTop = 0;
                 document.documentElement.scrollTop = 0;
             }, 100);
@@ -375,6 +411,182 @@
         let currentQuestion = 0;
 
         // ========================================
+        // PERFIS DIETÉTICOS (CSIRO)
+        // ========================================
+        const dietaryProfiles = {
+            'thinker': {
+                name: 'O Pensador',
+                icon: '🧠',
+                description: 'Orientado a metas, gosta de planejamento e análise',
+                challenge: 'Pode "pensar demais", gerar ansiedade ou ficar preso em detalhes',
+                strategy: 'Trocar foco "quanto perder" por "ação diária pequena", usar recompensas intermediárias',
+                color: 'from-blue-500 to-cyan-500'
+            },
+            'battler': {
+                name: 'O Lutador',
+                icon: '⚔️',
+                description: 'Vive em tensão entre desejo e tentação: frequentemente tenta resistir',
+                challenge: 'Vulnerável ao estresse que leva a "escorregadas"',
+                strategy: 'Aceitar que haverá deslizes, construir estratégias de distração, ter plano de resgate',
+                color: 'from-red-500 to-orange-500'
+            },
+            'anxious': {
+                name: 'O Ansioso',
+                icon: '😰',
+                description: 'Alto impulso para comer por emoções, calorias vistas como tentação constante',
+                challenge: 'Dificuldade em resistir a impulsos emocionais',
+                strategy: '"Comidas preferidas fora de vista", trabalhar com regulação emocional',
+                color: 'from-purple-500 to-pink-500'
+            },
+            'compliant': {
+                name: 'O Complacente',
+                icon: '🌊',
+                description: 'Menos propenso a buscar mudanças radicais, tende a seguir rotinas confortáveis',
+                challenge: 'Resistência a mudanças bruscas',
+                strategy: 'Introduzir pequenas rupturas de hábito, "microdesafios"',
+                color: 'from-teal-500 to-green-500'
+            },
+            'gourmet': {
+                name: 'O Gourmet',
+                icon: '🍷',
+                description: 'Dá grande importância ao prazer da comida (sabor, textura)',
+                challenge: 'Enfrenta o dilema entre comer bem e comer pouco',
+                strategy: 'Buscar versões saborosas e saudáveis, cultivar "prazer consciente"',
+                color: 'from-amber-500 to-yellow-500'
+            },
+            'socializer': {
+                name: 'O Socializador',
+                icon: '🎉',
+                description: 'Foco em ambientes sociais, eventos, comer junto',
+                challenge: 'Pode ceder mais facilmente em situações de grupo ou festividades',
+                strategy: 'Planejar escolhas antecipadas em eventos, trazer "aliado nutricional"',
+                color: 'from-pink-500 to-rose-500'
+            }
+        };
+
+        // ========================================
+        // BENEFÍCIOS DA HÉSTIA
+        // ========================================
+        const hestiaBenefits = [
+            {
+                icon: '🎯',
+                title: 'Análise Personalizada do Seu Momento',
+                description: 'Héstia identifica seu estado emocional e sugere estratégias específicas para aquele momento: ansiedade, tédio, estresse ou celebração.'
+            },
+            {
+                icon: '🧘',
+                title: 'Scripts de Auto-Hipnose On-Demand',
+                description: 'Receba scripts personalizados de hipnose para situações específicas: antes de uma festa, ao sentir compulsão, ou quando a motivação cair.'
+            },
+            {
+                icon: '🛡️',
+                title: 'Estratégias Anti-Sabotagem em Tempo Real',
+                description: 'Quando você relatar uma dificuldade, Héstia oferece técnicas imediatas de PNL e hipnoterapia para quebrar o padrão negativo.'
+            },
+            {
+                icon: '🍽️',
+                title: 'Planejamento de Refeições Conscientes',
+                description: 'Aprenda a criar refeições que satisfazem sem culpa, baseadas em princípios de mindful eating e saciedade real.'
+            },
+            {
+                icon: '⚓',
+                title: 'Técnicas de Ancoragem Para Resistir Tentações',
+                description: 'Héstia te ensina a criar "âncoras mentais" — gatilhos que ativam força de vontade automática quando você mais precisa.'
+            },
+            {
+                icon: '📊',
+                title: 'Interpretação dos Seus Padrões Alimentares',
+                description: 'Compartilhe seu dia e Héstia identifica padrões inconscientes: horários de risco, gatilhos emocionais, e loops comportamentais.'
+            },
+            {
+                icon: '🌟',
+                title: 'Exercícios de Visualização Guiada',
+                description: 'Pratique visualizações poderosas do "você magro" — técnica comprovada de neuroplasticidade para reprogramação mental.'
+            },
+            {
+                icon: '📈',
+                title: 'Ajuste Dinâmico do Seu Plano',
+                description: 'Com base no seu progresso e desafios, Héstia adapta o plano de 21 dias: repete sessões, adiciona reforços ou acelera etapas.'
+            },
+            {
+                icon: '⏰',
+                title: 'Lembretes Inteligentes Baseados no Seu Perfil',
+                description: 'Receba lembretes personalizados nos momentos certos: antes de situações de risco, para ouvir áudios, ou para celebrar marcos.'
+            },
+            {
+                icon: '🎊',
+                title: 'Celebração de Vitórias e Reforço Positivo',
+                description: 'Héstia comemora cada conquista com você, reforçando a nova identidade magra e fortalecendo sua motivação intrínseca.'
+            }
+        ];
+
+        // ========================================
+        // ALGORITMO DE IDENTIFICAÇÃO DE PERFIL
+        // ========================================
+        function calculateDietaryProfile(answers) {
+            const scores = {
+                thinker: 0,
+                battler: 0,
+                anxious: 0,
+                compliant: 0,
+                gourmet: 0,
+                socializer: 0
+            };
+
+            if (answers.goal === 'self-esteem') scores.thinker += 2;
+            if (answers.goal === 'movement') scores.battler += 1;
+            if (answers.goal === 'looks') scores.socializer += 1;
+            if (answers.goal === 'longevity') scores.thinker += 1;
+
+            if (answers.past_tries === 'limited_success') scores.battler += 2;
+            if (answers.past_tries === 'no_success') scores.anxious += 1;
+            if (answers.past_tries === 'not_yet') scores.compliant += 1;
+
+            if (answers.eating_habits === 'emotional_eating') {
+                scores.battler += 2;
+                scores.anxious += 1;
+            }
+            if (answers.eating_habits === 'portion_control') {
+                scores.gourmet += 2;
+                scores.anxious += 1;
+            }
+            if (answers.eating_habits === 'cravings') {
+                scores.anxious += 3;
+            }
+            if (answers.eating_habits === 'late_night') {
+                scores.compliant += 2;
+            }
+            if (answers.eating_habits === 'stress_eating') {
+                scores.anxious += 2;
+                scores.thinker += 1;
+            }
+
+            if (answers.eating_habits_detail) {
+                if (answers.eating_habits_detail.includes('boredom')) scores.compliant += 1;
+                if (answers.eating_habits_detail.includes('stress')) scores.anxious += 1;
+                if (answers.eating_habits_detail.includes('chocolate')) scores.gourmet += 1;
+                if (answers.eating_habits_detail.includes('work')) scores.thinker += 1;
+                if (answers.eating_habits_detail.includes('social')) scores.socializer += 2;
+                if (answers.eating_habits_detail.includes('motivation')) scores.battler += 1;
+            }
+
+            if (answers.weight_goal === '5-10kg') scores.thinker += 1;
+            if (answers.weight_goal === '31kg+') scores.battler += 1;
+
+            let maxScore = 0;
+            let dominantProfile = 'thinker';
+            
+            for (const [profile, score] of Object.entries(scores)) {
+                if (score > maxScore) {
+                    maxScore = score;
+                    dominantProfile = profile;
+                }
+            }
+
+            return dominantProfile;
+        }
+
+        // ========================================
         // CONTEÚDO PERSONALIZADO INFO1
         // ========================================
         function getPersonalizedInfo1Content(userAnswer) {
@@ -415,71 +627,6 @@
             };
 
             return contentVariations[userAnswer] || contentVariations['limited_success'];
-        }
-
-        // ========================================
-        // CONTEÚDO PERSONALIZADO INFO2
-        // ========================================
-        function getPersonalizedInfo2Content(userAnswer) {
-            const contentVariations = {
-                'emotional_eating': {
-                    title: 'Por que é tão difícil seguir a dieta?',
-                    text: [
-                        'Você contou que seu maior desafio é seguir a dieta. Isso não acontece por falta de disciplina.',
-                        'O que acontece é que seu cérebro aprendeu padrões automáticos: comer em resposta a emoções negativas e evitar esforço físico quando sente cansaço ou estresse.',
-                        'A neurociência mostra que, em situações de estresse, tédio ou frustração, o cérebro busca recompensa imediata — muitas vezes na comida ou evitando movimento.',
-                        'A hipnoterapia quebra esse circuito. Durante o transe, implantamos novas respostas: ao invés de buscar comida ou evitar exercício, seu subconsciente passa a escolher opções saudáveis automaticamente.',
-                        'Na prática, você segue o plano alimentar com naturalidade e sente vontade de se movimentar. Sem batalha interna, sem sabotagem.'
-                    ],
-                    source: 'Baseado em estudos sobre comportamento alimentar, atividade física e neuroplasticidade'
-                },
-                'portion_control': {
-                    title: 'Por que é tão difícil parar de comer doces?',
-                    text: [
-                        'Você contou que o doce é o maior desafio. Isso não é falta de força de vontade.',
-                        'O açúcar ativa os mesmos circuitos de recompensa do cérebro que vícios químicos. Com o tempo, ele se torna a forma automática de aliviar emoções negativas.',
-                        'O mesmo acontece com a falta de movimento: o cérebro associa esforço a desconforto e evita se exercitar de forma automática.',
-                        'A hipnoterapia reprograma essas associações. No estado hipnótico, implantamos novas conexões: prazer em escolhas saudáveis e em se movimentar, e indiferença em relação ao doce.',
-                        'O resultado? A compulsão simplesmente perde força. Você passa na frente do doce sem sentir aquela urgência, e começa a desejar se movimentar porque o corpo pede.'
-                    ],
-                    source: 'Baseado em estudos sobre dependência de açúcar e comportamento motor'
-                },
-                'cravings': {
-                    title: 'Por que a ansiedade te faz comer e evitar exercícios?',
-                    text: [
-                        'Você revelou que a ansiedade te leva a comer. Isso não é falta de controle, é biologia.',
-                        'Quando a ansiedade ativa o sistema de alerta, o cérebro busca segurança: comida como calmante rápido e inatividade como forma de economizar energia.',
-                        'Esse reflexo condicionado roda de forma automática, sem decisão consciente.',
-                        'A hipnoterapia instala novos reguladores emocionais. O subconsciente aprende a responder à ansiedade de formas mais saudáveis: respirar, se movimentar, beber água, caminhar.',
-                        'Assim, você controla a ansiedade sem usar comida como válvula de escape — e ainda transforma o movimento em fonte de alívio.'
-                    ],
-                    source: 'Baseado em estudos sobre ansiedade, regulação emocional e comportamento motor'
-                },
-                'late_night': {
-                    title: 'Por que é tão difícil manter a rotina de exercícios?',
-                    text: [
-                        'Você contou que seu desafio é manter atividade física. Isso não é preguiça.',
-                        'A ciência mostra que o cérebro humano evita desconforto automaticamente. E como associamos exercício a esforço, a mente cria resistência antes mesmo de começar.',
-                        'Essa resistência é inconsciente: aparecem desculpas, falta de energia, procrastinação.',
-                        'A hipnoterapia reprograma essa associação. Durante o transe, implantamos no subconsciente: exercício = energia, prazer e bem-estar.',
-                        'Com isso, a resistência desaparece e surge vontade genuína de se movimentar — sem depender de motivação passageira.'
-                    ],
-                    source: 'Baseado em estudos sobre motivação, neuroplasticidade e hábitos motores'
-                },
-                'stress_eating': {
-                    title: 'Por que saber não é suficiente para emagrecer?',
-                    text: [
-                        'Você revelou que sente falta de informação para emagrecer. Mas, na verdade, você provavelmente já sabe o bastante.',
-                        'O problema não é falta de conhecimento, é que conhecimento consciente não muda padrões automáticos.',
-                        '95% das nossas ações são inconscientes: desde pegar um doce sem pensar até arrumar desculpas para não se exercitar.',
-                        'A hipnoterapia transforma conhecimento em ação. Durante o transe, hábitos saudáveis são instalados como reflexos automáticos — comer bem e se exercitar passam a acontecer naturalmente.',
-                        'Assim, você finalmente faz o que já sabia que deveria fazer, sem depender só de força de vontade.'
-                    ],
-                    source: 'Baseado em estudos sobre hábitos automáticos e mudança comportamental'
-                }
-            };
-
-            return contentVariations[userAnswer] || contentVariations['emotional_eating'];
         }
 
         // ========================================
@@ -617,40 +764,11 @@
                 ]
             },
             {
-                id: 'info2',
-                question: 'A verdadeira raiz do emagrecimento está no cérebro',
-                type: 'info',
-                image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/assaltogeladeira.png',
-                isDynamic: true
+                id: 'profile_reveal',
+                question: 'Descubra sua Personalidade Dietética',
+                type: 'profile_reveal'
             },
-            {
-                id: 'info3',
-                question: 'Como funciona na prática?',
-                type: 'info_steps',
-                content: {
-                    title: 'Como funciona na prática?',
-                    subtitle: 'Basta 15 minutos por dia — o resto o seu subconsciente faz sozinho',
-                    steps: [
-                        { 
-                            image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/5.png',
-                            text: 'Baixe o AppAutoHipnose e escolha o programa de emagrecimento que já começa a reprogramar sua mente no primeiro play.'
-                        },
-                        { 
-                            image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/2.png',
-                            text: 'Coloque seus fones, dê o play e deixe a voz hipnótica guiar seu cérebro para novos hábitos saudáveis.'
-                        },
-                        { 
-                            image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/3.png',
-                            text: 'Relaxe sem esforço: pode ouvir antes de dormir ou em qualquer momento tranquilo do dia.'
-                        },
-                        { 
-                            image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/4.png',
-                            text: 'Enquanto você descansa, sua mente recebe comandos automáticos: menos desejo por comida que engorda, mais prazer em se movimentar.'
-                        }
-                    ],
-                    footer: 'Em apenas 21 dias, dedicando 15 minutos por dia, seu cérebro passa a escolher automaticamente o que emagrece — comer melhor, ter energia para se movimentar e resistir ao que atrapalha seus resultados.'
-                }
-            }
+            
         ];
 
         // ========================================
@@ -671,6 +789,7 @@
                     renderApp();
                     scrollToTop();
                 } else {
+                    quizData.dietaryProfile = calculateDietaryProfile(quizData);
                     currentStep = 'result';
                     
                     if (typeof fbq !== 'undefined') {
@@ -684,10 +803,10 @@
 
         function handleFollowUpAnswer(mainAnswer, followUpAnswer) {
             quizData[`eating_habits_detail`] = followUpAnswer;
-            const info2Index = quizQuestions.findIndex(q => q.id === 'info2');
+            const profileRevealIndex = quizQuestions.findIndex(q => q.id === 'profile_reveal');
             
-            if (info2Index !== -1) {
-                currentQuestion = info2Index;
+            if (profileRevealIndex !== -1) {
+                currentQuestion = profileRevealIndex;
                 currentStep = 'quiz';
                 renderApp();
                 scrollToTop();
@@ -703,6 +822,10 @@
         function goBack() {
             if (currentStep === 'followup') {
                 currentStep = 'quiz';
+                renderApp();
+                scrollToTop();
+            } else if (currentStep === 'offer') {
+                currentStep = 'result';
                 renderApp();
                 scrollToTop();
             } else if (currentQuestion > 0) {
@@ -724,6 +847,17 @@
             if (typeof fbq !== 'undefined') {
                 fbq('track', 'Lead');
             }
+            renderApp();
+            scrollToTop();
+        }
+
+        function goToOffer() {
+            currentStep = 'offer';
+            
+            if (typeof fbq !== 'undefined') {
+                fbq('track', 'ViewContent');
+            }
+            
             renderApp();
             scrollToTop();
         }
@@ -764,11 +898,26 @@
                     <div class="container mx-auto px-6 hero-section">
                         <div class="max-w-3xl mx-auto text-center space-y-6 mb-12">
                             <h1 class="text-4xl lg:text-5xl font-bold leading-tight">
-                                Reprograme seu Cérebro para Emagrecer 1 kg por Semana sem Esforço
+                                O Áudio Hipnótico Que Faz Seu Cérebro Pensar e Agir Como o de Uma Pessoa Magra
                             </h1>
                             <p class="text-lg text-gray-300">
-                                O segredo está na sua mente: dietas e academias falham porque lutam contra o consciente. Nosso áudio hipnótico reprograma seus hábitos e comportamentos em 21 dias — para emagrecer de forma automática e prazerosa.
+                                Ouça 15 min por dia e sinta seus hábitos mudarem naturalmente.
                             </p>
+                        </div>
+                        <div class="flex justify-center mb-12">
+                            <div class="bg-purple-900/30 border border-purple-700 rounded-xl px-6 py-4 flex flex-col sm:flex-row items-center gap-4">
+                                <div class="flex -space-x-2">
+                                    <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/jussiara.jpeg" alt="Jussiara" class="w-10 h-10 rounded-full object-cover border-2 border-white">
+                                    <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/eloiza.jpeg" alt="Eloiza" class="w-10 h-10 rounded-full object-cover border-2 border-white">
+                                    <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/antonio.jpeg" alt="Antonio" class="w-10 h-10 rounded-full object-cover border-2 border-white">
+                                    <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/Luana.jpeg" alt="Luana" class="w-10 h-10 rounded-full object-cover border-2 border-white">
+                                </div>
+                                <div class="text-center sm:text-left">
+                                    <div class="flex justify-center sm:justify-start text-yellow-400 text-sm mb-1">★★★★★</div>
+                                    <p class="text-sm text-gray-300">98% taxa de satisfação</p>
+                                    <p class="text-xs text-gray-400">*baseado em entrevistas com usuários</p>
+                                </div>
+                            </div>
                         </div>
 
                         <div class="mb-16">
@@ -812,22 +961,6 @@
                                     <div class="carousel-dot active"></div>
                                     <div class="carousel-dot"></div>
                                     <div class="carousel-dot"></div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="flex justify-center mb-12">
-                            <div class="bg-purple-900/30 border border-purple-700 rounded-xl px-6 py-4 flex flex-col sm:flex-row items-center gap-4">
-                                <div class="flex -space-x-2">
-                                    <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/jussiara.jpeg" alt="Jussiara" class="w-10 h-10 rounded-full object-cover border-2 border-white">
-                                    <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/eloiza.jpeg" alt="Eloiza" class="w-10 h-10 rounded-full object-cover border-2 border-white">
-                                    <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/antonio.jpeg" alt="Antonio" class="w-10 h-10 rounded-full object-cover border-2 border-white">
-                                    <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/Luana.jpeg" alt="Luana" class="w-10 h-10 rounded-full object-cover border-2 border-white">
-                                </div>
-                                <div class="text-center sm:text-left">
-                                    <div class="flex justify-center sm:justify-start text-yellow-400 text-sm mb-1">★★★★★</div>
-                                    <p class="text-sm text-gray-300">98% taxa de satisfação</p>
-                                    <p class="text-xs text-gray-400">*baseado em entrevistas com usuários</p>
                                 </div>
                             </div>
                         </div>
@@ -908,11 +1041,96 @@
         }
 
         // ========================================
+        // RENDER: PROFILE REVEAL PAGE
+        // ========================================
+        function renderProfileRevealPage() {
+            const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
+            
+            return `
+                <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+                    <header class="p-6">
+                        <div class="flex items-center justify-between mb-4">
+                            <button onclick="goBack()" class="btn btn-outline bg-transparent border-gray-600 text-white hover:bg-gray-800">← Voltar</button>
+                            <div class="flex items-center gap-2">
+                                <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+                                    <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/AppAutoconhecimento.jpg" alt="Logo" class="w-8 h-8 rounded-full object-cover">
+                                </div>
+                                <span class="text-xl font-semibold">AppAutoHipnose</span>
+                            </div>
+                            <span class="text-sm text-gray-400">${currentQuestion + 1} de ${quizQuestions.length}</span>
+                        </div>
+                        <div class="w-full bg-gray-700 rounded-full h-2">
+                            <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-300" style="width: ${progress}%"></div>
+                        </div>
+                    </header>
+
+                    <div class="container mx-auto px-6 py-8">
+                        <div class="max-w-5xl mx-auto">
+                            <div class="text-center mb-12">
+                                <h1 class="text-4xl font-bold mb-4">Descubra Sua Personalidade Dietética</h1>
+                                <p class="text-xl text-gray-300 mb-6">
+                                    Estudos científicos identificaram 6 perfis que determinam como você se relaciona com comida e emagrecimento.
+                                </p>
+                                <p class="text-lg text-yellow-400 italic">
+                                    Cada perfil precisa de uma estratégia diferente para ter sucesso.
+                                </p>
+                            </div>
+
+                            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+                                ${Object.entries(dietaryProfiles).map(([key, profile]) => `
+                                    <div class="profile-card bg-slate-800/50 border border-slate-700 rounded-xl p-6 cursor-pointer">
+                                        <div class="text-center mb-4">
+                                            <div class="text-5xl mb-3">${profile.icon}</div>
+                                            <h3 class="text-xl font-bold bg-gradient-to-r ${profile.color} bg-clip-text text-transparent">
+                                                ${profile.name}
+                                            </h3>
+                                        </div>
+                                        <p class="text-sm text-gray-300 mb-3">
+                                            <strong>Característica:</strong> ${profile.description}
+                                        </p>
+                                        <p class="text-sm text-gray-400 mb-3">
+                                            <strong>Desafio:</strong> ${profile.challenge}
+                                        </p>
+                                        <p class="text-xs text-gray-500">
+                                            <strong>Estratégia:</strong> ${profile.strategy}
+                                        </p>
+                                    </div>
+                                `).join('')}
+                            </div>
+
+                            <div class="bg-blue-900/30 border border-blue-600 rounded-lg p-4 mb-8 text-center">
+                                <p class="text-sm text-gray-300">
+                                    📚 Baseado em estudo CSIRO (Commonwealth Scientific and Industrial Research Organisation) - Austrália
+                                </p>
+                            </div>
+
+                            <div class="text-center bg-gradient-to-r from-purple-900/50 to-pink-900/50 border-2 border-purple-500 rounded-xl p-8">
+                                <h2 class="text-2xl font-bold mb-4">
+                                    Quer ver um plano de emagrecimento para o SEU tipo de perfil?
+                                </h2>
+                                <p class="text-gray-300 mb-6">
+                                    Com base nas suas respostas, vamos revelar qual é o seu perfil dominante e criar um plano de 21 dias personalizado.
+                                </p>
+                                <button onclick="handleQuizAnswer('understood')" class="btn btn-2xl bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold pulse-button">
+                                    ✨ Quero Ver Meu Plano Personalizado
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ========================================
         // RENDER: QUIZ PAGE
         // ========================================
         function renderQuizPage() {
             const question = quizQuestions[currentQuestion];
             const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
+
+            if (question.type === 'profile_reveal') {
+                return renderProfileRevealPage();
+            }
 
             if (question.type === 'info') {
                 let content, imageUrl = '';
@@ -922,9 +1140,6 @@
                         content = getPersonalizedInfo1Content(quizData['past_tries']);
                         const imageMap = {'limited_success': 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/34r.jpeg','no_success': 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/35.jpeg','not_yet': 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/36.jpeg'};
                         imageUrl = imageMap[quizData['past_tries']] || imageMap['limited_success'];
-                    } else if (question.id === 'info2') {
-                        content = getPersonalizedInfo2Content(quizData['eating_habits']);
-                        imageUrl = question.image;
                     }
                 } else {
                     content = question.content;
@@ -1040,94 +1255,486 @@
         }
 
         // ========================================
-        // RENDER: RESULT PAGE
+        // RENDER: RESULT PAGE (PÁGINA 1)
         // ========================================
         function renderResultPage() {
+            const profileKey = quizData.dietaryProfile || 'thinker';
+            const profile = dietaryProfiles[profileKey];
+            
             return `
                 <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
                     <div class="container mx-auto px-6 py-12">
-                        <div class="max-w-2xl mx-auto text-center space-y-8">
+                        <div class="max-w-4xl mx-auto space-y-8">
                             
-                            <div class="space-y-4">
-                                <h1 class="text-4xl font-bold">Seu Áudio Personalizado Está Pronto!</h1>
+                            <!-- PERFIL REVELADO -->
+                            <div class="text-center space-y-6 mb-12">
+                                <div class="inline-block bg-gradient-to-r ${profile.color} p-1 rounded-full mb-4">
+                                    <div class="bg-slate-900 px-6 py-2 rounded-full">
+                                        <span class="text-white text-sm font-semibold">Seu Perfil Dietético</span>
+                                    </div>
+                                </div>
+                                
+                                <div class="text-7xl mb-4">${profile.icon}</div>
+                                
+                                <h1 class="text-5xl font-bold bg-gradient-to-r ${profile.color} bg-clip-text text-transparent">
+                                    ${profile.name}
+                                </h1>
+                                
+                                <p class="text-xl text-gray-300 max-w-2xl mx-auto">
+                                    ${profile.description}
+                                </p>
+                                
+                                <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 text-left max-w-2xl mx-auto">
+                                    <p class="text-gray-300 mb-4">
+                                        <strong class="text-yellow-400">Seu maior desafio:</strong> ${profile.challenge}
+                                    </p>
+                                    <p class="text-gray-300">
+                                        <strong class="text-green-400">Estratégia personalizada:</strong> ${profile.strategy}
+                                    </p>
+                                </div>
+                            </div>
+
+                            <!-- TÍTULO DO PLANO -->
+                            <div class="text-center space-y-4">
+                                <h2 class="text-3xl font-bold">Seu Plano Personalizado de 21 Dias</h2>
                                 <p class="text-xl text-gray-300">
-                                    A chave para emagrecer de vez não é a dieta, é a reprogramação.
-                                </p>
-                                <p class="text-lg text-yellow-400 font-semibold italic">Fazer a Reprogramação Mental é a chave para Emagrecer sem Esforço. A melhor forma é com nosso Áudio Hipnótico de 15 minutos.</p>
-                            </div>
-
-                            <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-5 space-y-4">
-                                <h3 class="text-xl font-semibold text-center mb-4">O que você recebe hoje:</h3>
-                                <div class="space-y-3 text-gray-300 text-left">
-                                    <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span>**Jornada de 4 Sessões de Hipnose** (O Start, Fome Emocional, Sabedoria do Corpo, O Corpo que Já é Seu)</span></div>
-                                    <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span>**PNL - Sua Frase do Dia** (Reforço mental diário)</span></div>
-                                    <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span>**Acesso Vitalício** ao AppAutoHipnose</span></div>
-                                    <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span>**Áudios de 15 minutos** — ouça onde e quando quiser</span></div>
-                                </div>
-                            </div>
-
-                            <div class="bg-purple-900/30 border border-purple-600 rounded-xl p-5 space-y-4">
-                                <div class="flex items-center justify-center gap-2">
-                                    <span class="text-sm uppercase tracking-wide text-purple-200">Bônus Exclusivo</span>
-                                    <span class="text-xs px-2 py-0.5 bg-purple-600/30 border border-purple-500 text-purple-100 rounded-full">Válido hoje</span>
-                                </div>
-
-                                <div class="space-y-4 text-left text-gray-300">
-                                    <div>
-                                        <div class="flex items-center justify-between">
-                                            <h4 class="font-semibold">Perfil Comportamental</h4>
-                                            <div class="text-right text-sm">
-                                                <div class="line-through text-gray-400">R$ 19,90</div>
-                                                <div class="text-green-400 font-bold">Hoje: R$ 0</div>
-                                            </div>
-                                        </div>
-                                        <p class="mt-1 text-sm leading-relaxed">
-                                            Descubra seu perfil e seja mais autêntico, reduzindo a ansiedade que leva à compulsão.
-                                        </p>
-                                    </div>
-
-                                    <div>
-                                        <div class="flex items-center justify-between">
-                                            <h4 class="font-semibold">PNL — Sua Frase do Dia</h4>
-                                            <div class="text-right text-sm">
-                                                <div class="line-through text-gray-400">R$ 19,90</div>
-                                                <div class="text-green-400 font-bold">Hoje: R$ 0</div>
-                                            </div>
-                                        </div>
-                                        <p class="mt-1 text-sm leading-relaxed">
-                                            Receba diariamente uma frase que fortalece seu objetivo e te transforma de dentro pra fora. Não é motivação, é PNL.
-                                        </p>
-                                    </div>
-                                </div>
-
-                                <p class="text-xs text-purple-200 text-center italic">
-                                    *Esses bônus só estão disponíveis se você ativar hoje. Depois, voltam ao preço normal.
+                                    Baseado no seu perfil, criamos uma jornada em 3 semanas:
                                 </p>
                             </div>
 
-                            <div class="text-center py-4 bg-slate-800/50 rounded-xl p-5 border border-slate-700">
-                                <p class="text-lg text-gray-300 line-through mb-1">Valor Original: R$ 197,00</p>
-                                <p class="text-sm text-gray-300 mb-2">Mas como você respondeu ao nosso Teste Gratuito, você tem um Desconto Exclusivo:</p>
-                                <p class="text-3xl font-bold text-red-500">POR APENAS:</p>
-                                <p class="text-5xl font-bold text-green-400">R$ 37,90</p>
-                                <p class="text-sm text-gray-400 mt-2">Pagamento único — acesso imediato</p>
-                            </div>
+                            ${renderPlanSection()}
+                            ${renderHestiaDetailedSection()}
 
-                            <div class="bg-green-900/30 border border-green-600 rounded-xl p-5 text-center">
-                                <p class="text-green-400 font-semibold text-lg mb-2">🔒 Teste sem risco por 7 dias</p>
-                                <p class="text-gray-300 text-sm">
-                                    Se não sentir diferença nos seus hábitos em até 7 dias, devolvemos cada centavo.
-                                    Sem burocracia, sem letras miúdas.
+                            <!-- CTA PARA OFERTA -->
+                            <div class="text-center bg-gradient-to-r from-green-900/50 to-emerald-900/50 border-2 border-green-500 rounded-xl p-8">
+                                <h2 class="text-2xl font-bold mb-4">
+                                    🎁 Quer descobrir o que mais você vai receber?
+                                </h2>
+                                <p class="text-gray-300 mb-6">
+                                    Além do plano de 21 dias e da Héstia, preparamos bônus exclusivos para você.
                                 </p>
+                                <button onclick="goToOffer()" class="btn btn-2xl bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold pulse-button">
+                                    ✨ Descubra O Que Mais Você Recebe
+                                </button>
                             </div>
 
                         </div>
+                    </div>
 
-                        <button onclick="handleCheckout()" class="btn btn-2xl mt-6 mx-auto block w-full max-w-sm bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold pulse-button">
-                            🎧 Quero ativar meu áudio agora
+                    <!-- FOOTER -->
+                    <footer class="footer-improved py-8 mt-12">
+                        <div class="container mx-auto px-6">
+                            <div class="flex flex-wrap justify-between items-center mb-6">
+                                <div class="flex items-center gap-2 mb-4 lg:mb-0">
+                                    <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+                                        <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/AppAutoconhecimento.jpg" alt="Logo" class="w-8 h-8 rounded-full object-cover">
+                                    </div>
+                                    <span class="text-xl font-semibold footer-text-primary">AppAutoHipnose</span>
+                                </div>
+                                <div class="flex flex-wrap gap-6 text-sm">
+                                    <a href="#" class="hover:text-white transition-colors">Hipnoterapeuta responsável: Alex Andreoli Dantas</a>
+                                    <a href="https://wa.me/5519974010028" target="_blank" class="hover:text-white transition-colors">WhatsApp: (19) 97401-0028</a>
+                                </div>
+                            </div>
+                            <div class="pt-4 border-t border-purple-800 flex flex-col sm:flex-row justify-between gap-4 text-sm footer-text-secondary">
+                                <p>© 2025 AppAutoHipnose. Todos os direitos reservados.</p>
+                                <p>Aviso: Não substitui médico e medicamentos.</p>
+                            </div>
+                        </div>
+                    </footer>
+                </div>
+            `;
+        }
+
+        // ========================================
+// RENDER: OFFER PAGE (PÁGINA 2)
+// ========================================
+function renderOfferPage() {
+    return `
+        <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+            <header class="p-6">
+                <div class="flex items-center justify-between">
+                    <button onclick="goBack()" class="btn btn-outline bg-transparent border-gray-600 text-white hover:bg-gray-800">← Voltar</button>
+                    <div class="flex items-center gap-2">
+                        <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+                            <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/AppAutoconhecimento.jpg" alt="Logo" class="w-8 h-8 rounded-full object-cover">
+                        </div>
+                        <span class="text-xl font-semibold">AppAutoHipnose</span>
+                    </div>
+                </div>
+            </header>
+
+            <div class="container mx-auto px-6 py-12">
+                <div class="max-w-4xl mx-auto space-y-8">
+                    
+                    <!-- TÍTULO DA OFERTA -->
+                    <div class="text-center space-y-4">
+                        <h1 class="text-4xl font-bold">O que você recebe hoje:</h1>
+                        <p class="text-xl text-yellow-400 font-semibold italic">
+                            Fazer a Reprogramação Mental é a chave para Emagrecer sem Esforço. A melhor forma é com nosso Áudio Hipnótico de 15 minutos.
+                        </p>
+                    </div>
+
+                    <!-- LISTA DO QUE RECEBE -->
+                    <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-6 space-y-4">
+                        <div class="space-y-3 text-gray-300 text-left">
+                            <div class="flex items-start gap-3">
+                                <span class="text-green-400 text-2xl flex-shrink-0">✓</span>
+                                <span class="text-lg"><strong>Jornada de 4 Sessões de Hipnose</strong> (O Start, Fome Emocional, Sabedoria do Corpo, O Corpo que Já é Seu)</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-green-400 text-2xl flex-shrink-0">✓</span>
+                                <span class="text-lg"><strong>Plano Personalizado de 21 Dias</strong> baseado no seu perfil único</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-green-400 text-2xl flex-shrink-0">✓</span>
+                                <span class="text-lg"><strong>Héstia - Agente GPT Mentora 24/7</strong> para te apoiar em toda jornada</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-green-400 text-2xl flex-shrink-0">✓</span>
+                                <span class="text-lg"><strong>PNL - Sua Frase do Dia</strong> (Reforço mental diário)</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-green-400 text-2xl flex-shrink-0">✓</span>
+                                <span class="text-lg"><strong>Acesso Vitalício</strong> ao AppAutoHipnose</span>
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <span class="text-green-400 text-2xl flex-shrink-0">✓</span>
+                                <span class="text-lg"><strong>Áudios de 15 minutos</strong> — ouça onde e quando quiser</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BÔNUS EXCLUSIVOS -->
+                    <div class="bg-purple-900/30 border border-purple-600 rounded-xl p-6 space-y-4">
+                        <div class="flex items-center justify-center gap-2">
+                            <span class="text-sm uppercase tracking-wide text-purple-200 font-semibold">Bônus Exclusivo</span>
+                            <span class="text-xs px-3 py-1 bg-purple-600/30 border border-purple-500 text-purple-100 rounded-full">Válido hoje</span>
+                        </div>
+
+                        <div class="space-y-4 text-left text-gray-300">
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-semibold text-lg">Perfil Comportamental</h4>
+                                    <div class="text-right text-sm">
+                                        <div class="line-through text-gray-400">R$ 19,90</div>
+                                        <div class="text-green-400 font-bold text-lg">Hoje: R$ 0</div>
+                                    </div>
+                                </div>
+                                <p class="text-sm leading-relaxed">
+                                    Descubra seu perfil e seja mais autêntico, reduzindo a ansiedade que leva à compulsão.
+                                </p>
+                            </div>
+
+                            <div>
+                                <div class="flex items-center justify-between mb-2">
+                                    <h4 class="font-semibold text-lg">PNL — Sua Frase do Dia</h4>
+                                    <div class="text-right text-sm">
+                                        <div class="line-through text-gray-400">R$ 19,90</div>
+                                        <div class="text-green-400 font-bold text-lg">Hoje: R$ 0</div>
+                                    </div>
+                                </div>
+                                <p class="text-sm leading-relaxed">
+                                    Receba diariamente uma frase que fortalece seu objetivo e te transforma de dentro pra fora. Não é motivação, é PNL.
+                                </p>
+                            </div>
+                        </div>
+
+                        <p class="text-xs text-purple-200 text-center italic mt-4">
+                            *Esses bônus só estão disponíveis se você ativar hoje. Depois, voltam ao preço normal.
+                        </p>
+                    </div>
+
+                    <!-- PREÇO -->
+                    <div class="text-center py-6 bg-slate-800/50 rounded-xl border border-slate-700">
+                        <p class="text-xl text-gray-300 line-through mb-2">Valor Original: R$ 197,00</p>
+                        <p class="text-base text-gray-300 mb-4">Mas como você respondeu ao nosso Teste Gratuito, você tem um Desconto Exclusivo:</p>
+                        <p class="text-3xl font-bold text-red-500 mb-2">POR APENAS:</p>
+                        <p class="text-6xl font-bold text-green-400 mb-2">R$ 37,90</p>
+                        <p class="text-base text-gray-400">Pagamento único — acesso imediato</p>
+                    </div>
+
+                    <!-- GARANTIA -->
+                    <div class="bg-green-900/30 border border-green-600 rounded-xl p-6 text-center">
+                        <p class="text-green-400 font-semibold text-xl mb-3">🔒 Teste sem risco por 7 dias</p>
+                        <p class="text-gray-300">
+                            Se não sentir diferença nos seus hábitos em até 7 dias, devolvemos cada centavo.
+                            Sem burocracia, sem letras miúdas.
+                        </p>
+                    </div>
+
+                    <!-- CTA FINAL -->
+                    <div class="text-center">
+                        <button onclick="handleCheckout()" class="btn btn-2xl w-full max-w-md mx-auto bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold text-2xl py-6 pulse-button">
+                            🔓 Desbloquear Meu Plano Agora
                         </button>
+                        <p class="text-sm text-gray-400 mt-4">Acesso imediato após a confirmação do pagamento</p>
+                    </div>
 
-                        <p class="text-sm text-gray-400 mt-2 text-center">Acesso imediato após a confirmação do pagamento</p>
+                    <!-- ========================================
+                         NOVA SEÇÃO: COMO VOCÊ RECEBE
+                         ======================================== -->
+                    <div class="mt-16 border-t-2 border-purple-600 pt-12">
+                        <div class="text-center mb-12">
+                            <h2 class="text-3xl font-bold mb-3">Como você recebe seu programa completo</h2>
+                            <p class="text-xl text-gray-300">Basta 15 minutos por dia — o resto o seu subconsciente faz sozinho</p>
+                        </div>
+
+                        <div class="space-y-8">
+                            <!-- Passo 1 -->
+                            <div class="relative bg-slate-800/30 p-6 rounded-xl border border-slate-700">
+                                <div class="step-number">1</div>
+                                <div class="mb-4 mt-2">
+                                    <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/5.png" alt="Passo 1" class="w-full h-56 object-contain"/>
+                                </div>
+                                <p class="text-lg text-gray-200 text-center">
+                                    Baixe o AppAutoHipnose e escolha o programa de emagrecimento que já começa a reprogramar sua mente no primeiro play.
+                                </p>
+                            </div>
+
+                            <!-- Passo 2 -->
+                            <div class="relative bg-slate-800/30 p-6 rounded-xl border border-slate-700">
+                                <div class="step-number">2</div>
+                                <div class="mb-4 mt-2">
+                                    <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/2.png" alt="Passo 2" class="w-full h-56 object-contain"/>
+                                </div>
+                                <p class="text-lg text-gray-200 text-center">
+                                    Coloque seus fones, dê o play e deixe a voz hipnótica guiar seu cérebro para novos hábitos saudáveis.
+                                </p>
+                            </div>
+
+                            <!-- Passo 3 -->
+                            <div class="relative bg-slate-800/30 p-6 rounded-xl border border-slate-700">
+                                <div class="step-number">3</div>
+                                <div class="mb-4 mt-2">
+                                    <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/3.png" alt="Passo 3" class="w-full h-56 object-contain"/>
+                                </div>
+                                <p class="text-lg text-gray-200 text-center">
+                                    Relaxe sem esforço: pode ouvir antes de dormir ou em qualquer momento tranquilo do dia.
+                                </p>
+                            </div>
+
+                            <!-- Passo 4 -->
+                            <div class="relative bg-slate-800/30 p-6 rounded-xl border border-slate-700">
+                                <div class="step-number">4</div>
+                                <div class="mb-4 mt-2">
+                                    <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/4.png" alt="Passo 4" class="w-full h-56 object-contain"/>
+                                </div>
+                                <p class="text-lg text-gray-200 text-center">
+                                    Enquanto você descansa, sua mente recebe comandos automáticos: menos desejo por comida que engorda, mais prazer em se movimentar.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Footer da seção -->
+                        <div class="mt-8 bg-gradient-to-r from-blue-900/50 to-purple-900/50 p-6 rounded-xl border border-blue-700/50">
+                            <p class="text-center text-gray-200 font-medium text-lg">
+                                Em apenas 21 dias, dedicando 15 minutos por dia, seu cérebro passa a escolher automaticamente o que emagrece — comer melhor, ter energia para se movimentar e resistir ao que atrapalha seus resultados.
+                            </p>
+                        </div>
+                    </div>
+                    <!-- FIM DA NOVA SEÇÃO -->
+
+                </div>
+            </div>
+
+            <!-- FOOTER -->
+            <footer class="footer-improved py-8 mt-12">
+                <div class="container mx-auto px-6">
+                    <div class="flex flex-wrap justify-between items-center mb-6">
+                        <div class="flex items-center gap-2 mb-4 lg:mb-0">
+                            <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
+                                <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/AppAutoconhecimento.jpg" alt="Logo" class="w-8 h-8 rounded-full object-cover">
+                            </div>
+                            <span class="text-xl font-semibold footer-text-primary">AppAutoHipnose</span>
+                        </div>
+                        <div class="flex flex-wrap gap-6 text-sm">
+                            <a href="#" class="hover:text-white transition-colors">Hipnoterapeuta responsável: Alex Andreoli Dantas</a>
+                            <a href="https://wa.me/5519974010028" target="_blank" class="hover:text-white transition-colors">WhatsApp: (19) 97401-0028</a>
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t border-purple-800 flex flex-col sm:flex-row justify-between gap-4 text-sm footer-text-secondary">
+                        <p>© 2025 AppAutoHipnose. Todos os direitos reservados.</p>
+                        <p>Aviso: Não substitui médico e medicamentos.</p>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    `;
+}
+        // ========================================
+        // HELPER FUNCTIONS
+        // ========================================
+        function renderPlanSection() {
+            return `
+                <div class="bg-slate-800/50 border-2 border-purple-500 rounded-xl p-6 space-y-6">
+                    <div class="text-center mb-6">
+                        <div class="inline-block bg-red-900/30 border border-red-500 text-red-300 px-4 py-2 rounded-lg text-sm mb-4">
+                            ⚠️ Este plano completo só é ativado após a compra
+                        </div>
+                    </div>
+
+                    <!-- SEMANA 1 -->
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="h-px flex-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
+                            <h3 class="text-lg font-semibold text-purple-400">SEMANA 1 - Fundação Mental</h3>
+                            <div class="h-px flex-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
+                        </div>
+
+                        ${renderDayCard('1-2', '🌅 O Start da Transformação', 'Reprograme sua mente para o sucesso. Ouça 2 dias seguidos para fixar as bases.', 'from-green-500 to-emerald-600', '⏱️ 15 min/dia • 🎧 Antes de dormir')}
+                        ${renderDayCard('3', '🧬 Descubra Seu Perfil Comportamental', 'Conheça seus padrões inconscientes + receba sua primeira Frase do Dia (PNL).', 'from-purple-500 to-pink-600', '📊 Análise personalizada • 💬 PNL ativada')}
+                        ${renderDayCard('4-6', '🍽️ Primeira Sessão - Fome Emocional', 'Quebre o ciclo da comida como conforto emocional.', 'from-blue-500 to-cyan-600', '⏱️ 15 min/dia • 🎯 Foco: Emoção ≠ Comida')}
+                        ${renderDayCard('7', '🎉 Checkpoint + Conversa com Héstia', 'Avalie sua primeira semana com seu Agente GPT. Celebre cada vitória!', 'from-yellow-500 to-orange-600', '🤖 Chat com IA • 📈 Revisão de progresso')}
+                    </div>
+
+                    <!-- SEMANA 2 -->
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="h-px flex-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
+                            <h3 class="text-lg font-semibold text-blue-400">SEMANA 2 - Aprofundamento</h3>
+                            <div class="h-px flex-1 bg-gradient-to-r from-transparent via-blue-500 to-transparent"></div>
+                        </div>
+
+                        ${renderDayCard('8-9', '🧘 Segunda Sessão - Sabedoria do Corpo', 'Reconecte-se com os sinais naturais de fome e saciedade.', 'from-indigo-500 to-purple-600', '⏱️ 15 min/dia • 🎯 Foco: Escuta corporal')}
+                        ${renderDayCard('10-12', '💪 Terceira Sessão - Prazer no Movimento', 'Transforme exercício de obrigação em desejo natural.', 'from-pink-500 to-rose-600', '⏱️ 15 min/dia • 🎯 Foco: Movimento = Prazer')}
+                        ${renderDayCard('13-15', '✨ Quarta Sessão - O Corpo Que Já É Seu', 'Visualize e incorpore sua nova identidade magra.', 'from-emerald-500 to-teal-600', '⏱️ 15 min/dia • 🎯 Foco: Nova identidade')}
+                        ${renderDayCard('14', '🎉 Checkpoint + Héstia', 'Metade da jornada! Converse com Héstia sobre suas mudanças.', 'from-yellow-500 to-orange-600')}
+                    </div>
+
+                    <!-- SEMANA 3 -->
+                    <div class="space-y-3">
+                        <div class="flex items-center gap-2 mb-3">
+                            <div class="h-px flex-1 bg-gradient-to-r from-transparent via-green-500 to-transparent"></div>
+                            <h3 class="text-lg font-semibold text-green-400">SEMANA 3 - Consolidação e Automatização</h3>
+                            <div class="h-px flex-1 bg-gradient-to-r from-transparent via-green-500 to-transparent"></div>
+                        </div>
+
+                        ${renderDayCard('16', '🔄 Primeira Sessão (Reforço)', 'Reforce os novos padrões emocionais.', 'from-blue-500 to-cyan-600')}
+                        ${renderDayCard('17', '🔄 Segunda Sessão (Reforço)', 'Aprofunde a sabedoria do corpo.', 'from-indigo-500 to-purple-600')}
+                        ${renderDayCard('18', '🔄 Terceira Sessão (Reforço)', 'Consolide o prazer no movimento.', 'from-pink-500 to-rose-600')}
+                        ${renderDayCard('19', '🔄 Quarta Sessão (Reforço)', 'Solidifique sua nova identidade.', 'from-emerald-500 to-teal-600')}
+                        ${renderDayCard('20', '🎯 Sessão Livre - Escolha sua favorita', 'Ouça a sessão que mais ressoou com você.', 'from-violet-500 to-purple-600')}
+                        
+                        <div class="relative bg-gradient-to-r from-yellow-900/50 to-amber-900/50 border-2 border-yellow-500 rounded-lg p-4 day-card-locked">
+                            <div class="absolute top-2 right-2 bg-red-500/20 border border-red-500 text-red-400 text-xs px-2 py-1 rounded-full z-10">
+                                🔒 Bloqueado
+                            </div>
+                            <div class="flex items-start gap-3">
+                                <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br from-yellow-500 to-amber-600 rounded-lg flex items-center justify-center font-bold text-white">
+                                    21
+                                </div>
+                                <div class="flex-1">
+                                    <h4 class="font-semibold text-yellow-400 mb-1">🏆 Celebração Final + Cerimônia de Conclusão</h4>
+                                    <p class="text-sm text-gray-300">Áudio especial de celebração + conversa final com Héstia sobre seus próximos passos.</p>
+                                    <div class="mt-2 text-xs text-yellow-400">
+                                        ✨ Você completou a reprogramação neural! Agora é automático.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderDayCard(day, title, description, gradient, details = '') {
+            return `
+                <div class="relative bg-slate-900/50 border border-slate-600 rounded-lg p-4 day-card-locked">
+                    <div class="absolute top-2 right-2 bg-red-500/20 border border-red-500 text-red-400 text-xs px-2 py-1 rounded-full z-10">
+                        🔒 Bloqueado
+                    </div>
+                    <div class="flex items-start gap-3">
+                        <div class="flex-shrink-0 w-12 h-12 bg-gradient-to-br ${gradient} rounded-lg flex items-center justify-center font-bold text-white text-sm">
+                            ${day}
+                        </div>
+                        <div class="flex-1">
+                            <h4 class="font-semibold text-white mb-1">${title}</h4>
+                            <p class="text-sm text-gray-400">${description}</p>
+                            ${details ? `<div class="mt-2 flex items-center gap-2 text-xs text-gray-500"><span>${details}</span></div>` : ''}
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderHestiaDetailedSection() {
+            return `
+                <!-- SEÇÃO HÉSTIA DETALHADA -->
+                <div class="bg-gradient-to-r from-purple-900/50 to-pink-900/50 border-2 border-purple-500 rounded-xl p-8 space-y-6">
+                    <div class="text-center mb-8">
+                        <div class="text-6xl mb-4">🔥</div>
+                        <h2 class="text-3xl font-bold text-purple-300 mb-3">Conheça Héstia - Sua Mentora de IA</h2>
+                        <p class="text-lg text-gray-300 max-w-2xl mx-auto">
+                            O arquétipo de Héstia simboliza a <strong class="text-purple-400">disciplina serena</strong> — o poder de manter o foco sem ansiedade. Ela ensina que emagrecer não é correr, é cuidar. Quando você ativa Héstia dentro de si, transforma o hábito em ritual, e o esforço em paz.
+                        </p>
+                    </div>
+
+                    <div class="bg-slate-900/50 rounded-xl p-6 mb-6">
+                        <h3 class="text-xl font-bold text-white mb-4 text-center">
+                            🤖 Héstia foi treinada com conhecimento de:
+                        </h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-gray-300">
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">📚</span>
+                                <span>Livros de emagrecimento baseados em ciência</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">🧠</span>
+                                <span>Literatura clínica de hipnoterapia</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">🎯</span>
+                                <span>Técnicas de PNL e mudança comportamental</span>
+                            </div>
+                            <div class="flex items-center gap-3">
+                                <span class="text-2xl">💡</span>
+                                <span>Neuroplasticidade e reprogramação mental</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-2xl font-bold text-white text-center mb-6">
+                        O que Héstia pode fazer por você:
+                    </h3>
+
+                    <div class="space-y-4">
+                        ${hestiaBenefits.map(benefit => `
+                            <div class="benefit-card bg-slate-900/30 border-l-4 border-transparent rounded-lg p-5">
+                                <div class="flex items-start gap-4">
+                                    <div class="flex-shrink-0 text-4xl">
+                                        ${benefit.icon}
+                                    </div>
+                                    <div class="flex-1">
+                                        <h4 class="font-semibold text-lg text-white mb-2">
+                                            ${benefit.title}
+                                        </h4>
+                                        <p class="text-gray-300 text-sm">
+                                            ${benefit.description}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+
+                    <div class="mt-8 bg-slate-900/50 rounded-lg p-6 text-center">
+                        <p class="text-lg text-gray-300 mb-4">
+                            <strong class="text-purple-400">A qualquer momento</strong>, você pode conversar com Héstia para:
+                        </p>
+                        <div class="flex flex-wrap justify-center gap-3">
+                            <span class="px-3 py-1 bg-purple-500/20 border border-purple-500 text-purple-200 rounded-full text-sm">Tirar dúvidas</span>
+                            <span class="px-3 py-1 bg-purple-500/20 border border-purple-500 text-purple-200 rounded-full text-sm">Receber motivação</span>
+                            <span class="px-3 py-1 bg-purple-500/20 border border-purple-500 text-purple-200 rounded-full text-sm">Celebrar vitórias</span>
+                            <span class="px-3 py-1 bg-purple-500/20 border border-purple-500 text-purple-200 rounded-full text-sm">Ajustar seu plano</span>
+                            <span class="px-3 py-1 bg-purple-500/20 border border-purple-500 text-purple-200 rounded-full text-sm">Superar momentos difíceis</span>
+                        </div>
+                    </div>
+
+                    <div class="text-center pt-6 border-t border-purple-600">
+                        <p class="text-sm text-purple-300 italic">
+                            💬 Héstia está disponível 24/7 • Respostas em segundos • Acesso vitalício
+                        </p>
                     </div>
                 </div>
             `;
@@ -1153,6 +1760,9 @@
                 case 'result':
                     app.innerHTML = renderResultPage();
                     break;
+                case 'offer':
+                    app.innerHTML = renderOfferPage();
+                    break;
                 default:
                     app.innerHTML = renderHomePage();
                     setTimeout(initCarousel, 100);
@@ -1169,4 +1779,3 @@
     </script>
 </body>
 </html>
-
