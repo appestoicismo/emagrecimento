@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hipnose do Emagrecimento - Reprograme seu cérebro para emagrecer sem esforço</title>
+    <title>Teste Gratuito: Reprograme seu Cérebro para Emagrecer - AppAutoHipnose</title>
     
     <!-- Facebook Pixel Code -->
     <script>
@@ -18,7 +18,9 @@
       fbq('init', '1042117324521315');
       fbq('track', 'PageView');
     </script>
-    <!-- End Facebook Pixel Code -->
+    <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1042117324521315&ev=PageView&noscript=1"
+    /></noscript>
     
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -71,6 +73,7 @@
             position: relative;
             overflow: hidden;
             width: 100%;
+            touch-action: pan-y;
         }
         
         .carousel-track {
@@ -139,11 +142,6 @@
             background: rgba(255, 255, 255, 1);
         }
 
-        /* Touch support */
-        .carousel-container {
-            touch-action: pan-y;
-        }
-
         /* Step number badge */
         .step-number {
             position: absolute;
@@ -176,55 +174,127 @@
         .pulse-button {
             animation: pulse 2s infinite;
         }
+
+        /* Hero section - Primeira dobra otimizada */
+        .hero-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-bottom: 4rem;
+        }
+
+        /* CTA buttons spacing */
+        .cta-buttons {
+            margin-top: 2.5rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Footer com melhor contraste */
+        .footer-improved {
+            background: linear-gradient(to bottom, #1e1b4b, #0f0a2e);
+            border-top: 2px solid #4c1d95;
+        }
+
+        .footer-improved a {
+            color: #d1d5db;
+            transition: color 0.3s ease;
+        }
+
+        .footer-improved a:hover {
+            color: #ffffff;
+        }
+
+        .footer-text-primary {
+            color: #e5e7eb;
+        }
+
+        .footer-text-secondary {
+            color: #9ca3af;
+        }
     </style>
 </head>
 <body>
-    <noscript><img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=1042117324521315&ev=PageView&noscript=1"
-    /></noscript>
-    
     <div id="app"></div>
 
     <script>
-        // UTM Tracker
+        // ========================================
+        // UTM TRACKER - Com verificação de origem
+        // ========================================
         function initUTMTracker() {
-            const urlParams = new URLSearchParams(window.location.search);
-            
-            const defaultUTMs = {
-                utm_source: 'FB',
-                utm_campaign: '{{campaign.name}}|{{campaign.id}}',
-                utm_medium: '{{adset.name}}|{{adset.id}}',
-                utm_content: '{{ad.name}}|{{ad.id}}',
-                utm_term: '{{placement}}',
-                xcod: 'FBhQwK21wXxR{{campaign.name}}|{{campaign.id}}hQwK21wXxR{{adset.name}}|{{adset.id}}hQwK21wXxR{{ad.name}}|{{ad.id}}hQwK21wXxR{{placement}}'
-            };
-            
-            if (!urlParams.has('utm_source')) {
-                Object.entries(defaultUTMs).forEach(([key, value]) => {
-                    if (!urlParams.has(key)) {
-                        urlParams.set(key, value);
+            try {
+                const urlParams = new URLSearchParams(window.location.search);
+                
+                const defaultUTMs = {
+                    utm_source: 'FB',
+                    utm_campaign: '{{campaign.name}}|{{campaign.id}}',
+                    utm_medium: '{{adset.name}}|{{adset.id}}',
+                    utm_content: '{{ad.name}}|{{ad.id}}',
+                    utm_term: '{{placement}}',
+                    xcod: 'FBhQwK21wXxR{{campaign.name}}|{{campaign.id}}hQwK21wXxR{{adset.name}}|{{adset.id}}hQwK21wXxR{{ad.name}}|{{ad.id}}hQwK21wXxR{{placement}}'
+                };
+                
+                // Só adiciona defaults se vier do Facebook (fbclid presente)
+                const fbclid = urlParams.get('fbclid');
+                const hasUtmSource = urlParams.has('utm_source');
+                
+                if (!hasUtmSource && fbclid) {
+                    Object.entries(defaultUTMs).forEach(([key, value]) => {
+                        if (!urlParams.has(key)) {
+                            urlParams.set(key, value);
+                        }
+                    });
+                    
+                    const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
+                    window.history.replaceState({}, '', newUrl);
+                }
+                
+                // Captura todos os parâmetros de rastreamento
+                const utmData = {};
+                urlParams.forEach((value, key) => {
+                    if (key.startsWith('utm_') || key === 'xcod' || key === 'fbclid') {
+                        utmData[key] = value;
                     }
                 });
                 
-                const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
-                window.history.replaceState({}, '', newUrl);
-            }
-            
-            const utmData = {};
-            urlParams.forEach((value, key) => {
-                if (key.startsWith('utm_') || key === 'xcod') {
-                    utmData[key] = value;
+                // Salva no localStorage se houver dados
+                if (Object.keys(utmData).length > 0) {
+                    localStorage.setItem('utmData', JSON.stringify(utmData));
+                    
+                    if (typeof fbq !== 'undefined') {
+                        fbq('trackCustom', 'UTMCaptured', utmData);
+                    }
                 }
-            });
-            
-            localStorage.setItem('utmData', JSON.stringify(utmData));
-            
-            if (typeof fbq !== 'undefined' && Object.keys(utmData).length > 0) {
-                fbq('trackCustom', 'UTMCaptured', utmData);
+                
+            } catch (error) {
+                console.error('Erro ao capturar UTMs:', error);
             }
         }
 
-        // Carousel functionality
+        // ========================================
+        // SCROLL SUAVE - Para melhor UX
+        // ========================================
+        function scrollToTop(smooth = true) {
+            setTimeout(() => {
+                if (smooth) {
+                    window.scrollTo({
+                        top: 0,
+                        left: 0,
+                        behavior: 'smooth'
+                    });
+                } else {
+                    window.scrollTo(0, 0);
+                }
+                
+                // Fallback para dispositivos móveis
+                document.body.scrollTop = 0;
+                document.documentElement.scrollTop = 0;
+            }, 100);
+        }
+
+        // ========================================
+        // CAROUSEL FUNCTIONALITY
+        // ========================================
         let currentSlide = 0;
         let touchStartX = 0;
         let touchEndX = 0;
@@ -266,19 +336,16 @@
                 updateCarousel();
             }
 
-            // Button events
             const prevBtn = document.querySelector('.carousel-button.prev');
             const nextBtn = document.querySelector('.carousel-button.next');
             
             if (prevBtn) prevBtn.addEventListener('click', prevSlide);
             if (nextBtn) nextBtn.addEventListener('click', nextSlide);
 
-            // Dot events
             dots.forEach((dot, index) => {
                 dot.addEventListener('click', () => goToSlide(index));
             });
 
-            // Touch events for swipe
             const container = document.querySelector('.carousel-container');
             
             container.addEventListener('touchstart', (e) => {
@@ -300,170 +367,170 @@
             }
         }
 
-        // App State
+        // ========================================
+        // APP STATE
+        // ========================================
         let currentStep = 'home';
         let quizData = {};
         let currentQuestion = 0;
 
-        // Função para gerar conteúdo personalizado do info1
+        // ========================================
+        // CONTEÚDO PERSONALIZADO INFO1
+        // ========================================
         function getPersonalizedInfo1Content(userAnswer) {
             const contentVariations = {
                 'limited_success': {
-    title: 'Desta vez será diferente — porque vamos direto na causa raiz.',
-    text: [
-        'Você já conseguiu emagrecer, mas acabou voltando ao mesmo peso. Isso não é falta de disciplina.',
-        'É o chamado efeito sanfona — acontece porque dietas e treinos atacam só o sintoma (o que você come e porque você não se exercita), mas não mudam a causa (por que você come e porque evita se exercitar).',
-        'A ciência é clara: 85% das escolhas alimentares e de movimento são automáticas. Ou seja, o cérebro decide antes de você perceber. Enquanto você tenta se controlar no consciente, seu subconsciente mantém os velhos padrões. E cedo ou tarde, a recaída acontece.',
-        'A hipnoterapia resolve isso na raiz. Em apenas 21 dias, com 15 minutos por dia, você reprograma o subconsciente.',
-        'O resultado? Resistir a doces sem esforço, sentir prazer em se movimentar e manter o peso de forma natural — sem sanfona.'
-    ],
-    source: 'Baseado em estudos de Stanford, Harvard e literatura clínica de hipnoterapia'
-},
-
+                    title: 'Desta vez será diferente — porque vamos direto na causa raiz.',
+                    text: [
+                        'Você já conseguiu emagrecer, mas acabou voltando ao mesmo peso. Isso não é falta de disciplina.',
+                        'É o chamado efeito sanfona — acontece porque dietas e treinos atacam só o sintoma (o que você come e porque você não se exercita), mas não mudam a causa (por que você come e porque evita se exercitar).',
+                        'A ciência é clara: 85% das escolhas alimentares e de movimento são automáticas. Ou seja, o cérebro decide antes de você perceber. Enquanto você tenta se controlar no consciente, seu subconsciente mantém os velhos padrões. E cedo ou tarde, a recaída acontece.',
+                        'A hipnoterapia resolve isso na raiz. Em apenas 21 dias, com 15 minutos por dia, você reprograma o subconsciente.',
+                        'O resultado? Resistir a doces sem esforço, sentir prazer em se movimentar e manter o peso de forma natural — sem sanfona.'
+                    ],
+                    source: 'Baseado em estudos de Stanford, Harvard e literatura clínica de hipnoterapia'
+                },
                 'no_success': {
-    title: 'Você não fracassou. Foram os métodos que não atacaram a causa real.',
-    text: [
-        'Você já tentou dieta, academia, aplicativos… e mesmo assim não chegou ao peso que queria.',
-        'O problema não é você. O problema é que tudo isso atua só no comportamento consciente.',
-        'Mas 95% das suas decisões diárias — o que você come e se exercita ou não — vêm do inconsciente. É por isso que você sabe o que precisa fazer, mas não consegue manter: seu subconsciente ainda está programado para buscar comida como alívio e evitar esforço físico.',
-        'A hipnoterapia acessa exatamente onde as escolhas acontecem: o subconsciente. Estudos mostram que pode ser até 3x mais eficaz do que métodos tradicionais.',
-        'Em 21 dias, 15 minutos por dia, você instala novos padrões automáticos. O resultado? Comer saudável sem esforço, ter vontade de se exercitar e finalmente chegar ao peso ideal.'
-    ],
-    source: 'Baseado em estudos de Stanford, Harvard e literatura clínica de hipnoterapia'
-},
-
+                    title: 'Você não fracassou. Foram os métodos que não atacaram a causa real.',
+                    text: [
+                        'Você já tentou dieta, academia, aplicativos… e mesmo assim não chegou ao peso que queria.',
+                        'O problema não é você. O problema é que tudo isso atua só no comportamento consciente.',
+                        'Mas 95% das suas decisões diárias — o que você come e se exercita ou não — vêm do inconsciente. É por isso que você sabe o que precisa fazer, mas não consegue manter: seu subconsciente ainda está programado para buscar comida como alívio e evitar esforço físico.',
+                        'A hipnoterapia acessa exatamente onde as escolhas acontecem: o subconsciente. Estudos mostram que pode ser até 3x mais eficaz do que métodos tradicionais.',
+                        'Em 21 dias, 15 minutos por dia, você instala novos padrões automáticos. O resultado? Comer saudável sem esforço, ter vontade de se exercitar e finalmente chegar ao peso ideal.'
+                    ],
+                    source: 'Baseado em estudos de Stanford, Harvard e literatura clínica de hipnoterapia'
+                },
                 'not_yet': {
-    title: 'Você está começando pelo caminho certo: direto na causa raiz.',
-    text: [
-        'Você ainda não tentou emagrecer — e isso pode ser uma grande vantagem.',
-        'A maioria perde anos testando dietas e academias antes de descobrir que o problema está na mente. Você já pode começar do jeito certo.',
-        'Pesquisas de Stanford mostram: 85% das escolhas alimentares e de movimento são automáticas. Ou seja, não é falta de conhecimento, é falta de reprogramação mental.',
-        'A hipnoterapia resolve isso desde o início. Durante 21 dias, ouvindo apenas 15 minutos por dia, você instala no subconsciente hábitos magros: comer bem sem esforço, resistir a impulsos naturalmente, sentir prazer em se movimentar.',
-        'Assim, você evita anos de frustração e já inicia sua jornada com a estratégia mais eficaz para emagrecer de forma sustentável.'
-    ],
-    source: 'Baseado em estudos de Stanford, Harvard e literatura clínica de hipnoterapia'
-}
+                    title: 'Você está começando pelo caminho certo: direto na causa raiz.',
+                    text: [
+                        'Você ainda não tentou emagrecer — e isso pode ser uma grande vantagem.',
+                        'A maioria perde anos testando dietas e academias antes de descobrir que o problema está na mente. Você já pode começar do jeito certo.',
+                        'Pesquisas de Stanford mostram: 85% das escolhas alimentares e de movimento são automáticas. Ou seja, não é falta de conhecimento, é falta de reprogramação mental.',
+                        'A hipnoterapia resolve isso desde o início. Durante 21 dias, ouvindo apenas 15 minutos por dia, você instala no subconsciente hábitos magros: comer bem sem esforço, resistir a impulsos naturalmente, sentir prazer em se movimentar.',
+                        'Assim, você evita anos de frustração e já inicia sua jornada com a estratégia mais eficaz para emagrecer de forma sustentável.'
+                    ],
+                    source: 'Baseado em estudos de Stanford, Harvard e literatura clínica de hipnoterapia'
+                }
             };
 
             return contentVariations[userAnswer] || contentVariations['limited_success'];
         }
 
-        // Função para gerar conteúdo personalizado do info2
-function getPersonalizedInfo2Content(userAnswer) {
-    const contentVariations = {
-        'emotional_eating': {
-            title: 'Por que é tão difícil seguir a dieta?',
-            text: [
-                'Você contou que seu maior desafio é seguir a dieta. Isso não acontece por falta de disciplina.',
-                'O que acontece é que seu cérebro aprendeu padrões automáticos: comer em resposta a emoções negativas e evitar esforço físico quando sente cansaço ou estresse.',
-                'A neurociência mostra que, em situações de estresse, tédio ou frustração, o cérebro busca recompensa imediata — muitas vezes na comida ou evitando movimento.',
-                'A hipnoterapia quebra esse circuito. Durante o transe, implantamos novas respostas: ao invés de buscar comida ou evitar exercício, seu subconsciente passa a escolher opções saudáveis automaticamente.',
-                'Na prática, você segue o plano alimentar com naturalidade e sente vontade de se movimentar. Sem batalha interna, sem sabotagem.'
-            ],
-            source: 'Baseado em estudos sobre comportamento alimentar, atividade física e neuroplasticidade'
-        },
+        // ========================================
+        // CONTEÚDO PERSONALIZADO INFO2
+        // ========================================
+        function getPersonalizedInfo2Content(userAnswer) {
+            const contentVariations = {
+                'emotional_eating': {
+                    title: 'Por que é tão difícil seguir a dieta?',
+                    text: [
+                        'Você contou que seu maior desafio é seguir a dieta. Isso não acontece por falta de disciplina.',
+                        'O que acontece é que seu cérebro aprendeu padrões automáticos: comer em resposta a emoções negativas e evitar esforço físico quando sente cansaço ou estresse.',
+                        'A neurociência mostra que, em situações de estresse, tédio ou frustração, o cérebro busca recompensa imediata — muitas vezes na comida ou evitando movimento.',
+                        'A hipnoterapia quebra esse circuito. Durante o transe, implantamos novas respostas: ao invés de buscar comida ou evitar exercício, seu subconsciente passa a escolher opções saudáveis automaticamente.',
+                        'Na prática, você segue o plano alimentar com naturalidade e sente vontade de se movimentar. Sem batalha interna, sem sabotagem.'
+                    ],
+                    source: 'Baseado em estudos sobre comportamento alimentar, atividade física e neuroplasticidade'
+                },
+                'portion_control': {
+                    title: 'Por que é tão difícil parar de comer doces?',
+                    text: [
+                        'Você contou que o doce é o maior desafio. Isso não é falta de força de vontade.',
+                        'O açúcar ativa os mesmos circuitos de recompensa do cérebro que vícios químicos. Com o tempo, ele se torna a forma automática de aliviar emoções negativas.',
+                        'O mesmo acontece com a falta de movimento: o cérebro associa esforço a desconforto e evita se exercitar de forma automática.',
+                        'A hipnoterapia reprograma essas associações. No estado hipnótico, implantamos novas conexões: prazer em escolhas saudáveis e em se movimentar, e indiferença em relação ao doce.',
+                        'O resultado? A compulsão simplesmente perde força. Você passa na frente do doce sem sentir aquela urgência, e começa a desejar se movimentar porque o corpo pede.'
+                    ],
+                    source: 'Baseado em estudos sobre dependência de açúcar e comportamento motor'
+                },
+                'cravings': {
+                    title: 'Por que a ansiedade te faz comer e evitar exercícios?',
+                    text: [
+                        'Você revelou que a ansiedade te leva a comer. Isso não é falta de controle, é biologia.',
+                        'Quando a ansiedade ativa o sistema de alerta, o cérebro busca segurança: comida como calmante rápido e inatividade como forma de economizar energia.',
+                        'Esse reflexo condicionado roda de forma automática, sem decisão consciente.',
+                        'A hipnoterapia instala novos reguladores emocionais. O subconsciente aprende a responder à ansiedade de formas mais saudáveis: respirar, se movimentar, beber água, caminhar.',
+                        'Assim, você controla a ansiedade sem usar comida como válvula de escape — e ainda transforma o movimento em fonte de alívio.'
+                    ],
+                    source: 'Baseado em estudos sobre ansiedade, regulação emocional e comportamento motor'
+                },
+                'late_night': {
+                    title: 'Por que é tão difícil manter a rotina de exercícios?',
+                    text: [
+                        'Você contou que seu desafio é manter atividade física. Isso não é preguiça.',
+                        'A ciência mostra que o cérebro humano evita desconforto automaticamente. E como associamos exercício a esforço, a mente cria resistência antes mesmo de começar.',
+                        'Essa resistência é inconsciente: aparecem desculpas, falta de energia, procrastinação.',
+                        'A hipnoterapia reprograma essa associação. Durante o transe, implantamos no subconsciente: exercício = energia, prazer e bem-estar.',
+                        'Com isso, a resistência desaparece e surge vontade genuína de se movimentar — sem depender de motivação passageira.'
+                    ],
+                    source: 'Baseado em estudos sobre motivação, neuroplasticidade e hábitos motores'
+                },
+                'stress_eating': {
+                    title: 'Por que saber não é suficiente para emagrecer?',
+                    text: [
+                        'Você revelou que sente falta de informação para emagrecer. Mas, na verdade, você provavelmente já sabe o bastante.',
+                        'O problema não é falta de conhecimento, é que conhecimento consciente não muda padrões automáticos.',
+                        '95% das nossas ações são inconscientes: desde pegar um doce sem pensar até arrumar desculpas para não se exercitar.',
+                        'A hipnoterapia transforma conhecimento em ação. Durante o transe, hábitos saudáveis são instalados como reflexos automáticos — comer bem e se exercitar passam a acontecer naturalmente.',
+                        'Assim, você finalmente faz o que já sabia que deveria fazer, sem depender só de força de vontade.'
+                    ],
+                    source: 'Baseado em estudos sobre hábitos automáticos e mudança comportamental'
+                }
+            };
 
-        'portion_control': {
-            title: 'Por que é tão difícil parar de comer doces?',
-            text: [
-                'Você contou que o doce é o maior desafio. Isso não é falta de força de vontade.',
-                'O açúcar ativa os mesmos circuitos de recompensa do cérebro que vícios químicos. Com o tempo, ele se torna a forma automática de aliviar emoções negativas.',
-                'O mesmo acontece com a falta de movimento: o cérebro associa esforço a desconforto e evita se exercitar de forma automática.',
-                'A hipnoterapia reprograma essas associações. No estado hipnótico, implantamos novas conexões: prazer em escolhas saudáveis e em se movimentar, e indiferença em relação ao doce.',
-                'O resultado? A compulsão simplesmente perde força. Você passa na frente do doce sem sentir aquela urgência, e começa a desejar se movimentar porque o corpo pede.'
-            ],
-            source: 'Baseado em estudos sobre dependência de açúcar e comportamento motor'
-        },
-
-        'cravings': {
-            title: 'Por que a ansiedade te faz comer e evitar exercícios?',
-            text: [
-                'Você revelou que a ansiedade te leva a comer. Isso não é falta de controle, é biologia.',
-                'Quando a ansiedade ativa o sistema de alerta, o cérebro busca segurança: comida como calmante rápido e inatividade como forma de economizar energia.',
-                'Esse reflexo condicionado roda de forma automática, sem decisão consciente.',
-                'A hipnoterapia instala novos reguladores emocionais. O subconsciente aprende a responder à ansiedade de formas mais saudáveis: respirar, se movimentar, beber água, caminhar.',
-                'Assim, você controla a ansiedade sem usar comida como válvula de escape — e ainda transforma o movimento em fonte de alívio.'
-            ],
-            source: 'Baseado em estudos sobre ansiedade, regulação emocional e comportamento motor'
-        },
-
-        'late_night': {
-            title: 'Por que é tão difícil manter a rotina de exercícios?',
-            text: [
-                'Você contou que seu desafio é manter atividade física. Isso não é preguiça.',
-                'A ciência mostra que o cérebro humano evita desconforto automaticamente. E como associamos exercício a esforço, a mente cria resistência antes mesmo de começar.',
-                'Essa resistência é inconsciente: aparecem desculpas, falta de energia, procrastinação.',
-                'A hipnoterapia reprograma essa associação. Durante o transe, implantamos no subconsciente: exercício = energia, prazer e bem-estar.',
-                'Com isso, a resistência desaparece e surge vontade genuína de se movimentar — sem depender de motivação passageira.'
-            ],
-            source: 'Baseado em estudos sobre motivação, neuroplasticidade e hábitos motores'
-        },
-
-        'stress_eating': {
-            title: 'Por que saber não é suficiente para emagrecer?',
-            text: [
-                'Você revelou que sente falta de informação para emagrecer. Mas, na verdade, você provavelmente já sabe o bastante.',
-                'O problema não é falta de conhecimento, é que conhecimento consciente não muda padrões automáticos.',
-                '95% das nossas ações são inconscientes: desde pegar um doce sem pensar até arrumar desculpas para não se exercitar.',
-                'A hipnoterapia transforma conhecimento em ação. Durante o transe, hábitos saudáveis são instalados como reflexos automáticos — comer bem e se exercitar passam a acontecer naturalmente.',
-                'Assim, você finalmente faz o que já sabia que deveria fazer, sem depender só de força de vontade.'
-            ],
-            source: 'Baseado em estudos sobre hábitos automáticos e mudança comportamental'
+            return contentVariations[userAnswer] || contentVariations['emotional_eating'];
         }
-    };
 
-    return contentVariations[userAnswer] || contentVariations['emotional_eating'];
-}
-
-        // Conditional follow-up questions for eating habits
+        // ========================================
+        // PERGUNTAS FOLLOW-UP
+        // ========================================
         const eatingHabitsFollowUp = {
             'emotional_eating': {
-    question: 'O que mais faz você sair da dieta?',
-    options: [
-        { value: 'emotional_eating_boredom', label: 'Acabo caindo nos mesmos velhos hábitos', icon: '🔄' },
-        { value: 'emotional_eating_stress', label: 'As tentações parecem mais fortes do que eu', icon: '🍩' },
-        { value: 'emotional_eating_sadness', label: 'Sempre arrumo uma desculpa para adiar', icon: '🙈' }
-    ]
-},
-
+                question: 'O que mais faz você sair da dieta?',
+                options: [
+                    { value: 'emotional_eating_boredom', label: 'Acabo caindo nos mesmos velhos hábitos', icon: '🔄' },
+                    { value: 'emotional_eating_stress', label: 'As tentações parecem mais fortes do que eu', icon: '🍩' },
+                    { value: 'emotional_eating_sadness', label: 'Sempre arrumo uma desculpa para adiar', icon: '🙈' }
+                ]
+            },
             'portion_control': {
-    question: 'Quando você mais sente vontade de comer doces?',
-    options: [
-        { value: 'portion_control_chocolate', label: 'Uso doce como recompensa ou conforto', icon: '🎁' },
-        { value: 'portion_control_baked', label: 'Corro pros doces quando estou ansioso(a) ou estressado(a)', icon: '😰' },
-        { value: 'portion_control_candy', label: 'Acabo comendo doce por tédio ou solidão', icon: '🍬' }
-    ]
-},
-
+                question: 'Quando você mais sente vontade de comer doces?',
+                options: [
+                    { value: 'portion_control_chocolate', label: 'Uso doce como recompensa ou conforto', icon: '🎁' },
+                    { value: 'portion_control_baked', label: 'Corro pros doces quando estou ansioso(a) ou estressado(a)', icon: '😰' },
+                    { value: 'portion_control_candy', label: 'Acabo comendo doce por tédio ou solidão', icon: '🍬' }
+                ]
+            },
             'cravings': {
-    question: 'Quando a ansiedade bate, em que situação você mais acaba descontando na comida?',
-    options: [
-        { value: 'cravings_work', label: 'No estresse do trabalho, acabo beliscando sem parar', icon: '💼' },
-        { value: 'cravings_evening', label: 'Em casa, acabo comendo por causa de problemas familiares', icon: '🏠' },
-        { value: 'cravings_social', label: 'Em encontros sociais, como para aliviar a ansiedade', icon: '👥' }
-    ]
-},
-
+                question: 'Quando a ansiedade bate, em que situação você mais acaba descontando na comida?',
+                options: [
+                    { value: 'cravings_work', label: 'No estresse do trabalho, acabo beliscando sem parar', icon: '💼' },
+                    { value: 'cravings_evening', label: 'Em casa, acabo comendo por causa de problemas familiares', icon: '🏠' },
+                    { value: 'cravings_social', label: 'Em encontros sociais, como para aliviar a ansiedade', icon: '👥' }
+                ]
+            },
             'late_night': {
-    question: 'Por que você sente que acaba abandonando os exercícios?',
-    options: [
-        { value: 'late_night_lack_time', label: 'Sempre arrumo uma desculpa e deixo pra depois', icon: '⏰' },
-        { value: 'late_night_lack_energy', label: 'Chego cansado(a) e sem energia para treinar', icon: '😴' },
-        { value: 'late_night_lack_motivation', label: 'Perco a motivação depois de algumas semanas', icon: '📉' }
-    ]
-},
-
+                question: 'Por que você sente que acaba abandonando os exercícios?',
+                options: [
+                    { value: 'late_night_lack_time', label: 'Sempre arrumo uma desculpa e deixo pra depois', icon: '⏰' },
+                    { value: 'late_night_lack_energy', label: 'Chego cansado(a) e sem energia para treinar', icon: '😴' },
+                    { value: 'late_night_lack_motivation', label: 'Perco a motivação depois de algumas semanas', icon: '📉' }
+                ]
+            },
             'stress_eating': {
-    question: 'Se você já sabe o que deveria fazer, o que mais te impede de colocar em prática no dia a dia?',
-    options: [
-        { value: 'stress_eating_diet', label: 'Eu sei o que deveria comer, mas não consigo seguir sempre', icon: '🥗' },
-        { value: 'stress_eating_exercise', label: 'Eu sei que preciso me exercitar, mas falta consistência', icon: '🏋️' },
-        { value: 'stress_eating_mental', label: 'O difícil é mudar os hábitos automáticos que me puxam pra trás', icon: '🧠' }
-    ]
-}
+                question: 'Se você já sabe o que deveria fazer, o que mais te impede de colocar em prática no dia a dia?',
+                options: [
+                    { value: 'stress_eating_diet', label: 'Eu sei o que deveria comer, mas não consigo seguir sempre', icon: '🥗' },
+                    { value: 'stress_eating_exercise', label: 'Eu sei que preciso me exercitar, mas falta consistência', icon: '🏋️' },
+                    { value: 'stress_eating_mental', label: 'O difícil é mudar os hábitos automáticos que me puxam pra trás', icon: '🧠' }
+                ]
+            }
         };
 
-        // Quiz Questions
+        // ========================================
+        // PERGUNTAS DO QUIZ
+        // ========================================
         const quizQuestions = [
             {
                 id: 'gender',
@@ -475,29 +542,27 @@ function getPersonalizedInfo2Content(userAnswer) {
                 ]
             },
             {
-    id: 'goal',
-    question: 'Quando você imagina emagrecendo, qual é o resultado que mais te faria sorrir de verdade?',
-    type: 'multiple',
-    options: [
-        { value: 'self-esteem', label: 'Olhar no espelho e sentir orgulho', icon: '💪' },
-        { value: 'movement', label: 'Acordar leve e cheio(a) de energia', icon: '⚡' },
-        { value: 'looks', label: 'Receber elogios pela mudança no corpo', icon: '✨' },
-        { value: 'longevity', label: 'Cuidar da saúde e viver mais tempo', icon: '❤️' },
-        { value: 'other', label: 'Outro objetivo pessoal', icon: '🎯' }
-    ]
-},
-
+                id: 'goal',
+                question: 'Quando você imagina emagrecendo, qual é o resultado que mais te faria sorrir de verdade?',
+                type: 'multiple',
+                options: [
+                    { value: 'self-esteem', label: 'Olhar no espelho e sentir orgulho', icon: '💪' },
+                    { value: 'movement', label: 'Acordar leve e cheio(a) de energia', icon: '⚡' },
+                    { value: 'looks', label: 'Receber elogios pela mudança no corpo', icon: '✨' },
+                    { value: 'longevity', label: 'Cuidar da saúde e viver mais tempo', icon: '❤️' },
+                    { value: 'other', label: 'Outro objetivo pessoal', icon: '🎯' }
+                ]
+            },
             {
-    id: 'past_tries',
-    question: 'E na sua história com o emagrecimento… como tem sido até aqui?',
-    type: 'multiple',
-    options: [
-        { value: 'limited_success', label: 'Já emagreci, mas acabo voltando tudo (efeito sanfona)', icon: '🔄' },
-        { value: 'no_success', label: 'Já tentei várias vezes, mas nunca consegui chegar lá', icon: '😔' },
-        { value: 'not_yet', label: 'Nunca tentei de verdade (vou começar agora)', icon: '🚀' }
-    ]
-},
-
+                id: 'past_tries',
+                question: 'E na sua história com o emagrecimento… como tem sido até aqui?',
+                type: 'multiple',
+                options: [
+                    { value: 'limited_success', label: 'Já emagreci, mas acabo voltando tudo (efeito sanfona)', icon: '🔄' },
+                    { value: 'no_success', label: 'Já tentei várias vezes, mas nunca consegui chegar lá', icon: '😔' },
+                    { value: 'not_yet', label: 'Nunca tentei de verdade (vou começar agora)', icon: '🚀' }
+                ]
+            },
             {
                 id: 'info1',
                 question: 'Desta vez, será diferente. Estamos mirando na causa raiz.',
@@ -539,19 +604,18 @@ function getPersonalizedInfo2Content(userAnswer) {
                 ]
             },
             {
-    id: 'eating_habits',
-    question: 'O que mais atrapalha você quando tenta emagrecer?',
-    type: 'multiple',
-    hasFollowUp: true,
-    options: [
-        { value: 'emotional_eating', label: 'Até começo dieta ou treino… mas não consigo manter', icon: '🥗' },
-        { value: 'portion_control', label: 'Não resisto a doces (sempre me derrubam)', icon: '🍫' },
-        { value: 'cravings', label: 'Quando bate ansiedade, acabo descontando na comida ou pulando exercícios', icon: '😰' },
-        { value: 'late_night', label: 'Começo animado(a), mas logo abandono os exercícios', icon: '🏃' },
-        { value: 'stress_eating', label: 'Já vi tanta coisa diferente que nem sei por onde começar', icon: '🤯' }
-    ]
-},
-
+                id: 'eating_habits',
+                question: 'O que mais atrapalha você quando tenta emagrecer?',
+                type: 'multiple',
+                hasFollowUp: true,
+                options: [
+                    { value: 'emotional_eating', label: 'Até começo dieta ou treino… mas não consigo manter', icon: '🥗' },
+                    { value: 'portion_control', label: 'Não resisto a doces (sempre me derrubam)', icon: '🍫' },
+                    { value: 'cravings', label: 'Quando bate ansiedade, acabo descontando na comida ou pulando exercícios', icon: '😰' },
+                    { value: 'late_night', label: 'Começo animado(a), mas logo abandono os exercícios', icon: '🏃' },
+                    { value: 'stress_eating', label: 'Já vi tanta coisa diferente que nem sei por onde começar', icon: '🤯' }
+                ]
+            },
             {
                 id: 'info2',
                 question: 'A verdadeira raiz do emagrecimento está no cérebro',
@@ -560,54 +624,60 @@ function getPersonalizedInfo2Content(userAnswer) {
                 isDynamic: true
             },
             {
-    id: 'info3',
-    question: 'Como funciona na prática?',
-    type: 'info_steps',
-    content: {
-        title: 'Como funciona na prática?',
-        subtitle: 'Basta 15 minutos por dia — o resto o seu subconsciente faz sozinho',
-        steps: [
-            { 
-                image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/5.png',
-                text: 'Baixe o AppAutoHipnose e escolha o programa de emagrecimento que já começa a reprogramar sua mente no primeiro play.'
-            },
-            { 
-                image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/2.png',
-                text: 'Coloque seus fones, dê o play e deixe a voz hipnótica guiar seu cérebro para novos hábitos saudáveis.'
-            },
-            { 
-                image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/3.png',
-                text: 'Relaxe sem esforço: pode ouvir antes de dormir ou em qualquer momento tranquilo do dia.'
-            },
-            { 
-                image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/4.png',
-                text: 'Enquanto você descansa, sua mente recebe comandos automáticos: menos desejo por comida que engorda, mais prazer em se movimentar.'
+                id: 'info3',
+                question: 'Como funciona na prática?',
+                type: 'info_steps',
+                content: {
+                    title: 'Como funciona na prática?',
+                    subtitle: 'Basta 15 minutos por dia — o resto o seu subconsciente faz sozinho',
+                    steps: [
+                        { 
+                            image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/5.png',
+                            text: 'Baixe o AppAutoHipnose e escolha o programa de emagrecimento que já começa a reprogramar sua mente no primeiro play.'
+                        },
+                        { 
+                            image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/2.png',
+                            text: 'Coloque seus fones, dê o play e deixe a voz hipnótica guiar seu cérebro para novos hábitos saudáveis.'
+                        },
+                        { 
+                            image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/3.png',
+                            text: 'Relaxe sem esforço: pode ouvir antes de dormir ou em qualquer momento tranquilo do dia.'
+                        },
+                        { 
+                            image: 'https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/4.png',
+                            text: 'Enquanto você descansa, sua mente recebe comandos automáticos: menos desejo por comida que engorda, mais prazer em se movimentar.'
+                        }
+                    ],
+                    footer: 'Em apenas 21 dias, dedicando 15 minutos por dia, seu cérebro passa a escolher automaticamente o que emagrece — comer melhor, ter energia para se movimentar e resistir ao que atrapalha seus resultados.'
+                }
             }
-        ],
-        footer: 'Em apenas 21 dias, dedicando 15 minutos por dia, seu cérebro passa a escolher automaticamente o que emagrece — comer melhor, ter energia para se movimentar e resistir ao que atrapalha seus resultados.'
-    }
-}
         ];
 
-        // Functions
+        // ========================================
+        // FUNÇÕES DE CONTROLE
+        // ========================================
         function handleQuizAnswer(answer) {
             const currentQ = quizQuestions[currentQuestion];
             
             if (currentQ.hasFollowUp && eatingHabitsFollowUp[answer]) {
                 quizData[currentQ.id] = answer;
                 showFollowUpQuestion(answer);
+                scrollToTop();
             } else {
                 quizData[currentQ.id] = answer;
                 
                 if (currentQuestion < quizQuestions.length - 1) {
                     currentQuestion++;
                     renderApp();
+                    scrollToTop();
                 } else {
                     currentStep = 'result';
+                    
                     if (typeof fbq !== 'undefined') {
                         fbq('track', 'CompleteRegistration');
                     }
                     renderApp();
+                    scrollToTop();
                 }
             }
         }
@@ -620,24 +690,29 @@ function getPersonalizedInfo2Content(userAnswer) {
                 currentQuestion = info2Index;
                 currentStep = 'quiz';
                 renderApp();
+                scrollToTop();
             }
         }
 
         function showFollowUpQuestion(mainAnswer) {
             currentStep = 'followup';
             renderApp();
+            scrollToTop();
         }
 
         function goBack() {
             if (currentStep === 'followup') {
                 currentStep = 'quiz';
                 renderApp();
+                scrollToTop();
             } else if (currentQuestion > 0) {
                 currentQuestion--;
                 renderApp();
+                scrollToTop();
             } else {
                 currentStep = 'home';
                 renderApp();
+                scrollToTop();
             }
         }
 
@@ -650,21 +725,30 @@ function getPersonalizedInfo2Content(userAnswer) {
                 fbq('track', 'Lead');
             }
             renderApp();
+            scrollToTop();
         }
 
         function handleCheckout() {
-            if (typeof fbq !== 'undefined') {
-                fbq('track', 'InitiateCheckout');
+            try {
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'InitiateCheckout');
+                }
+                
+                const baseUrl = 'https://pay.hotmart.com/N101998916J?off=6kcihxpj&checkoutMode=10';
+                const utmParams = new URLSearchParams(window.location.search);
+                const checkoutUrl = utmParams.toString() ? `${baseUrl}&${utmParams.toString()}` : baseUrl;
+                
+                window.location.href = checkoutUrl;
+                
+            } catch (error) {
+                console.error('Erro no checkout:', error);
+                window.location.href = 'https://pay.hotmart.com/N101998916J?off=6kcihxpj&checkoutMode=10';
             }
-            
-            const baseUrl = 'https://pay.hotmart.com/N101998916J?off=6kcihxpj&checkoutMode=10';
-            const utmParams = new URLSearchParams(window.location.search);
-            const checkoutUrl = utmParams.toString() ? `${baseUrl}?${utmParams.toString()}` : baseUrl;
-            
-            window.open(checkoutUrl, '_blank');
         }
 
-        // Render Functions
+        // ========================================
+        // RENDER: HOME PAGE
+        // ========================================
         function renderHomePage() {
             return `
                 <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
@@ -677,19 +761,19 @@ function getPersonalizedInfo2Content(userAnswer) {
                         </div>
                     </header>
 
-                    <div class="container mx-auto px-6 py-12">
-                        <div class="max-w-3xl mx-auto text-center space-y-6 mb-16">
+                    <div class="container mx-auto px-6 hero-section">
+                        <div class="max-w-3xl mx-auto text-center space-y-6 mb-12">
                             <h1 class="text-4xl lg:text-5xl font-bold leading-tight">
-                                Elimine de 0,5 a 1 kg por semana com apenas 15 minutos por dia
+                                Teste Gratuito: Reprograme seu Cérebro para Emagrecer 1 kg por Semana sem Esforço
                             </h1>
                             <p class="text-lg text-gray-300">
-    O segredo está na sua mente: enquanto dietas e academias lutam contra o consciente, seu subconsciente continua reforçando hábitos que engordam e te afastam da atividade física. Nosso áudio hipnótico reprograma seus hábitos e comportamentos em 21 dias — para emagrecer de forma automática e prazerosa.
-</p>
+                                O segredo está na sua mente: dietas e academias falham porque lutam contra o consciente. Nosso áudio hipnótico reprograma seus hábitos e comportamentos em 21 dias — para emagrecer de forma automática e prazerosa.
+                            </p>
                         </div>
 
                         <div class="mb-16">
                             <h2 class="text-3xl font-bold text-center mb-12">
-                                -VOCÊ PODE TER ESTES RESULTADOS-
+                                -RESULTADOS COMPROVADOS-
                             </h2>
                             
                             <div class="carousel-container relative max-w-6xl mx-auto">
@@ -717,11 +801,9 @@ function getPersonalizedInfo2Content(userAnswer) {
                                             <div class="mb-4">
                                                 <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/armando.png" alt="Antes e depois" class="w-full h-auto object-contain rounded-lg"/>
                                             </div>
-                                            <p class="text-gray-300 mb-4 italic">
-    "Ouvi o áudio por uma semana antes de dormir e simplesmente acordava com outras atitudes e desejos. Passei a comer melhor e, sem perceber, ganhei disposição para caminhar todos os dias."
-</p>
-<p class="text-sm text-gray-400">Antônio, 57</p>
-                                            </div>
+                                            <p class="text-gray-300 mb-4 italic">"Ouvi o áudio por uma semana antes de dormir e simplesmente acordava com outras atitudes e desejos. Passei a comer melhor e, sem perceber, ganhei disposição para caminhar todos os dias."</p>
+                                            <p class="text-sm text-gray-400">Antônio, 57</p>
+                                        </div>
                                     </div>
                                 </div>
                                 <button class="carousel-button prev">‹</button>
@@ -754,28 +836,28 @@ function getPersonalizedInfo2Content(userAnswer) {
                             <div class="space-y-4">
                                 <p class="text-lg text-gray-300">Cada dia que passa, seu cérebro reforça os hábitos que te fazem engordar. Escolha seu gênero e descubra o áudio hipnótico que troca desejos que engordam por hábitos que emagrecem — a partir de hoje.</p>
                             </div>
-                            <div class="flex gap-4 flex-col sm:flex-row">
+                            <div class="flex gap-4 flex-col sm:flex-row cta-buttons">
                                 <button onclick="startQuiz('male')" class="btn btn-xl flex-1 bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600 text-white font-semibold border-2 border-blue-400 pulse-button">♂ Sou Homem — Quero Emagrecer</button>
                                 <button onclick="startQuiz('female')" class="btn btn-xl flex-1 bg-gradient-to-r from-purple-500 to-pink-500 hover:from-purple-600 hover:to-pink-600 text-white font-semibold border-2 border-purple-400 pulse-button">♀ Sou Mulher — Quero Emagrecer</button>
                             </div>
                         </div>
                     </div>
 
-                    <footer class="bg-slate-900/50 border-t border-slate-700 py-8 mt-20">
+                    <footer class="footer-improved py-8 mt-12">
                         <div class="container mx-auto px-6">
-                            <div class="flex flex-wrap justify-between items-center">
+                            <div class="flex flex-wrap justify-between items-center mb-6">
                                 <div class="flex items-center gap-2 mb-4 lg:mb-0">
                                     <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center">
-                                       <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/AppAutoconhecimento.jpg" alt="Logo" class="w-8 h-8 rounded-full object-cover">
+                                        <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/AppAutoconhecimento.jpg" alt="Logo" class="w-8 h-8 rounded-full object-cover">
                                     </div>
-                                    <span class="text-xl font-semibold">AppAutoHipnose</span>
+                                    <span class="text-xl font-semibold footer-text-primary">AppAutoHipnose</span>
                                 </div>
                                 <div class="flex flex-wrap gap-6 text-sm">
-                                    <a href="#" class="text-gray-400 hover:text-white transition-colors">Hipnoterapeuta responsável: Alex Andreoli Dantas</a>
-                                    <a href="#" class="text-gray-400 hover:text-white transition-colors">WhatsApp: (19) 974010028</a>
-                                    </div>
+                                    <a href="#" class="hover:text-white transition-colors">Hipnoterapeuta responsável: Alex Andreoli Dantas</a>
+                                    <a href="https://wa.me/5519974010028" target="_blank" class="hover:text-white transition-colors">WhatsApp: (19) 97401-0028</a>
+                                </div>
                             </div>
-                            <div class="mt-4 pt-4 border-t border-slate-700 flex justify-between text-sm text-gray-400">
+                            <div class="pt-4 border-t border-purple-800 flex flex-col sm:flex-row justify-between gap-4 text-sm footer-text-secondary">
                                 <p>© 2025 AppAutoHipnose. Todos os direitos reservados.</p>
                                 <p>Aviso: Não substitui médico e medicamentos.</p>
                             </div>
@@ -785,6 +867,9 @@ function getPersonalizedInfo2Content(userAnswer) {
             `;
         }
 
+        // ========================================
+        // RENDER: FOLLOW-UP PAGE
+        // ========================================
         function renderFollowUpPage() {
             const mainAnswer = quizData['eating_habits'];
             const followUp = eatingHabitsFollowUp[mainAnswer];
@@ -822,6 +907,9 @@ function getPersonalizedInfo2Content(userAnswer) {
             `;
         }
 
+        // ========================================
+        // RENDER: QUIZ PAGE
+        // ========================================
         function renderQuizPage() {
             const question = quizQuestions[currentQuestion];
             const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
@@ -951,110 +1039,103 @@ function getPersonalizedInfo2Content(userAnswer) {
             }
         }
 
+        // ========================================
+        // RENDER: RESULT PAGE
+        // ========================================
         function renderResultPage() {
-    return `
-        <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
-            <div class="container mx-auto px-6 py-12">
-                <div class="max-w-2xl mx-auto text-center space-y-8">
-                    
-                    <!-- Headline -->
-                    <div class="space-y-4">
-                        <h1 class="text-4xl font-bold">Parabéns!</h1>
-                        <p class="text-xl text-gray-300">
-                            Seu áudio de hipnoterapia para emagrecer está pronto —
-                            substitua hábitos que engordam por comportamentos que emagrecem.
-                        </p>
-                    </div>
+            return `
+                <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
+                    <div class="container mx-auto px-6 py-12">
+                        <div class="max-w-2xl mx-auto text-center space-y-8">
+                            
+                            <div class="space-y-4">
+                                <h1 class="text-4xl font-bold">Seu Áudio Personalizado Está Pronto!</h1>
+                                <p class="text-xl text-gray-300">
+                                    A chave para emagrecer de vez não é a dieta, é a reprogramação.
+                                </p>
+                                <p class="text-lg text-yellow-400 font-semibold italic">Fazer a Reprogramação Mental é a chave para Emagrecer sem Esforço. A melhor forma é com nosso Áudio Hipnótico de 15 minutos.</p>
+                            </div>
 
-                    <!-- O que recebe -->
-                    <div class="space-y-4">
-                        <h3 class="text-xl font-semibold text-center">O que você recebe hoje:</h3>
-                        <div class="space-y-3 text-gray-300">
-                            <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span><strong>Áudio Hipnótico completo</strong> — pode ouvir quantas vezes quiser</span></div>
-                            <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span><strong>Acesso</strong> ao aplicativo AppAutoHipnose</span></div>
-                            <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span><strong>Lições e Instruções</strong> de hipnoterapia diretamente no aplicativo</span></div>
-                            <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span><strong>Atualizações gratuitas</strong> incluídas</span></div>
-                            <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span><strong>Baseado em ciência</strong> — estudos de Stanford e Harvard</span></div>
-                        </div>
-                    </div>
+                            <div class="bg-slate-800/50 border border-slate-700 rounded-xl p-5 space-y-4">
+                                <h3 class="text-xl font-semibold text-center mb-4">O que você recebe hoje:</h3>
+                                <div class="space-y-3 text-gray-300 text-left">
+                                    <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span>**Jornada de 4 Sessões de Hipnose** (O Start, Fome Emocional, Sabedoria do Corpo, O Corpo que Já é Seu)</span></div>
+                                    <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span>**PNL - Sua Frase do Dia** (Reforço mental diário)</span></div>
+                                    <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span>**Acesso Vitalício** ao AppAutoHipnose</span></div>
+                                    <div class="flex items-start gap-3"><span class="text-green-400 text-xl flex-shrink-0">✓</span><span>**Áudios de 15 minutos** — ouça onde e quando quiser</span></div>
+                                </div>
+                            </div>
 
-                    <!-- Bônus -->
-                    <div class="bg-purple-900/30 border border-purple-600 rounded-xl p-5 space-y-4">
-                        <div class="flex items-center justify-center gap-2">
-                            <span class="text-sm uppercase tracking-wide text-purple-200">Bônus</span>
-                            <span class="text-xs px-2 py-0.5 bg-purple-600/30 border border-purple-500 text-purple-100 rounded-full">Válido hoje</span>
-                        </div>
+                            <div class="bg-purple-900/30 border border-purple-600 rounded-xl p-5 space-y-4">
+                                <div class="flex items-center justify-center gap-2">
+                                    <span class="text-sm uppercase tracking-wide text-purple-200">Bônus Exclusivo</span>
+                                    <span class="text-xs px-2 py-0.5 bg-purple-600/30 border border-purple-500 text-purple-100 rounded-full">Válido hoje</span>
+                                </div>
 
-                        <div class="space-y-4 text-left text-gray-300">
-                            <!-- Bônus 1 -->
-                            <div>
-                                <div class="flex items-center justify-between">
-                                    <h4 class="font-semibold">Perfil Comportamental</h4>
-                                    <div class="text-right text-sm">
-                                        <div class="line-through text-gray-400">R$ 19,90</div>
-                                        <div class="text-green-400 font-bold">Hoje: R$ 0</div>
+                                <div class="space-y-4 text-left text-gray-300">
+                                    <div>
+                                        <div class="flex items-center justify-between">
+                                            <h4 class="font-semibold">Perfil Comportamental</h4>
+                                            <div class="text-right text-sm">
+                                                <div class="line-through text-gray-400">R$ 19,90</div>
+                                                <div class="text-green-400 font-bold">Hoje: R$ 0</div>
+                                            </div>
+                                        </div>
+                                        <p class="mt-1 text-sm leading-relaxed">
+                                            Descubra seu perfil e seja mais autêntico, reduzindo a ansiedade que leva à compulsão.
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <div class="flex items-center justify-between">
+                                            <h4 class="font-semibold">PNL — Sua Frase do Dia</h4>
+                                            <div class="text-right text-sm">
+                                                <div class="line-through text-gray-400">R$ 19,90</div>
+                                                <div class="text-green-400 font-bold">Hoje: R$ 0</div>
+                                            </div>
+                                        </div>
+                                        <p class="mt-1 text-sm leading-relaxed">
+                                            Receba diariamente uma frase que fortalece seu objetivo e te transforma de dentro pra fora. Não é motivação, é PNL.
+                                        </p>
                                     </div>
                                 </div>
-                                <p class="mt-1 text-sm leading-relaxed">
-                                    Descubra seu perfil e seja mais autêntico, reduzindo a ansiedade que leva à compulsão.
+
+                                <p class="text-xs text-purple-200 text-center italic">
+                                    *Esses bônus só estão disponíveis se você ativar hoje. Depois, voltam ao preço normal.
                                 </p>
                             </div>
 
-                            <!-- Bônus 2 -->
-                            <div>
-                                <div class="flex items-center justify-between">
-                                    <h4 class="font-semibold">PNL — Sua Frase do Dia</h4>
-                                    <div class="text-right text-sm">
-                                        <div class="line-through text-gray-400">R$ 19,90</div>
-                                        <div class="text-green-400 font-bold">Hoje: R$ 0</div>
-                                    </div>
-                                </div>
-                                <p class="mt-1 text-sm leading-relaxed">
-                                    Receba diariamente uma frase que fortalece seu objetivo e te transforma de dentro pra fora. Não é motivação, é PNL.
+                            <div class="text-center py-4 bg-slate-800/50 rounded-xl p-5 border border-slate-700">
+                                <p class="text-lg text-gray-300 line-through mb-1">Valor Original: R$ 197,00</p>
+                                <p class="text-sm text-gray-300 mb-2">Mas como você respondeu ao nosso Teste Gratuito, você tem um Desconto Exclusivo:</p>
+                                <p class="text-3xl font-bold text-red-500">POR APENAS:</p>
+                                <p class="text-5xl font-bold text-green-400">R$ 37,90</p>
+                                <p class="text-sm text-gray-400 mt-2">Pagamento único — acesso imediato</p>
+                            </div>
+
+                            <div class="bg-green-900/30 border border-green-600 rounded-xl p-5 text-center">
+                                <p class="text-green-400 font-semibold text-lg mb-2">🔒 Teste sem risco por 7 dias</p>
+                                <p class="text-gray-300 text-sm">
+                                    Se não sentir diferença nos seus hábitos em até 7 dias, devolvemos cada centavo.
+                                    Sem burocracia, sem letras miúdas.
                                 </p>
                             </div>
+
                         </div>
 
-                        <p class="text-xs text-purple-200 text-center italic">
-                            *Esses bônus só estão disponíveis se você ativar hoje. Depois, voltam ao preço normal.
-                        </p>
-                    </div>
+                        <button onclick="handleCheckout()" class="btn btn-2xl mt-6 mx-auto block w-full max-w-sm bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold pulse-button">
+                            🎧 Quero ativar meu áudio agora
+                        </button>
 
-                    <!-- Selo de desconto -->
-                    <div class="flex justify-center">
-                        <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/desconto%20valido%20hoje1.png"
-                             alt="Desconto válido hoje" class="mx-auto w-56 sm:w-64 h-auto mb-2">
+                        <p class="text-sm text-gray-400 mt-2 text-center">Acesso imediato após a confirmação do pagamento</p>
                     </div>
-
-                    <!-- Preço -->
-                    <div class="text-center py-4">
-                        <p class="text-sm text-gray-300 mb-1">Ative agora com desconto especial:</p>
-                        <p class="text-4xl font-bold text-green-400">R$ 37,90</p>
-                        <p class="text-sm text-gray-400 mt-2">Pagamento único — acesso imediato</p>
-                    </div>
-
-                    <!-- Garantia -->
-                    <div class="bg-green-900/30 border border-green-600 rounded-xl p-5 text-center">
-                        <p class="text-green-400 font-semibold text-lg mb-2">🔒 Teste sem risco por 7 dias</p>
-                        <p class="text-gray-300 text-sm">
-                            Se não sentir diferença nos seus hábitos em até 7 dias, devolvemos cada centavo.
-                            Sem burocracia, sem letras miúdas.
-                        </p>
-                    </div>
-
                 </div>
+            `;
+        }
 
-                <!-- CTA -->
-                <button onclick="handleCheckout()" class="btn btn-2xl mt-6 mx-auto block w-full max-w-sm bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold pulse-button">
-    🎧 Quero ativar meu áudio agora
-</button>
-
-                <p class="text-sm text-gray-400 mt-2 text-center">Acesso imediato após a confirmação do pagamento</p>
-            </div>
-        </div>
-    `;
-}
-
+        // ========================================
+        // RENDER APP - Controla qual página mostrar
+        // ========================================
         function renderApp() {
             const app = document.getElementById('app');
             
@@ -1078,7 +1159,9 @@ function getPersonalizedInfo2Content(userAnswer) {
             }
         }
 
-        // Initialize App
+        // ========================================
+        // INITIALIZE APP
+        // ========================================
         document.addEventListener('DOMContentLoaded', function() {
             initUTMTracker();
             renderApp();
