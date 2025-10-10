@@ -925,8 +925,14 @@
                     quizData.dietaryProfile = calculateDietaryProfile(quizData);
                     currentStep = 'result';
                     
+                    // Evento CompleteRegistration com mais dados
                     if (typeof fbq !== 'undefined') {
-                        fbq('track', 'CompleteRegistration');
+                        fbq('track', 'CompleteRegistration', {
+                            content_name: 'Quiz Completado',
+                            status: 'completed',
+                            value: 0,
+                            currency: 'BRL'
+                        });
                     }
                     renderApp();
                     scrollToTop();
@@ -977,8 +983,13 @@
             currentStep = 'quiz';
             currentQuestion = 1;
             
+            // Evento Lead com mais dados
             if (typeof fbq !== 'undefined') {
-                fbq('track', 'Lead');
+                fbq('track', 'Lead', {
+                    content_name: 'Quiz Iniciado',
+                    content_category: 'Lead Generation',
+                    gender: gender
+                });
             }
             renderApp();
             scrollToTop();
@@ -987,29 +998,69 @@
         function goToOffer() {
             currentStep = 'offer';
             
+            // Evento ViewContent com dados completos
             if (typeof fbq !== 'undefined') {
-                fbq('track', 'ViewContent');
+                fbq('track', 'ViewContent', {
+                    content_name: 'Página de Oferta',
+                    content_ids: ['oferta-emagrecimento-21dias'],
+                    content_type: 'product',
+                    value: 37.90,
+                    currency: 'BRL'
+                });
             }
             
             renderApp();
             scrollToTop();
         }
 
+        // ========================================
+        // CHECKOUT COM DELAY (CORRIGIDO)
+        // ========================================
         function handleCheckout() {
             try {
-                if (typeof fbq !== 'undefined') {
-                    fbq('track', 'InitiateCheckout');
+                // Previne múltiplos cliques
+                if (window.checkoutInProgress) {
+                    console.log('⚠️ Checkout já em andamento...');
+                    return;
                 }
+                window.checkoutInProgress = true;
                 
+                // Prepara a URL de checkout
                 const baseUrl = 'https://pay.hotmart.com/N101998916J?off=6kcihxpj&checkoutMode=10';
                 const utmParams = new URLSearchParams(window.location.search);
                 const checkoutUrl = utmParams.toString() ? `${baseUrl}&${utmParams.toString()}` : baseUrl;
                 
-                window.location.href = checkoutUrl;
+                // Dispara o evento do Facebook Pixel COM DADOS COMPLETOS
+                if (typeof fbq !== 'undefined') {
+                    fbq('track', 'InitiateCheckout', {
+                        currency: 'BRL',
+                        value: 37.90,
+                        content_name: 'Plano Completo 21 Dias - Emagrecimento',
+                        content_ids: ['emagrecimento-21dias'],
+                        content_type: 'product',
+                        num_items: 1
+                    });
+                    
+                    console.log('✅ InitiateCheckout disparado com sucesso');
+                    
+                    // DELAY DE 500MS para garantir envio do pixel
+                    setTimeout(function() {
+                        console.log('🚀 Redirecionando para checkout...');
+                        window.location.href = checkoutUrl;
+                    }, 500);
+                    
+                } else {
+                    // Se fbq não estiver disponível, redireciona direto
+                    console.warn('⚠️ Facebook Pixel não encontrado - Redirecionando direto');
+                    window.location.href = checkoutUrl;
+                }
                 
             } catch (error) {
-                console.error('Erro no checkout:', error);
-                window.location.href = 'https://pay.hotmart.com/N101998916J?off=6kcihxpj&checkoutMode=10';
+                console.error('❌ Erro no checkout:', error);
+                // Em caso de erro, garante o redirecionamento
+                window.checkoutInProgress = false;
+                const baseUrl = 'https://pay.hotmart.com/N101998916J?off=6kcihxpj&checkoutMode=10';
+                window.location.href = baseUrl;
             }
         }
 
@@ -1184,7 +1235,8 @@
                 </div>
             `;
         }
-// ========================================
+
+        // ========================================
         // RENDER: FOLLOW-UP PAGE
         // ========================================
         function renderFollowUpPage() {
@@ -1580,7 +1632,7 @@
                                 <div class="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
                                     <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/AppAutoconhecimento.jpg" alt="Logo" class="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover">
                                 </div>
-                                <span class="text-base sm:text-xl font-semibold hidden sm:inline">AppAutoHipnose</span>
+                               <span class="text-base sm:text-xl font-semibold hidden sm:inline">AppAutoHipnose</span>
                             </div>
                         </div>
                     </header>
@@ -1756,7 +1808,7 @@
             `;
         }
 
-// ========================================
+        // ========================================
         // HELPER FUNCTIONS
         // ========================================
         
