@@ -375,6 +375,94 @@
             height: auto;
             display: block;
         }
+      /* ========================================
+   CAROUSEL 2 - PESSOAS COMUNS (CSS ADICIONAL)
+   ======================================== */
+.carousel-container-2 {
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    touch-action: pan-y;
+}
+
+.carousel-track-2 {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide-2 {
+    min-width: 100%;
+    padding: 0 0.5rem;
+}
+
+@media (min-width: 768px) {
+    .carousel-slide-2 {
+        min-width: 33.333%;
+        padding: 0 1rem;
+    }
+}
+
+.carousel-button-2 {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10;
+    transition: background 0.3s;
+}
+
+@media (min-width: 768px) {
+    .carousel-button-2 {
+        width: 44px;
+        height: 44px;
+    }
+}
+
+.carousel-button-2:hover {
+    background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-button-2.prev {
+    left: 5px;
+}
+
+.carousel-button-2.next {
+    right: 5px;
+}
+
+@media (min-width: 768px) {
+    .carousel-button-2.prev { left: 10px; }
+    .carousel-button-2.next { right: 10px; }
+}
+
+.carousel-dot-2 {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+@media (min-width: 768px) {
+    .carousel-dot-2 {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+.carousel-dot-2.active {
+    background: rgba(255, 255, 255, 1);
+}
     </style>
 </head>
 <body>
@@ -388,295 +476,56 @@
         let quizData = {};
         let currentQuestion = 0;
         let currentSlide = 0;
+        let currentSlide2 = 0;
         let touchStartX = 0;
         let touchEndX = 0;
+        let autoplayInterval = null;
+        let autoplayInterval2 = null;
 
         // ========================================
-        // PERFIS DIETÉTICOS (CSIRO)
+        // NOVOS PERFIS COMPORTAMENTAIS
         // ========================================
         const dietaryProfiles = {
-            'thinker': {
-                name: 'O Pensador',
-                icon: '🧠',
-                description: 'Orientado a metas, gosta de planejamento e análise',
-                challenge: 'Pode "pensar demais", gerar ansiedade ou ficar preso em detalhes',
-                strategy: 'Trocar foco "quanto perder" por "ação diária pequena", usar recompensas intermediárias',
-                color: 'from-blue-500 to-cyan-500'
-            },
-            'battler': {
-                name: 'O Lutador',
-                icon: '⚔️',
-                description: 'Vive em tensão entre desejo e tentação: frequentemente tenta resistir',
-                challenge: 'Vulnerável ao estresse que leva a "escorregadas"',
-                strategy: 'Aceitar que haverá deslizes, construir estratégias de distração, ter plano de resgate',
-                color: 'from-red-500 to-orange-500'
-            },
-            'anxious': {
-                name: 'O Ansioso',
-                icon: '😰',
-                description: 'Alto impulso para comer por emoções, calorias vistas como tentação constante',
-                challenge: 'Dificuldade em resistir a impulsos emocionais',
-                strategy: '"Comidas preferidas fora de vista", trabalhar com regulação emocional',
+            'emotional': {
+                name: 'Comedor Emocional',
+                icon: '😢',
+                description: 'Você usa a comida como válvula de escape para lidar com emoções difíceis como estresse, ansiedade, tristeza ou tédio.',
+                challenge: 'Come por impulso emocional, não por fome física',
+                strategy: 'Desenvolver regulação emocional e criar novas respostas ao estresse que não envolvam comida',
                 color: 'from-purple-500 to-pink-500'
             },
-            'compliant': {
-                name: 'O Conformista',
-                icon: '🌊',
-                description: 'Menos propenso a buscar mudanças radicais, tende a seguir rotinas confortáveis',
-                challenge: 'Resistência a mudanças bruscas',
-                strategy: 'Introduzir pequenas rupturas de hábito, "microdesafios"',
+            'restrictive': {
+                name: 'Comedor Restritivo',
+                icon: '⚖️',
+                description: 'Você vive em ciclos de restrição extrema seguidos de culpa intensa. Faz dietas rígidas e sente ansiedade com "alimentos proibidos".',
+                challenge: 'Mentalidade tudo-ou-nada gera ciclos de restrição e compensação',
+                strategy: 'Trabalhar flexibilidade alimentar, auto-compaixão e quebrar a mentalidade de alimentos "bons" e "ruins"',
+                color: 'from-blue-500 to-cyan-500'
+            },
+            'automatic': {
+                name: 'Comedor Automático',
+                icon: '🔄',
+                description: 'Você come por hábito, distração ou rotina — muitas vezes sem fome real, apenas porque "está na hora" ou está fazendo outra atividade.',
+                challenge: 'Falta de consciência alimentar leva ao consumo excessivo',
+                strategy: 'Praticar alimentação consciente (mindful eating) e identificar gatilhos ambientais',
                 color: 'from-teal-500 to-green-500'
             },
-            'gourmet': {
-                name: 'O Gourmet',
-                icon: '🍷',
-                description: 'Dá grande importância ao prazer da comida (sabor, textura)',
-                challenge: 'Enfrenta o dilema entre comer bem e comer pouco',
-                strategy: 'Buscar versões saborosas e saudáveis, cultivar "prazer consciente"',
-                color: 'from-amber-500 to-yellow-500'
-            },
-            'socializer': {
-                name: 'O Socializador',
+            'social': {
+                name: 'Comedor Social',
                 icon: '🎉',
-                description: 'Foco em ambientes sociais, eventos, comer junto',
-                challenge: 'Pode ceder mais facilmente em situações de grupo ou festividades',
-                strategy: 'Planejar escolhas antecipadas em eventos, trazer "aliado nutricional"',
-                color: 'from-pink-500 to-rose-500'
+                description: 'Você come significativamente mais em eventos, encontros e ocasiões sociais. O ambiente e as pessoas ditam seu apetite.',
+                challenge: 'Influência social e festiva leva a excessos frequentes',
+                strategy: 'Planejar estratégias antecipadas para eventos e desenvolver assertividade para escolhas saudáveis',
+                color: 'from-amber-500 to-orange-500'
+            },
+            'compulsive': {
+                name: 'Comedor Compulsivo',
+                icon: '🍫',
+                description: 'Você tem episódios recorrentes de perda de controle e exagero alimentar, geralmente seguidos de profundo arrependimento.',
+                challenge: 'Episódios de compulsão seguidos de culpa e vergonha',
+                strategy: 'Trabalhar compulsão alimentar com suporte especializado, identificar gatilhos e desenvolver estratégias de interrupção',
+                color: 'from-red-500 to-rose-500'
             }
-        };
-
-        // ========================================
-        // CARDS DE PROBLEMATIZAÇÃO POR PERFIL
-        // ========================================
-        const profileProblems = {
-            'thinker': [
-                {
-                    icon: '🔄',
-                    title: 'Paralisia por Análise',
-                    problem: 'Você passa mais tempo PLANEJANDO a dieta perfeita do que EXECUTANDO. Enquanto isso, os quilos continuam.',
-                    consequence: 'Meses se passam, você continua no mesmo peso.'
-                },
-                {
-                    icon: '😰',
-                    title: 'Ansiedade de Performance',
-                    problem: 'Cobra tanto de si mesmo que qualquer "deslize" vira motivo para desistir completamente.',
-                    consequence: 'Um único brigadeiro = "Já estraguei tudo, começo segunda-feira".'
-                },
-                {
-                    icon: '📊',
-                    title: 'Obsessão por Números',
-                    problem: 'Sobe na balança 3x por dia. Se não perdeu peso HOJE, entra em crise e sabota tudo.',
-                    consequence: 'Seu humor depende da balança. E quando ela não coopera, você desiste.'
-                },
-                {
-                    icon: '🎯',
-                    title: 'Meta Inalcançável',
-                    problem: 'Quer perder 10kg em 1 mês. Como é impossível, desiste na 2ª semana por frustração.',
-                    consequence: 'Metas irreais = ciclo eterno de frustração e abandono.'
-                },
-                {
-                    icon: '🧠',
-                    title: 'Mente Nunca Descansa',
-                    problem: 'Seu cérebro fica 24h analisando calorias, planos, estratégias. Isso ESGOTA sua força de vontade.',
-                    consequence: 'Quanto mais você pensa, MENOS você age. E a gordura fica.'
-                },
-                {
-                    icon: '⚡',
-                    title: 'Burnout de Dieta',
-                    problem: 'Já testou TUDO. Agora está mentalmente exausto só de pensar em "mais uma tentativa".',
-                    consequence: 'Você SABE o que fazer, mas seu cérebro está programado para resistir.'
-                }
-            ],
-            'battler': [
-                {
-                    icon: '⚔️',
-                    title: 'Guerra Diária Impossível',
-                    problem: 'Você luta contra tentações o dia todo. É como segurar a respiração debaixo d\'água: uma hora você cede.',
-                    consequence: 'Resistir com força de vontade tem prazo de validade. E quando acaba, você DESMORONA.'
-                },
-                {
-                    icon: '🍫',
-                    title: 'Efeito Dominó',
-                    problem: 'Um brigadeiro vira uma caixa inteira. Um hambúrguer vira "já que estraguei, vou comer tudo hoje".',
-                    consequence: 'Você não tem "meio termo". Ou está em dieta radical ou em sabotagem total.'
-                },
-                {
-                    icon: '😔',
-                    title: 'Culpa Crônica',
-                    problem: 'Depois de cada deslize, você se pune mentalmente. Isso gera mais ansiedade... que gera mais comida.',
-                    consequence: 'Ciclo vicioso: comer → culpa → ansiedade → comer mais.'
-                },
-                {
-                    icon: '🔥',
-                    title: 'Tudo ou Nada',
-                    problem: 'Segunda-feira = dieta perfeita. Terça-feira = 1 doce. Quarta = "ferrou tudo, desisti".',
-                    consequence: 'Seu cérebro não sabe viver no equilíbrio. É 0 ou 100. E isso te mantém gordo.'
-                },
-                {
-                    icon: '🌪️',
-                    title: 'Estresse = Descontrole',
-                    problem: 'Qualquer problema na vida vira desculpa para "compensar" na comida. Trabalho, família, trânsito...',
-                    consequence: 'Sua vida nunca estará 100% calma. Enquanto isso, você engorda.'
-                },
-                {
-                    icon: '⏰',
-                    title: 'Ciclo do Fracasso',
-                    problem: 'Você já tentou tantas vezes que seu próprio cérebro NÃO ACREDITA mais que você consegue.',
-                    consequence: 'Seu subconsciente está programado para o FRACASSO. E ele sempre vence.'
-                }
-            ],
-            'anxious': [
-                {
-                    icon: '😰',
-                    title: 'Comida = Calmante',
-                    problem: 'Ansiedade bate? Você vai direto pra comida. É seu único remédio. E os quilos não param de subir.',
-                    consequence: 'Enquanto você não tratar a CAUSA (ansiedade), a comida sempre será a solução.'
-                },
-                {
-                    icon: '🍩',
-                    title: 'Impulso Incontrolável',
-                    problem: 'Você vê o doce, SABE que não deveria... mas 5 segundos depois já está comendo. Sem pensar.',
-                    consequence: 'Seu cérebro decide por você. E ele SEMPRE escolhe a comida.'
-                },
-                {
-                    icon: '💭',
-                    title: 'Pensamento Invasivo',
-                    problem: 'Chocolate na gaveta? Você PENSA nele o dia inteiro até ceder. É uma obsessão.',
-                    consequence: 'Você gasta energia mental resistindo... até não aguentar mais e devorar tudo.'
-                },
-                {
-                    icon: '🌙',
-                    title: 'Ansiedade Noturna',
-                    problem: 'De noite é pior. Solidão, cansaço, tédio... e você ataca a geladeira antes de dormir.',
-                    consequence: 'Você acorda com culpa e barriga pesada. E repete no dia seguinte.'
-                },
-                {
-                    icon: '🎭',
-                    title: 'Emoções = Quilos',
-                    problem: 'Tristeza, raiva, solidão, até felicidade... TUDO vira desculpa para comer.',
-                    consequence: 'Suas emoções controlam seu peso. E você não consegue separar uma coisa da outra.'
-                },
-                {
-                    icon: '🔒',
-                    title: 'Prisão Mental',
-                    problem: 'Você sente que a comida te domina. Não é você quem decide, é a ansiedade.',
-                    consequence: 'Enquanto a ansiedade mandar no seu cérebro, você NUNCA vai emagrecer.'
-                }
-            ],
-            'compliant': [
-                {
-                    icon: '🛋️',
-                    title: 'Zona de Conforto Fatal',
-                    problem: 'Você sabe que precisa mudar, mas "amanhã eu começo". E amanhã nunca chega.',
-                    consequence: 'Enquanto você adia, os quilos se acumulam. E fica cada vez mais difícil.'
-                },
-                {
-                    icon: '🔄',
-                    title: 'Rotina Automática',
-                    problem: 'Seu dia é no piloto automático: mesmos lanches, mesma inatividade, mesmas desculpas.',
-                    consequence: 'Rotina errada = corpo errado. E você não consegue quebrar o padrão.'
-                },
-                {
-                    icon: '😴',
-                    title: 'Preguiça Disfarçada',
-                    problem: '"Estou cansado", "depois eu faço", "hoje não dá"... Sempre tem uma desculpa perfeita.',
-                    consequence: 'Seu cérebro está PROGRAMADO para evitar esforço. E você obedece.'
-                },
-                {
-                    icon: '📺',
-                    title: 'Entretenimento > Saúde',
-                    problem: 'Netflix + salgadinho é mais fácil do que ir caminhar. Então você NUNCA vai.',
-                    consequence: 'Prazer imediato vence saúde futura. Sempre. Até você ter um problema grave.'
-                },
-                {
-                    icon: '🎯',
-                    title: 'Sem Urgência',
-                    problem: '"Ainda não tá tão gordo assim". Até que você olha no espelho e não se reconhece mais.',
-                    consequence: 'Quando você REALMENTE se preocupar, pode ser tarde demais.'
-                },
-                {
-                    icon: '⚙️',
-                    title: 'Resistência à Mudança',
-                    problem: 'Qualquer mudança parece "muito difícil". Então você não tenta. E continua do mesmo jeito.',
-                    consequence: 'Seu cérebro odeia mudanças. Enquanto ele mandar, você fica preso no corpo que tem.'
-                }
-            ],
-            'gourmet': [
-                {
-                    icon: '🍷',
-                    title: 'Prazer Acima de Tudo',
-                    problem: 'Você não come para saciar fome. Você come pela EXPERIÊNCIA. E isso te mantém gordo.',
-                    consequence: 'Enquanto sabor for mais importante que saúde, você não vai emagrecer.'
-                },
-                {
-                    icon: '🍰',
-                    title: 'Sofisticação = Calorias',
-                    problem: 'Queijos, vinhos, sobremesas artesanais... Você chama de "apreciar", mas é excesso.',
-                    consequence: 'Seu paladar refinado está destruindo seu corpo. E você não quer aceitar isso.'
-                },
-                {
-                    icon: '😋',
-                    title: 'Romantização da Comida',
-                    problem: 'Você transforma COMER em evento. Jantar especial, brunch elaborado, sobremesa "obrigatória"...',
-                    consequence: 'Comida virou protagonista da sua vida. E você o escravo dela.'
-                },
-                {
-                    icon: '🥗',
-                    title: 'Comida Saudável = Sem Graça',
-                    problem: 'Você acha que emagrecer = comer mal. Então NEM TENTA, porque não vale a pena "sofrer".',
-                    consequence: 'Enquanto você pensar assim, vai continuar gordo. E infeliz.'
-                },
-                {
-                    icon: '🍫',
-                    title: 'Chocolate de R$50',
-                    problem: 'Você só come "o melhor". Mas "o melhor" tem 500 calorias. E você come TODO DIA.',
-                    consequence: 'Qualidade não justifica quantidade. E seu corpo não perdoa.'
-                },
-                {
-                    icon: '👨‍🍳',
-                    title: 'Chef do Fracasso',
-                    problem: 'Você cozinha tão bem que torna impossível resistir. Sua habilidade na cozinha está te sabotando.',
-                    consequence: 'Você está gordo por ser BOM demais. E não sabe como parar.'
-                }
-            ],
-            'socializer': [
-                {
-                    icon: '🎉',
-                    title: 'Happy Hour Toda Semana',
-                    problem: 'Segunda: churrasco. Sexta: balada. Sábado: aniversário. Você NUNCA está em dieta nos fins de semana.',
-                    consequence: '5 dias de dieta anulados por 2 dias de excessos. Resultado? Zero.'
-                },
-                {
-                    icon: '🍻',
-                    title: 'Pressão Social',
-                    problem: '"Só uma cervejinha!", "Ah, come um pedaço!"... Você não consegue dizer NÃO para ninguém.',
-                    consequence: 'Você prioriza agradar os outros mais do que cuidar de você. E engorda.'
-                },
-                {
-                    icon: '😅',
-                    title: 'Medo de Ser o "Chato"',
-                    problem: 'Se você pedir salada, vão te zoar. Então você pede batata frita para não parecer "fresquinho".',
-                    consequence: 'Sua imagem social é mais importante que sua saúde. Até seu coração parar.'
-                },
-                {
-                    icon: '📸',
-                    title: 'Instagram = Calorias',
-                    problem: 'Você vai em restaurantes para POSTAR. Mas come tudo. Porque "já que estou aqui...".',
-                    consequence: 'Likes não queimam calorias. Mas você continua priorizando a foto.'
-                },
-                {
-                    icon: '👥',
-                    title: 'Nunca Sozinho',
-                    problem: 'Você sempre está em grupo. E grupos SEMPRE comem e bebem demais. Sem exceção.',
-                    consequence: 'Enquanto você precisar de validação social, vai continuar gordo.'
-                },
-                {
-                    icon: '🎭',
-                    title: 'Personalidade = Comida',
-                    problem: 'Você é "o engraçado que come demais", "o animado do churrasco". Seu peso virou sua IDENTIDADE.',
-                    consequence: 'Você tem MEDO de emagrecer porque não sabe quem seria sem isso.'
-                }
-            ]
         };
 
         // ========================================
@@ -782,6 +631,16 @@
                     { value: 'late_night', label: 'Começo animado(a) com exercícios, mas logo abandono', icon: '🏃' },
                     { value: 'stress_eating', label: 'Sei o que fazer, mas não consigo colocar em prática', icon: '🤯' }
                 ]
+            },
+            {
+                id: 'after_diet',
+                question: 'Quando você sai da dieta, o que costuma acontecer?',
+                type: 'multiple',
+                options: [
+                    { value: 'restrictive', label: 'Tento compensar com mais restrição e sinto muita culpa', icon: '⚖️' },
+                    { value: 'compulsive', label: 'Perco o controle completamente e como demais', icon: '🍫' },
+                    { value: 'automatic', label: 'Simplesmente volto à rotina normal sem perceber', icon: '🔄' }
+                ]
             }
         ];
 
@@ -856,60 +715,111 @@
         }
 
         // ========================================
-        // ALGORITMO DE IDENTIFICAÇÃO DE PERFIL
+        // ALGORITMO DE IDENTIFICAÇÃO DE PERFIL (ATUALIZADO)
         // ========================================
         function calculateDietaryProfile(answers) {
             const scores = {
-                thinker: 0,
-                battler: 0,
-                anxious: 0,
-                compliant: 0,
-                gourmet: 0,
-                socializer: 0
+                emotional: 0,
+                restrictive: 0,
+                automatic: 0,
+                social: 0,
+                compulsive: 0
             };
 
-            if (answers.goal === 'self-esteem') scores.thinker += 2;
-            if (answers.goal === 'movement') scores.battler += 1;
-            if (answers.goal === 'looks') scores.socializer += 1;
-            if (answers.goal === 'longevity') scores.thinker += 1;
+            // Análise da pergunta "goal"
+            if (answers.goal === 'self-esteem') {
+                scores.emotional += 2;
+                scores.restrictive += 1;
+            }
+            if (answers.goal === 'movement') {
+                scores.automatic += 1;
+            }
+            if (answers.goal === 'looks') {
+                scores.social += 2;
+            }
+            if (answers.goal === 'longevity') {
+                scores.restrictive += 1;
+            }
 
-            if (answers.past_tries === 'limited_success') scores.battler += 2;
-            if (answers.past_tries === 'no_success') scores.anxious += 1;
-            if (answers.past_tries === 'not_yet') scores.compliant += 1;
+            // Análise da pergunta "past_tries"
+            if (answers.past_tries === 'limited_success') {
+                scores.restrictive += 3;
+                scores.compulsive += 1;
+            }
+            if (answers.past_tries === 'no_success') {
+                scores.emotional += 2;
+                scores.compulsive += 1;
+            }
+            if (answers.past_tries === 'not_yet') {
+                scores.automatic += 2;
+            }
 
+            // Análise da pergunta "eating_habits"
             if (answers.eating_habits === 'emotional_eating') {
-                scores.battler += 2;
-                scores.anxious += 1;
+                scores.restrictive += 2;
+                scores.emotional += 1;
             }
             if (answers.eating_habits === 'portion_control') {
-                scores.gourmet += 2;
-                scores.anxious += 1;
+                scores.emotional += 2;
+                scores.compulsive += 1;
             }
             if (answers.eating_habits === 'cravings') {
-                scores.anxious += 3;
+                scores.emotional += 3;
             }
             if (answers.eating_habits === 'late_night') {
-                scores.compliant += 2;
+                scores.automatic += 3;
             }
             if (answers.eating_habits === 'stress_eating') {
-                scores.anxious += 2;
-                scores.thinker += 1;
+                scores.emotional += 2;
+                scores.automatic += 1;
             }
 
+            // Análise da pergunta "eating_habits_detail" (follow-up)
             if (answers.eating_habits_detail) {
-                if (answers.eating_habits_detail.includes('boredom')) scores.compliant += 1;
-                if (answers.eating_habits_detail.includes('stress')) scores.anxious += 1;
-                if (answers.eating_habits_detail.includes('chocolate')) scores.gourmet += 1;
-                if (answers.eating_habits_detail.includes('work')) scores.thinker += 1;
-                if (answers.eating_habits_detail.includes('social')) scores.socializer += 2;
-                if (answers.eating_habits_detail.includes('motivation')) scores.battler += 1;
+                if (answers.eating_habits_detail.includes('boredom')) {
+                    scores.automatic += 2;
+                    scores.emotional += 1;
+                }
+                if (answers.eating_habits_detail.includes('stress')) {
+                    scores.emotional += 2;
+                }
+                if (answers.eating_habits_detail.includes('chocolate')) {
+                    scores.emotional += 1;
+                }
+                if (answers.eating_habits_detail.includes('work')) {
+                    scores.emotional += 1;
+                }
+                if (answers.eating_habits_detail.includes('social')) {
+                    scores.social += 3;
+                }
+                if (answers.eating_habits_detail.includes('motivation')) {
+                    scores.automatic += 1;
+                }
             }
 
-            if (answers.weight_goal === '5-10kg') scores.thinker += 1;
-            if (answers.weight_goal === '31kg+') scores.battler += 1;
+            // NOVA: Análise da pergunta "after_diet"
+            if (answers.after_diet === 'restrictive') {
+                scores.restrictive += 4;
+            }
+            if (answers.after_diet === 'compulsive') {
+                scores.compulsive += 4;
+            }
+            if (answers.after_diet === 'automatic') {
+                scores.automatic += 3;
+            }
 
+            // Análise da pergunta "weight_goal"
+            if (answers.weight_goal === '5-10kg') {
+                scores.restrictive += 1;
+            }
+            if (answers.weight_goal === '31kg+') {
+                scores.compulsive += 1;
+                scores.emotional += 1;
+            }
+
+            // Encontrar perfil dominante
             let maxScore = 0;
-            let dominantProfile = 'thinker';
+            let dominantProfile = 'emotional';
             
             for (const [profile, score] of Object.entries(scores)) {
                 if (score > maxScore) {
@@ -918,11 +828,14 @@
                 }
             }
 
+            console.log('Pontuações:', scores);
+            console.log('Perfil identificado:', dominantProfile);
+
             return dominantProfile;
         }
 
         // ========================================
-        // CAROUSEL FUNCTIONALITY
+        // CAROUSEL FUNCTIONALITY (CARROSSEL 1 - FAMOSOS)
         // ========================================
         function initCarousel() {
             const track = document.querySelector('.carousel-track');
@@ -935,7 +848,7 @@
             const isMobile = window.innerWidth < 768;
             const slidesToShow = isMobile ? 1 : 3;
 
-            function updateCarousel() {
+           function updateCarousel() {
                 const slideWidth = isMobile ? 100 : 33.333;
                 track.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
                 
@@ -961,14 +874,46 @@
                 updateCarousel();
             }
 
+            // Autoplay - 3 segundos
+            function startAutoplay() {
+                stopAutoplay();
+                autoplayInterval = setInterval(() => {
+                    nextSlide();
+                }, 3000);
+            }
+
+            function stopAutoplay() {
+                if (autoplayInterval) {
+                    clearInterval(autoplayInterval);
+                    autoplayInterval = null;
+                }
+            }
+
             const prevBtn = document.querySelector('.carousel-button.prev');
             const nextBtn = document.querySelector('.carousel-button.next');
             
-            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    prevSlide();
+                    stopAutoplay();
+                    startAutoplay();
+                });
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    nextSlide();
+                    stopAutoplay();
+                    startAutoplay();
+                });
+            }
 
             dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => goToSlide(index));
+                dot.addEventListener('click', () => {
+                    goToSlide(index);
+                    stopAutoplay();
+                    startAutoplay();
+                });
             });
 
             const container = document.querySelector('.carousel-container');
@@ -976,11 +921,13 @@
             if (container) {
                 container.addEventListener('touchstart', (e) => {
                     touchStartX = e.changedTouches[0].screenX;
+                    stopAutoplay();
                 });
 
                 container.addEventListener('touchend', (e) => {
                     touchEndX = e.changedTouches[0].screenX;
                     handleSwipe();
+                    startAutoplay();
                 });
             }
 
@@ -992,6 +939,119 @@
                     prevSlide();
                 }
             }
+
+            // Iniciar autoplay
+            startAutoplay();
+        }
+
+        // ========================================
+        // CAROUSEL 2 FUNCTIONALITY (PESSOAS COMUNS)
+        // ========================================
+        function initCarousel2() {
+            const track = document.querySelector('.carousel-track-2');
+            const slides = document.querySelectorAll('.carousel-slide-2');
+            const dots = document.querySelectorAll('.carousel-dot-2');
+            
+            if (!track) return;
+
+            const slidesCount = slides.length;
+            const isMobile = window.innerWidth < 768;
+            const slidesToShow = isMobile ? 1 : 3;
+
+            function updateCarousel2() {
+                const slideWidth = isMobile ? 100 : 33.333;
+                track.style.transform = `translateX(-${currentSlide2 * slideWidth}%)`;
+                
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide2);
+                });
+            }
+
+            function nextSlide2() {
+                const maxSlide = isMobile ? slidesCount - 1 : slidesCount - slidesToShow;
+                currentSlide2 = currentSlide2 >= maxSlide ? 0 : currentSlide2 + 1;
+                updateCarousel2();
+            }
+
+            function prevSlide2() {
+                const maxSlide = isMobile ? slidesCount - 1 : slidesCount - slidesToShow;
+                currentSlide2 = currentSlide2 <= 0 ? maxSlide : currentSlide2 - 1;
+                updateCarousel2();
+            }
+
+            function goToSlide2(index) {
+                currentSlide2 = index;
+                updateCarousel2();
+            }
+
+            // Autoplay - 3 segundos
+            function startAutoplay2() {
+                stopAutoplay2();
+                autoplayInterval2 = setInterval(() => {
+                    nextSlide2();
+                }, 3000);
+            }
+
+            function stopAutoplay2() {
+                if (autoplayInterval2) {
+                    clearInterval(autoplayInterval2);
+                    autoplayInterval2 = null;
+                }
+            }
+
+            const prevBtn = document.querySelector('.carousel-button-2.prev');
+            const nextBtn = document.querySelector('.carousel-button-2.next');
+            
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    prevSlide2();
+                    stopAutoplay2();
+                    startAutoplay2();
+                });
+            }
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    nextSlide2();
+                    stopAutoplay2();
+                    startAutoplay2();
+                });
+            }
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    goToSlide2(index);
+                    stopAutoplay2();
+                    startAutoplay2();
+                });
+            });
+
+            const container = document.querySelector('.carousel-container-2');
+            
+            if (container) {
+                container.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                    stopAutoplay2();
+                });
+
+                container.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    handleSwipe2();
+                    startAutoplay2();
+                });
+            }
+
+            function handleSwipe2() {
+                if (touchEndX < touchStartX - 50) {
+                    nextSlide2();
+                }
+                if (touchEndX > touchStartX + 50) {
+                    prevSlide2();
+                }
+            }
+
+            // Iniciar autoplay
+            startAutoplay2();
         }
 
         // ========================================
@@ -1193,11 +1253,11 @@
                             </div>
                             
                             <h1 class="hero-title font-bold leading-tight">
-                                Você Está A Um Passo De Descobrir Por Que Você Não Emagrece (Ainda)
+                                Por Que Seu Corpo SABOTA Suas Dietas (E o Teste Simples Que Muda Tudo em 21 Dias)
                             </h1>
                             
                             <p class="hero-subtitle text-gray-200 font-medium px-2">
-                                Descubra o padrão oculto no seu subconsciente que te impede de emagrecer
+                                Para quem quer se olhar no espelho e ter orgulho do que vê
                             </p>
                         </div>
 
@@ -1383,77 +1443,192 @@
             `;
         }
 
+       // ========================================
+// RENDER: TESTIMONIALS CAROUSEL 1 (FAMOSOS)
+// ========================================
+function renderTestimonialsCarousel1() {
+    return `
+        <div class="mb-8 sm:mb-12">
+            <h2 class="section-title font-bold text-center mb-6 sm:mb-8 px-2">
+                Veja Quem Já Reprogramou o Cérebro:
+            </h2>
+            
+            <div class="carousel-container relative max-w-6xl mx-auto">
+                <div class="carousel-track">
+                    <div class="carousel-slide">
+                        <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-green-500 h-full flex flex-col">
+                            <div class="mb-3 sm:mb-4 flex-shrink-0" style="height: 300px; overflow: hidden;">
+                                <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/adele3.png" 
+                                     alt="Depoimento Adele - Emagreceu mais de 40kg" 
+                                     width="600" 
+                                     height="400"
+                                     loading="lazy"
+                                     class="w-full h-full object-cover rounded-lg"/>
+                            </div>
+                            <div class="flex-1 flex flex-col justify-between">
+                                <div>
+                                    <div class="text-center mb-2 sm:mb-3">
+                                        <span class="text-2xl sm:text-3xl font-bold text-green-400">Perdeu + de 40kg</span>
+                                    </div>
+                                    <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic">"Adele transformou não só seu corpo, <strong>mas sua relação com a comida</strong>."</p>
+                                </div>
+                                <p class="text-xs sm:text-sm text-gray-400">— Cantora britânica Adele</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-green-500 h-full flex flex-col">
+                            <div class="mb-3 sm:mb-4 flex-shrink-0" style="height: 300px; overflow: hidden;">
+                                <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/sophiedahl2.png" 
+                                    alt="Depoimento Sophie Dahl - Reduziu 3 tamanhos" 
+                                     width="600" 
+                                     height="400"
+                                     loading="lazy"
+                                     class="w-full h-full object-cover rounded-lg"/>
+                            </div>
+                            <div class="flex-1 flex flex-col justify-between">
+                                <div>
+                                    <div class="text-center mb-2 sm:mb-3">
+                                        <span class="text-2xl sm:text-3xl font-bold text-green-400">Reduziu 3 tamanhos de roupa</span>
+                                    </div>
+                                    <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic">"Ex-modelo plus size, <strong>usou a hipnose para parar de</strong> comer por impulso."</p>
+                                </div>
+                                <p class="text-xs sm:text-sm text-gray-400">— Modelo Sophie Dahl</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-slide">
+                        <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-green-500 h-full flex flex-col">
+                            <div class="mb-3 sm:mb-4 flex-shrink-0" style="height: 300px; overflow: hidden;">
+                                <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/carmemreis1.png" 
+                                     alt="Depoimento Carmem Reis - Emagreceu 12kg" 
+                                     width="600" 
+                                     height="400"
+                                     loading="lazy"
+                                     class="w-full h-full object-cover rounded-lg"/>
+                            </div>
+                            <div class="flex-1 flex flex-col justify-between">
+                                <div>
+                                    <div class="text-center mb-2 sm:mb-3">
+                                        <span class="text-2xl sm:text-3xl font-bold text-green-400">-12kg em 6 semanas</span>
+                                    </div>
+                                    <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic">"<strong>Eu sempre tive dificuldade em controlar a compulsão por açúcar</strong>, mas com a dieta da hipnose consegui algo que nunca achei possível: ficar seis semanas sem colocar açúcar na boca."</p>
+                                </div>
+                                <p class="text-xs sm:text-sm text-gray-400">— Musa do carnaval da Tatuapé - Carmem Reis</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-button prev" aria-label="Depoimento anterior">‹</button>
+                <button class="carousel-button next" aria-label="Próximo depoimento">›</button>
+                <div class="carousel-dots">
+                    <div class="carousel-dot active"></div>
+                    <div class="carousel-dot"></div>
+                    <div class="carousel-dot"></div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
         // ========================================
-        // RENDER: TESTIMONIALS CAROUSEL
+// RENDER: TESTIMONIALS CAROUSEL 2 (PESSOAS COMUNS)
+// ========================================
+function renderTestimonialsCarousel2() {
+    return `
+        <div class="mb-8 sm:mb-12">
+            <h2 class="section-title font-bold text-center mb-6 sm:mb-8 px-2">
+                Resultados Reais de Pessoas Comuns:
+            </h2>
+            
+            <div class="carousel-container-2 relative max-w-6xl mx-auto">
+                <div class="carousel-track-2">
+                    <div class="carousel-slide-2">
+                        <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-green-500 h-full">
+                            <div class="mb-3 sm:mb-4">
+                                <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/adriana.png" 
+                                     alt="Depoimento Adriana - Emagreceu 6kg" 
+                                     width="600" 
+                                     height="400"
+                                     loading="lazy"
+                                     class="w-full h-auto object-contain rounded-lg"/>
+                            </div>
+                            <div class="text-center mb-2 sm:mb-3">
+                                <span class="text-2xl sm:text-3xl font-bold text-green-400">-6kg em 1½ mês</span>
+                            </div>
+                            <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic">"Este áudio simplesmente <strong>reconfigurou algo em mim</strong>. Eu como melhor, me sinto melhor."</p>
+                            <p class="text-xs sm:text-sm text-gray-400">— Adriana, 29 anos</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide-2">
+                        <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-green-500 h-full">
+                            <div class="mb-3 sm:mb-4">
+                                <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/lurdes.png" 
+                                     alt="Depoimento Eloiza - Emagreceu 5kg" 
+                                     width="600" 
+                                     height="400"
+                                     loading="lazy"
+                                     class="w-full h-auto object-contain rounded-lg"/>
+                            </div>
+                            <div class="text-center mb-2 sm:mb-3">
+                                <span class="text-2xl sm:text-3xl font-bold text-green-400">-5kg em 7 semanas</span>
+                            </div>
+                            <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic">"O que mais amo é <strong>como foi fácil</strong>. Sem planos rígidos. Faço caminhada todos os dias agora."</p>
+                            <p class="text-xs sm:text-sm text-gray-400">— Eloiza, 56 anos</p>
+                        </div>
+                    </div>
+                    <div class="carousel-slide-2">
+                        <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-green-500 h-full">
+                            <div class="mb-3 sm:mb-4">
+                                <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/armando.png" 
+                                     alt="Depoimento Antônio - Emagreceu 8kg" 
+                                     width="600" 
+                                     height="400"
+                                     loading="lazy"
+                                     class="w-full h-auto object-contain rounded-lg"/>
+                            </div>
+                            <div class="text-center mb-2 sm:mb-3">
+                                <span class="text-2xl sm:text-3xl font-bold text-green-400">-8kg em 90 dias</span>
+                            </div>
+                            <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic">"<strong>Simplesmente acordava com outras atitudes</strong>. Passei a QUERER caminhar. Sem forçar nada."</p>
+                            <p class="text-xs sm:text-sm text-gray-400">— Antônio, 57 anos</p>
+                        </div>
+                    </div>
+                </div>
+                <button class="carousel-button-2 prev" aria-label="Depoimento anterior">‹</button>
+                <button class="carousel-button-2 next" aria-label="Próximo depoimento">›</button>
+                <div class="carousel-dots">
+                    <div class="carousel-dot-2 active"></div>
+                    <div class="carousel-dot-2"></div>
+                    <div class="carousel-dot-2"></div>
+                </div>
+            </div>
+        </div>
+    `;
+}
+
         // ========================================
-        function renderTestimonialsCarousel() {
+        // RENDER: HOW IT WORKS SECTION
+        // ========================================
+        function renderHowItWorksSection() {
             return `
-                <div class="mb-8 sm:mb-12">
-                    <h2 class="section-title font-bold text-center mb-6 sm:mb-8 px-2">
-                        Veja Quem Já Reprogramou o Cérebro:
-                    </h2>
-                    
-                    <div class="carousel-container relative max-w-6xl mx-auto">
-                        <div class="carousel-track">
-                            <div class="carousel-slide">
-                                <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-green-500 h-full">
-                                    <div class="mb-3 sm:mb-4">
-                                        <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/adriana.png" 
-                                             alt="Depoimento Adriana - Emagreceu 6kg" 
-                                             width="600" 
-                                             height="400"
-                                             loading="lazy"
-                                             class="w-full h-auto object-contain rounded-lg"/>
-                                    </div>
-                                    <div class="text-center mb-2 sm:mb-3">
-                                        <span class="text-2xl sm:text-3xl font-bold text-green-400">-6kg em 1½ mês</span>
-                                    </div>
-                                    <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic">"Este áudio simplesmente <strong>reconfigurou algo em mim</strong>. Eu como melhor, me sinto melhor."</p>
-                                    <p class="text-xs sm:text-sm text-gray-400">— Adriana, 29 anos</p>
-                                </div>
-                            </div>
-                            <div class="carousel-slide">
-                                <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-green-500 h-full">
-                                    <div class="mb-3 sm:mb-4">
-                                        <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/lurdes.png" 
-                                             alt="Depoimento Eloiza - Emagreceu 5kg" 
-                                             width="600" 
-                                             height="400"
-                                             loading="lazy"
-                                             class="w-full h-auto object-contain rounded-lg"/>
-                                    </div>
-                                    <div class="text-center mb-2 sm:mb-3">
-                                        <span class="text-2xl sm:text-3xl font-bold text-green-400">-5kg em 7 semanas</span>
-                                    </div>
-                                    <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic">"O que mais amo é <strong>como foi fácil</strong>. Sem planos rígidos. Faço caminhada todos os dias agora."</p>
-                                    <p class="text-xs sm:text-sm text-gray-400">— Eloiza, 56 anos</p>
-                                </div>
-                            </div>
-                            <div class="carousel-slide">
-                                <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-green-500 h-full">
-                                    <div class="mb-3 sm:mb-4">
-                                        <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/armando.png" 
-                                             alt="Depoimento Antônio - Emagreceu 8kg" 
-                                             width="600" 
-                                             height="400"
-                                             loading="lazy"
-                                             class="w-full h-auto object-contain rounded-lg"/>
-                                    </div>
-                                    <div class="text-center mb-2 sm:mb-3">
-                                        <span class="text-2xl sm:text-3xl font-bold text-green-400">-8kg em 90 dias</span>
-                                    </div>
-                                    <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic">"<strong>Simplesmente acordava com outras atitudes</strong>. Passei a QUERER caminhar. Sem forçar nada."</p>
-                                    <p class="text-xs sm:text-sm text-gray-400">— Antônio, 57 anos</p>
-                                </div>
-                            </div>
-                        </div>
-                        <button class="carousel-button prev" aria-label="Depoimento anterior">‹</button>
-                        <button class="carousel-button next" aria-label="Próximo depoimento">›</button>
-                        <div class="carousel-dots">
-                            <div class="carousel-dot active"></div>
-                            <div class="carousel-dot"></div>
-                            <div class="carousel-dot"></div>
-                        </div>
+                <div class="bg-gradient-to-r from-blue-900/30 to-purple-900/30 border-2 border-blue-500 rounded-xl p-6 sm:p-8 mb-8">
+                    <div class="text-center mb-6">
+                        <h2 class="text-2xl sm:text-3xl font-bold text-blue-400 mb-4">
+                            🎧 Como Funciona na Prática?
+                        </h2>
+                        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+                            Simples: você ouve os áudios diários. Enquanto relaxa, o áudio reprograma seu subconsciente, mudando comportamentos automáticos que te fazem engordar. No primeiro áudio você já sente a diferença. Em 3 semanas, comer bem e se movimentar se torna natural — como escovar os dentes. Sem força de vontade, sem sofrimento.
+                        </p>
+                    </div>
+
+                    <div class="flex justify-center mt-6">
+                        <img src="https://raw.githubusercontent.com/appestoicismo/emagrecimento/refs/heads/main/4.png" 
+                             alt="Como funciona a Hipnose do Emagrecimento" 
+                             width="800" 
+                             height="600"
+                             loading="lazy"
+                             class="w-full max-w-2xl h-auto object-contain rounded-lg">
                     </div>
                 </div>
             `;
@@ -1463,20 +1638,19 @@
         // RENDER: RESULT PAGE
         // ========================================
         function renderResultPage() {
-            const profileKey = quizData.dietaryProfile || 'thinker';
+            const profileKey = quizData.dietaryProfile || 'emotional';
             const profile = dietaryProfiles[profileKey];
-            const problems = profileProblems[profileKey];
             
             return `
                 <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
                     <div class="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
                         <div class="max-w-4xl mx-auto space-y-6 sm:space-y-8">
                             
-                            <!-- PERFIL DIETÉTICO -->
+                            <!-- PERFIL COMPORTAMENTAL -->
                             <div class="text-center space-y-4 sm:space-y-6 mb-8 sm:mb-12">
                                 <div class="inline-block bg-gradient-to-r ${profile.color} p-1 rounded-full mb-3 sm:mb-4">
                                     <div class="bg-slate-900 px-4 py-2 sm:px-6 rounded-full">
-                                        <span class="text-white text-xs sm:text-sm font-semibold">Seu Perfil Dietético</span>
+                                        <span class="text-white text-xs sm:text-sm font-semibold">Seu Perfil Comportamental</span>
                                     </div>
                                 </div>
                                 
@@ -1486,57 +1660,28 @@
                                     ${profile.name}
                                 </h1>
                                 
-                                <p class="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl mx-auto px-2">
-                                    ${profile.description}
-                                </p>
-                            </div>
-
-                            <!-- CARDS DE PROBLEMATIZAÇÃO -->
-                            <div class="bg-gradient-to-r from-red-900/30 to-orange-900/30 border-2 border-red-500 rounded-xl p-4 sm:p-8 mb-8">
-                                <div class="text-center mb-6 sm:mb-8">
-                                    <h2 class="text-2xl sm:text-3xl font-bold text-red-400 mb-3">
-                                        ⚠️ É Por Isso Que Você Não Emagrece
-                                    </h2>
-                                    <p class="text-base sm:text-lg text-gray-300">
-                                        Seu perfil <strong>${profile.name}</strong> tem armadilhas mentais que <strong>SABOTAM</strong> as tentativas tradicional:
+                                <!-- BOX ÚNICO: DESCRIÇÃO + TEXTO COMPLEMENTAR -->
+                                <div class="bg-slate-800/50 border-2 border-purple-500/50 rounded-xl p-4 sm:p-6 max-w-2xl mx-auto">
+                                    <p class="text-base sm:text-lg text-gray-200 leading-relaxed mb-4">
+                                        ${profile.description}
                                     </p>
-                                </div>
-
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 mb-6 sm:mb-8">
-                                    ${problems.map(prob => `
-                                        <div class="bg-slate-900/50 border-l-4 border-red-500 rounded-lg p-4 sm:p-5 hover:bg-slate-900/70 transition-all">
-                                            <div class="flex items-start gap-3 mb-3">
-                                                <span class="text-3xl sm:text-4xl flex-shrink-0">${prob.icon}</span>
-                                                <h3 class="text-lg sm:text-xl font-bold text-red-400">${prob.title}</h3>
-                                            </div>
-                                            <p class="text-sm sm:text-base text-gray-300 mb-3">
-                                                ${prob.problem}
-                                            </p>
-                                            <div class="bg-red-950/50 border border-red-800 rounded-lg p-3 mt-2">
-                                                <p class="text-xs sm:text-sm text-red-300">
-                                                    <strong>💀 Consequência:</strong> ${prob.consequence}
-                                                </p>
-                                            </div>
-                                        </div>
-                                    `).join('')}
-                                </div>
-
-                                <div class="bg-[#0a0f1c] text-center p-6 rounded-xl border border-yellow-400 mt-8">
-                                    <img src="https://cdn-icons-png.flaticon.com/512/616/616408.png" alt="Cérebro" class="mx-auto w-10 mb-3">
-                                    <h3 class="text-yellow-400 font-bold text-lg mb-2">A Verdade Que Ninguém Te Conta:</h3>
-                                    <p class="text-gray-100 leading-relaxed">
-                                        Agora que você entendeu o que estava sabotando seu emagrecimento, veja como 
-                                        <span class="text-green-400 font-semibold">milhares de pessoas estão revertendo isso</span>: 
-                                        elas <span class="text-green-400 font-semibold">usam um áudio hipnótico</span> que acessa o subconsciente, 
-                                        <span class="text-yellow-400 font-semibold">reprograma padrões</span> e desperta 
-                                        <span class="text-green-400 font-semibold">hábitos automáticos</span> que fazem o corpo emagrecer — 
-                                        <span class="text-red-400 font-semibold">sem dietas e sem academia.</span>
+                                    
+                                    <div class="border-t border-gray-600 my-4"></div>
+                                    
+                                    <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
+                                        Por isso, nada do que você tentou até agora funcionou: nem dietas restritivas, nem ozempic, nem chás milagrosos, nem academia forçada. Enquanto seu <strong>subconsciente</strong> não for reprogramado, o peso <strong>sempre</strong> volta. A boa notícia? Existe um método que age direto na raiz do problema — e é o mesmo que milhares de pessoas (incluindo famosos) estão usando:
                                     </p>
                                 </div>
                             </div>
 
-                            <!-- DEPOIMENTOS -->
-                            ${renderTestimonialsCarousel()}
+                            <!-- CARROSSEL 1 - FAMOSOS -->
+                            ${renderTestimonialsCarousel1()}
+
+                            <!-- CARROSSEL 2 - PESSOAS COMUNS -->
+                            ${renderTestimonialsCarousel2()}
+
+                            <!-- COMO FUNCIONA -->
+                            ${renderHowItWorksSection()}
 
                             <!-- CTA FINAL -->
                             <div class="bg-gradient-to-r from-purple-900/50 to-pink-900/50 border-2 border-purple-500 rounded-xl p-6 sm:p-8 text-center">
@@ -1546,7 +1691,7 @@
                                         Você Também Pode Reprogramar Seu Cérebro
                                     </h2>
                                     <p class="text-base sm:text-lg text-gray-300 mb-6">
-                                        Esse <strong class="text-transparent bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text">Áudio Hipnótico</strong> é o mesmo usado em clínicas onde terapeutas cobram de R$ 200,00 a R$ 450,00 por cada sessão.
+                                        Esse <strong class="text-transparent bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text">método hipnótico</strong> é o mesmo usado em clínicas onde terapeutas cobram de R$ 200,00 a R$ 450,00 por cada sessão.
                                     </p>
                                 </div>
 
@@ -1735,7 +1880,7 @@
                                 </div>
                             </div>
 
-                            <!-- NOVA SEÇÃO: VOCÊ ACESSA PELO NOSSO APLICATIVO -->
+                            <!-- SEÇÃO: VOCÊ ACESSA PELO NOSSO APLICATIVO -->
                             ${renderAppAccessSection()}
 
                             <div class="bg-slate-800/30 border border-slate-700 rounded-xl p-4 sm:p-8">
@@ -1869,7 +2014,10 @@
                     break;
                 case 'result':
                     app.innerHTML = renderResultPage();
-                    setTimeout(initCarousel, 100);
+                    setTimeout(() => {
+                        initCarousel();
+                        initCarousel2();
+                    }, 100);
                     break;
                 case 'offer':
                     app.innerHTML = renderOfferPage();
