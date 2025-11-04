@@ -3,2540 +3,1047 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alimentação Intuitiva - Volte a confiar no seu corpo — ele é seu melhor nutricionista</title>
+    <title>Alimentação Intuitiva - Reprograme Sua Mente Para Emagrecer</title>
     
-    <!-- Meta Description (Estilo Alex Hormozi) -->
-<meta name="description" content="Emagreça reprogramando o subconsciente — não a força de vontade. Método baseado em neurociência que ensina seu corpo a escolher melhor sem dieta.">
-    
-    <!-- Preconnect para recursos externos -->
-    <link rel="preconnect" href="https://connect.facebook.net">
-    <link rel="preconnect" href="https://cdn.tailwindcss.com">
-    <link rel="preconnect" href="https://appestoicismo.github.io">
-    <link rel="preconnect" href="https://pay.hotmart.com">
-    
-    <!-- Preload da imagem LCP (logo) -->
-    <link rel="preload" as="image" href= "https://appestoicismo.github.io/emagrecimento/AppAutoconhecimento.jpg" fetchpriority="high">
-    
-    <!-- Facebook Pixel Code -->
-    <script async>
-      !function(f,b,e,v,n,t,s)
-      {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-      n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-      if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-      n.queue=[];t=b.createElement(e);t.async=!0;
-      t.src=v;s=b.getElementsByTagName(e)[0];
-      s.parentNode.insertBefore(t,s)}(window, document,'script',
-      'https://connect.facebook.net/en_US/fbevents.js');
-      fbq('init', '1042117324521315');
-      fbq('track', 'PageView');
-    </script>
-    <noscript><img loading="lazy" height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=1042117324521315&ev=PageView&noscript=1"
-    /></noscript>
-    
-    <script defer src="https://cdn.tailwindcss.com"></script>
+    <!-- Meta Pixel Code -->
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        background: 'oklch(1 0 0)',
-                        foreground: 'oklch(0.145 0 0)',
-                        primary: 'oklch(0.205 0 0)',
-                        'primary-foreground': 'oklch(0.985 0 0)',
-                        secondary: 'oklch(0.97 0 0)',
-                        'secondary-foreground': 'oklch(0.205 0 0)',
-                        muted: 'oklch(0.97 0 0)',
-                        'muted-foreground': 'oklch(0.556 0 0)',
-                        accent: 'oklch(0.97 0 0)',
-                        'accent-foreground': 'oklch(0.205 0 0)',
-                        destructive: 'oklch(0.577 0.245 27.325)',
-                        border: 'oklch(0.922 0 0)',
-                        input: 'oklch(0.922 0 0)',
-                        ring: 'oklch(0.708 0 0)',
-                    }
-                }
-            }
-        }
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1042117324521315');
+    fbq('track', 'PageView');
     </script>
+    <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=1042117324521315&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
     
     <style>
-        /* ========================================
-           RESET PARA ELIMINAR FAIXA BRANCA
-           ======================================== */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        
-        html, body {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
+
+        html {
+            overflow-x: hidden;
+            max-width: 100vw;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.55;
+            color: #1a1a1a;
+            background: #fff;
+            font-size: 19px;
+            -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
         }
 
-        /* ========================================
-           BUTTONS - MOBILE OPTIMIZED
-           ======================================== */
-        .btn {
-            @apply inline-flex items-center justify-center rounded-md font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50;
-            min-height: 44px;
-            -webkit-tap-highlight-color: transparent;
-            user-select: none;
+        .container {
+            max-width: 640px;
+            margin: 0 auto;
+            padding: 0 18px;
         }
-        
-        .btn-primary {
-            @apply bg-primary text-primary-foreground hover:bg-primary/90;
+
+        /* HERO */
+        .hero {
+            background: #ffffff;
+            color: #1a1a1a;
+            text-align: center;
+            padding: 40px 18px 35px;
+            border-bottom: 1px solid #e5e7eb;
         }
-        
-        .btn-outline {
-            @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground;
+
+        .hero h1 {
+            font-size: 34px;
+            font-weight: 800;
+            line-height: 1.15;
+            margin-bottom: 18px;
+            letter-spacing: -0.5px;
         }
-        
-        .btn-lg {
-            height: 2.75rem;
-            padding: 0 1.5rem;
-            font-size: 0.9rem;
+
+        .hero-sub {
+            font-size: 20px;
+            color: #6b7280;
+            font-weight: 400;
         }
-        
-        .btn-xl {
-            height: 3rem;
-            padding: 0 1.5rem;
-            font-size: 1rem;
+
+        /* HOOK SECTION */
+        .hook {
+            padding: 30px 0 25px;
         }
-        
-        .btn-2xl {
-            height: 3.5rem;
-            padding: 0 1.25rem;
-            font-size: 0.95rem;
+
+        .hook p {
+            margin-bottom: 16px;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #2d2d2d;
+        }
+
+        .alert-box {
+            background: #fef3c7;
+            border-left: 5px solid #f59e0b;
+            padding: 18px 16px;
+            margin: 22px 0;
+        }
+
+        .alert-box p {
+            font-size: 18px;
+            line-height: 1.5;
+            color: #1a1a1a;
+            margin: 0;
+        }
+
+        .bold-purple {
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        .red-bold {
+            color: #e53e3e;
+            font-weight: 700;
+        }
+
+        /* SOLUTION VISUAL */
+        .solution-img {
+            text-align: center;
+            margin: 25px 0;
+        }
+
+        .solution-img img {
+            width: 100%;
+            max-width: 500px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .solution {
+            padding: 10px 0 25px;
+        }
+
+        .solution p {
+            font-size: 19px;
+            margin-bottom: 16px;
+            color: #2d2d2d;
+        }
+
+        /* PASSOS SIMPLES */
+        .steps {
+            margin: 20px 0;
+        }
+
+        .steps li {
+            list-style: none;
+            padding: 10px 0 10px 38px;
+            position: relative;
+            font-size: 19px;
+            color: #2d2d2d;
+        }
+
+        .steps li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #10b981;
+            font-size: 26px;
+            font-weight: bold;
+        }
+
+        /* GARANTIA BOX */
+        .guarantee-box {
+            background: #ecfdf5;
+            border-left: 5px solid #10b981;
+            padding: 18px 16px;
+            margin: 22px 0;
+        }
+
+        .guarantee-box p {
+            font-size: 17px;
+            color: #1a1a1a;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        /* SOCIAL PROOF */
+        .social-proof {
+            padding: 30px 0;
+        }
+
+        .social-proof h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: #1a1a1a;
+        }
+
+        .review {
+            padding: 20px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        .review:first-child {
+            border-top: 1px solid #e5e7eb;
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 19px;
+            margin-bottom: 8px;
+        }
+
+        .review-author {
+            font-size: 15px;
+            font-weight: 600;
+            color: #374151;
+            margin-bottom: 10px;
+        }
+
+        .review-text {
+            font-size: 17px;
+            font-style: italic;
+            color: #4b5563;
+            line-height: 1.55;
+        }
+
+        /* CTA BUTTON */
+        .cta-wrapper {
+            text-align: center;
+            padding: 35px 0;
+        }
+
+        .cta-btn {
+            display: inline-block;
+            background: #10b981;
+            color: #fff;
+            font-size: 22px;
+            font-weight: 800;
+            text-transform: uppercase;
+            text-decoration: none;
+            padding: 20px 50px;
+            border-radius: 12px;
+            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+
+        .cta-btn:active {
+            transform: scale(0.97);
+            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+        }
+
+        .arrow-down {
+            font-size: 40px;
+            margin-bottom: 12px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        /* CREDIBILIDADE */
+        .credibility {
+            padding: 30px 0;
+        }
+
+        .credibility h2 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 18px;
+            color: #1a1a1a;
             line-height: 1.3;
         }
 
-        @media (min-width: 640px) {
-            .btn-lg { height: 3rem; padding: 0 2rem; font-size: 1rem; }
-            .btn-xl { height: 3.5rem; padding: 0 2rem; font-size: 1.125rem; }
-            .btn-2xl { height: 4rem; padding: 0 2rem; font-size: 1.25rem; }
+        .credibility p {
+            font-size: 18px;
+            margin-bottom: 15px;
+            color: #2d2d2d;
         }
 
-        /* ========================================
-           CAROUSEL - MOBILE OPTIMIZED
-           ======================================== */
-        .carousel-container {
-            position: relative;
-            overflow: hidden;
+        .badge {
+            display: inline-block;
+            background: #f3f4f6;
+            color: #1f2937;
+            padding: 9px 14px;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 700;
+            margin: 6px 4px 6px 0;
+            border: 1px solid #e5e7eb;
+        }
+
+        .science-note {
+            font-size: 15px;
+            color: #6b7280;
+            margin-top: 12px;
+        }
+
+        /* APP PREVIEW */
+        .app-preview {
+            text-align: center;
+            padding: 25px 0;
+        }
+
+        .app-preview img {
             width: 100%;
-            touch-action: pan-y;
+            max-width: 600px;
+            height: auto;
         }
-        
-        .carousel-track {
-            display: flex;
-            transition: transform 0.5s ease-in-out;
+
+        /* STACK DE VALOR */
+        .value-stack {
+            padding: 30px 0 15px;
         }
-        
-        .carousel-slide {
-            min-width: 100%;
-            padding: 0 0.5rem;
+
+        .value-stack h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: #1a1a1a;
         }
-        
-        @media (min-width: 768px) {
-            .carousel-slide {
-                min-width: 33.333%;
-                padding: 0 1rem;
-            }
+
+        .stack-box {
+            background: #f9fafb;
+            padding: 25px 18px;
+            margin: 20px 0;
+            color: #1a1a1a;
+            border-top: 1px solid #e5e7eb;
+            border-bottom: 1px solid #e5e7eb;
+            border-radius: 8px;
         }
-        
-        .carousel-button {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(0, 0, 0, 0.5);
-            color: white;
-            border: none;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
+
+        /* TIMER DE URGÊNCIA */
+        .urgency-timer {
+            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
+            padding: 20px 18px;
+            margin: 30px 0;
+            text-align: center;
+            color: #fff;
+            box-shadow: 0 4px 20px rgba(220, 38, 38, 0.3);
+            border-radius: 8px;
+        }
+
+        .timer-warning {
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            z-index: 10;
-            transition: background 0.3s;
+            gap: 6px;
         }
-        
-        @media (min-width: 768px) {
-            .carousel-button {
-                width: 44px;
-                height: 44px;
-            }
-        }
-        
-        .carousel-button:hover {
-            background: rgba(0, 0, 0, 0.8);
-        }
-        
-        .carousel-button.prev {
-            left: 5px;
-        }
-        
-        .carousel-button.next {
-            right: 5px;
-        }
-        
-        @media (min-width: 768px) {
-            .carousel-button.prev { left: 10px; }
-            .carousel-button.next { right: 10px; }
-        }
-        
-        .carousel-dots {
+
+        .timer-display {
             display: flex;
             justify-content: center;
-            gap: 6px;
-            margin-top: 16px;
-        }
-        
-        .carousel-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.3);
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        
-        @media (min-width: 768px) {
-            .carousel-dot {
-                width: 10px;
-                height: 10px;
-            }
-        }
-        
-        .carousel-dot.active {
-            background: rgba(255, 255, 255, 1);
+            gap: 8px;
+            margin: 15px 0;
         }
 
-        /* ========================================
-           ANIMATIONS
-           ======================================== */
-        @keyframes pulse {
-            0%, 100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.05);
-            }
+        .timer-box {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px 8px;
+            border-radius: 6px;
+            min-width: 60px;
         }
 
-        .pulse-button {
-            animation: pulse 2s infinite;
+        .timer-number {
+            font-size: 28px;
+            font-weight: 900;
+            line-height: 1;
+            display: block;
+            color: #fff;
+        }
+
+        .timer-label {
+            font-size: 10px;
+            text-transform: uppercase;
+            margin-top: 6px;
+            opacity: 0.9;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .timer-separator {
+            font-size: 28px;
+            font-weight: 900;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            padding-bottom: 16px;
+            animation: blink 1.5s infinite;
         }
 
         @keyframes blink {
-            0%, 50%, 100% { opacity: 1; }
-            25%, 75% { opacity: 0.5; }
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.3; }
         }
 
-        .blink {
-            animation: blink 2s infinite;
+        .timer-urgent {
+            animation: pulse 1.5s infinite;
         }
 
-        .scarcity-pulse {
-            animation: pulse 3s ease-in-out infinite;
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.02); }
         }
 
-        /* ========================================
-           HERO SECTION - MOBILE FIRST
-           ======================================== */
-        .hero-section {
-            min-height: auto;
+        .timer-message {
+            font-size: 13px;
+            margin-top: 12px;
+            opacity: 0.95;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+        .stack-item {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
-            padding: 2rem 0 3rem;
+            padding: 18px 0;
+            border-bottom: 1px solid #e5e7eb;
         }
 
-        @media (min-width: 768px) {
-            .hero-section {
-                min-height: 100vh;
-                padding-bottom: 4rem;
-            }
+        .stack-item:last-child {
+            border-bottom: none;
         }
 
-        /* ========================================
-           TYPOGRAPHY - RESPONSIVE
-           ======================================== */
-        .hero-title {
-            font-size: 1.875rem;
-            line-height: 1.2;
+        .stack-emoji {
+            font-size: 36px;
+            margin-right: 14px;
+            flex-shrink: 0;
         }
 
-        @media (min-width: 640px) {
-            .hero-title {
-                font-size: 2.5rem;
-            }
+        .stack-content {
+            flex: 1;
         }
 
-        @media (min-width: 768px) {
-            .hero-title {
-                font-size: 3rem;
-            }
+        .stack-title {
+            font-size: 17px;
+            font-weight: 700;
+            margin-bottom: 4px;
         }
 
-        @media (min-width: 1024px) {
-            .hero-title {
-                font-size: 3.75rem;
-            }
+        .stack-desc {
+            font-size: 14px;
+            color: #6b7280;
         }
 
-        .hero-subtitle {
-            font-size: 1.125rem;
+        .stack-price {
+            text-align: right;
+            min-width: 70px;
         }
 
-        @media (min-width: 640px) {
-            .hero-subtitle {
-                font-size: 1.25rem;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .hero-subtitle {
-                font-size: 1.5rem;
-            }
-        }
-
-        .section-title {
-            font-size: 1.5rem;
-        }
-
-        @media (min-width: 640px) {
-            .section-title {
-                font-size: 1.875rem;
-            }
-        }
-
-        @media (min-width: 768px) {
-            .section-title {
-                font-size: 2.25rem;
-            }
-        }
-
-        /* ========================================
-           CTA BUTTONS SPACING
-           ======================================== */
-        .cta-buttons {
-            margin-top: 1.5rem;
-            margin-bottom: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .cta-buttons {
-                margin-top: 2.5rem;
-                margin-bottom: 3rem;
-            }
-        }
-
-        /* ========================================
-           FOOTER
-           ======================================== */
-        .footer-improved {
-            background: linear-gradient(to bottom, #1e1b4b, #0f0a2e);
-            border-top: 2px solid #4c1d95;
-        }
-
-        .footer-improved a {
-            color: #d1d5db;
-            transition: color 0.3s ease;
-        }
-
-        .footer-improved a:hover {
-            color: #ffffff;
-        }
-
-        .footer-text-primary {
-            color: #e5e7eb;
-        }
-
-        .footer-text-secondary {
+        .old-price {
+            text-decoration: line-through;
             color: #9ca3af;
+            font-size: 13px;
         }
 
-        /* ========================================
-           UTILITIES
-           ======================================== */
-        html {
-            scroll-behavior: smooth;
+        .new-price {
+            color: #10b981;
+            font-weight: 700;
+            font-size: 14px;
         }
 
-        img {
-            max-width: 100%;
-            height: auto;
+        .bonus-tag {
+            background: #10b981;
+            color: #fff;
+            padding: 3px 9px;
+            border-radius: 10px;
+            font-size: 12px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 6px;
+        }
+
+        /* PRICING */
+        .pricing {
+            background: #1f2937;
+            color: #fff;
+            text-align: center;
+            padding: 35px 18px;
+            margin: 30px 0;
+            border-radius: 8px;
+        }
+
+        .total-label {
+            font-size: 16px;
+            color: rgba(255,255,255,0.7);
+            margin-bottom: 5px;
+        }
+
+        .total-old {
+            font-size: 22px;
+            text-decoration: line-through;
+            color: rgba(255,255,255,0.6);
+            margin-bottom: 20px;
+        }
+
+        .today-label {
+            font-size: 19px;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .price-big {
+            font-size: 58px;
+            font-weight: 900;
+            color: #10b981;
+            margin-bottom: 12px;
+            line-height: 1;
+            text-shadow: 2px 3px 6px rgba(0,0,0,0.3);
+        }
+
+        .discount-badge {
+            background: #fbbf24;
+            color: #1f2937;
+            padding: 9px 20px;
+            border-radius: 8px;
+            font-size: 17px;
+            font-weight: 800;
+            display: inline-block;
+            margin-bottom: 15px;
+        }
+
+        .payment-terms {
+            font-size: 14px;
+            color: rgba(255,255,255,0.85);
+        }
+
+        /* FAQ SECTION */
+        .faq-section {
+            background: #ffffff;
+            padding: 40px 0;
+            margin: 35px 0;
+        }
+
+        .faq-title {
+            font-size: 28px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 28px;
+            color: #1a1a1a;
+        }
+
+        .faq-item {
+            margin-bottom: 12px;
+            background: #f9fafb;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e5e7eb;
+        }
+
+        .faq-q {
+            font-size: 17px;
+            font-weight: 700;
+            color: #1a1a1a;
+            padding: 18px 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.2s;
+            user-select: none;
+        }
+
+        .faq-q:hover {
+            background: #f3f4f6;
+        }
+
+        .faq-q::after {
+            content: "▼";
+            font-size: 14px;
+            color: #10b981;
+            transition: transform 0.3s;
+        }
+
+        .faq-q.active::after {
+            transform: rotate(180deg);
+        }
+
+        .faq-a {
+            font-size: 16px;
+            color: #4b5563;
+            line-height: 1.6;
+            padding: 0 20px;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-a.active {
+            max-height: 500px;
+            padding: 0 20px 18px 20px;
+        }
+
+        /* FINAL GUARANTEE */
+        .final-guarantee {
+            background: #ecfdf5;
+            text-align: center;
+            padding: 35px 18px;
+            margin: 35px 0;
+            border-radius: 8px;
+        }
+
+        .guarantee-icon {
+            font-size: 54px;
+            margin-bottom: 12px;
+        }
+
+        .guarantee-title {
+            font-size: 26px;
+            font-weight: 700;
+            color: #059669;
+            margin-bottom: 12px;
+        }
+
+        .guarantee-text {
+            font-size: 17px;
+            color: #065f46;
+            line-height: 1.5;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #f9fafb;
+            text-align: center;
+            padding: 30px 18px;
+            font-size: 14px;
+            color: #6b7280;
+            line-height: 1.7;
+        }
+
+        footer strong {
+            color: #1a1a1a;
             display: block;
+            margin-bottom: 6px;
         }
-      /* ========================================
-   CAROUSEL 2 - PESSOAS COMUNS (CSS ADICIONAL)
-   ======================================== */
-.carousel-container-2 {
-    position: relative;
-    overflow: hidden;
-    width: 100%;
-    touch-action: pan-y;
-}
 
-.carousel-track-2 {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-}
+        footer a {
+            color: #667eea;
+            text-decoration: none;
+        }
 
-.carousel-slide-2 {
-    min-width: 100%;
-    padding: 0 0.5rem;
-}
-
-@media (min-width: 768px) {
-    .carousel-slide-2 {
-        min-width: 33.333%;
-        padding: 0 1rem;
-    }
-}
-
-.carousel-button-2 {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10;
-    transition: background 0.3s;
-}
-
-@media (min-width: 768px) {
-    .carousel-button-2 {
-        width: 44px;
-        height: 44px;
-    }
-}
-
-.carousel-button-2:hover {
-    background: rgba(0, 0, 0, 0.8);
-}
-
-.carousel-button-2.prev {
-    left: 5px;
-}
-
-.carousel-button-2.next {
-    right: 5px;
-}
-
-@media (min-width: 768px) {
-    .carousel-button-2.prev { left: 10px; }
-    .carousel-button-2.next { right: 10px; }
-}
-
-.carousel-dot-2 {
-    width: 8px;
-    height: 8px;
-    border-radius: 50%;
-    background: rgba(255, 255, 255, 0.3);
-    cursor: pointer;
-    transition: background 0.3s;
-}
-
-@media (min-width: 768px) {
-    .carousel-dot-2 {
-        width: 10px;
-        height: 10px;
-    }
-}
-
-.carousel-dot-2.active {
-    background: rgba(255, 255, 255, 1);
-}
+        /* MOBILE REFINEMENTS */
+        @media (max-width: 400px) {
+            body {
+                font-size: 18px;
+            }
+            .hero h1 {
+                font-size: 30px;
+            }
+            .price-big {
+                font-size: 52px;
+            }
+            .cta-btn {
+                font-size: 20px;
+                padding: 18px 40px;
+            }
+        }
     </style>
 </head>
 <body>
-    <div id="app"></div>
 
-    <script>
-        // ========================================
-        // APP STATE (DECLARADO NO INÍCIO)
-        // ========================================
-        let currentStep = 'home';
-        let quizData = {};
-        let currentQuestion = 0;
-        let currentSlide = 0;
-        let currentSlide2 = 0;
-        let touchStartX = 0;
-        let touchEndX = 0;
-        let autoplayInterval = null;
-        let autoplayInterval2 = null;
-
-        // ========================================
-        // NOVOS PERFIS COMPORTAMENTAIS
-        // ========================================
-        const dietaryProfiles = {
-            'emotional': {
-                name: 'Comedor Emocional',
-                icon: '😢',
-                description: 'Você usa a comida como válvula de escape para lidar com emoções difíceis como estresse, ansiedade, tristeza ou tédio.',
-                challenge: 'Come por impulso emocional, não por fome física',
-                strategy: 'Desenvolver regulação emocional e criar novas respostas ao estresse que não envolvam comida',
-                color: 'from-purple-500 to-pink-500'
-            },
-            'restrictive': {
-                name: 'Comedor Restritivo',
-                icon: '⚖️',
-                description: 'Você vive em ciclos de restrição extrema seguidos de culpa intensa. Faz dietas rígidas e sente ansiedade com "alimentos proibidos".',
-                challenge: 'Mentalidade tudo-ou-nada gera ciclos de restrição e compensação',
-                strategy: 'Trabalhar flexibilidade alimentar, auto-compaixão e quebrar a mentalidade de alimentos "bons" e "ruins"',
-                color: 'from-blue-500 to-cyan-500'
-            },
-            'automatic': {
-                name: 'Comedor Automático',
-                icon: '🔄',
-                description: 'Você come por hábito, distração ou rotina — muitas vezes sem fome real, apenas porque "está na hora" ou está fazendo outra atividade.',
-                challenge: 'Falta de consciência alimentar leva ao consumo excessivo',
-                strategy: 'Praticar alimentação consciente (mindful eating) e identificar gatilhos ambientais',
-                color: 'from-teal-500 to-green-500'
-            },
-            'social': {
-                name: 'Comedor Social',
-                icon: '🎉',
-                description: 'Você come significativamente mais em eventos, encontros e ocasiões sociais. O ambiente e as pessoas ditam seu apetite.',
-                challenge: 'Influência social e festiva leva a excessos frequentes',
-                strategy: 'Planejar estratégias antecipadas para eventos e desenvolver assertividade para escolhas saudáveis',
-                color: 'from-amber-500 to-orange-500'
-            },
-            'compulsive': {
-                name: 'Comedor Compulsivo',
-                icon: '🍫',
-                description: 'Você tem episódios recorrentes de perda de controle e exagero alimentar, geralmente seguidos de profundo arrependimento.',
-                challenge: 'Episódios de compulsão seguidos de culpa e vergonha',
-                strategy: 'Trabalhar compulsão alimentar com suporte especializado, identificar gatilhos e desenvolver estratégias de interrupção',
-                color: 'from-red-500 to-rose-500'
-            }
-        };
-
-        // ========================================
-        // PERGUNTAS FOLLOW-UP
-        // ========================================
-        const eatingHabitsFollowUp = {
-            'emotional_eating': {
-                question: 'O que mais te faz abandonar a dieta?',
-                options: [
-                    { value: 'emotional_eating_boredom', label: 'Volto aos mesmos velhos hábitos sem perceber', icon: '🔄' },
-                    { value: 'emotional_eating_stress', label: 'As tentações parecem mais fortes do que eu', icon: '🍩' },
-                    { value: 'emotional_eating_sadness', label: 'Sempre arrumo uma desculpa para começar amanhã', icon: '🙈' }
-                ]
-            },
-            'portion_control': {
-                question: 'Quando você mais sente vontade de comer doces?',
-                options: [
-                    { value: 'portion_control_chocolate', label: 'Uso doce como recompensa ou conforto emocional', icon: '🎁' },
-                    { value: 'portion_control_baked', label: 'Corro pros doces quando estou ansioso(a) ou estressado(a)', icon: '😰' },
-                    { value: 'portion_control_candy', label: 'Acabo comendo doce por tédio ou solidão', icon: '🍬' }
-                ]
-            },
-            'cravings': {
-                question: 'Em qual situação a ansiedade mais te leva a descontar na comida?',
-                options: [
-                    { value: 'cravings_work', label: 'No trabalho — belisco sem parar quando estou sob pressão', icon: '💼' },
-                    { value: 'cravings_evening', label: 'Em casa — problemas familiares me levam direto pra geladeira', icon: '🏠' },
-                    { value: 'cravings_social', label: 'Em encontros sociais — como para aliviar a ansiedade', icon: '👥' }
-                ]
-            },
-            'late_night': {
-                question: 'Por que você acha que abandona os exercícios?',
-                options: [
-                    { value: 'late_night_lack_time', label: 'Sempre arrumo uma desculpa e deixo pra depois', icon: '⏰' },
-                    { value: 'late_night_lack_energy', label: 'Chego esgotado(a) e sem energia para treinar', icon: '😴' },
-                    { value: 'late_night_lack_motivation', label: 'Começo animado(a), mas perco a motivação rápido', icon: '📉' }
-                ]
-            },
-            'stress_eating': {
-                question: 'O que mais te impede de colocar em prática o que você já sabe?',
-                options: [
-                    { value: 'stress_eating_diet', label: 'Sei o que comer, mas não consigo seguir sempre', icon: '🥗' },
-                    { value: 'stress_eating_exercise', label: 'Sei que preciso me exercitar, mas falta consistência', icon: '🏋️' },
-                    { value: 'stress_eating_mental', label: 'O difícil é mudar os hábitos automáticos que me puxam pra trás', icon: '🧠' }
-                ]
-            }
-        };
-
-        // ========================================
-// PERGUNTAS DO QUIZ - VERSÃO OTIMIZADA
-// ========================================
-const quizQuestions = [
-    // PERGUNTA 1: Gênero (reformulada)
-    {
-        id: 'gender',
-        question: 'Primeiro, me diga:',
-        type: 'gender',
-        options: [
-            { value: 'male', label: 'Sou Homem', icon: '👨' },
-            { value: 'female', label: 'Sou Mulher', icon: '👩' }
-        ]
-    },
-    
-    // PERGUNTA 2: Objetivo Emocional (mantida - está perfeita!)
-    {
-        id: 'goal',
-        question: 'Se você acordasse amanhã com a sua melhor versão... qual seria o primeiro pensamento que viria na sua cabeça?',
-        type: 'multiple',
-        options: [
-            { value: 'self-esteem', label: '"Finalmente me sinto orgulhoso(a) de mim"', icon: '💪' },
-            { value: 'movement', label: '"Que energia! Quero aproveitar o dia"', icon: '⚡' },
-            { value: 'looks', label: '"Mal posso esperar pelos elogios"', icon: '✨' },
-            { value: 'longevity', label: '"Agora sim vou viver muito mais"', icon: '❤️' }
-        ]
-    },
-    
-    // PERGUNTA 3: Histórico (mantida - está boa!)
-    {
-        id: 'past_tries',
-        question: 'Qual dessas frases mais parece com a SUA história?',
-        type: 'multiple',
-        options: [
-            { value: 'limited_success', label: 'Já tentei mudar meus hábitos, mas sempre volto ao ponto de partida', icon: '🔄' },
-            { value: 'no_success', label: 'Já tentei várias vezes, mas nunca cheguei no meu objetivo', icon: '😔' },
-            { value: 'not_yet', label: 'Ainda não tentei de verdade (vou começar AGORA)', icon: '🚀' }
-        ]
-    },
-    
-    // PERGUNTA 4: Objetivo Tangível (REFORMULADA - era "quanto peso perder")
-    {
-        id: 'transformation_goal',
-        question: 'Qual transformação faria a MAIOR diferença na sua vida agora?',
-        type: 'multiple',
-        options: [
-            { value: 'clothes', label: 'Voltar a vestir minhas roupas favoritas', icon: '👕' },
-            { value: 'energy', label: 'Ter mais energia e disposição no dia a dia', icon: '⚡' },
-            { value: 'confidence', label: 'Me sentir confiante em qualquer situação', icon: '✨' },
-            { value: 'health', label: 'Melhorar minha saúde e qualidade de vida', icon: '❤️' }
-        ]
-    },
-    
-    // PERGUNTA 5: Obstáculo Principal (mantida - está excelente!)
-    {
-        id: 'eating_habits',
-        question: 'Qual é o MAIOR obstáculo que te impede de alcançar seus objetivos agora?',
-        type: 'multiple',
-        hasFollowUp: true,
-        options: [
-            { value: 'emotional_eating', label: 'Começo bem... mas não consigo manter por muito tempo', icon: '🥗' },
-            { value: 'portion_control', label: 'Doces me derrubam (sempre cedo a eles)', icon: '🍫' },
-            { value: 'cravings', label: 'Quando bate ansiedade, desconto tudo na comida', icon: '😰' },
-            { value: 'late_night', label: 'Começo animado(a) com mudanças, mas logo abandono', icon: '🏃' },
-            { value: 'stress_eating', label: 'Sei o que fazer, mas não consigo colocar em prática', icon: '🤯' }
-        ]
-    },
-    
-    // PERGUNTA 6: Padrão de Comportamento (mantida - está ótima!)
-    {
-        id: 'after_diet',
-        question: 'Quando você sai da sua rotina saudável, o que costuma acontecer?',
-        type: 'multiple',
-        options: [
-            { value: 'restrictive', label: 'Tento compensar com mais restrição e sinto muita culpa', icon: '⚖️' },
-            { value: 'compulsive', label: 'Perco o controle completamente e exagero', icon: '🍫' },
-            { value: 'automatic', label: 'Simplesmente volto à rotina normal sem perceber', icon: '🔄' }
-        ]
-    }
-];
-
-        // ========================================
-        // UTM TRACKER
-        // ========================================
-        function initUTMTracker() {
-            try {
-                const urlParams = new URLSearchParams(window.location.search);
-                
-                const defaultUTMs = {
-                    utm_source: 'FB',
-                    utm_campaign: '{{campaign.name}}|{{campaign.id}}',
-                    utm_medium: '{{adset.name}}|{{adset.id}}',
-                    utm_content: '{{ad.name}}|{{ad.id}}',
-                    utm_term: '{{placement}}',
-                    xcod: 'FBhQwK21wXxR{{campaign.name}}|{{campaign.id}}hQwK21wXxR{{adset.name}}|{{adset.id}}hQwK21wXxR{{ad.name}}|{{ad.id}}hQwK21wXxR{{placement}}'
-                };
-                
-                const fbclid = urlParams.get('fbclid');
-                const hasUtmSource = urlParams.has('utm_source');
-                
-                if (!hasUtmSource && fbclid) {
-                    Object.entries(defaultUTMs).forEach(([key, value]) => {
-                        if (!urlParams.has(key)) {
-                            urlParams.set(key, value);
-                        }
-                    });
-                    
-                    const newUrl = `${window.location.pathname}?${urlParams.toString()}`;
-                    window.history.replaceState({}, '', newUrl);
-                }
-                
-                const utmData = {};
-                urlParams.forEach((value, key) => {
-                    if (key.startsWith('utm_') || key === 'xcod' || key === 'fbclid') {
-                        utmData[key] = value;
-                    }
-                });
-                
-                if (Object.keys(utmData).length > 0) {
-                    localStorage.setItem('utmData', JSON.stringify(utmData));
-                    
-                    if (typeof fbq !== 'undefined') {
-                        fbq('trackCustom', 'UTMCaptured', utmData);
-                    }
-                }
-                
-            } catch (error) {
-                console.error('Erro ao capturar UTMs:', error);
-            }
-        }
-
-        // ========================================
-        // SCROLL SUAVE
-        // ========================================
-        function scrollToTop(smooth = true) {
-            setTimeout(() => {
-                if (smooth) {
-                    window.scrollTo({
-                        top: 0,
-                        left: 0,
-                        behavior: 'smooth'
-                    });
-                } else {
-                    window.scrollTo(0, 0);
-                }
-                
-                document.body.scrollTop = 0;
-                document.documentElement.scrollTop = 0;
-            }, 100);
-        }
-
-        // ========================================
-// ALGORITMO DE PERFIL - ATUALIZADO
-// ========================================
-function calculateDietaryProfile(answers) {
-    const scores = {
-        emotional: 0,
-        restrictive: 0,
-        automatic: 0,
-        social: 0,
-        compulsive: 0
-    };
-
-    // Análise da pergunta "goal"
-    if (answers.goal === 'self-esteem') {
-        scores.emotional += 2;
-        scores.restrictive += 1;
-    }
-    if (answers.goal === 'movement') {
-        scores.automatic += 1;
-    }
-    if (answers.goal === 'looks') {
-        scores.social += 2;
-    }
-    if (answers.goal === 'longevity') {
-        scores.restrictive += 1;
-    }
-
-    // Análise da pergunta "past_tries"
-    if (answers.past_tries === 'limited_success') {
-        scores.restrictive += 3;
-        scores.compulsive += 1;
-    }
-    if (answers.past_tries === 'no_success') {
-        scores.emotional += 2;
-        scores.compulsive += 1;
-    }
-    if (answers.past_tries === 'not_yet') {
-        scores.automatic += 2;
-    }
-
-    // NOVA: Análise da pergunta "transformation_goal"
-    if (answers.transformation_goal === 'clothes') {
-        scores.restrictive += 2; // Equivale a 5-10kg
-    }
-    if (answers.transformation_goal === 'energy') {
-        scores.automatic += 2; // Equivale a 11-20kg
-    }
-    if (answers.transformation_goal === 'confidence') {
-        scores.social += 2; // Equivale a 11-20kg
-        scores.emotional += 1;
-    }
-    if (answers.transformation_goal === 'health') {
-        scores.compulsive += 1; // Equivale a 31kg+
-        scores.emotional += 1;
-    }
-
-    // Análise da pergunta "eating_habits"
-    if (answers.eating_habits === 'emotional_eating') {
-        scores.restrictive += 2;
-        scores.emotional += 1;
-    }
-    if (answers.eating_habits === 'portion_control') {
-        scores.emotional += 2;
-        scores.compulsive += 1;
-    }
-    if (answers.eating_habits === 'cravings') {
-        scores.emotional += 3;
-    }
-    if (answers.eating_habits === 'late_night') {
-        scores.automatic += 3;
-    }
-    if (answers.eating_habits === 'stress_eating') {
-        scores.emotional += 2;
-        scores.automatic += 1;
-    }
-
-    // Análise da pergunta "after_diet"
-    if (answers.after_diet === 'restrictive') {
-        scores.restrictive += 4;
-    }
-    if (answers.after_diet === 'compulsive') {
-        scores.compulsive += 4;
-    }
-    if (answers.after_diet === 'automatic') {
-        scores.automatic += 3;
-    }
-
-    // Encontrar perfil dominante
-    let maxScore = 0;
-    let dominantProfile = 'emotional';
-    
-    for (const [profile, score] of Object.entries(scores)) {
-        if (score > maxScore) {
-            maxScore = score;
-            dominantProfile = profile;
-        }
-    }
-
-    return dominantProfile;
-}
-
-        // ========================================
-        // CAROUSEL FUNCTIONALITY (CARROSSEL 1 - FAMOSOS)
-        // ========================================
-        function initCarousel() {
-            const track = document.querySelector('.carousel-track');
-            const slides = document.querySelectorAll('.carousel-slide');
-            const dots = document.querySelectorAll('.carousel-dot');
-            
-            if (!track) return;
-
-            const slidesCount = slides.length;
-            const isMobile = window.innerWidth < 768;
-            const slidesToShow = isMobile ? 1 : 3;
-
-           function updateCarousel() {
-                const slideWidth = isMobile ? 100 : 33.333;
-                track.style.transform = `translateX(-${currentSlide * slideWidth}%)`;
-                
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentSlide);
-                });
-            }
-
-            function nextSlide() {
-                const maxSlide = isMobile ? slidesCount - 1 : slidesCount - slidesToShow;
-                currentSlide = currentSlide >= maxSlide ? 0 : currentSlide + 1;
-                updateCarousel();
-            }
-
-            function prevSlide() {
-                const maxSlide = isMobile ? slidesCount - 1 : slidesCount - slidesToShow;
-                currentSlide = currentSlide <= 0 ? maxSlide : currentSlide - 1;
-                updateCarousel();
-            }
-
-            function goToSlide(index) {
-                currentSlide = index;
-                updateCarousel();
-            }
-
-            // Autoplay - 3 segundos
-            function startAutoplay() {
-                stopAutoplay();
-                autoplayInterval = setInterval(() => {
-                    nextSlide();
-                }, 3000);
-            }
-
-            function stopAutoplay() {
-                if (autoplayInterval) {
-                    clearInterval(autoplayInterval);
-                    autoplayInterval = null;
-                }
-            }
-
-            const prevBtn = document.querySelector('.carousel-button.prev');
-            const nextBtn = document.querySelector('.carousel-button.next');
-            
-            if (prevBtn) {
-                prevBtn.addEventListener('click', () => {
-                    prevSlide();
-                    stopAutoplay();
-                    startAutoplay();
-                });
-            }
-            
-            if (nextBtn) {
-                nextBtn.addEventListener('click', () => {
-                    nextSlide();
-                    stopAutoplay();
-                    startAutoplay();
-                });
-            }
-
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    goToSlide(index);
-                    stopAutoplay();
-                    startAutoplay();
-                });
-            });
-
-            const container = document.querySelector('.carousel-container');
-            
-            if (container) {
-                container.addEventListener('touchstart', (e) => {
-                    touchStartX = e.changedTouches[0].screenX;
-                    stopAutoplay();
-                });
-
-                container.addEventListener('touchend', (e) => {
-                    touchEndX = e.changedTouches[0].screenX;
-                    handleSwipe();
-                    startAutoplay();
-                });
-            }
-
-            function handleSwipe() {
-                if (touchEndX < touchStartX - 50) {
-                    nextSlide();
-                }
-                if (touchEndX > touchStartX + 50) {
-                    prevSlide();
-                }
-            }
-
-            // Iniciar autoplay
-            startAutoplay();
-        }
-
-        // ========================================
-        // CAROUSEL 2 FUNCTIONALITY (PESSOAS COMUNS)
-        // ========================================
-        function initCarousel2() {
-            const track = document.querySelector('.carousel-track-2');
-            const slides = document.querySelectorAll('.carousel-slide-2');
-            const dots = document.querySelectorAll('.carousel-dot-2');
-            
-            if (!track) return;
-
-            const slidesCount = slides.length;
-            const isMobile = window.innerWidth < 768;
-            const slidesToShow = isMobile ? 1 : 3;
-
-            function updateCarousel2() {
-                const slideWidth = isMobile ? 100 : 33.333;
-                track.style.transform = `translateX(-${currentSlide2 * slideWidth}%)`;
-                
-                dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentSlide2);
-                });
-            }
-
-            function nextSlide2() {
-                const maxSlide = isMobile ? slidesCount - 1 : slidesCount - slidesToShow;
-                currentSlide2 = currentSlide2 >= maxSlide ? 0 : currentSlide2 + 1;
-                updateCarousel2();
-            }
-
-            function prevSlide2() {
-                const maxSlide = isMobile ? slidesCount - 1 : slidesCount - slidesToShow;
-                currentSlide2 = currentSlide2 <= 0 ? maxSlide : currentSlide2 - 1;
-                updateCarousel2();
-            }
-
-            function goToSlide2(index) {
-                currentSlide2 = index;
-                updateCarousel2();
-            }
-
-            // Autoplay - 3 segundos
-            function startAutoplay2() {
-                stopAutoplay2();
-                autoplayInterval2 = setInterval(() => {
-                    nextSlide2();
-                }, 3000);
-            }
-
-            function stopAutoplay2() {
-                if (autoplayInterval2) {
-                    clearInterval(autoplayInterval2);
-                    autoplayInterval2 = null;
-                }
-            }
-
-            const prevBtn = document.querySelector('.carousel-button-2.prev');
-            const nextBtn = document.querySelector('.carousel-button-2.next');
-            
-            if (prevBtn) {
-                prevBtn.addEventListener('click', () => {
-                    prevSlide2();
-                    stopAutoplay2();
-                    startAutoplay2();
-                });
-            }
-            
-            if (nextBtn) {
-                nextBtn.addEventListener('click', () => {
-                    nextSlide2();
-                    stopAutoplay2();
-                    startAutoplay2();
-                });
-            }
-
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    goToSlide2(index);
-                    stopAutoplay2();
-                    startAutoplay2();
-                });
-            });
-
-            const container = document.querySelector('.carousel-container-2');
-            
-            if (container) {
-                container.addEventListener('touchstart', (e) => {
-                    touchStartX = e.changedTouches[0].screenX;
-                    stopAutoplay2();
-                });
-
-                container.addEventListener('touchend', (e) => {
-                    touchEndX = e.changedTouches[0].screenX;
-                    handleSwipe2();
-                    startAutoplay2();
-                });
-            }
-
-            function handleSwipe2() {
-                if (touchEndX < touchStartX - 50) {
-                    nextSlide2();
-                }
-                if (touchEndX > touchStartX + 50) {
-                    prevSlide2();
-                }
-            }
-
-            // Iniciar autoplay
-            startAutoplay2();
-        }
-
-        // ========================================
-        // FUNÇÕES DE CONTROLE
-        // ========================================
-        function handleQuizAnswer(answer) {
-            const currentQ = quizQuestions[currentQuestion];
-            
-            if (currentQ.hasFollowUp && eatingHabitsFollowUp[answer]) {
-                quizData[currentQ.id] = answer;
-                showFollowUpQuestion(answer);
-                scrollToTop();
-            } else {
-                quizData[currentQ.id] = answer;
-                
-                if (currentQuestion < quizQuestions.length - 1) {
-                    currentQuestion++;
-                    renderApp();
-                    scrollToTop();
-                } else {
-                    quizData.dietaryProfile = calculateDietaryProfile(quizData);
-                    currentStep = 'result';
-                    
-                    if (typeof fbq !== 'undefined') {
-                        fbq('track', 'CompleteRegistration', {
-                            content_name: 'Quiz Completado',
-                            status: 'completed',
-                            value: 0,
-                            currency: 'BRL'
-                        });
-                    }
-                    renderApp();
-                    scrollToTop();
-                }
-            }
-        }
-
-        function handleFollowUpAnswer(mainAnswer, followUpAnswer) {
-            quizData[`eating_habits_detail`] = followUpAnswer;
-            quizData.dietaryProfile = calculateDietaryProfile(quizData);
-            currentStep = 'result';
-            
-            if (typeof fbq !== 'undefined') {
-                fbq('track', 'CompleteRegistration', {
-                    content_name: 'Quiz Completado',
-                    status: 'completed',
-                    value: 0,
-                    currency: 'BRL'
-                });
-            }
-            
-            renderApp();
-            scrollToTop();
-        }
-
-        function showFollowUpQuestion(mainAnswer) {
-            currentStep = 'followup';
-            renderApp();
-            scrollToTop();
-        }
-
-        function goBack() {
-            if (currentStep === 'followup') {
-                currentStep = 'quiz';
-                renderApp();
-                scrollToTop();
-            } else if (currentStep === 'offer') {
-                currentStep = 'result';
-                renderApp();
-                scrollToTop();
-            } else if (currentQuestion > 0) {
-                currentQuestion--;
-                renderApp();
-                scrollToTop();
-            } else {
-                currentStep = 'home';
-                renderApp();
-                scrollToTop();
-            }
-        }
-
-        function startQuiz(gender) {
-            quizData = { gender };
-            currentStep = 'quiz';
-            currentQuestion = 1;
-            
-            if (typeof fbq !== 'undefined') {
-                fbq('track', 'Lead', {
-                    content_name: 'Quiz Iniciado',
-                    content_category: 'Lead Generation',
-                    gender: gender
-                });
-            }
-            renderApp();
-            scrollToTop();
-        }
-
-        // ========================================
-        // NAVEGAÇÃO PARA OFERTA (FUNÇÃO GLOBAL)
-        // ========================================
-        function goToOffer() {
-            console.log('🎯 goToOffer() chamada!');
-            try {
-                currentStep = 'offer';
-                
-                if (typeof fbq !== 'undefined') {
-                    fbq('track', 'ViewContent', {
-                        content_name: 'Página de Oferta',
-                        content_ids: ['chip-da-magreza-21dias'],
-                        content_type: 'product',
-                        value: 37.90,
-                        currency: 'BRL'
-                    });
-                }
-                
-                renderApp();
-                scrollToTop();
-            } catch (error) {
-                console.error('❌ Erro ao navegar para oferta:', error);
-                currentStep = 'offer';
-                renderApp();
-                window.scrollTo(0, 0);
-            }
-        }
-
-        // Torna a função global
-        window.goToOffer = goToOffer;
-
-        // ========================================
-        // CHECKOUT COM DELAY
-        // ========================================
-        function handleCheckout() {
-            try {
-                if (window.checkoutInProgress) {
-                    console.log('⚠️ Checkout já em andamento...');
-                    return;
-                }
-                window.checkoutInProgress = true;
-                
-                const baseUrl = 'https://pay.hotmart.com/N101998916J?off=6kcihxpj&checkoutMode=10';
-                const utmParams = new URLSearchParams(window.location.search);
-                const checkoutUrl = utmParams.toString() ? `${baseUrl}&${utmParams.toString()}` : baseUrl;
-                
-                if (typeof fbq !== 'undefined') {
-                    fbq('track', 'InitiateCheckout', {
-                        currency: 'BRL',
-                        value: 37.90,
-                        content_name: 'Alimentação Intuitiva - Volte a confiar no seu corpo — ele é seu melhor nutricionista',
-                        content_ids: ['Alimentação Intuitiva'],
-                        content_type: 'product',
-                        num_items: 1
-                    });
-                    
-                    console.log('✅ InitiateCheckout disparado com sucesso');
-                    
-                    setTimeout(function() {
-                        console.log('🚀 Redirecionando para checkout...');
-                        window.location.href = checkoutUrl;
-                    }, 500);
-                    
-                } else {
-                    console.warn('⚠️ Facebook Pixel não encontrado - Redirecionando direto');
-                    window.location.href = checkoutUrl;
-                }
-                
-            } catch (error) {
-                console.error('❌ Erro no checkout:', error);
-                window.checkoutInProgress = false;
-                const baseUrl = 'https://pay.hotmart.com/N101998916J?off=6kcihxpj&checkoutMode=10';
-                window.location.href = baseUrl;
-            }
-        }
-
-        // ========================================
-        // RENDER: HOME PAGE
-        // ========================================
-        function renderHomePage() {
-            return `
-                <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
-                    <header class="p-4 sm:p-6">
-                        <div class="flex items-center gap-2">
-                            <div class="w-8 h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
-                                <img loading="lazy"
-                             src="https://appestoicismo.github.io/emagrecimento/AppAutoconhecimento.jpg" 
-                                     alt="LogoAlimentação Intuitiva" 
-                                     width="32" 
-                                     height="32"
-                                     fetchpriority="high"
-                                     class="w-8 h-8 rounded-full object-cover">
-                            </div>
-                            <span class="text-lg sm:text-xl font-semibold">Alimentação Intuitiva</span>
-                        </div>
-                    </header>
-
-                    <!-- HERO SECTION -->
-<div class="bg-gradient-to-b from-purple-900 to-slate-900 min-h-screen flex items-center px-4 py-8">
-    <div class="max-w-4xl mx-auto text-center space-y-6">
-        
-        <!-- Badge curiosidade -->
-        <div class="inline-block bg-purple-600/20 border border-purple-400 rounded-full px-4 py-2 text-sm">
-            🧠 Baseado em Neurociência Comportamental
-        </div>
-
-        <!-- Headline Principal (Estilo Alex Hormozi) -->
-<h1 class="text-4xl sm:text-5xl md:text-6xl font-bold leading-tight">
-  Emagreça 
-  <span class="text-transparent bg-clip-text bg-gradient-to-r from-green-400 to-emerald-600">
-    reprogramando o subconsciente
-  </span>
-  — não a
-  <span class="text-red-400">força de vontade</span>.
-</h1>
-
-<!-- Subheadline Hormozi-Style -->
-<p class="text-xl sm:text-2xl text-gray-300 max-w-3xl mx-auto leading-relaxed mt-4">
-  Baseado em <strong class="text-white">neurociência comportamental</strong>, este método ensina seu cérebro a
-  <strong class="text-yellow-400">regular fome e saciedade automaticamente</strong> —
-  em menos de <strong class="text-white">20 minutos por dia</strong>.
-</p>
-
-        <!-- Value Props -->
-        <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-2xl mx-auto py-6">
-            <div class="bg-slate-800/50 p-4 rounded-lg">
-                <div class="text-3xl mb-2">🎧</div>
-                <div class="font-semibold text-sm">Sem Esforço</div>
-                <div class="text-xs text-gray-400">É só dar play nos áudios de reprogramação</div>
-            </div>
-            <div class="bg-slate-800/50 p-4 rounded-lg">
-                <div class="text-3xl mb-2">⏱️</div>
-                <div class="font-semibold text-sm">15-20 Min/Dia</div>
-                <div class="text-xs text-gray-400">Pode ouvir dormindo. Resultados na primeira semana</div>
-            </div>
-            <div class="bg-slate-800/50 p-4 rounded-lg">
-                <div class="text-3xl mb-2">🍕</div>
-                <div class="font-semibold text-sm">Sem Restrições</div>
-                <div class="text-xs text-gray-400">Seu corpo aprede a escolher naturalmente</div>
-            </div>
-        </div>
-
-        <!-- Escolha seu perfil -->
-        <div class="space-y-3 pt-4">
-            <p class="text-yellow-400 font-semibold text-lg">
-                👇 Emagrecer? Primeiro, descubra seu Perfil Alimentar:
-            </p>
-            <p class="text-sm text-gray-400">
-                (Teste grátis • 6 perguntas • Resultado em 1 minuto)
-            </p>
-        </div>
-
-        <!-- CTAs -->
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center pt-4">
-            <button onclick="startQuiz('male')" 
-                    class="btn btn-2xl bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-700 hover:to-blue-600 text-white font-bold w-full sm:w-auto min-w-[280px] pulse-button shadow-2xl">
-                🧔 Sou Homem — Fazer Teste
-            </button>
-            <button onclick="startQuiz('female')" 
-                    class="btn btn-2xl bg-gradient-to-r from-pink-600 to-pink-500 hover:from-pink-700 hover:to-pink-600 text-white font-bold w-full sm:w-auto min-w-[280px] pulse-button shadow-2xl">
-                👩 Sou Mulher — Fazer Teste
-            </button>
-        </div>
-
-        <!-- Trust Builders -->
-        <div class="flex flex-wrap justify-center gap-6 text-xs text-gray-400 pt-6">
-            <div class="flex items-center gap-2">
-                <span class="text-green-400">✓</span> Com garantia
-            </div>
-            <div class="flex items-center gap-2">
-                <span class="text-green-400">✓</span> 100% privado
-            </div>
-            <div class="flex items-center gap-2">
-                <span class="text-green-400">✓</span> Científico
-            </div>
-            <div class="flex items-center gap-2">
-                <span class="text-green-400">✓</span> Usado por +2.800 pessoas
-            </div>
-        </div>
-
-        <!-- Social Proof Minimalista -->
-        <div class="pt-6 flex justify-center">
-            <div class="bg-slate-800/50 px-6 py-3 rounded-full inline-flex items-center gap-3">
-                <div class="flex text-yellow-400 text-sm">⭐⭐⭐⭐⭐</div>
-                <div class="text-sm text-gray-300">
-                    4.9/5 • <strong>847 avaliações</strong>
-                </div>
-            </div>
-        </div>
-
-    </div>
+    <!-- HERO -->
+<div class="hero">
+  <h1>O Emagrecimento Começa na Mente</h1>
+  <p class="hero-sub">Reprograme seus hábitos em 21 dias — mesmo que você já tenha tentado de tudo.</p>
 </div>
 
-                    ${renderFooter()}
+<!-- HOOK -->
+<div class="container">
+  <div class="hook">
+    <p>Você já tentou de tudo: low carb, jejum, detox, sopas milagrosas, academia todo dia... e mesmo assim, o peso sempre volta, não é?</p>
+
+    <div class="alert-box">
+      <p><strong>Enquanto seus hábitos e pensamentos forem os mesmos,</strong> o resultado também vai ser o mesmo: o temido <span class="red-bold">efeito sanfona.</span></p>
+    </div>
+
+    <p>Você não fracassou. Só estava tentando mudar o corpo, quando o que precisava mudar era a mente.</p>
+
+    <p><strong class="bold-purple">Porque o verdadeiro emagrecimento não acontece na dieta — acontece no subconsciente. É lá que tudo muda.</strong></p>
+  </div>
+</div>
+
+
+    <!-- SOLUÇÃO VISUAL -->
+    <div class="container">
+        <div class="solution-img">
+            <img src="https://appestoicismo.github.io/emagrecimento/3.png" alt="Reprogramação enquanto dorme">
+        </div>
+
+        <div class="solution">
+  <p>Os áudios do programa <strong class="bold-purple">relaxam sua mente e reprogramam o subconsciente,</strong> ajudando você a mudar hábitos e emagrecer de forma natural, leve e sem esforço.</p>
+  <p></div>
+            <p><strong>É Muito Fácil:</strong></p>
+<ul class="steps">
+    <li>Entre no aplicativo</li>
+    <li>Coloque seu fone de ouvido</li>
+    <li>Dê Play e deixe seu subconsciente fazer o resto</li>
+</ul>
+
+
+            <div class="guarantee-box">
+                <p>Se em <strong>7 dias</strong> você não sentir nenhuma mudança devolvemos <strong>100% do seu investimento</strong>. Você não tem risco de perder seu dinheiro.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- SOCIAL PROOF -->
+    <div class="container">
+        <div class="social-proof">
+            <h2>Veja o que nossos clientes dizem:</h2>
+
+            <div class="review">
+                <div class="stars">★★★★★</div>
+                <div class="review-author">Mariana S. – Campinas/SP</div>
+                <p class="review-text">"Eu era completamente viciada em doces — precisava de algo doce todos os dias. Depois que comecei a ouvir os áudios, algo mudou: o desejo simplesmente sumiu. Hoje passo por uma vitrine de sobremesas e nem me abala. Foi libertador... e o melhor é que emagreci sem esforço, só mudando minha mente."</p>
+
+            </div>
+
+            <div class="review">
+                <div class="stars">★★★★★</div>
+                <div class="review-author">Ricardo A. – Belo Horizonte/MG</div>
+<p class="review-text">"Eu já estava ficando barrigudo de tanto descontar a ansiedade na comida. Depois da segunda sessão, tudo mudou — a vontade simplesmente sumiu. Foi a primeira vez que senti que o controle era meu, não da comida."</p>
+            </div>
+
+            <div class="review">
+  <div class="stars">★★★★★</div>
+  <div class="review-author">Fernanda L. – Florianópolis/SC</div>
+  <p class="review-text">"Eu não acreditava em hipnose... até fazer a primeira sessão. Foi muito doido: terminei e simplesmente não quis mais tomar refrigerante. Hoje corro três vezes por semana e até minhas roupas antigas voltaram a servir. Nunca me senti tão bem comigo mesma."</p>
+</div>
+
+            <div class="review">
+  <div class="stars">★★★★★</div>
+  <div class="review-author">Patrícia D. – São Paulo/SP</div>
+  <p class="review-text">"Já tinha tentado de tudo — dieta da sopa, jejum, low carb… nada durava. Aqui entendi que o problema nunca foi a comida, e sim minha mente. Pela primeira vez, não vivo mais naquela rotina de recomeçar toda segunda-feira."</p>
+</div>
+        </div>
+    </div>
+
+    <!-- CTA 1 -->
+    <div class="container">
+        <div class="cta-wrapper">
+            <div class="arrow-down">👇</div>
+            <a href="https://pay.hotmart.com/N101998916J?off=6kcihxpj&checkoutMode=10" class="cta-btn" onclick="trackAddToCart()" target="_blank">Quero Começar Agora</a>
+        </div>
+    </div>
+
+   <!-- CREDIBILIDADE -->
+<div class="container">
+  <div class="credibility">
+    <h2>Por que o Programa Alimentação Intuitiva funciona de verdade?</h2>
+
+    <p>Ele é baseado na <strong class="bold-purple">Hipnoterapia</strong> — uma técnica validada pela neurociência, capaz de provocar mudanças reais nos hábitos e comportamentos, enquanto você está em relaxamento profundo.</p>
+
+    <p>Não é achismo: é ciência reconhecida por instituições sérias como:</p>
+
+    <div>
+      <span class="badge">American Psychological Association (APA)</span>
+      <span class="badge">British Psychological Society (BPS)</span>
+      <span class="badge">Associação Médica Americana (AMA)</span>
+    </div>
+
+    <p class="science-note">— todas reconhecem a hipnoterapia como uma ferramenta terapêutica segura e eficaz.</p>
+
+    <div class="alert-box" style="margin-top: 22px;">
+      <p><strong>Não é mágica, é método:</strong> ela relaxa a mente consciente e acessa o subconsciente, onde nascem as mudanças que duram.</p>
+    </div>
+  </div>
+</div>
+
+    <!-- VALUE STACK TITLE & APP PREVIEW -->
+    <div class="container">
+        <div class="value-stack">
+            <h2>Veja tudo que você recebe:</h2>
+        </div>
+        <div class="app-preview">
+            <img src="https://appestoicismo.github.io/emagrecimento/apppordentro.png" alt="Interface do aplicativo">
+        </div>
+    </div>
+
+    <!-- STACK BOX -->
+    <div class="container">
+        <div class="stack-box">
+            <div class="stack-item">
+                <div class="stack-emoji">🎧</div>
+                <div class="stack-content">
+                    <div class="stack-title">Sessões de Hipnoterapia Gravada (4 Sessões)</div>
+                    <div class="stack-desc">As mesmas sessões utilizadas em consultórios</div>
                 </div>
-            `;
-        }
-
-        // ========================================
-        // RENDER: QUIZ PAGE
-        // ========================================
-        function renderQuizPage() {
-            const question = quizQuestions[currentQuestion];
-            const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
-
-            return `
-                <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
-                    <header class="p-4 sm:p-6">
-                        <div class="flex items-center justify-between mb-3 sm:mb-4">
-                            <button onclick="goBack()" class="btn btn-outline bg-transparent border-gray-600 text-white hover:bg-gray-800 text-sm sm:text-base">← Voltar</button>
-                            <div class="flex items-center gap-2">
-                                <div class="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <img loading="lazy"
-                             src="https://appestoicismo.github.io/emagrecimento/AppAutoconhecimento.jpg"
-                                         alt="Logo" 
-                                         width="32" 
-                                         height="32"
-                                         loading="lazy"
-                                         class="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover">
-                                </div>
-                                <span class="text-base sm:text-xl font-semibold hidden sm:inline">Alimentação Intuitiva</span>
-                            </div>
-                            <span class="text-xs sm:text-sm text-gray-400">${currentQuestion + 1} de ${quizQuestions.length}</span>
-                        </div>
-                        <div class="w-full bg-gray-700 rounded-full h-2">
-                            <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-300" style="width: ${progress}%"></div>
-                        </div>
-                    </header>
-                    <div class="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
-                        <div class="max-w-2xl mx-auto text-center">
-                            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold mb-3 sm:mb-4 px-2">${question.question}</h2>
-                            ${question.subtitle ? `<p class="text-sm sm:text-base text-gray-300 mb-6 sm:mb-8 px-2">${question.subtitle}</p>` : ''}
-                            <div class="space-y-3 sm:space-y-4">
-                                ${question.options.map((opt, i) => {
-                                    const grads = [
-                                        'bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 border-2 border-blue-400',
-                                        'bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700 border-2 border-orange-400',
-                                        'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 border-2 border-purple-400',
-                                        'bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 border-2 border-green-400',
-                                        'bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700 border-2 border-pink-400'
-                                    ];
-                                    return `
-                                        <button onclick="handleQuizAnswer('${opt.value}')" class="btn btn-2xl w-full text-left justify-start font-medium transition-all duration-200 ${grads[i] || grads[4]}">
-                                            <span class="text-xl sm:text-2xl mr-3 sm:mr-4 flex-shrink-0">${opt.icon}</span>
-                                            <span class="flex-1 text-sm sm:text-base">${opt.label}</span>
-                                            <span class="ml-auto text-lg sm:text-xl flex-shrink-0">→</span>
-                                        </button>
-                                    `;
-                                }).join('')}
-                            </div>
-                        </div>
-                    </div>
+                <div class="stack-price">
+                    <div class="old-price">R$ 197</div>
+                    <div class="new-price">INCLUÍDO</div>
                 </div>
-            `;
-        }
+            </div>
 
-        // ========================================
-        // RENDER: FOLLOW-UP PAGE
-        // ========================================
-        function renderFollowUpPage() {
-            const mainAnswer = quizData['eating_habits'];
-            const followUp = eatingHabitsFollowUp[mainAnswer];
-            const progress = ((currentQuestion + 1) / quizQuestions.length) * 100;
+            <div class="stack-item">
+  <div class="stack-emoji">🔥</div>
+  <div class="stack-content">
+    <div class="stack-title">Héstia – sua assistente de IA 24h</div>
+    <div class="stack-desc">Te acompanha todos os dias, tira dúvidas e te mantém no caminho — como uma amiga que nunca te deixa desistir.</div>
+  </div>
+  <div class="stack-price">
+    <div class="old-price">R$ 30/mês</div>
+    <div class="new-price">INCLUÍDO</div>
+  </div>
+</div>
 
-            return `
-                <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
-                    <header class="p-4 sm:p-6">
-                        <div class="flex items-center justify-between mb-3 sm:mb-4">
-                            <button onclick="goBack()" class="btn btn-outline bg-transparent border-gray-600 text-white hover:bg-gray-800 text-sm sm:text-base">← Voltar</button>
-                            <div class="flex items-center gap-2">
-                                <div class="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <img loading="lazy"
-                             src="https://appestoicismo.github.io/emagrecimento/AppAutoconhecimento.jpg"
-                                         alt="Logo" 
-                                         width="32" 
-                                         height="32"
-                                         loading="lazy"
-                                         class="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover">
-                                </div>
-                                <span class="text-base sm:text-xl font-semibold hidden sm:inline">Alimentação Intuitiva</span>
-                            </div>
-                            <span class="text-xs sm:text-sm text-gray-400">${currentQuestion + 1} de ${quizQuestions.length}</span>
-                        </div>
-                        <div class="w-full bg-gray-700 rounded-full h-2">
-                            <div class="bg-gradient-to-r from-blue-500 to-purple-500 h-2 rounded-full transition-all duration-300" style="width: ${progress}%"></div>
-                        </div>
-                    </header>
-                    <div class="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
-                        <div class="max-w-2xl mx-auto text-center">
-                            <h2 class="text-xl sm:text-2xl md:text-3xl font-bold mb-6 sm:mb-8 px-2">${followUp.question}</h2>
-                            <div class="space-y-3 sm:space-y-4">
-                                ${followUp.options.map((option, index) => {
-                                    const gradients = [
-                                        'bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 border-2 border-blue-400',
-                                        'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 border-2 border-purple-400',
-                                        'bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 border-2 border-green-400'
-                                    ];
-                                    return `
-                                        <button onclick="handleFollowUpAnswer('${mainAnswer}', '${option.value}')" class="btn btn-2xl w-full text-left justify-start font-medium transition-all duration-200 ${gradients[index]}">
-                                            <span class="text-xl sm:text-2xl mr-3 sm:mr-4 flex-shrink-0">${option.icon}</span>
-                                            <span class="flex-1 text-sm sm:text-base">${option.label}</span>
-                                            <span class="ml-auto text-lg sm:text-xl flex-shrink-0">→</span>
-                                        </button>
-                                    `;
-                                }).join('')}
-                            </div>
-                        </div>
-                    </div>
+            <div class="stack-item">
+  <div class="stack-emoji">📋</div>
+  <div class="stack-content">
+    <div class="stack-title">Atualizações Vitalícias + Suporte via WhatsApp</div>
+    <div class="stack-desc">Você nunca estará sozinha — novas sessões e suporte direto, sempre que precisar, para seguir evoluindo no seu ritmo.</div>
+  </div>
+  <div class="stack-price">
+    <div class="old-price">R$ 47</div>
+    <div class="new-price">INCLUÍDO</div>
+  </div>
+</div>
+
+            <div class="stack-item">
+  <div class="stack-emoji">🎯</div>
+  <div class="stack-content">
+    <span class="bonus-tag">BÔNUS</span>
+    <div class="stack-title">Teste de Perfil Comportamental</div>
+    <div class="stack-desc">Descubra o que realmente te faz sabotar — e como reverter isso a seu favor, com autoconhecimento e leveza.</div>
+  </div>
+  <div class="stack-price">
+    <div class="old-price">R$ 19,90</div>
+    <div class="new-price">GRÁTIS</div>
+  </div>
+</div>
+
+            <div class="stack-item">
+  <div class="stack-emoji">💭</div>
+  <div class="stack-content">
+    <span class="bonus-tag">BÔNUS</span>
+    <div class="stack-title">PNL – Frase do Dia</div>
+    <div class="stack-desc">Mensagens diárias para treinar sua mente e manter o foco — um lembrete gentil de que você está no controle.</div>
+  </div>
+  <div class="stack-price">
+    <div class="old-price">R$ 19,90</div>
+    <div class="new-price">GRÁTIS</div>
+  </div>
+</div>
+
+            <div class="stack-item">
+                <div class="stack-emoji">🔔</div>
+                <div class="stack-content">
+                    <div class="stack-title">Acesso Vitalício Garantido</div>
+                    <div class="stack-desc">Zero mensalidades</div>
                 </div>
-            `;
-        }
-
-       // ========================================
-// RENDER: TESTIMONIALS CAROUSEL 1 (FAMOSOS)
-// ========================================
-function renderTestimonialsCarousel1() {
-    return `
-        <div class="mb-8 sm:mb-12">
-            <h2 class="section-title font-bold text-center mb-6 sm:mb-8 px-2">
-                Veja Quem Já Reprogramou o Cérebro:
-            </h2>
-            
-            <div class="carousel-container relative max-w-6xl mx-auto">
-                <div class="carousel-track">
-                    <div class="carousel-slide">
-                        <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-green-500 h-full flex flex-col">
-                            <div class="mb-3 sm:mb-4 flex-shrink-0" style="height: 300px; overflow: hidden;">
-                                <img loading="lazy"
-                             src= "https://appestoicismo.github.io/emagrecimento/adele3.png" 
-                                     alt="Depoimento Adele - Emagreceu mais de 40kg" 
-                                     width="600" 
-                                     height="400"
-                                     loading="lazy"
-                                     class="w-full h-full object-cover rounded-lg"/>
-                            </div>
-                            <div class="flex-1 flex flex-col justify-between">
-                                <div>
-                                    <div class="text-center mb-2 sm:mb-3">
-                                        <span class="text-2xl sm:text-3xl font-bold text-green-400">Transformou sua relação com a comida e a autoestima</span>
-                                    </div>
-                                    <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic">"Adele transformou não só seu corpo, <strong>mas sua relação com a comida</strong>."</p>
-                                </div>
-                                <p class="text-xs sm:text-sm text-gray-400">— Cantora britânica Adele</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-slide">
-                        <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-green-500 h-full flex flex-col">
-                            <div class="mb-3 sm:mb-4 flex-shrink-0" style="height: 300px; overflow: hidden;">
-                                <img loading="lazy"
-                             src= "https://appestoicismo.github.io/emagrecimento/sophiedahl2.png" 
-                                    alt="Depoimento Sophie Dahl - Reduziu 3 tamanhos" 
-                                     width="600" 
-                                     height="400"
-                                     loading="lazy"
-                                     class="w-full h-full object-cover rounded-lg"/>
-                            </div>
-                            <div class="flex-1 flex flex-col justify-between">
-                                <div>
-                                    <div class="text-center mb-2 sm:mb-3">
-                                        <span class="text-2xl sm:text-3xl font-bold text-green-400">Reduziu 3 tamanhos de roupa</span>
-                                    </div>
-                                    <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic">"Ex-modelo plus size, <strong>usou a hipnose para parar de</strong> comer por impulso."</p>
-                                </div>
-                                <p class="text-xs sm:text-sm text-gray-400">— Modelo Sophie Dahl</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="carousel-slide">
-                        <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-green-500 h-full flex flex-col">
-                            <div class="mb-3 sm:mb-4 flex-shrink-0" style="height: 300px; overflow: hidden;">
-                                <img loading="lazy"
-                             src="https://appestoicismo.github.io/emagrecimento/carmemreis1.png" 
-                                     alt="Depoimento Carmem Reis - Emagreceu 12kg" 
-                                     width="600" 
-                                     height="400"
-                                     loading="lazy"
-                                     class="w-full h-full object-cover rounded-lg"/>
-                            </div>
-                            <div class="flex-1 flex flex-col justify-between">
-                                <div>
-                                    <div class="text-center mb-2 sm:mb-3">
-                                        <span class="text-2xl sm:text-3xl font-bold text-green-400">-12kg em 6 semanas</span>
-                                    </div>
-                                    <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic">"<strong>Eu sempre tive dificuldade em controlar a compulsão por açúcar</strong>, mas com a dieta da hipnose consegui algo que nunca achei possível: ficar seis semanas sem colocar açúcar na boca."</p>
-                                </div>
-                                <p class="text-xs sm:text-sm text-gray-400">— Musa do carnaval da Tatuapé - Carmem Reis</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-button prev" aria-label="Depoimento anterior">‹</button>
-                <button class="carousel-button next" aria-label="Próximo depoimento">›</button>
-                <div class="carousel-dots">
-                    <div class="carousel-dot active"></div>
-                    <div class="carousel-dot"></div>
-                    <div class="carousel-dot"></div>
+                <div class="stack-price">
+                    <div class="new-price">INCLUÍDO</div>
                 </div>
             </div>
         </div>
-    `;
-}
+    </div>
 
-        // ========================================
-// RENDER: TESTIMONIALS CAROUSEL 2 (PESSOAS COMUNS)
-// ========================================
-function renderTestimonialsCarousel2() {
-    return `
-        <div class="mb-8 sm:mb-12">
-            <h2 class="section-title font-bold text-center mb-6 sm:mb-8 px-2">
-                Resultados Reais de Pessoas Comuns:
-            </h2>
+    <!-- URGENCY TIMER -->
+    <div class="container">
+        <div class="urgency-timer" id="urgencyTimer">
+            <div class="timer-warning">
+                <span>⚠️</span>
+                <span>OFERTA EXPIRA HOJE ÀS 23:59</span>
+                <span>⚠️</span>
+            </div>
             
-            <div class="carousel-container-2 relative max-w-6xl mx-auto">
-                <div class="carousel-track-2">
-                    <div class="carousel-slide-2">
-                        <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-green-500 h-full">
-                            <div class="mb-3 sm:mb-4">
-                                <img loading="lazy"
-                             src= "https://appestoicismo.github.io/emagrecimento/adriana.png" 
-                                     alt="Depoimento Adriana - Emagreceu 6kg" 
-                                     width="600" 
-                                     height="400"
-                                     loading="lazy"
-                                     class="w-full h-auto object-contain rounded-lg"/>
-                            </div>
-                            <div class="text-center mb-2 sm:mb-3">
-                                <span class="text-2xl sm:text-3xl font-bold text-green-400">-6kg em 1½ mês</span>
-                            </div>
-                            <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic">"Este áudio simplesmente <strong>reconfigurou algo em mim</strong>. Eu como melhor, me sinto melhor."</p>
-                            <p class="text-xs sm:text-sm text-gray-400">— Adriana, 29 anos</p>
-                        </div>
-                    </div>
-                    <div class="carousel-slide-2">
-                        <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-green-500 h-full">
-                            <div class="mb-3 sm:mb-4">
-                                <img loading="lazy"
-                             src= "https://appestoicismo.github.io/emagrecimento/lurdes.png" 
-                                     alt="Depoimento Eloiza - Emagreceu 5kg" 
-                                     width="600" 
-                                     height="400"
-                                     loading="lazy"
-                                     class="w-full h-auto object-contain rounded-lg"/>
-                            </div>
-                            <div class="text-center mb-2 sm:mb-3">
-                                <span class="text-2xl sm:text-3xl font-bold text-green-400">-5kg em 7 semanas</span>
-                            </div>
-                            <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic">"O que mais amo é <strong>como foi fácil</strong>. Sem planos rígidos. Faço caminhada todos os dias agora."</p>
-                            <p class="text-xs sm:text-sm text-gray-400">— Eloiza, 56 anos</p>
-                        </div>
-                    </div>
-                    <div class="carousel-slide-2">
-                        <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-green-500 h-full">
-                            <div class="mb-3 sm:mb-4">
-                                <img loading="lazy"
-                             src= "https://appestoicismo.github.io/emagrecimento/armando.png" 
-                                     alt="Depoimento Antônio - Emagreceu 8kg" 
-                                     width="600" 
-                                     height="400"
-                                     loading="lazy"
-                                     class="w-full h-auto object-contain rounded-lg"/>
-                            </div>
-                            <div class="text-center mb-2 sm:mb-3">
-                                <span class="text-2xl sm:text-3xl font-bold text-green-400">-8kg em 90 dias</span>
-                            </div>
-                            <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic">"<strong>Simplesmente acordava com outras atitudes</strong>. Passei a QUERER caminhar. Sem forçar nada."</p>
-                            <p class="text-xs sm:text-sm text-gray-400">— Antônio, 57 anos</p>
-                        </div>
-                    </div>
+            <div class="timer-display">
+                <div class="timer-box">
+                    <span class="timer-number" id="hours">00</span>
+                    <span class="timer-label">Horas</span>
                 </div>
-                <button class="carousel-button-2 prev" aria-label="Depoimento anterior">‹</button>
-                <button class="carousel-button-2 next" aria-label="Próximo depoimento">›</button>
-                <div class="carousel-dots">
-                    <div class="carousel-dot-2 active"></div>
-                    <div class="carousel-dot-2"></div>
-                    <div class="carousel-dot-2"></div>
+                <div class="timer-separator">:</div>
+                <div class="timer-box">
+                    <span class="timer-number" id="minutes">00</span>
+                    <span class="timer-label">Minutos</span>
+                </div>
+                <div class="timer-separator">:</div>
+                <div class="timer-box">
+                    <span class="timer-number" id="seconds">00</span>
+                    <span class="timer-label">Segundos</span>
                 </div>
             </div>
+            
+            <div class="timer-message">
+                Garanta seu acesso com <strong>90% de desconto</strong> antes que expire!
+            </div>
         </div>
-    `;
-}
+    </div>
 
-        // ========================================
-        // RENDER: HOW IT WORKS SECTION
-        // ========================================
-        function renderHowItWorksSection() {
-            return `
-                <div class="bg-gradient-to-r from-blue-900/30 to-purple-900/30 border-2 border-blue-500 rounded-xl p-6 sm:p-8 mb-8">
-                    <div class="text-center mb-6">
-                        <h2 class="text-2xl sm:text-3xl font-bold text-blue-400 mb-4">
-                            🎧 Como Funciona na Prática?
-                        </h2>
-                        <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-                            Aperte o play e ouça como a metodologia funciona.
-                        </p>
-                    </div>
-
-                    <!-- Player de Áudio -->
-                    <div class="flex justify-center mb-6">
-                        <div class="w-full max-w-2xl bg-slate-800/50 border border-blue-500/30 rounded-lg p-4">
-                            <audio controls class="w-full" style="filter: brightness(1.2);">
-                                <source src= "https://appestoicismo.github.io/emagrecimento/narraçãovslemagrecimento2.MP3" type="audio/mpeg">
-                                Seu navegador não suporta o elemento de áudio.
-                            </audio>
-                        </div>
-                    </div>
-
-                    <div class="flex justify-center mt-6">
-                        <img loading="lazy"
-                             src= "https://appestoicismo.github.io/emagrecimento/4.png" 
-                             alt="Como funciona a Alimentação Intuitiva" 
-                             width="800" 
-                             height="600"
-                             loading="lazy"
-                             class="w-full max-w-2xl h-auto object-contain rounded-lg">
-                    </div>
-                </div>
-            `;
-        }
-
-        // ========================================
-// PÁGINA DE RESULTADO - VERSÃO OTIMIZADA
-// Hormozi + Meta Ads Compliance
-// ========================================
-
-// ========================================
-// RENDER: RESULT PAGE - PRINCIPAL
-// ========================================
-function renderResultPage() {
-    const profileKey = quizData.dietaryProfile || 'emotional';
-    const profile = dietaryProfiles[profileKey];
+    <!-- PRICING -->
+<div class="container">
+  <div class="pricing">
+    <p class="total-label">Valor Total:</p>
+    <p class="total-old">R$ 313,80</p>
     
-    return `
-        <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
-            <div class="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
-                <div class="max-w-4xl mx-auto space-y-6 sm:space-y-8">
-                    
-                    <!-- PERFIL COMPORTAMENTAL -->
-                    <div class="text-center space-y-4 sm:space-y-6 mb-8 sm:mb-12">
-                        <div class="inline-block bg-gradient-to-r ${profile.color} p-1 rounded-full mb-3 sm:mb-4">
-                            <div class="bg-slate-900 px-4 py-2 sm:px-6 rounded-full">
-                                <span class="text-white text-xs sm:text-sm font-semibold">✅ Seu Resultado Está Pronto</span>
-                            </div>
-                        </div>
-                        
-                        <div class="text-5xl sm:text-6xl md:text-7xl mb-3 sm:mb-4">${profile.icon}</div>
-                        
-                        <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold bg-gradient-to-r ${profile.color} bg-clip-text text-transparent px-2">
-                            Seu Perfil: ${profile.name}
-                        </h1>
-                        
-                        <!-- BOX PRINCIPAL: DESCRIÇÃO DO PERFIL -->
-                        <div class="bg-slate-800/50 border-2 border-purple-500/50 rounded-xl p-4 sm:p-6 max-w-2xl mx-auto space-y-4">
-                            <!-- Descrição do perfil -->
-                            <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-                                ${profile.description}
-                            </p>
-                            
-                            <div class="border-t border-gray-600 my-4"></div>
-                            
-                            <!-- O Problema Real (PASO - Problem) -->
-                            <div class="space-y-3">
-                                <h3 class="text-xl sm:text-2xl font-bold text-yellow-400">
-                                    🎯 Por Que Nada Funcionou Até Agora?
-                                </h3>
-                                <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-                                    Você provavelmente já tentou: dietas restritivas, aplicativos de contagem de calorias, academia, suplementos... e o resultado? <strong>Sempre volta à estaca zero</strong>.
-                                </p>
-                                <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-                                    O problema nunca foi <em>falta de informação</em> ou <em>falta de vontade</em>. O problema é que <strong class="text-yellow-400">85% das suas escolhas alimentares são automáticas</strong> — controladas pelo seu subconsciente, não pela sua força de vontade.
-                                </p>
-                            </div>
-                            
-                            <div class="border-t border-gray-600 my-4"></div>
-                            
-                            <!-- A Agitação (PASO - Agitate) -->
-                            <div class="bg-slate-900/50 p-4 rounded-lg border-l-4 border-red-500">
-                                <p class="text-sm sm:text-base text-gray-300 italic">
-                                    <strong class="text-red-400">A verdade dura:</strong> Enquanto você continuar tentando "se controlar" com força de vontade, vai continuar falhando. Por quê? Porque você está lutando contra programações mentais que foram criadas ao longo de <strong>anos</strong> — e força de vontade dura, no máximo, algumas <strong>semanas</strong>.
-                                </p>
-                            </div>
-                            
-                            <div class="border-t border-gray-600 my-4"></div>
-                            
-                            <!-- A Solução (PASO - Solution) -->
-                            <div class="space-y-3">
-                                <h3 class="text-xl sm:text-2xl font-bold text-green-400">
-                                    ✨ A Boa Notícia?
-                                </h3>
-                                <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-                                    Existe um método que trabalha <strong>diretamente no nível subconsciente</strong> — onde suas escolhas automáticas são feitas. E o melhor: <strong>você não precisa usar força de vontade</strong>.
-                                </p>
-                                <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-                                    É o mesmo método usado por milhares de pessoas ao redor do mundo (incluindo celebridades) para criar mudanças duradouras na relação com a comida.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- PROVA SOCIAL: FAMOSOS -->
-                    ${renderTestimonialsCarousel1Optimized()}
-
-                    <!-- PROVA SOCIAL: PESSOAS COMUNS -->
-                    ${renderTestimonialsCarousel2Optimized()}
-
-                    <!-- COMO FUNCIONA -->
-                    ${renderHowItWorksSection()}
-
-                    <!-- CTA FINAL OTIMIZADO -->
-                    <div class="bg-gradient-to-r from-purple-900/50 to-pink-900/50 border-2 border-purple-500 rounded-xl p-6 sm:p-8 text-center space-y-4">
-                        <div class="mb-4">
-                            <div class="text-5xl sm:text-6xl mb-4">🔓</div>
-                            <h2 class="text-2xl sm:text-3xl font-bold mb-3">
-                                Pronto Para Mudar Suas Escolhas Automáticas?
-                            </h2>
-                            <p class="text-base sm:text-lg text-gray-300 max-w-2xl mx-auto">
-                                Descubra como o <strong>Método Alimentação Intuitiva</strong> pode transformar sua relação com a comida — sem dietas, sem sofrimento, sem força de vontade.
-                            </p>
-                        </div>
-
-                        <button onclick="goToOffer()" class="btn btn-2xl w-full max-w-2xl mx-auto bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold py-5 sm:py-8 pulse-button shadow-2xl leading-tight">
-                            <span class="text-base sm:text-xl md:text-2xl">
-                                🎯 Ver Como Funciona
-                            </span>
-                        </button>
-
-                        <p class="text-xs sm:text-sm text-gray-400">
-                            Sem compromisso • Você verá todos os detalhes antes de decidir
-                        </p>
-                    </div>
-
-                    <!-- EXPLICAÇÃO SIMPLES: COMO FUNCIONA -->
-                    <div class="bg-slate-800/30 border border-slate-700 rounded-xl p-6 sm:p-8 space-y-4">
-                        <h3 class="text-xl sm:text-2xl font-bold text-center text-purple-400 mb-4">
-                            🧠 Como É Tão Simples?
-                        </h3>
-                        
-                        <div class="space-y-4">
-                            <div class="flex items-start gap-3">
-                                <span class="text-3xl sm:text-4xl flex-shrink-0">1️⃣</span>
-                                <div>
-                                    <p class="text-base sm:text-lg text-gray-200 font-semibold mb-1">
-                                        Receber seu programa personalizado
-                                    </p>
-                                    <p class="text-sm sm:text-base text-gray-400">
-                                        Baseado no seu perfil ${profile.name}
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start gap-3">
-                                <span class="text-3xl sm:text-4xl flex-shrink-0">2️⃣</span>
-                                <div>
-                                    <p class="text-base sm:text-lg text-gray-200 font-semibold mb-1">
-                                        Ouvir 15-20 minutos por dia
-                                    </p>
-                                    <p class="text-sm sm:text-base text-gray-400">
-                                        Pode ser antes de dormir, ao acordar, ou quando preferir
-                                    </p>
-                                </div>
-                            </div>
-
-                            <div class="flex items-start gap-3">
-                                <span class="text-3xl sm:text-4xl flex-shrink-0">3️⃣</span>
-                                <div>
-                                    <p class="text-base sm:text-lg text-gray-200 font-semibold mb-1">
-                                        Deixar seu subconsciente fazer o resto
-                                    </p>
-                                    <p class="text-sm sm:text-base text-gray-400">
-                                        Suas escolhas automáticas começam a mudar naturalmente
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="bg-green-900/20 border border-green-500 rounded-lg p-4 mt-6">
-                            <p class="text-sm sm:text-base text-green-300 text-center">
-                                ✅ Interface simples • ✅ Funciona em qualquer aparelho • ✅ Acesso vitalício
-                            </p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-// ========================================
-// CARROSSEL 1: FAMOSOS (OTIMIZADO)
-// ========================================
-function renderTestimonialsCarousel1Optimized() {
-    return `
-        <div class="mb-8 sm:mb-12">
-            <h2 class="section-title font-bold text-center mb-6 sm:mb-8 px-2">
-                ✨ Quem Já Transformou Sua Relação com a Comida
-            </h2>
-            
-            <div class="carousel-container relative max-w-6xl mx-auto">
-                <div class="carousel-track">
-                    <!-- ADELE -->
-                    <div class="carousel-slide">
-                        <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-green-500 h-full flex flex-col">
-                            <div class="mb-3 sm:mb-4 flex-shrink-0" style="height: 300px; overflow: hidden;">
-                                <img loading="lazy"
-                                     src="https://appestoicismo.github.io/emagrecimento/adele3.png" 
-                                     alt="Transformação de Adele" 
-                                     width="600" 
-                                     height="400"
-                                     loading="lazy"
-                                     class="w-full h-full object-cover rounded-lg"/>
-                            </div>
-                            <div class="flex-1 flex flex-col justify-between">
-                                <div>
-                                    <div class="text-center mb-2 sm:mb-3">
-                                        <span class="text-2xl sm:text-3xl font-bold text-green-400">Transformação Radical</span>
-                                    </div>
-                                    <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic">
-                                        "Adele transformou não só seu corpo, <strong>mas principalmente sua relação com a comida</strong> — mudando escolhas automáticas que a acompanhavam há anos."
-                                    </p>
-                                </div>
-                                <p class="text-xs sm:text-sm text-gray-400">— Cantora britânica Adele</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- SOPHIE DAHL -->
-                    <div class="carousel-slide">
-                        <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-green-500 h-full flex flex-col">
-                            <div class="mb-3 sm:mb-4 flex-shrink-0" style="height: 300px; overflow: hidden;">
-                                <img loading="lazy"
-                                     src="https://appestoicismo.github.io/emagrecimento/sophiedahl2.png" 
-                                     alt="Transformação de Sophie Dahl" 
-                                     width="600" 
-                                     height="400"
-                                     loading="lazy"
-                                     class="w-full h-full object-cover rounded-lg"/>
-                            </div>
-                            <div class="flex-1 flex flex-col justify-between">
-                                <div>
-                                    <div class="text-center mb-2 sm:mb-3">
-                                        <span class="text-2xl sm:text-3xl font-bold text-green-400">Nova Identidade</span>
-                                    </div>
-                                    <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic">
-                                        "Sophie Dahl mudou completamente sua forma de se relacionar com a alimentação — <strong>sem dietas restritivas ou sofrimento</strong>."
-                                    </p>
-                                </div>
-                                <p class="text-xs sm:text-sm text-gray-400">— Modelo e escritora Sophie Dahl</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- LILY ALLEN -->
-                    <div class="carousel-slide">
-                        <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-green-500 h-full flex-col">
-                            <div class="mb-3 sm:mb-4 flex-shrink-0" style="height: 300px; overflow: hidden;">
-                                <img loading="lazy"
-                                     src="https://emagrecimento.dantashipnoterapia.com.br/carmemreis1.png" 
-                                     alt="🎭 Mudança Natural" 
-                                     width="600" 
-                                     height="400"
-                                     loading="lazy"
-                                     class="w-full h-full object-cover rounded-lg"/>
-                            </div>
-                            <div class="flex-1 flex flex-col justify-between">
-                                <div>
-                                    <div class="text-center mb-2 sm:mb-3">
-                                        <span class="text-2xl sm:text-3xl font-bold text-green-400">Mudança Natural</span>
-                                    </div>
-                                    <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic">
-                                        "Eu sempre tive dificuldade em controlar a compulsão por açúcar. Já tentei de tudo... mas algo diferente 
-aconteceu dessa vez: simplesmente PAREI de sentir aquela necessidade urgente. Foi natural, sem forçar."
-                                    </p>
-                                </div>
-                                <p class="text-xs sm:text-sm text-gray-400">— Musa do carnaval da Tatuapé - Carmem Reis</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-button prev" aria-label="Depoimento anterior">‹</button>
-                <button class="carousel-button next" aria-label="Próximo depoimento">›</button>
-                <div class="carousel-dots">
-                    <div class="carousel-dot active"></div>
-                    <div class="carousel-dot"></div>
-                    <div class="carousel-dot"></div>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-// ========================================
-// CARROSSEL 2: PESSOAS COMUNS (OTIMIZADO)
-// ========================================
-function renderTestimonialsCarousel2Optimized() {
-    return `
-        <div class="mb-8 sm:mb-12">
-            <h2 class="section-title font-bold text-center mb-6 sm:mb-8 px-2">
-                💬 O Que Nossos Clientes Estão Dizendo
-            </h2>
-            
-            <div class="carousel-container-2 relative max-w-6xl mx-auto">
-                <div class="carousel-track-2">
-                    <!-- LUANA -->
-                    <div class="carousel-slide-2">
-                        <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-purple-500 h-full flex flex-col">
-                            <div class="mb-3 sm:mb-4 flex-shrink-0" style="height: 300px; overflow: hidden;">
-                                <img loading="lazy"
-                                     src="https://appestoicismo.github.io/emagrecimento/Luana.jpeg" 
-                                     alt="Luana - Depoimento" 
-                                     width="600" 
-                                     height="400"
-                                     loading="lazy"
-                                     class="w-full h-full object-contain rounded-lg bg-slate-900"/>
-                            </div>
-                            <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic flex-1">
-                                "<strong>Simplesmente parei de pensar tanto em comida</strong>. Antes ficava o dia todo pensando no que ia comer depois... hoje é natural, automático."
-                            </p>
-                            <p class="text-xs sm:text-sm text-gray-400">— Luana, 34 anos</p>
-                        </div>
-                    </div>
-
-                    <!-- ELOIZA -->
-                    <div class="carousel-slide-2">
-                        <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-purple-500 h-full flex flex-col">
-                            <div class="mb-3 sm:mb-4 flex-shrink-0" style="height: 300px; overflow: hidden;">
-                                <img loading="lazy"
-                                     src="https://appestoicismo.github.io/emagrecimento/eloiza.jpeg" 
-                                     alt="Eloíza - Depoimento" 
-                                     width="600" 
-                                     height="400"
-                                     loading="lazy"
-                                     class="w-full h-full object-contain rounded-lg bg-slate-900"/>
-                            </div>
-                            <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic flex-1">
-                                "Achei que ia ser mais uma promessa vazia... <strong>mas funciona de verdade</strong>. Minhas escolhas mudaram sem eu perceber."
-                            </p>
-                            <p class="text-xs sm:text-sm text-gray-400">— Eloíza, 42 anos</p>
-                        </div>
-                    </div>
-
-                    <!-- ANTÔNIO -->
-                    <div class="carousel-slide-2">
-                        <div class="bg-slate-800/50 rounded-2xl p-4 sm:p-6 border-2 border-purple-500 h-full flex flex-col">
-                            <div class="mb-3 sm:mb-4 flex-shrink-0" style="height: 300px; overflow: hidden;">
-                                <img loading="lazy"
-                                     src="https://appestoicismo.github.io/emagrecimento/antonio.jpeg" 
-                                     alt="Antônio - Depoimento" 
-                                     width="600" 
-                                     height="400"
-                                     loading="lazy"
-                                     class="w-full h-full object-contain rounded-lg bg-slate-900"/>
-                            </div>
-                            <p class="text-sm sm:text-base text-gray-300 mb-3 sm:mb-4 italic flex-1">
-                                "<strong>Simplesmente acordava com outras atitudes</strong>. Passei a QUERER fazer escolhas melhores. Sem forçar nada."
-                            </p>
-                            <p class="text-xs sm:text-sm text-gray-400">— Antônio, 57 anos</p>
-                        </div>
-                    </div>
-                </div>
-                <button class="carousel-button-2 prev" aria-label="Depoimento anterior">‹</button>
-                <button class="carousel-button-2 next" aria-label="Próximo depoimento">›</button>
-                <div class="carousel-dots">
-                    <div class="carousel-dot-2 active"></div>
-                    <div class="carousel-dot-2"></div>
-                    <div class="carousel-dot-2"></div>
-                </div>
-            </div>
-        </div>
-    `;
-}
-
-// ========================================
-// SEÇÃO: COMO FUNCIONA
-// ========================================
-function renderHowItWorksSection() {
-    return `
-        <div class="bg-gradient-to-r from-blue-900/30 to-purple-900/30 border-2 border-blue-500 rounded-xl p-6 sm:p-8 mb-8">
-            <div class="text-center mb-6">
-                <h2 class="text-2xl sm:text-3xl font-bold text-blue-400 mb-4">
-                    🎧 Como Funciona na Prática?
-                </h2>
-                <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-                    Aperte o play e ouça como a metodologia funciona.
-                </p>
-            </div>
-
-            <!-- Player de Áudio -->
-            <div class="flex justify-center mb-6">
-                <div class="w-full max-w-2xl bg-slate-800/50 border border-blue-500/30 rounded-lg p-4">
-                    <audio controls class="w-full" style="filter: brightness(1.2);">
-                        <source src="https://appestoicismo.github.io/emagrecimento/narraçãovslemagrecimento2.MP3" type="audio/mpeg">
-                        Seu navegador não suporta o elemento de áudio.
-                    </audio>
-                </div>
-            </div>
-
-            <div class="flex justify-center mt-6">
-                <img loading="lazy"
-                     src="https://appestoicismo.github.io/emagrecimento/4.png" 
-                     alt="Como funciona a Alimentação Intuitiva" 
-                     width="800" 
-                     height="600"
-                     loading="lazy"
-                     class="w-full max-w-2xl h-auto object-contain rounded-lg">
-            </div>
-        </div>
-    `;
-}
-
-        // ========================================
-        // RENDER: OFFER PAGE
-        // ========================================
-        function renderOfferPage() {
-    return `
-        <div class="min-h-screen bg-gradient-to-br from-slate-900 via-purple-900 to-slate-900 text-white">
-            <header class="p-4 sm:p-6">
-                <div class="flex items-center justify-between">
-                    <button onclick="goBack()" class="btn btn-outline bg-transparent border-gray-600 text-white hover:bg-gray-800 text-sm sm:text-base">← Voltar</button>
-                    <div class="flex items-center gap-2">
-                        <div class="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
-                            <img loading="lazy"
-                                 src="https://appestoicismo.github.io/emagrecimento/AppAutoconhecimento.jpg" 
-                                 alt="Logo" 
-                                 width="32" 
-                                 height="32"
-                                 loading="lazy"
-                                 class="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover">
-                        </div>
-                        <span class="text-base sm:text-xl font-semibold hidden sm:inline">Alimentação Intuitiva</span>
-                    </div>
-                </div>
-            </header>
-
-            <div class="container mx-auto px-4 sm:px-6 py-8 sm:py-12">
-                <div class="max-w-4xl mx-auto space-y-6 sm:space-y-8">
-                    
-                    <!-- BANNER DE URGÊNCIA OTIMIZADO -->
-                    <div class="bg-purple-900/30 border-2 border-purple-500 rounded-xl p-4 sm:p-6 text-center">
-                        <p class="text-purple-300 font-bold text-base sm:text-lg md:text-xl mb-2">
-                            ✨ Oferta Especial para Quem Completou o Teste
-                        </p>
-                        <p class="text-sm sm:text-base text-gray-300">
-                            Este desconto de 90% é exclusivo para novos usuários que descobriram seu perfil hoje
-                        </p>
-                    </div>
-
-                    <!-- HEADLINE PRINCIPAL OTIMIZADA -->
-                    <div class="text-center space-y-3 sm:space-y-4">
-                        <h1 class="text-2xl sm:text-3xl md:text-4xl font-bold px-2">
-                            Você não precisa de outra dieta. Precisa mudar sua relação com a comida:
-                        </h1>
-                        <p class="text-lg sm:text-xl md:text-2xl text-yellow-400 font-semibold px-2">
-                            <span class="text-transparent bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text">Alimentação Intuitiva</span> • Método Completo
-                        </p>
-                    </div>
-
-                    <!-- VÍDEO DE DEMONSTRAÇÃO DO APP -->
-                    <div class="bg-slate-800/50 border-2 border-blue-500 rounded-xl p-4 sm:p-6 space-y-4">
-                        <div class="text-center">
-                            <h3 class="text-xl sm:text-2xl font-bold text-blue-400 mb-2">
-                                📱 Veja Como é Simples Usar o App
-                            </h3>
-                            <p class="text-sm sm:text-base text-gray-300">
-                                Interface intuitiva que funciona em qualquer dispositivo
-                            </p>
-                        </div>
-                        <div class="relative w-full max-w-2xl mx-auto rounded-lg overflow-hidden" style="box-shadow: 0 10px 40px rgba(0,0,0,0.3);">
-                            <video 
-                                class="w-full h-auto rounded-lg" 
-                                controls 
-                                preload="metadata"
-                                playsinline
-                                poster="https://appestoicismo.github.io/emagrecimento/neurocientista1.jpeg"
-                                style="max-height: 70vh; object-fit: contain; background: #000;">
-                                <source src="https://emagrecimento.dantashipnoterapia.com.br/appautohipnose3.mp4" type="video/mp4">
-                                Seu navegador não suporta vídeos HTML5.
-                            </video>
-                        </div>
-                        <div class="bg-blue-900/20 border border-blue-500 rounded-lg p-3 text-center">
-                            <p class="text-xs sm:text-sm text-blue-300">
-                                ✅ <strong>Simples de usar</strong> • ✅ <strong>Funciona offline</strong> • ✅ <strong>Acesso vitalício</strong>
-                            </p>
-                        </div>
-                    </div>
-
-
-                    <!-- VALUE STACK OTIMIZADO -->
-                    <div class="bg-slate-800/50 border-2 border-purple-500 rounded-xl p-4 sm:p-8 space-y-4 sm:space-y-6">
-                        <div class="space-y-3 sm:space-y-4">
-                            ${renderValueStackItemOptimized('🎧', 'Programa de Áudio Personalizado (4 Sessões)', 'Baseado no seu perfil mental - Ouça quantas vezes precisar', 'R$ 197', true)}
-                            ${renderValueStackItemOptimized('🔥', 'Héstia - Assistente de IA 24/7', 'Acompanhamento personalizado durante toda sua jornada', 'R$ 30/mês', true)}
-                            ${renderValueStackItemOptimized('📋', 'Atualizações Vitalícias + Suporte', 'Novas sessões e melhorias incluídas para sempre', 'R$ 47', true)}
-                            ${renderValueStackItemOptimized('🧬', 'BÔNUS: Perfil Comportamental', 'Descubra seus padrões inconscientes', 'R$ 19,90', false, true)}
-                            ${renderValueStackItemOptimized('💬', 'BÔNUS: PNL - Frase do Dia', 'Reforço mental automático diário', 'R$ 19,90', false, true)}
-                            ${renderValueStackItemOptimized('⏰', 'Acesso Vitalício Garantido', 'Zero mensalidades - É seu para sempre', 'Inestimável', true)}
-                        </div>
-
-                        <!-- CÁLCULO DE VALOR -->
-                        <div class="border-t-2 border-purple-500 pt-4 sm:pt-6">
-                            <div class="text-center space-y-3 sm:space-y-4">
-                                <div class="flex items-center justify-center gap-3 sm:gap-4 text-lg sm:text-2xl">
-                                    <span class="text-gray-400">Valor Total:</span>
-                                    <span class="line-through text-red-400 font-bold">R$ 313,80</span>
-                                </div>
-                                <div class="bg-gradient-to-r from-yellow-900/50 to-orange-900/50 border border-yellow-500 rounded-lg p-4 sm:p-6">
-                                    <p class="text-base sm:text-lg text-gray-300 mb-2">Seu Investimento HOJE:</p>
-                                    <p class="text-4xl sm:text-5xl md:text-6xl font-bold text-green-400 mb-2">R$ 37,90</p>
-                                    <p class="text-yellow-400 font-semibold text-lg sm:text-xl">Economia de 90%</p>
-                                    <p class="text-xs sm:text-sm text-gray-400 mt-2">Pagamento único • Zero mensalidades • Acesso vitalício</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- GARANTIA OTIMIZADA (RISK REVERSAL) -->
-                    <div class="bg-green-900/30 border-2 border-green-600 rounded-xl p-4 sm:p-6">
-                        <div class="flex flex-col md:flex-row items-center gap-4 sm:gap-6">
-                            <div class="text-5xl sm:text-6xl flex-shrink-0">🛡️</div>
-                            <div class="flex-1 text-center md:text-left">
-                                <h3 class="text-xl sm:text-2xl font-bold text-green-400 mb-2 sm:mb-3">
-                                    Garantia Incondicional de 7 Dias
-                                </h3>
-                                <p class="text-sm sm:text-base md:text-lg text-gray-300">
-                                    Se por qualquer motivo você não ficar satisfeito, devolvemos <strong>100% do seu investimento</strong>. 
-                                    Zero perguntas, zero burocracia. <strong>O risco é todo nosso, não seu.</strong>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- CTA PRINCIPAL OTIMIZADO -->
-                    <div class="text-center space-y-4 sm:space-y-6">
-                        <button onclick="handleCheckout()" class="btn btn-2xl w-full max-w-2xl mx-auto bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold py-5 sm:py-8 pulse-button shadow-2xl leading-tight">
-                            <span class="text-base sm:text-xl md:text-2xl">
-                                🔓 Começar Reprogramação Agora
-                            </span>
-                        </button>
-                        <p class="text-xs sm:text-sm text-gray-400">Acesso imediato após confirmação do pagamento</p>
-                        
-                        <div class="flex flex-wrap justify-center gap-3 sm:gap-4 text-xs sm:text-sm text-gray-400">
-                            <span class="flex items-center gap-1 sm:gap-2">
-                                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                                <span>Pagamento 100% Seguro</span>
-                            </span>
-                            <span class="flex items-center gap-1 sm:gap-2">
-                                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                                <span>Garantia de 7 Dias</span>
-                            </span>
-                            <span class="flex items-center gap-1 sm:gap-2">
-                                <svg class="w-4 h-4 sm:w-5 sm:h-5 text-green-400 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                                <span>Acesso Vitalício</span>
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- SEÇÃO: VOCÊ ACESSA PELO NOSSO APLICATIVO -->
-                    ${renderAppAccessSection()}
-
-                    <!-- FAQ OTIMIZADO -->
-                    <div class="bg-slate-800/30 border border-slate-700 rounded-xl p-4 sm:p-8">
-                        <h3 class="text-xl sm:text-2xl font-bold text-center mb-6 sm:mb-8 px-2">Perguntas Frequentes</h3>
-                        
-                        <div class="space-y-4 sm:space-y-6">
-                            <!-- FAQ 1 - OTIMIZADA -->
-                            <div class="border-b border-slate-700 pb-3 sm:pb-4">
-                                <p class="font-semibold text-base sm:text-lg mb-2">❓ Como funciona o método?</p>
-                                <p class="text-sm sm:text-base text-gray-300">
-                                    O programa usa técnicas de hipnose clínica que trabalham no nível subconsciente, onde estão armazenadas suas escolhas automáticas. 
-                                    Estudos científicos mostram que técnicas de mudança de comportamento baseadas em hipnose podem ser altamente eficazes quando aplicadas consistentemente.
-                                </p>
-                            </div>
-                            
-                            <!-- FAQ 2 - MANTIDA -->
-                            <div class="border-b border-slate-700 pb-3 sm:pb-4">
-                                <p class="font-semibold text-base sm:text-lg mb-2">❓ Preciso de fone de ouvido?</p>
-                                <p class="text-sm sm:text-base text-gray-300">
-                                    Recomendamos usar fones para melhor imersão, mas não é obrigatório. Qualquer ambiente tranquilo funciona.
-                                </p>
-                            </div>
-                            
-                            <!-- FAQ 3 - OTIMIZADA -->
-                            <div class="border-b border-slate-700 pb-3 sm:pb-4">
-                                <p class="font-semibold text-base sm:text-lg mb-2">❓ Quanto tempo por dia?</p>
-                                <p class="text-sm sm:text-base text-gray-300">
-                                    Recomendamos 15-20 minutos diários. Você pode ouvir antes de dormir, ao acordar, ou em qualquer momento tranquilo. 
-                                    A consistência é mais importante que a duração.
-                                </p>
-                            </div>
-                            
-                            <!-- FAQ 4 - NOVA -->
-                            <div class="border-b border-slate-700 pb-3 sm:pb-4">
-                                <p class="font-semibold text-base sm:text-lg mb-2">❓ Quanto tempo até ver resultados?</p>
-                                <p class="text-sm sm:text-base text-gray-300">
-                                    Isso varia de pessoa para pessoa. Alguns usuários relatam mudanças em suas escolhas automáticas nas primeiras semanas, 
-                                    enquanto outros levam mais tempo. O importante é seguir o programa com consistência e ter expectativas realistas sobre mudança de hábitos.
-                                </p>
-                            </div>
-                            
-                            <!-- FAQ 5 - MANTIDA -->
-                            <div class="border-b border-slate-700 pb-3 sm:pb-4">
-                                <p class="font-semibold text-base sm:text-lg mb-2">❓ É seguro?</p>
-                                <p class="text-sm sm:text-base text-gray-300">
-                                    Totalmente. A hipnose é apenas um estado profundo de relaxamento guiado. Você sempre mantém controle e pode interromper a qualquer momento.
-                                </p>
-                            </div>
-                            
-                            <!-- FAQ 6 - MANTIDA -->
-                            <div class="border-b border-slate-700 pb-3 sm:pb-4">
-                                <p class="font-semibold text-base sm:text-lg mb-2">❓ Funciona para qualquer idade?</p>
-                                <p class="text-sm sm:text-base text-gray-300">
-                                    Sim! O método funciona para adultos de todas as idades. Já temos casos de sucesso de pessoas de 25 a 70 anos.
-                                </p>
-                            </div>
-                            
-                            <!-- FAQ 7 - MANTIDA -->
-                            <div>
-                                <p class="font-semibold text-base sm:text-lg mb-2">❓ E se eu não gostar?</p>
-                                <p class="text-sm sm:text-base text-gray-300">
-                                    Você tem 7 dias de garantia total. Se não estiver satisfeito, devolvemos 100% do seu dinheiro sem perguntas.
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- CTA FINAL -->
-                    <div class="text-center space-y-4 sm:space-y-6 pt-4 sm:pt-8">
-                        <p class="text-xl sm:text-2xl font-bold text-yellow-400 px-2">
-                            ✨ Oferta Exclusiva para Novos Usuários
-                        </p>
-                        <button onclick="handleCheckout()" class="btn btn-2xl w-full max-w-2xl mx-auto bg-gradient-to-r from-green-500 to-emerald-500 hover:from-green-600 hover:to-emerald-600 text-white font-bold py-5 sm:py-8 pulse-button shadow-2xl leading-tight">
-                            <span class="text-base sm:text-xl md:text-2xl">
-                                🔓 Começar Reprogramação Agora
-                            </span>
-                        </button>
-                        <p class="text-xs sm:text-sm text-gray-400">Acesso imediato • Zero mensalidades • Garantia de 7 dias</p>
-                    </div>
-
-                </div>
-            </div>
-
-            ${renderFooterOptimized()}
-        </div>
-    `;
-}
-
-// ========================================
-// HELPER: VALUE STACK ITEM OTIMIZADO
-// ========================================
-function renderValueStackItemOptimized(icon, title, description, value, isIncluded, isBonus = false) {
-    const bgClass = isBonus ? 'bg-purple-900/30 border border-purple-500' : 'bg-slate-900/50';
+    <p class="today-label">Mas hoje, você garante tudo por apenas:</p>
+    <div class="price-big">R$ 37,90</div>
     
-    // Valores que devem ter risco vermelho
-    const shouldHaveStrikethrough = value === 'R$ 197' || value === 'R$ 30/mês' || value === 'R$ 47';
+    <div class="discount-badge">90% OFF</div>
     
-    let valueClass;
-    if (isBonus) {
-        valueClass = 'line-through text-purple-400';
-    } else if (shouldHaveStrikethrough) {
-        valueClass = 'line-through text-red-500';
-    } else {
-        valueClass = 'text-green-400';
-    }
-    
-    return `
-        <div class="flex items-center justify-between ${bgClass} p-3 sm:p-4 rounded-lg">
-            <div class="flex items-center gap-2 sm:gap-3 flex-1">
-                <span class="text-2xl sm:text-3xl flex-shrink-0">${icon}</span>
-                <div class="flex-1">
-                    <p class="font-semibold text-sm sm:text-base md:text-lg">${title}</p>
-                    <p class="text-xs sm:text-sm text-gray-400">${description}</p>
-                </div>
-            </div>
-            <div class="text-right flex-shrink-0 ml-2 sm:ml-4">
-                <span class="${valueClass} font-bold text-sm sm:text-base">${value}</span>
-                ${isBonus ? '<div class="text-xs text-purple-300 mt-1">GRÁTIS HOJE</div>' : ''}
-                ${shouldHaveStrikethrough ? '<div class="text-xs text-green-300 mt-1">INCLUÍDO</div>' : ''}
-            </div>
+    <p class="payment-terms">Pagamento único • Acesso vitalício • Sem mensalidades ou renovações escondidas</p>
+    <p class="pricing-note">Menos que uma pizza — e o começo de uma nova relação com a comida e com a balança.</p>
+  </div>
+</div>
+
+    <!-- CTA 2 -->
+    <div class="container">
+        <div class="cta-wrapper">
+            <div class="arrow-down">👇</div>
+            <a href="https://pay.hotmart.com/N101998916J?off=6kcihxpj&checkoutMode=10" class="cta-btn" onclick="trackAddToCart()" target="_blank">Sim, Eu Quero!</a>
         </div>
-    `;
-}
+    </div>
 
-// ========================================
-// HELPER: FOOTER OTIMIZADO
-// ========================================
-function renderFooterOptimized() {
-    return `
-        <footer class="footer-improved py-6 sm:py-8 mt-8 sm:mt-12">
-            <div class="container mx-auto px-4 sm:px-6">
-                
-                <!-- DISCLAIMER MÉDICO DESTACADO -->
-                <div class="bg-slate-900/50 border border-slate-700 rounded-lg p-4 sm:p-6 mb-6 text-xs sm:text-sm text-gray-400">
-                    <p class="mb-3 text-center">
-                        <strong class="text-yellow-400">⚠️ Aviso Importante:</strong>
-                    </p>
-                    <p class="mb-2 text-center">
-                        Este programa não substitui acompanhamento médico, nutricional ou psicológico. 
-                        Não é um tratamento médico. Os resultados variam de pessoa para pessoa. 
-                        Consulte um profissional de saúde antes de fazer mudanças significativas na sua alimentação.
-                    </p>
-                    <p class="text-center text-gray-500">
-                        <strong>Hipnoterapeuta responsável:</strong> Alex Andreoli Dantas
-                    </p>
-                </div>
+    <!-- FAQ -->
+<div class="container">
+  <div class="faq-section">
+    <h2 class="faq-title">Perguntas Frequentes</h2>
 
-                <!-- INFORMAÇÕES DE CONTATO -->
-                <div class="flex flex-wrap justify-between items-center mb-4 sm:mb-6">
-                    <div class="flex items-center gap-2 mb-4 lg:mb-0">
-                        <div class="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
-                            <img loading="lazy"
-                                 src="https://appestoicismo.github.io/emagrecimento/AppAutoconhecimento.jpg" 
-                                 alt="Logo Alimentação Intuitiva" 
-                                 width="32" 
-                                 height="32"
-                                 loading="lazy"
-                                 class="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover">
-                        </div>
-                        <span class="text-lg sm:text-xl font-semibold footer-text-primary">Alimentação Intuitiva</span>
-                    </div>
-                    <div class="flex flex-wrap gap-4 sm:gap-6 text-xs sm:text-sm">
-                        <a href="https://wa.me/5519974010028" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">
-                            📱 WhatsApp: (19) 97401-0028
-                        </a>
-                    </div>
-                </div>
+    <div class="faq-item">
+      <div class="faq-q">Como funciona o método?</div>
+      <div class="faq-a">Você vai ouvir sessões guiadas de hipnose que relaxam sua mente consciente e reprogramam o subconsciente — onde estão seus hábitos automáticos. É como ensinar o seu cérebro a escolher diferente, sem esforço. A neurociência já comprovou: esse tipo de técnica realmente muda padrões mentais.</div>
+    </div>
 
-                <!-- COPYRIGHT -->
-                <div class="pt-4 border-t border-purple-800 text-center text-xs sm:text-sm footer-text-secondary">
-                    <p>© 2025 Alimentação Intuitiva. Todos os direitos reservados.</p>
-                </div>
-            </div>
-        </footer>
-    `;
-}
+    <div class="faq-item">
+      <div class="faq-q">Preciso de fone de ouvido?</div>
+      <div class="faq-a">Os fones ajudam na imersão, mas não são obrigatórios. O mais importante é estar em um lugar tranquilo, onde você possa relaxar e se permitir o momento.</div>
+    </div>
 
-// ========================================
-// HELPER: SEÇÃO DO APP (MANTIDA)
-// ========================================
-function renderAppAccessSection() {
-    return `
-        <div class="bg-gradient-to-r from-blue-900/30 to-cyan-900/30 border-2 border-blue-500 rounded-xl p-6 sm:p-8">
-            <div class="text-center mb-6">
-                <h2 class="text-2xl sm:text-3xl font-bold text-blue-400 mb-4">
-                    📱 Você Acessa Pelo Nosso Aplicativo
-                </h2>
-                <p class="text-base sm:text-lg text-gray-200 leading-relaxed">
-                    Interface simples e intuitiva. Funciona em qualquer dispositivo.
-                </p>
-            </div>
+    <div class="faq-item">
+      <div class="faq-q">Quanto tempo por dia?</div>
+      <div class="faq-a">Basta de 15 a 20 minutos por dia. Pode ser antes de dormir, ao acordar ou em qualquer pausa do seu dia. O segredo é a consistência — e não o tempo.</div>
+    </div>
 
-            <div class="flex justify-center mb-6">
-                <img loading="lazy"
-                     src="https://appestoicismo.github.io/emagrecimento/3.png" 
-                     alt="Interface do aplicativo" 
-                     width="800" 
-                     height="600"
-                     loading="lazy"
-                     class="w-full max-w-md h-auto object-contain rounded-lg"
-                     style="max-width: 300px;">
-            </div>
+    <div class="faq-item">
+      <div class="faq-q">Quando começo a sentir resultados?</div>
+      <div class="faq-a">Algumas pessoas sentem mudanças já nas primeiras sessões — o desejo por certos alimentos diminui, o corpo relaxa e a mente fica mais leve. Para outras, a transformação vem aos poucos, conforme o subconsciente absorve as novas mensagens.</div>
+    </div>
 
-            <div class="space-y-4">
-                <div class="flex items-start gap-3">
-                    <span class="text-3xl sm:text-4xl flex-shrink-0">1️⃣</span>
-                    <p class="text-base sm:text-lg text-gray-200 font-medium">
-                        Receber seu acesso por email e entrar no app
-                    </p>
-                </div>
-                <div class="flex items-start gap-3">
-                    <span class="text-3xl sm:text-4xl flex-shrink-0">2️⃣</span>
-                    <p class="text-base sm:text-lg text-gray-200 font-medium">
-                        Dar play no seu áudio e deixar o subconsciente fazer o resto
-                    </p>
-                </div>
-            </div>
+    <div class="faq-item">
+      <div class="faq-q">É seguro?</div>
+      <div class="faq-a">Sim! A hipnose é um estado natural de relaxamento — você ouve, relaxa e continua com total controle. Nada é imposto, tudo acontece com a sua permissão.</div>
+    </div>
 
-            <div class="bg-green-900/20 border border-green-500 rounded-lg p-4 mt-6 text-center">
-                <p class="text-sm sm:text-base text-green-300">
-                    ✅ <strong>Interface simples</strong> • ✅ <strong>Todos Aparelhos</strong> • ✅ <strong>Acesso vitalício</strong>
-                </p>
-            </div>
+    <div class="faq-item">
+      <div class="faq-q">Funciona para qualquer idade?</div>
+      <div class="faq-a">Funciona para adultos de todas as idades. Já tivemos resultados incríveis com pessoas de 25, 40 e até 70 anos. O que realmente importa é a vontade de mudar.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">E se eu não gostar?</div>
+      <div class="faq-a">Você tem 7 dias para testar sem risco. Se não sentir diferença, devolvemos 100% do seu investimento — simples assim. A decisão é sua e está totalmente segura.</div>
+    </div>
+  </div>
+</div>
+
+    <!-- FINAL GUARANTEE -->
+    <div class="container">
+        <div class="final-guarantee">
+        <div class="guarantee-icon">✓</div>
+        <h3 class="guarantee-title">Garantia Total de 7 Dias</h3>
+        <p class="guarantee-text">Se em 7 dias você não sentir nenhuma mudança, devolvemos 100% do seu investimento. Sem perguntas, sem complicação.</p>
         </div>
-    `;
-}
+    </div>
 
-        // ========================================
-        // HELPER: VALUE STACK ITEM
-        // ========================================
-        function renderValueStackItem(icon, title, description, value, isIncluded, isBonus = false) {
-            const bgClass = isBonus ? 'bg-purple-900/30 border border-purple-500' : 'bg-slate-900/50';
+    <!-- CTA FINAL -->
+    <div class="container">
+        <div class="cta-wrapper">
+            <div class="arrow-down">👇</div>
+            <a href="https://pay.hotmart.com/N101998916J?off=6kcihxpj&checkoutMode=10" class="cta-btn" onclick="trackAddToCart()" target="_blank">Quero Começar Agora</a>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <footer>
+        <strong>AppAutoHipnose - 40.678.175/0001-77</strong>
+        <p>Responsável: Hipnoterapeuta Alex Andreoli Dantas</p>
+        <p>E-mail: <a href="mailto:contato@appestoicismo.com.br">contato@appestoicismo.com.br</a></p>
+        <p>WhatsApp: <a href="https://wa.me/5519974010028">(19) 97401-0028</a></p>
+    </footer>
+
+    <!-- SCRIPTS -->
+    <script>
+        // Função para rastrear clique no CTA
+        function trackAddToCart() {
+            // Dispara evento AddToCart
+            fbq('track', 'AddToCart', {
+                content_name: 'Alimentação Intuitiva',
+                content_category: 'Hipnoterapia',
+                value: 37.90,
+                currency: 'BRL'
+            });
             
-            // Valores que devem ter risco vermelho
-            const shouldHaveStrikethrough = value === 'R$ 197' || value === 'R$ 30/mês' || value === 'R$ 47';
+            // Dispara evento InitiateCheckout
+            fbq('track', 'InitiateCheckout', {
+                content_name: 'Alimentação Intuitiva',
+                value: 37.90,
+                currency: 'BRL'
+            });
             
-            let valueClass;
-            if (isBonus) {
-                valueClass = 'line-through text-purple-400';
-            } else if (shouldHaveStrikethrough) {
-                valueClass = 'line-through text-red-500';
-            } else {
-                valueClass = 'text-green-400';
+            console.log('Eventos de conversão disparados!');
+        }
+        
+        // Timer de Urgência até Meia-noite
+        function updateTimer() {
+            const now = new Date();
+            const midnight = new Date();
+            midnight.setHours(23, 59, 59, 999);
+            
+            const diff = midnight - now;
+            
+            if (diff <= 0) {
+                location.reload();
+                return;
             }
             
-            return `
-                <div class="flex items-center justify-between ${bgClass} p-3 sm:p-4 rounded-lg">
-                    <div class="flex items-center gap-2 sm:gap-3 flex-1">
-                        <span class="text-2xl sm:text-3xl flex-shrink-0">${icon}</span>
-                        <div class="flex-1">
-                            <p class="font-semibold text-sm sm:text-base md:text-lg">${title}</p>
-                            <p class="text-xs sm:text-sm text-gray-400">${description}</p>
-                        </div>
-                    </div>
-                    <div class="text-right flex-shrink-0 ml-2 sm:ml-4">
-                        <span class="${valueClass} font-bold text-sm sm:text-base">${value}</span>
-                        ${isBonus ? '<div class="text-xs text-purple-300 mt-1">GRÁTIS HOJE</div>' : ''}
-                        ${shouldHaveStrikethrough ? '<div class="text-xs text-green-300 mt-1">INCLUÍDO</div>' : ''}
-                    </div>
-                </div>
-            `;
-        }
-
-        // ========================================
-        // HELPER: FOOTER
-        // ========================================
-        function renderFooter() {
-            return `
-                <footer class="footer-improved py-6 sm:py-8 mt-8 sm:mt-12">
-                    <div class="container mx-auto px-4 sm:px-6">
-                        <div class="flex flex-wrap justify-between items-center mb-4 sm:mb-6">
-                            <div class="flex items-center gap-2 mb-4 lg:mb-0">
-                                <div class="w-7 h-7 sm:w-8 sm:h-8 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
-                                    <img loading="lazy"
-                             src= "https://appestoicismo.github.io/emagrecimento/AppAutoconhecimento.jpg" 
-                                         alt="Logo Alimentação Intuitiva" 
-                                         width="32" 
-                                         height="32"
-                                         loading="lazy"
-                                         class="w-7 h-7 sm:w-8 sm:h-8 rounded-full object-cover">
-                                </div>
-                                <span class="text-lg sm:text-xl font-semibold footer-text-primary">Alimentação Intuitiva</span>
-                            </div>
-                            <div class="flex flex-wrap gap-4 sm:gap-6 text-xs sm:text-sm">
-                                <a href="#" class="hover:text-white transition-colors">Hipnoterapeuta responsável: Alex Andreoli Dantas</a>
-                                <a href= "https://wa.me/5519974010028" target="_blank" rel="noopener noreferrer" class="hover:text-white transition-colors">WhatsApp: (19) 97401-0028</a>
-                            </div>
-                        </div>
-                        <div class="pt-4 border-t border-purple-800 flex flex-col sm:flex-row justify-between gap-2 sm:gap-4 text-xs sm:text-sm footer-text-secondary">
-                            <p>© 2025 Alimentação Intuitiva. Todos os direitos reservados.</p>
-                            <p>Aviso: Não substitui acompanhamento médico e medicamentos.</p>
-                        </div>
-                    </div>
-                </footer>
-            `;
-        }
-
-        // ========================================
-        // RENDER APP - CONTROLADOR PRINCIPAL
-        // ========================================
-        function renderApp() {
-            const app = document.getElementById('app');
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
             
-            switch (currentStep) {
-                case 'home':
-                    app.innerHTML = renderHomePage();
-                    break;
-                case 'quiz':
-                    app.innerHTML = renderQuizPage();
-                    break;
-                case 'followup':
-                    app.innerHTML = renderFollowUpPage();
-                    break;
-                case 'result':
-                    app.innerHTML = renderResultPage();
-                    setTimeout(() => {
-                        initCarousel();
-                        initCarousel2();
-                    }, 100);
-                    break;
-                case 'offer':
-                    app.innerHTML = renderOfferPage();
-                    break;
-                default:
-                    app.innerHTML = renderHomePage();
+            document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+            document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+            
+            const timerElement = document.getElementById('urgencyTimer');
+            if (hours === 0 && !timerElement.classList.contains('timer-urgent')) {
+                timerElement.classList.add('timer-urgent');
             }
         }
-
-        // ========================================
-        // INITIALIZE APP
-        // ========================================
+        
+        updateTimer();
+        setInterval(updateTimer, 1000);
+        
+        // FAQ Accordion
         document.addEventListener('DOMContentLoaded', function() {
-            initUTMTracker();
-            renderApp();
-            console.log('✅ App inicializado com sucesso!');
-            console.log('🎯 Função goToOffer disponível:', typeof window.goToOffer === 'function');
+            const faqItems = document.querySelectorAll('.faq-q');
+            
+            faqItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    const answer = this.nextElementSibling;
+                    const isActive = this.classList.contains('active');
+                    
+                    document.querySelectorAll('.faq-q').forEach(q => q.classList.remove('active'));
+                    document.querySelectorAll('.faq-a').forEach(a => a.classList.remove('active'));
+                    
+                    if (!isActive) {
+                        this.classList.add('active');
+                        answer.classList.add('active');
+                    }
+                });
+            });
         });
     </script>
+
 </body>
 </html>
-
-
