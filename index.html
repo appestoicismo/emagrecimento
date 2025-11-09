@@ -2,7 +2,8 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#059669">
     <title>Alimentação Intuitiva - Reprograme Sua Mente Para Emagrecer</title>
     
     <!-- Meta Pixel Code -->
@@ -24,410 +25,835 @@
     <!-- End Meta Pixel Code -->
     
     <style>
-      /* COMO FUNCIONA */
-.how-it-works {
-    padding: 35px 0 25px;
-    background: #f9fafb;
-    margin: 30px -18px;
-    padding-left: 18px;
-    padding-right: 18px;
-    border-radius: 8px;
-}
-
-.how-it-works h2 {
-    font-size: 26px;
-    font-weight: 700;
-    margin-bottom: 18px;
-    color: #1a1a1a;
-    line-height: 1.3;
-}
-
-.how-it-works p {
-    font-size: 18px;
-    margin-bottom: 16px;
-    color: #2d2d2d;
-    line-height: 1.6;
-}
-
-.benefits-list {
-    list-style: none;
-    padding: 0;
-    margin: 20px 0;
-}
-
-.benefits-list li {
-    padding: 12px 0 12px 38px;
-    position: relative;
-    font-size: 18px;
-    color: #2d2d2d;
-    line-height: 1.5;
-}
-
-.benefits-list li::before {
-    content: "→";
-    position: absolute;
-    left: 0;
-    color: #10b981;
-    font-size: 24px;
-    font-weight: bold;
-}  
-      * {
+        /* ===== RESET E BASE ===== */
+        * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         html {
             overflow-x: hidden;
-            max-width: 100vw;
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            line-height: 1.55;
-            color: #1a1a1a;
-            background: #fff;
-            font-size: 19px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.6;
+            color: #1f2937;
+            background: #ffffff;
+            font-size: 16px;
             -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
             overflow-x: hidden;
         }
 
-        .container {
-            max-width: 640px;
-            margin: 0 auto;
-            padding: 0 18px;
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
-        /* HERO */
+        /* ===== PALETA DE CORES OTIMIZADA ===== */
+        :root {
+            /* Principais - Verde Saúde/Bem-estar */
+            --color-primary: #059669;
+            --color-primary-dark: #047857;
+            --color-primary-light: #10b981;
+            
+            /* Secundárias - Lavanda Calma/Hipnose */
+            --color-secondary: #8b5cf6;
+            --color-secondary-dark: #7c3aed;
+            --color-secondary-light: #a78bfa;
+            
+            /* Urgência */
+            --color-urgency: #dc2626;
+            --color-urgency-dark: #b91c1c;
+            
+            /* Alerta/Atenção */
+            --color-warning: #f59e0b;
+            --color-warning-light: #fef3c7;
+            
+            /* Neutros */
+            --color-text-primary: #1f2937;
+            --color-text-secondary: #6b7280;
+            --color-text-light: #9ca3af;
+            --color-bg-light: #f9fafb;
+            --color-bg-lighter: #f3f4f6;
+            --color-border: #e5e7eb;
+            
+            /* Sucesso */
+            --color-success: #10b981;
+            --color-success-bg: #d1fae5;
+            --color-success-light: #ecfdf5;
+            
+            /* Sombras */
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== ESPAÇAMENTO PARA RESPIRAÇÃO ===== */
+        section {
+            margin-bottom: 48px;
+        }
+
+        .section-spacer {
+            height: 32px;
+        }
+
+        /* ===== HERO SECTION ===== */
         .hero {
-            background: #ffffff;
-            color: #1a1a1a;
+            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+            padding: 48px 20px 40px;
             text-align: center;
-            padding: 40px 18px 35px;
-            border-bottom: 1px solid #e5e7eb;
+            border-bottom: 2px solid var(--color-success);
+            margin-bottom: 48px;
         }
 
         .hero h1 {
-            font-size: 34px;
+            font-size: 28px;
             font-weight: 800;
-            line-height: 1.15;
-            margin-bottom: 18px;
-            letter-spacing: -0.5px;
+            line-height: 1.2;
+            color: var(--color-text-primary);
+            margin-bottom: 16px;
+            letter-spacing: -0.02em;
         }
 
         .hero-sub {
-            font-size: 20px;
-            color: #6b7280;
-            font-weight: 400;
+            font-size: 17px;
+            color: var(--color-text-secondary);
+            font-weight: 500;
+            line-height: 1.5;
         }
 
-        /* HOOK SECTION */
+        /* ===== HOOK SECTION ===== */
         .hook {
-            padding: 30px 0 25px;
+            padding: 32px 0 24px;
         }
 
         .hook p {
-            margin-bottom: 16px;
-            font-size: 18px;
-            line-height: 1.6;
-            color: #2d2d2d;
+            margin-bottom: 24px;
+            font-size: 17px;
+            line-height: 1.65;
+            color: var(--color-text-primary);
         }
 
         .alert-box {
-            background: #fef3c7;
-            border-left: 5px solid #f59e0b;
-            padding: 18px 16px;
-            margin: 22px 0;
+            background: var(--color-warning-light);
+            border-left: 4px solid var(--color-warning);
+            padding: 20px 18px;
+            margin: 28px 0;
+            border-radius: 8px;
         }
 
         .alert-box p {
-            font-size: 18px;
-            line-height: 1.5;
-            color: #1a1a1a;
+            font-size: 17px;
+            line-height: 1.6;
+            color: var(--color-text-primary);
             margin: 0;
         }
 
         .bold-purple {
-            color: #1a1a1a;
+            color: var(--color-secondary-dark);
             font-weight: 700;
         }
 
         .red-bold {
-            color: #e53e3e;
+            color: var(--color-urgency);
             font-weight: 700;
         }
 
-        /* SOLUTION VISUAL */
+        /* ===== COMO FUNCIONA ===== */
+        .how-it-works {
+            padding: 36px 20px 28px;
+            background: var(--color-bg-light);
+            margin: 40px -20px;
+            border-radius: 12px;
+        }
+
+        .how-it-works h2 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--color-text-primary);
+            line-height: 1.3;
+        }
+
+        .how-it-works p {
+            font-size: 17px;
+            margin-bottom: 20px;
+            color: var(--color-text-primary);
+            line-height: 1.65;
+        }
+
+        .benefits-list {
+            list-style: none;
+            padding: 0;
+            margin: 24px 0;
+        }
+
+        .benefits-list li {
+            padding: 14px 0 14px 40px;
+            position: relative;
+            font-size: 17px;
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            margin-bottom: 8px;
+        }
+
+        .benefits-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--color-primary);
+            font-size: 24px;
+            font-weight: 700;
+        }
+
+        /* ===== APP DEMO VIDEO SECTION ===== */
+        .app-demo-section {
+            padding: 48px 0;
+            background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+            margin: 48px -20px;
+            border-top: 2px solid #e0f2fe;
+            border-bottom: 2px solid #e0f2fe;
+        }
+
+        .app-demo-container {
+            max-width: 100%;
+            padding: 0 20px;
+        }
+
+        .app-demo-title {
+            font-size: 26px;
+            font-weight: 700;
+            text-align: center;
+            color: var(--color-text-primary);
+            margin-bottom: 12px;
+            line-height: 1.3;
+        }
+
+        .app-demo-subtitle {
+            font-size: 17px;
+            text-align: center;
+            color: var(--color-text-secondary);
+            margin-bottom: 32px;
+            line-height: 1.5;
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 380px;
+            margin: 0 auto;
+            border-radius: 16px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            background: #000;
+        }
+
+        .video-wrapper video {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .video-caption {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 15px;
+            color: var(--color-text-secondary);
+            font-style: italic;
+        }
+
+        /* ===== SOLUTION VISUAL ===== */
         .solution-img {
             text-align: center;
-            margin: 25px 0;
+            margin: 32px 0;
         }
 
         .solution-img img {
             width: 100%;
-            max-width: 500px;
+            max-width: 480px;
             height: auto;
-            border-radius: 8px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            margin: 0 auto;
         }
 
         .solution {
-            padding: 10px 0 25px;
+            margin-top: 32px;
         }
 
         .solution p {
-            font-size: 19px;
-            margin-bottom: 16px;
-            color: #2d2d2d;
+            font-size: 17px;
+            margin-bottom: 20px;
+            color: var(--color-text-primary);
+            line-height: 1.65;
         }
 
-        /* PASSOS SIMPLES */
+        /* ===== PASSOS SIMPLES ===== */
         .steps {
-            margin: 20px 0;
+            margin: 24px 0;
+            padding: 0;
         }
 
         .steps li {
             list-style: none;
-            padding: 10px 0 10px 38px;
+            padding: 12px 0 12px 40px;
             position: relative;
-            font-size: 19px;
-            color: #2d2d2d;
+            font-size: 17px;
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            margin-bottom: 8px;
         }
 
         .steps li::before {
             content: "✓";
             position: absolute;
             left: 0;
-            color: #10b981;
-            font-size: 26px;
-            font-weight: bold;
+            color: var(--color-success);
+            font-size: 24px;
+            font-weight: 700;
         }
 
-        /* GARANTIA BOX */
+        /* ===== GARANTIA BOX ===== */
         .guarantee-box {
-            background: #ecfdf5;
-            border-left: 5px solid #10b981;
-            padding: 18px 16px;
-            margin: 22px 0;
+            background: var(--color-success-light);
+            border-left: 4px solid var(--color-success);
+            padding: 20px 18px;
+            margin: 28px 0;
+            border-radius: 8px;
         }
 
         .guarantee-box p {
-            font-size: 17px;
-            color: #1a1a1a;
+            font-size: 16px;
+            color: var(--color-text-primary);
             margin: 0;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
-        /* SOCIAL PROOF */
+        /* ===== SOCIAL PROOF ===== */
         .social-proof {
-            padding: 30px 0;
+            padding: 48px 0;
         }
 
         .social-proof h2 {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 700;
-            margin-bottom: 25px;
-            color: #1a1a1a;
+            margin-bottom: 36px;
+            color: var(--color-text-primary);
+            text-align: center;
         }
 
         .review {
-            padding: 20px 0;
-            border-bottom: 1px solid #e5e7eb;
+            padding: 28px 0;
+            border-bottom: 1px solid var(--color-border);
         }
 
         .review:first-child {
-            border-top: 1px solid #e5e7eb;
+            border-top: 1px solid var(--color-border);
+        }
+
+        .review-header {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 14px;
+        }
+
+        .review-photo {
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--color-success-light);
+            flex-shrink: 0;
+        }
+
+        .review-info {
+            flex: 1;
         }
 
         .stars {
             color: #fbbf24;
-            font-size: 19px;
-            margin-bottom: 8px;
+            font-size: 16px;
+            margin-bottom: 4px;
         }
 
         .review-author {
             font-size: 15px;
             font-weight: 600;
-            color: #374151;
-            margin-bottom: 10px;
+            color: var(--color-text-primary);
         }
 
         .review-text {
-            font-size: 17px;
+            font-size: 16px;
             font-style: italic;
-            color: #4b5563;
-            line-height: 1.55;
+            color: var(--color-text-secondary);
+            line-height: 1.65;
+            margin-top: 12px;
         }
 
-        /* CTA BUTTON */
+        /* ===== CTA BUTTON ===== */
         .cta-wrapper {
             text-align: center;
-            padding: 35px 0;
+            padding: 48px 0;
         }
 
         .cta-btn {
-            display: inline-block;
-            background: #10b981;
-            color: #fff;
-            font-size: 22px;
+            display: block;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: #ffffff;
+            font-size: 20px;
             font-weight: 800;
             text-transform: uppercase;
             text-decoration: none;
-            padding: 20px 50px;
+            padding: 20px 32px;
             border-radius: 12px;
-            box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+            box-shadow: 0 8px 16px rgba(5, 150, 105, 0.3);
             letter-spacing: 0.5px;
-            transition: all 0.2s;
+            transition: all 0.3s ease;
             cursor: pointer;
+            border: none;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            min-height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .cta-btn:active {
-            transform: scale(0.97);
-            box-shadow: 0 2px 8px rgba(16, 185, 129, 0.3);
+            transform: scale(0.98);
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.4);
+        }
+
+        .cta-microcopy {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            margin-top: 12px;
+            font-weight: 500;
         }
 
         .arrow-down {
-            font-size: 40px;
-            margin-bottom: 12px;
+            font-size: 36px;
+            margin-bottom: 16px;
             animation: bounce 2s infinite;
         }
 
         @keyframes bounce {
             0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-10px); }
+            50% { transform: translateY(-8px); }
         }
 
-        /* CREDIBILIDADE */
+        /* ===== CREDIBILIDADE ===== */
         .credibility {
-            padding: 30px 0;
+            padding: 48px 0;
         }
 
         .credibility h2 {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 700;
-            margin-bottom: 18px;
-            color: #1a1a1a;
+            margin-bottom: 20px;
+            color: var(--color-text-primary);
             line-height: 1.3;
         }
 
         .credibility p {
-            font-size: 18px;
-            margin-bottom: 15px;
-            color: #2d2d2d;
+            font-size: 17px;
+            margin-bottom: 20px;
+            color: var(--color-text-primary);
+            line-height: 1.65;
         }
 
         .badge {
             display: inline-block;
-            background: #f3f4f6;
-            color: #1f2937;
-            padding: 9px 14px;
+            background: var(--color-bg-lighter);
+            color: var(--color-text-primary);
+            padding: 10px 16px;
             border-radius: 8px;
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
-            margin: 6px 4px 6px 0;
-            border: 1px solid #e5e7eb;
+            margin: 6px 6px 6px 0;
+            border: 1px solid var(--color-border);
+            line-height: 1.4;
         }
 
-        .science-note {
-            font-size: 15px;
-            color: #6b7280;
-            margin-top: 12px;
+        /* ===== QUALIFICAÇÃO SECTION ===== */
+        .qualification-section {
+            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            padding: 48px 20px;
+            margin: 48px -20px;
         }
 
-        /* APP PREVIEW */
+        .qualification-container {
+            max-width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 32px;
+        }
+
+        .qualification-text > p:first-child {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 24px;
+            line-height: 1.35;
+            color: var(--color-text-primary);
+            text-align: center;
+        }
+
+        .qualification-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 28px 0;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 24px 18px;
+            border-radius: 12px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .qualification-list li {
+            padding: 16px 0;
+            font-size: 16px;
+            color: var(--color-text-primary);
+            line-height: 1.6;
+            border-bottom: 1px solid var(--color-border);
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            min-height: 52px;
+        }
+
+        .qualification-list li:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .list-icon {
+            font-size: 24px;
+            flex-shrink: 0;
+            line-height: 1.2;
+        }
+
+        .qualification-list li span:last-child {
+            flex: 1;
+        }
+
+        .qualification-alert {
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 12px;
+            padding: 20px 18px;
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--color-warning);
+        }
+
+        .alert-icon {
+            font-size: 28px;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        .qualification-alert p {
+            margin: 0;
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            line-height: 1.5;
+        }
+
+        .qualification-image {
+            text-align: center;
+        }
+
+        .qualification-image img {
+            width: 100%;
+            max-width: 360px;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: var(--shadow-xl);
+            margin: 0 auto;
+        }
+
+        /* ===== MENSAGEM PROFUNDA ===== */
+        .deep-message-section {
+            padding: 48px 20px;
+            background: #ffffff;
+            line-height: 1.7;
+        }
+
+        .opening-question {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-text-primary);
+            margin-bottom: 24px;
+            line-height: 1.4;
+        }
+
+        .deep-message-section p {
+            font-size: 17px;
+            margin-bottom: 24px;
+            line-height: 1.7;
+            color: var(--color-text-primary);
+        }
+
+        .emphasis-light {
+            font-size: 18px;
+            font-style: italic;
+            color: var(--color-text-secondary);
+            margin: 32px 0;
+            text-align: center;
+        }
+
+        .highlight-text {
+            color: var(--color-primary);
+            font-weight: 800;
+            font-size: 19px;
+        }
+
+        .truth-box {
+            background: var(--color-warning-light);
+            border-left: 4px solid var(--color-warning);
+            padding: 20px 18px;
+            margin: 32px 0;
+            border-radius: 8px;
+        }
+
+        .truth-box p {
+            margin: 0;
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--color-text-primary);
+            line-height: 1.6;
+        }
+
+        .transition-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin: 36px 0 24px 0;
+            text-align: center;
+        }
+
+        .no-diet-emphasis {
+            font-size: 18px;
+            font-weight: 700;
+            color: var(--color-primary-dark);
+            margin: 32px 0;
+            text-align: center;
+        }
+
+        .final-statement {
+            background: linear-gradient(135deg, var(--color-success-light) 0%, var(--color-success-bg) 100%);
+            padding: 28px 20px;
+            border-radius: 12px;
+            margin: 40px 0 0 0;
+            border: 2px solid var(--color-success);
+        }
+
+        .final-statement p {
+            margin-bottom: 16px;
+            font-size: 18px;
+            text-align: center;
+            line-height: 1.6;
+        }
+
+        .final-statement p:last-child {
+            margin-bottom: 0;
+        }
+
+        .final-statement strong {
+            font-size: 20px;
+            color: var(--color-text-primary);
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .new-beginning {
+            font-weight: 600;
+            color: var(--color-primary-dark);
+            margin-top: 20px !important;
+            font-size: 18px !important;
+        }
+
+        /* ===== APP PREVIEW ===== */
+        .value-stack {
+            padding: 48px 0 20px;
+        }
+
+        .value-stack h2 {
+            font-size: 26px;
+            font-weight: 700;
+            margin-bottom: 28px;
+            color: var(--color-text-primary);
+            text-align: center;
+        }
+
         .app-preview {
             text-align: center;
-            padding: 25px 0;
+            padding: 24px 0;
         }
 
         .app-preview img {
             width: 100%;
-            max-width: 600px;
+            max-width: 480px;
             height: auto;
+            border-radius: 12px;
+            box-shadow: var(--shadow-lg);
+            margin: 0 auto;
         }
 
-        /* STACK DE VALOR */
-        .value-stack {
-            padding: 30px 0 15px;
-        }
-
-        .value-stack h2 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 20px;
-            color: #1a1a1a;
-        }
-
+        /* ===== STACK DE VALOR ===== */
         .stack-box {
-            background: #f9fafb;
-            padding: 25px 18px;
-            margin: 20px 0;
-            color: #1a1a1a;
-            border-top: 1px solid #e5e7eb;
-            border-bottom: 1px solid #e5e7eb;
-            border-radius: 8px;
+            background: var(--color-bg-light);
+            padding: 24px 20px;
+            margin: 28px 0;
+            border-radius: 12px;
+            border: 1px solid var(--color-border);
         }
 
-        /* TIMER DE URGÊNCIA */
+        .stack-item {
+            display: flex;
+            padding: 20px 0;
+            border-bottom: 1px solid var(--color-border);
+            gap: 14px;
+        }
+
+        .stack-item:last-child {
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .stack-emoji {
+            font-size: 32px;
+            flex-shrink: 0;
+            line-height: 1;
+        }
+
+        .stack-content {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .stack-title {
+            font-size: 16px;
+            font-weight: 700;
+            margin-bottom: 6px;
+            color: var(--color-text-primary);
+            line-height: 1.4;
+        }
+
+        .stack-desc {
+            font-size: 14px;
+            color: var(--color-text-secondary);
+            line-height: 1.5;
+        }
+
+        .stack-price {
+            text-align: right;
+            min-width: 70px;
+            flex-shrink: 0;
+        }
+
+        .old-price {
+            text-decoration: line-through;
+            color: var(--color-text-light);
+            font-size: 13px;
+        }
+
+        .new-price {
+            color: var(--color-success);
+            font-weight: 700;
+            font-size: 14px;
+        }
+
+        .bonus-tag {
+            background: var(--color-success);
+            color: #ffffff;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 700;
+            display: inline-block;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* ===== TIMER DE URGÊNCIA ===== */
         .urgency-timer {
-            background: linear-gradient(135deg, #dc2626 0%, #b91c1c 100%);
-            padding: 20px 18px;
-            margin: 30px 0;
+            background: linear-gradient(135deg, var(--color-urgency) 0%, var(--color-urgency-dark) 100%);
+            padding: 24px 20px;
+            margin: 48px -20px;
             text-align: center;
-            color: #fff;
-            box-shadow: 0 4px 20px rgba(220, 38, 38, 0.3);
-            border-radius: 8px;
+            color: #ffffff;
+            box-shadow: 0 8px 24px rgba(220, 38, 38, 0.35);
         }
 
         .timer-warning {
-            font-size: 14px;
+            font-size: 13px;
             font-weight: 700;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            margin-bottom: 12px;
+            letter-spacing: 1px;
+            margin-bottom: 16px;
             display: flex;
             align-items: center;
             justify-content: center;
-            gap: 6px;
+            gap: 8px;
         }
 
         .timer-display {
             display: flex;
             justify-content: center;
-            gap: 8px;
-            margin: 15px 0;
+            gap: 10px;
+            margin: 20px 0;
         }
 
         .timer-box {
             background: rgba(0, 0, 0, 0.3);
-            padding: 10px 8px;
-            border-radius: 6px;
-            min-width: 60px;
+            padding: 12px 10px;
+            border-radius: 8px;
+            min-width: 68px;
+            backdrop-filter: blur(10px);
         }
 
         .timer-number {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 900;
             line-height: 1;
             display: block;
-            color: #fff;
+            color: #ffffff;
         }
 
         .timer-label {
-            font-size: 10px;
+            font-size: 11px;
             text-transform: uppercase;
-            margin-top: 6px;
-            opacity: 0.9;
+            margin-top: 8px;
+            opacity: 0.95;
             font-weight: 600;
             letter-spacing: 0.5px;
         }
 
         .timer-separator {
-            font-size: 28px;
+            font-size: 32px;
             font-weight: 900;
-            color: #fff;
+            color: #ffffff;
             display: flex;
             align-items: center;
-            padding-bottom: 16px;
+            padding-bottom: 20px;
             animation: blink 1.5s infinite;
         }
 
@@ -446,176 +872,175 @@
         }
 
         .timer-message {
-            font-size: 13px;
-            margin-top: 12px;
+            font-size: 14px;
+            margin-top: 16px;
             opacity: 0.95;
             font-weight: 500;
-            line-height: 1.4;
+            line-height: 1.5;
         }
 
-        .stack-item {
-            display: flex;
-            padding: 18px 0;
-            border-bottom: 1px solid #e5e7eb;
+        /* ===== ACESSO VITALÍCIO ===== */
+        .lifetime-access-section {
+            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
+            padding: 0;
+            margin: 48px -20px;
+            overflow: hidden;
         }
 
-        .stack-item:last-child {
-            border-bottom: none;
-        }
-
-        .stack-emoji {
-            font-size: 36px;
-            margin-right: 14px;
-            flex-shrink: 0;
-        }
-
-        .stack-content {
-            flex: 1;
-        }
-
-        .stack-title {
-            font-size: 17px;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .stack-desc {
-            font-size: 14px;
-            color: #6b7280;
-        }
-
-        .stack-price {
-            text-align: right;
-            min-width: 70px;
-        }
-
-        .old-price {
-            text-decoration: line-through;
-            color: #9ca3af;
-            font-size: 13px;
-        }
-
-        .new-price {
-            color: #10b981;
-            font-weight: 700;
-            font-size: 14px;
-        }
-
-        .bonus-tag {
-            background: #10b981;
-            color: #fff;
-            padding: 3px 9px;
-            border-radius: 10px;
-            font-size: 12px;
-            font-weight: 700;
-            display: inline-block;
-            margin-bottom: 6px;
-        }
-
-        /* PRICING */
-        .pricing {
-            background: #1f2937;
-            color: #fff;
+        .lifetime-container {
+            max-width: 100%;
+            padding: 40px 20px;
             text-align: center;
-            padding: 35px 18px;
-            margin: 30px 0;
-            border-radius: 8px;
         }
 
-        .total-label {
-            font-size: 16px;
-            color: rgba(255,255,255,0.7);
-            margin-bottom: 5px;
+        .lifetime-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #ffffff;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+            line-height: 1.2;
         }
 
-        .total-old {
-            font-size: 22px;
-            text-decoration: line-through;
-            color: rgba(255,255,255,0.6);
-            margin-bottom: 20px;
+        .lifetime-subtitle {
+            font-size: 18px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 32px;
+            line-height: 1.3;
+            opacity: 0.95;
         }
 
-        .today-label {
+        .lifetime-price {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 28px 20px;
+            border-radius: 12px;
+            margin-bottom: 28px;
+            backdrop-filter: blur(10px);
+        }
+
+        .installment-price {
+            font-size: 48px;
+            font-weight: 900;
+            color: #ffffff;
+            line-height: 1;
+            margin-bottom: 14px;
+            text-shadow: 2px 3px 8px rgba(0, 0, 0, 0.3);
+            letter-spacing: -1px;
+        }
+
+        .cash-price {
             font-size: 19px;
             font-weight: 600;
-            margin-bottom: 10px;
+            color: #ffffff;
+            opacity: 0.95;
         }
 
-        .price-big {
-            font-size: 58px;
-            font-weight: 900;
-            color: #10b981;
-            margin-bottom: 12px;
-            line-height: 1;
-            text-shadow: 2px 3px 6px rgba(0,0,0,0.3);
-        }
-
-        .discount-badge {
-            background: #fbbf24;
-            color: #1f2937;
-            padding: 9px 20px;
-            border-radius: 8px;
-            font-size: 17px;
+        .lifetime-cta-btn {
+            display: block;
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
+            color: #ffffff;
+            font-size: 20px;
             font-weight: 800;
-            display: inline-block;
-            margin-bottom: 15px;
+            text-decoration: none;
+            padding: 20px 32px;
+            border-radius: 12px;
+            box-shadow: 0 8px 20px rgba(5, 150, 105, 0.4);
+            transition: all 0.3s ease;
+            margin: 0 auto 20px;
+            max-width: 400px;
+            width: 100%;
+            min-height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .payment-terms {
-            font-size: 14px;
-            color: rgba(255,255,255,0.85);
+        .lifetime-cta-btn:active {
+            transform: scale(0.98);
+            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
         }
-      .pricing-note {
-    font-size: 14px;
-    color: rgba(255,255,255,0.85);
-    margin-top: 10px;
-}
 
-        /* FAQ SECTION */
+        .lifetime-footer {
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+            padding-top: 24px;
+        }
+
+        .limited-condition {
+            font-size: 15px;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 18px;
+        }
+
+        .payment-methods {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 15px;
+            font-weight: 600;
+            color: #ffffff;
+            flex-wrap: wrap;
+        }
+
+        .payment-icon {
+            font-size: 20px;
+        }
+
+        .payment-separator {
+            font-size: 16px;
+            opacity: 0.7;
+        }
+
+        /* ===== FAQ SECTION ===== */
         .faq-section {
             background: #ffffff;
-            padding: 40px 0;
-            margin: 35px 0;
+            padding: 48px 0;
+            margin: 48px 0;
         }
 
         .faq-title {
-            font-size: 28px;
+            font-size: 26px;
             font-weight: 700;
             text-align: center;
-            margin-bottom: 28px;
-            color: #1a1a1a;
+            margin-bottom: 36px;
+            color: var(--color-text-primary);
         }
 
         .faq-item {
             margin-bottom: 12px;
-            background: #f9fafb;
-            border-radius: 8px;
+            background: var(--color-bg-light);
+            border-radius: 12px;
             overflow: hidden;
-            border: 1px solid #e5e7eb;
+            border: 1px solid var(--color-border);
         }
 
         .faq-q {
-            font-size: 17px;
+            font-size: 16px;
             font-weight: 700;
-            color: #1a1a1a;
-            padding: 18px 20px;
+            color: var(--color-text-primary);
+            padding: 20px 18px;
             cursor: pointer;
             display: flex;
             justify-content: space-between;
             align-items: center;
             transition: background 0.2s;
             user-select: none;
+            min-height: 60px;
         }
 
-        .faq-q:hover {
-            background: #f3f4f6;
+        .faq-q:active {
+            background: var(--color-bg-lighter);
         }
 
         .faq-q::after {
             content: "▼";
             font-size: 14px;
-            color: #10b981;
+            color: var(--color-primary);
             transition: transform 0.3s;
+            flex-shrink: 0;
+            margin-left: 12px;
         }
 
         .faq-q.active::after {
@@ -623,82 +1048,211 @@
         }
 
         .faq-a {
-            font-size: 16px;
-            color: #4b5563;
-            line-height: 1.6;
-            padding: 0 20px;
+            font-size: 15px;
+            color: var(--color-text-secondary);
+            line-height: 1.65;
+            padding: 0 18px;
             max-height: 0;
             overflow: hidden;
             transition: max-height 0.3s ease, padding 0.3s ease;
         }
 
         .faq-a.active {
-            max-height: 500px;
-            padding: 0 20px 18px 20px;
+            max-height: 600px;
+            padding: 0 18px 20px 18px;
         }
 
-        /* FINAL GUARANTEE */
+        /* ===== FINAL GUARANTEE ===== */
         .final-guarantee {
-            background: #ecfdf5;
+            background: var(--color-success-light);
             text-align: center;
-            padding: 35px 18px;
-            margin: 35px 0;
-            border-radius: 8px;
+            padding: 36px 20px;
+            margin: 48px 0;
+            border-radius: 12px;
+            border: 2px solid var(--color-success);
         }
 
         .guarantee-icon {
-            font-size: 54px;
-            margin-bottom: 12px;
+            font-size: 48px;
+            margin-bottom: 16px;
         }
 
         .guarantee-title {
-            font-size: 26px;
+            font-size: 24px;
             font-weight: 700;
-            color: #059669;
-            margin-bottom: 12px;
+            color: var(--color-primary-dark);
+            margin-bottom: 14px;
         }
 
         .guarantee-text {
-            font-size: 17px;
-            color: #065f46;
-            line-height: 1.5;
+            font-size: 16px;
+            color: var(--color-text-primary);
+            line-height: 1.65;
         }
 
-        /* FOOTER */
+        /* ===== FOOTER ===== */
         footer {
-            background: #f9fafb;
+            background: var(--color-bg-light);
             text-align: center;
-            padding: 30px 18px;
+            padding: 32px 20px;
             font-size: 14px;
-            color: #6b7280;
+            color: var(--color-text-secondary);
             line-height: 1.7;
         }
 
         footer strong {
-            color: #1a1a1a;
+            color: var(--color-text-primary);
             display: block;
-            margin-bottom: 6px;
+            margin-bottom: 8px;
         }
 
         footer a {
-            color: #667eea;
+            color: var(--color-secondary);
             text-decoration: none;
         }
 
-        /* MOBILE REFINEMENTS */
-        @media (max-width: 400px) {
+        footer a:active {
+            opacity: 0.8;
+        }
+
+        /* ===== RESPONSIVIDADE TABLET+ ===== */
+        @media (min-width: 600px) {
             body {
-                font-size: 18px;
+                font-size: 17px;
             }
+
+            .container {
+                padding: 0 32px;
+            }
+
+            .hero {
+                padding: 56px 32px 48px;
+            }
+
             .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-sub {
+                font-size: 19px;
+            }
+
+            .how-it-works {
+                margin: 48px -32px;
+                padding: 40px 32px 32px;
+            }
+
+            .app-demo-section {
+                margin: 56px -32px;
+                padding: 56px 32px;
+            }
+
+            .app-demo-title {
                 font-size: 30px;
             }
-            .price-big {
-                font-size: 52px;
+
+            .video-wrapper {
+                max-width: 420px;
             }
-            .cta-btn {
-                font-size: 20px;
-                padding: 18px 40px;
+
+            .qualification-section {
+                margin: 56px -32px;
+                padding: 48px 32px;
+            }
+
+            .qualification-container {
+                flex-direction: row;
+                align-items: center;
+                gap: 36px;
+            }
+
+            .qualification-text {
+                flex: 1;
+            }
+
+            .qualification-text > p:first-child {
+                text-align: left;
+            }
+
+            .qualification-image {
+                flex: 0 0 340px;
+            }
+
+            .urgency-timer {
+                margin: 56px -32px;
+            }
+
+            .lifetime-access-section {
+                margin: 56px -32px;
+            }
+
+            .installment-price {
+                font-size: 60px;
+            }
+        }
+
+        /* ===== RESPONSIVIDADE DESKTOP ===== */
+        @media (min-width: 768px) {
+            .container {
+                max-width: 680px;
+                padding: 0 24px;
+            }
+
+            .hero h1 {
+                font-size: 36px;
+            }
+
+            .how-it-works,
+            .app-demo-section,
+            .qualification-section,
+            .urgency-timer,
+            .lifetime-access-section {
+                margin-left: 0;
+                margin-right: 0;
+                border-radius: 16px;
+            }
+
+            .deep-message-section {
+                max-width: 620px;
+                margin: 0 auto;
+            }
+        }
+
+        /* ===== MOBILE PEQUENO ===== */
+        @media (max-width: 380px) {
+            body {
+                font-size: 15px;
+            }
+
+            .hero h1 {
+                font-size: 24px;
+            }
+
+            .hero-sub {
+                font-size: 16px;
+            }
+
+            .app-demo-title {
+                font-size: 23px;
+            }
+
+            .cta-btn,
+            .lifetime-cta-btn {
+                font-size: 18px;
+                padding: 18px 24px;
+            }
+
+            .installment-price {
+                font-size: 42px;
+            }
+
+            .timer-number {
+                font-size: 28px;
+            }
+
+            .timer-box {
+                min-width: 60px;
+                padding: 10px 8px;
             }
         }
     </style>
@@ -706,136 +1260,252 @@
 <body>
 
     <!-- HERO -->
-<div class="hero">
-  <h1>O Emagrecimento Que Acontece Quando a Mente Muda.</h1>
-  <p class="hero-sub">Reprograme seus hábitos em 21 dias — mesmo que você já tenha tentado de tudo.</p>
-</div>
-
-<!-- HOOK -->
-<div class="container">
-  <div class="hook">
-    <p>Você já tentou de tudo: low carb, jejum, detox, sopas milagrosas, academia todo dia... e mesmo assim, o peso sempre volta, não é?</p>
-
-    <div class="alert-box">
-      <p><strong>Enquanto seus hábitos e pensamentos forem os mesmos,</strong> o resultado também vai ser o mesmo: o temido <span class="red-bold">efeito sanfona.</span></p>
+    <div class="hero">
+        <h1>O Emagrecimento Que Acontece Quando a Mente Muda.</h1>
+        <p class="hero-sub">Reprograme seus hábitos em 21 dias — mesmo que você já tenha tentado de tudo.</p>
     </div>
 
-    <p>Não adianta tentar mudar o corpo, quando o que precisava mudar é a mente.</p>
+    <!-- HOOK -->
+    <div class="container">
+        <section class="hook">
+            <p>Você já tentou de tudo: low carb, jejum, detox, sopas milagrosas, canetinhas, academia todo dia... e mesmo assim, o peso não diminuiu?</p>
 
-    <p><strong class="bold-purple">Porque o verdadeiro emagrecimento não acontece na dieta — acontece no subconsciente. É lá que tudo muda.</strong></p>
-  </div>
-  
-  <p>Agora que você entendeu por que as dietas falham, veja como esse método atua na prática:</p>
+            <div class="alert-box">
+                <p><strong>Enquanto seus hábitos e pensamentos forem os mesmos,</strong> o resultado também vai ser o mesmo: <span class="red-bold">Dieta muda o prato. Não muda os hábitos.</span></p>
+            </div>
 
+            <p>Não adianta tentar mudar o corpo, quando o que precisa mudar primeiro é a mente.</p>
 
-  <!-- COMO FUNCIONA -->
-  <div class="how-it-works">
-    <h2>Como a Hipnoterapia Te Ajuda a Emagrecer</h2>
-    
-    <p>Os áudios de hipnoterapia relaxam seu corpo e levam sua mente a uma frequência Teta ou Delta (estágio antes do sono profundo) — o ponto onde o consciente adormece e o subconsciente aceita novas possibilidades.</p>
+            <p><strong class="bold-purple">Porque o verdadeiro emagrecimento não acontece na dieta — acontece no subconsciente. É lá que tudo muda.</strong></p>
+        </section>
+        
+        <p>Agora que você entendeu por que as dietas falham, veja como esse método atua na prática:</p>
 
-    <p><strong>O que muda na prática?</strong></p>
-    
-    <ul class="benefits-list">
-      <li>Aquela necessidade constante de doces simplesmente diminui ou some</li>
-      <li>O desejo por fast food perde força</li>
-      <li>A vontade de atividade física aparece naturalmente</li>
-    </ul>
+        <!-- COMO FUNCIONA -->
+        <div class="how-it-works">
+            <h2>Como a Hipnoterapia Te Ajuda a Emagrecer</h2>
+            
+            <p>Os áudios de hipnoterapia relaxam seu corpo e levam sua mente a uma frequência Teta ou Delta (estágio antes do sono profundo) — o ponto onde o consciente adormece e o subconsciente aceita novas possibilidades.</p>
 
-    <p>As mudanças acontecem de forma natural, sem esforço nem culpa, sem o sofrimento das dietas restritivas ou das academias forçadas</p>
-  </div>
-  <p><em>Milhares de pessoas já sentiram essa mudança acontecer — enquanto relaxam.</em></p>
-</div>
+            <p><strong>O que muda na prática?</strong></p>
+            
+            <ul class="benefits-list">
+                <li>Aquela necessidade constante de doces simplesmente diminui ou some</li>
+                <li>O desejo por fast food perde força</li>
+                <li>A vontade de atividade física aparece naturalmente</li>
+            </ul>
 
-  
+            <p>As mudanças acontecem de forma natural, sem esforço, sem o sofrimento das dietas restritivas ou das academias forçadas. Seu peso diminui, as roupas voltam a servir e você de bem com o espelho diariamente.</p>
+        </div>
+        <p><em>Muitas mulheres já sentiram essa mudança acontecer — enquanto relaxam.</em></p>
+    </div>
+
+    <div class="section-spacer"></div>
+
+    <!-- APP DEMO VIDEO SECTION -->
+    <div class="app-demo-section">
+        <div class="app-demo-container">
+            <h2 class="app-demo-title">Veja Como É Simples Usar o App</h2>
+            <p class="app-demo-subtitle">É assim que você vai emagrecer: sem complicação</p>
+            
+            <div class="video-wrapper">
+                <video controls playsinline poster="https://appestoicismo.github.io/emagrecimento/3.png">
+                    <source src="https://emagrecimento.dantashipnoterapia.com.br/demoapp.mp4" type="video/mp4">
+                    Seu navegador não suporta vídeo HTML5.
+                </video>
+            </div>
+            
+            <p class="video-caption">🎧 Acesso imediato após o pagamento — funciona em qualquer celular</p>
+        </div>
+    </div>
+
+    <div class="section-spacer"></div>
 
     <!-- SOLUÇÃO VISUAL -->
     <div class="container">
-        <div class="solution-img">
-            <img src="https://appestoicismo.github.io/emagrecimento/3.png" alt="Reprogramação enquanto dorme">
-        </div>
+        <section class="solution">
+            <div class="solution-img">
+                <img src="https://appestoicismo.github.io/emagrecimento/3.png" alt="Reprogramação enquanto dorme" loading="lazy">
+            </div>
 
             <p><strong>É Muito Fácil:</strong></p>
-<ul class="steps">
-    <li>Você entra no aplicativo</li>
-    <li>Coloca seu fone de ouvido</li>
-    <li>Aperta Play e deixe seu subconsciente fazer o resto</li>
-</ul>
-
+            <ul class="steps">
+                <li>Você entra no aplicativo</li>
+                <li>Coloca seu fone de ouvido</li>
+                <li>Aperta Play e deixe seu subconsciente fazer o resto</li>
+            </ul>
 
             <div class="guarantee-box">
                 <p>Se em <strong>7 dias</strong> você não sentir nenhuma mudança devolvemos <strong>100% do seu investimento</strong>. Você não tem risco de perder seu dinheiro.</p>
             </div>
-        </div>
+        </section>
     </div>
+
+    <div class="section-spacer"></div>
 
     <!-- SOCIAL PROOF -->
     <div class="container">
-        <div class="social-proof">
+        <section class="social-proof">
             <h2>Veja o que nossos clientes dizem:</h2>
 
             <div class="review">
-                <div class="stars">★★★★★</div>
-                <div class="review-author">Mariana S. – Campinas/SP</div>
+                <div class="review-header">
+                    <img src="https://appestoicismo.github.io/emagrecimento/marianacampinas.jpeg" alt="Mariana S." class="review-photo" loading="lazy">
+                    <div class="review-info">
+                        <div class="stars">★★★★★</div>
+                        <div class="review-author">Mariana S. – Campinas/SP</div>
+                    </div>
+                </div>
                 <p class="review-text">"Eu era completamente viciada em doces — precisava de algo doce todos os dias. Depois que comecei a ouvir os áudios, algo mudou: o desejo simplesmente sumiu. Hoje passo por uma vitrine de sobremesas e nem me abala. Foi libertador... e o melhor é que emagreci sem esforço, só mudando minha mente."</p>
-
             </div>
 
             <div class="review">
-                <div class="stars">★★★★★</div>
-                <div class="review-author">Ricardo A. – Belo Horizonte/MG</div>
-<p class="review-text">"Eu já estava ficando barrigudo de tanto descontar a ansiedade na comida. Depois da segunda sessão, tudo mudou — a vontade simplesmente sumiu. Foi a primeira vez que senti que o controle era meu, não da comida."</p>
+                <div class="review-header">
+                    <img src="https://appestoicismo.github.io/emagrecimento/RicaroBh.jpeg" alt="Ricardo A." class="review-photo" loading="lazy">
+                    <div class="review-info">
+                        <div class="stars">★★★★★</div>
+                        <div class="review-author">Ricardo A. – Belo Horizonte/MG</div>
+                    </div>
+                </div>
+                <p class="review-text">"Eu já estava ficando barrigudo de tanto descontar a ansiedade na comida. Depois da segunda sessão, tudo mudou — a vontade simplesmente sumiu. Foi a primeira vez que senti que o controle era meu, não da comida."</p>
             </div>
 
             <div class="review">
-  <div class="stars">★★★★★</div>
-  <div class="review-author">Fernanda L. – Florianópolis/SC</div>
-  <p class="review-text">"Eu não acreditava em hipnose... até fazer a primeira sessão. Foi muito doido: terminei e simplesmente não quis mais tomar refrigerante. Hoje corro três vezes por semana e até minhas roupas antigas voltaram a servir. Nunca me senti tão bem comigo mesma."</p>
-</div>
+                <div class="review-header">
+                    <img src="https://appestoicismo.github.io/emagrecimento/fernandafloripa.jpeg" alt="Fernanda L." class="review-photo" loading="lazy">
+                    <div class="review-info">
+                        <div class="stars">★★★★★</div>
+                        <div class="review-author">Fernanda L. – Florianópolis/SC</div>
+                    </div>
+                </div>
+                <p class="review-text">"Eu não acreditava em hipnose... até fazer a primeira sessão. Foi muito doido: terminei e simplesmente não quis mais tomar refrigerante. Hoje corro três vezes por semana e até minhas roupas antigas voltaram a servir. Nunca me senti tão bem comigo mesma."</p>
+            </div>
 
             <div class="review">
-  <div class="stars">★★★★★</div>
-  <div class="review-author">Patrícia D. – São Paulo/SP</div>
-  <p class="review-text">"Já tinha tentado de tudo — dieta da sopa, jejum, low carb… nada durava. Aqui entendi que o problema nunca foi a comida, e sim minha mente. Pela primeira vez, não vivo mais naquela rotina de recomeçar toda segunda-feira."</p>
-</div>
-        </div>
+                <div class="review-header">
+                    <img src="https://appestoicismo.github.io/emagrecimento/jussiara.jpeg" alt="Patrícia D." class="review-photo" loading="lazy">
+                    <div class="review-info">
+                        <div class="stars">★★★★★</div>
+                        <div class="review-author">Patrícia D. – São Paulo/SP</div>
+                    </div>
+                </div>
+                <p class="review-text">"Já tinha tentado de tudo — dieta da sopa, jejum, low carb… nada durava. Aqui entendi que o problema nunca foi a comida, e sim minha mente. Pela primeira vez, não vivo mais naquela rotina de recomeçar toda segunda-feira."</p>
+            </div>
+        </section>
     </div>
+
+    <div class="section-spacer"></div>
 
     <!-- CTA 1 -->
     <div class="container">
         <div class="cta-wrapper">
             <div class="arrow-down">👇</div>
             <a href="https://pay.hotmart.com/N101998916J?off=6kcihxpj&checkoutMode=10" class="cta-btn" onclick="trackAddToCart()" target="_blank">Quero Começar Agora</a>
+            <p class="cta-microcopy">✓ Acesso imediato após o pagamento</p>
         </div>
     </div>
 
-   <!-- CREDIBILIDADE -->
-<div class="container">
-  <div class="credibility">
-    <h2>Por que a Hipnoterapia Funciona de Verdade</h2>
-    
-    <p>A Hipnoterapia é validada pela neurociência e reconhecida por instituições como:</p>
-    
-    <div>
-      <span class="badge">American Psychological Association (APA)</span>
-      <span class="badge">British Psychological Society (BPS)</span>
-      <span class="badge">Associação Médica Americana (AMA)</span>
+    <div class="section-spacer"></div>
+
+    <!-- CREDIBILIDADE -->
+    <div class="container">
+        <section class="credibility">
+            <h2>Por que a Hipnoterapia Funciona de Verdade</h2>
+            
+            <p>A Hipnoterapia é validada pela neurociência e reconhecida por instituições como:</p>
+            
+            <div>
+                <span class="badge">American Psychological Association (APA)</span>
+                <span class="badge">British Psychological Society (BPS)</span>
+                <span class="badge">Associação Médica Americana (AMA)</span>
+            </div>
+            
+            <div class="alert-box" style="margin-top: 28px;">
+                <p><strong>Não é mágica, é método científico</strong> que reprograma sua mente para mudanças reais e duradouras.</p>
+            </div>
+        </section>
     </div>
-    
-    <div class="alert-box" style="margin-top: 22px;">
-      <p><strong>Não é mágica, é método científico</strong> que reprograma sua mente para mudanças reais e duradouras.</p>
+
+    <div class="section-spacer"></div>
+
+    <!-- QUALIFICAÇÃO COM IMAGEM -->
+    <div class="qualification-section">
+        <div class="qualification-container">
+            
+            <div class="qualification-text">
+                <p><strong>O PROTOCOLO ALIMENTAÇÃO INTUITIVA é pra você que:</strong></p>
+                
+                <ul class="qualification-list">
+                    <li><span class="list-icon">👙</span><span>Quer se sentir linda e gostosa de biquíni sem cangas;</span></li>
+                    <li><span class="list-icon">🔄</span><span>Já tentou várias vezes e para por falta de resultado;</span></li>
+                    <li><span class="list-icon">💪</span><span>Tem dificuldade de eliminar gordura e ganhar tônus muscular;</span></li>
+                    <li><span class="list-icon">😔</span><span>Sente vergonha ao olhar no espelho;</span></li>
+                    <li><span class="list-icon">🙈</span><span>Não tem coragem de trocar de roupa na frente do parceiro(a);</span></li>
+                    <li><span class="list-icon">🍽️</span><span>Já tentou fazer dieta e não consegue;</span></li>
+                    <li><span class="list-icon">👗</span><span>Está com baixa autoestima e não usa mais as roupas que gostaria.</span></li>
+                </ul>
+                
+                <div class="qualification-alert">
+                    <div class="alert-icon">⚠️</div>
+                    <p><strong>Se você se identifica com pelo menos 2 itens acima, o Protocolo ALIMENTAÇÃO INTUITIVA é para você.</strong></p>
+                </div>
+            </div>
+            
+            <div class="qualification-image">
+                <img src="https://appestoicismo.github.io/emagrecimento/antesdepois.png" alt="Transformação real" loading="lazy">
+            </div>
+            
+        </div>
     </div>
-  </div>
-</div>
+
+    <div class="section-spacer"></div>
+
+    <!-- MENSAGEM PROFUNDA -->
+    <div class="container">
+        <section class="deep-message-section">
+            
+            <p class="opening-question">Seja sincera comigo. Há quanto tempo você come com culpa?</p>
+            
+            <p>Há quanto tempo força uma dieta ou uma academia que não fazem sentido pra você — só pra depois se sentir fracassada?</p>
+            
+            <p class="emphasis-light">Faz tempo, né?</p>
+            
+            <p>Você está presa nesse ciclo cansativo de <strong>restringir, exagerar e se culpar</strong>, acreditando que o problema está em você…</p>
+            
+            <p>Quando, na verdade, o que está faltando é reprogramar o mais importante: <strong class="highlight-text">a sua mente.</strong></p>
+            
+            <div class="truth-box">
+                <p>Porque enquanto a sua cabeça continuar brigando com o seu corpo, nenhum plano vai funcionar.</p>
+            </div>
+            
+            <p class="transition-text">Mas existe um outro caminho.</p>
+            
+            <p>Um caminho que liberta você da balança, das regras e da culpa.</p>
+            
+            <p>É por isso que o <strong>Protocolo Alimentação Intuitiva</strong> foi criado: pra te ajudar a reprogramar sua mente, reconstruir sua relação com o seu corpo, e voltar a sentir prazer e confiança na comida.</p>
+            
+            <p class="no-diet-emphasis">Sem dietas. Sem punição. Sem desespero.</p>
+            
+            <div class="final-statement">
+                <p><strong>Essa não é mais uma dieta.</strong></p>
+                <p>É o fim da guerra com a comida.</p>
+                <p class="new-beginning">E o começo de uma vida leve, em que você se alimenta com prazer, consciência e amor por si mesma.</p>
+            </div>
+            
+        </section>
+    </div>
+
+    <div class="section-spacer"></div>
 
     <!-- VALUE STACK TITLE & APP PREVIEW -->
     <div class="container">
-        <div class="value-stack">
+        <section class="value-stack">
             <h2>Veja tudo que você recebe:</h2>
-        </div>
-        <div class="app-preview">
-            <img src="https://appestoicismo.github.io/emagrecimento/apppordentro.png" alt="Interface do aplicativo">
-        </div>
+        
+            <div class="app-preview">
+                <img src="https://appestoicismo.github.io/emagrecimento/apppordentro.png" alt="Interface do aplicativo" loading="lazy">
+            </div>
+        </section>
     </div>
 
     <!-- STACK BOX -->
@@ -844,8 +1514,8 @@
             <div class="stack-item">
                 <div class="stack-emoji">🎧</div>
                 <div class="stack-content">
-                    <div class="stack-title">Sessões de Hipnoterapia Gravada (4 Sessões)</div>
-                    <div class="stack-desc">As mesmas sessões utilizadas em consultórios</div>
+                    <div class="stack-title">4 Sessões de Hipnoterapia (20 min cada)</div>
+                    <div class="stack-desc">Sessão 1: Quebre o ciclo da compulsão • Sessão 2: Reprograme sua relação com comida • Sessão 3: Ative seu desejo por movimento • Sessão 4: Consolidação e novos hábitos</div>
                 </div>
                 <div class="stack-price">
                     <div class="old-price">R$ 197</div>
@@ -854,54 +1524,54 @@
             </div>
 
             <div class="stack-item">
-  <div class="stack-emoji">🔥</div>
-  <div class="stack-content">
-    <div class="stack-title">Héstia – sua assistente de IA 24h</div>
-    <div class="stack-desc">Te acompanha todos os dias, tira dúvidas e te mantém no caminho — como uma amiga que nunca te deixa desistir.</div>
-  </div>
-  <div class="stack-price">
-    <div class="old-price">R$ 30/mês</div>
-    <div class="new-price">INCLUÍDO</div>
-  </div>
-</div>
+                <div class="stack-emoji">🔥</div>
+                <div class="stack-content">
+                    <div class="stack-title">Héstia – Sua coach virtual 24h</div>
+                    <div class="stack-desc">Responde no app sempre que precisar — como uma amiga que nunca te deixa desistir</div>
+                </div>
+                <div class="stack-price">
+                    <div class="old-price">R$ 30/mês</div>
+                    <div class="new-price">INCLUÍDO</div>
+                </div>
+            </div>
 
             <div class="stack-item">
-  <div class="stack-emoji">📋</div>
-  <div class="stack-content">
-    <div class="stack-title">Atualizações Vitalícias + Suporte via WhatsApp</div>
-    <div class="stack-desc">Você nunca estará sozinha — novas sessões e suporte direto, sempre que precisar, para seguir evoluindo no seu ritmo.</div>
-  </div>
-  <div class="stack-price">
-    <div class="old-price">R$ 47</div>
-    <div class="new-price">INCLUÍDO</div>
-  </div>
-</div>
+                <div class="stack-emoji">📋</div>
+                <div class="stack-content">
+                    <div class="stack-title">Atualizações Vitalícias + Suporte via WhatsApp</div>
+                    <div class="stack-desc">Você nunca estará sozinha — novas sessões e suporte direto, sempre que precisar, para seguir evoluindo no seu ritmo</div>
+                </div>
+                <div class="stack-price">
+                    <div class="old-price">R$ 47</div>
+                    <div class="new-price">INCLUÍDO</div>
+                </div>
+            </div>
 
             <div class="stack-item">
-  <div class="stack-emoji">🎯</div>
-  <div class="stack-content">
-    <span class="bonus-tag">BÔNUS</span>
-    <div class="stack-title">Teste de Perfil Comportamental</div>
-    <div class="stack-desc">Descubra o que realmente te faz sabotar — e como reverter isso a seu favor, com autoconhecimento e leveza.</div>
-  </div>
-  <div class="stack-price">
-    <div class="old-price">R$ 19,90</div>
-    <div class="new-price">GRÁTIS</div>
-  </div>
-</div>
+                <div class="stack-emoji">🎯</div>
+                <div class="stack-content">
+                    <span class="bonus-tag">BÔNUS</span>
+                    <div class="stack-title">Teste de Perfil Comportamental</div>
+                    <div class="stack-desc">Descubra o que realmente te faz sabotar — e como reverter isso a seu favor, com autoconhecimento e leveza</div>
+                </div>
+                <div class="stack-price">
+                    <div class="old-price">R$ 19,90</div>
+                    <div class="new-price">GRÁTIS</div>
+                </div>
+            </div>
 
             <div class="stack-item">
-  <div class="stack-emoji">💭</div>
-  <div class="stack-content">
-    <span class="bonus-tag">BÔNUS</span>
-    <div class="stack-title">PNL – Frase do Dia</div>
-    <div class="stack-desc">Mensagens diárias para treinar sua mente e manter o foco — um lembrete gentil de que você está no controle.</div>
-  </div>
-  <div class="stack-price">
-    <div class="old-price">R$ 19,90</div>
-    <div class="new-price">GRÁTIS</div>
-  </div>
-</div>
+                <div class="stack-emoji">💭</div>
+                <div class="stack-content">
+                    <span class="bonus-tag">BÔNUS</span>
+                    <div class="stack-title">Mensagens Motivacionais Diárias</div>
+                    <div class="stack-desc">Frases para treinar sua mente e manter o foco — um lembrete gentil de que você está no controle</div>
+                </div>
+                <div class="stack-price">
+                    <div class="old-price">R$ 19,90</div>
+                    <div class="new-price">GRÁTIS</div>
+                </div>
+            </div>
 
             <div class="stack-item">
                 <div class="stack-emoji">🔔</div>
@@ -915,6 +1585,8 @@
             </div>
         </div>
     </div>
+
+    <div class="section-spacer"></div>
 
     <!-- URGENCY TIMER -->
     <div class="container">
@@ -948,107 +1620,111 @@
         </div>
     </div>
 
-    <!-- PRICING -->
-<div class="container">
-  <div class="pricing">
-    <p class="total-label">Valor Total:</p>
-    <p class="total-old">R$ 313,80</p>
-    
-    <p class="today-label">Mas hoje, você garante tudo por apenas:</p>
-    <div class="price-big">R$ 37,90</div>
-    
-    <div class="discount-badge">90% OFF</div>
-    
-    <p class="payment-terms">Pagamento único • Acesso vitalício • Sem mensalidades ou renovações escondidas</p>
-    <p class="pricing-note">Menos que uma pizza — e o começo de uma nova relação com a comida e com a balança.</p>
-  </div>
-</div>
+    <div class="section-spacer"></div>
+
+    <!-- ACESSO VITALÍCIO - PREÇO DESTAQUE -->
+    <div class="lifetime-access-section">
+        <div class="lifetime-container">
+            <h2 class="lifetime-title">ACESSO VITALÍCIO</h2>
+            <p class="lifetime-subtitle">Você só paga uma única vez esse valor!!</p>
+            
+            <div class="lifetime-price">
+                <div class="installment-price">5x R$ 8,39</div>
+                <div class="cash-price">ou R$ 37,90 à vista</div>
+            </div>
+            
+            <a href="https://pay.hotmart.com/N101998916J?off=6kcihxpj&checkoutMode=10" class="lifetime-cta-btn" onclick="trackAddToCart()" target="_blank">
+                Sim, eu quero o Protocolo
+            </a>
+            <p class="cta-microcopy" style="color: #ffffff; opacity: 0.9;">✓ Garantia incondicional de 7 dias</p>
+            
+            <div class="lifetime-footer">
+                <p class="limited-condition">Condição especial por tempo limitado</p>
+                <div class="payment-methods">
+                    <span class="payment-icon">💳</span>
+                    <span class="payment-text">PIX</span>
+                    <span class="payment-separator">•</span>
+                    <span class="payment-icon">💳</span>
+                    <span class="payment-text">Cartão de Crédito</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-spacer"></div>
 
     <!-- CTA 2 -->
     <div class="container">
         <div class="cta-wrapper">
             <div class="arrow-down">👇</div>
             <a href="https://pay.hotmart.com/N101998916J?off=6kcihxpj&checkoutMode=10" class="cta-btn" onclick="trackAddToCart()" target="_blank">Sim, Eu Quero!</a>
+            <p class="cta-microcopy">✓ Suporte via WhatsApp incluído</p>
         </div>
     </div>
 
+    <div class="section-spacer"></div>
+
     <!-- FAQ -->
-<div class="container">
-  <div class="faq-section">
-    <h2 class="faq-title">Perguntas Frequentes</h2>
+    <div class="container">
+        <section class="faq-section">
+            <h2 class="faq-title">Perguntas Frequentes</h2>
 
-    <div class="faq-item">
-      <div class="faq-q">Como funciona o método?</div>
-      <div class="faq-a">Você vai ouvir sessões guiadas de hipnose que relaxam sua mente consciente e reprogramam o subconsciente — onde estão seus hábitos automáticos. É como ensinar a sua mente a escolher diferente, sem esforço. A neurociência já comprovou: esse tipo de técnica realmente muda padrões mentais.</div>
+            <div class="faq-item">
+                <div class="faq-q">Como funciona o método?</div>
+                <div class="faq-a">Você vai ouvir sessões guiadas de hipnose que relaxam sua mente consciente e reprogramam o subconsciente — onde estão seus hábitos automáticos. É como ensinar a sua mente a escolher diferente, sem esforço. A neurociência já comprovou: esse tipo de técnica realmente muda padrões mentais.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">Quanto tempo por dia?</div>
+                <div class="faq-a">Basta de 15 a 20 minutos por dia. Pode ser antes de dormir, ao acordar ou em qualquer pausa do seu dia. O segredo é a consistência — e não o tempo.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">Quando começo a sentir resultados?</div>
+                <div class="faq-a">Algumas pessoas sentem mudanças já nas primeiras sessões — o desejo por certos alimentos diminui, o corpo relaxa e a mente fica mais leve. Para outras, a transformação vem aos poucos, conforme o subconsciente absorve as novas mensagens.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">É seguro?</div>
+                <div class="faq-a">Sim! A hipnose é um estado natural de relaxamento — você ouve, relaxa e continua com total controle. Nada é imposto, tudo acontece com a sua permissão.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">Funciona para qualquer idade?</div>
+                <div class="faq-a">Funciona para adultos de todas as idades. Já tivemos resultados incríveis com pessoas de 25, 40 e até 70 anos. O que realmente importa é a vontade de mudar.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">Preciso de fone de ouvido?</div>
+                <div class="faq-a">Os fones ajudam na imersão, mas não são obrigatórios. O mais importante é estar em um lugar tranquilo, onde você possa relaxar e se permitir o momento.</div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-q">E se eu não gostar?</div>
+                <div class="faq-a">Você tem 7 dias para testar sem risco. Se não sentir diferença, devolvemos 100% do seu investimento — simples assim. A decisão é sua e está totalmente segura.</div>
+            </div>
+        </section>
     </div>
 
-    <div class="faq-item">
-      <div class="faq-q">Preciso de fone de ouvido?</div>
-      <div class="faq-a">Os fones ajudam na imersão, mas não são obrigatórios. O mais importante é estar em um lugar tranquilo, onde você possa relaxar e se permitir o momento.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Quanto tempo por dia?</div>
-      <div class="faq-a">Basta de 15 a 20 minutos por dia. Pode ser antes de dormir, ao acordar ou em qualquer pausa do seu dia. O segredo é a consistência — e não o tempo.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Quando começo a sentir resultados?</div>
-      <div class="faq-a">Algumas pessoas sentem mudanças já nas primeiras sessões — o desejo por certos alimentos diminui, o corpo relaxa e a mente fica mais leve. Para outras, a transformação vem aos poucos, conforme o subconsciente absorve as novas mensagens.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">É seguro?</div>
-      <div class="faq-a">Sim! A hipnose é um estado natural de relaxamento — você ouve, relaxa e continua com total controle. Nada é imposto, tudo acontece com a sua permissão.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Funciona para qualquer idade?</div>
-      <div class="faq-a">Funciona para adultos de todas as idades. Já tivemos resultados incríveis com pessoas de 25, 40 e até 70 anos. O que realmente importa é a vontade de mudar.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">E se eu dormir durante o áudio?</div>
-      <div class="faq-a">Sem problema! Mesmo que você adormeça, sua mente subconsciente continua ouvindo e absorvendo as sugestões positivas. O relaxamento profundo faz parte do processo.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Existem contra-indicações?</div>
-      <div class="faq-a">A hipnoterapia é segura para a maioria das pessoas. Apenas quem tem histórico de epilepsia ou transtornos psicóticos deve consultar um profissional de saúde antes de iniciar.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Preciso acreditar para funcionar?</div>
-      <div class="faq-a">Não. A hipnoterapia não depende de crença, e sim de permitir-se relaxar e seguir as instruções. É um processo científico e natural, não místico.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">Posso ouvir mais de um áudio por dia?</div>
-      <div class="faq-a">Sim, se desejar. O importante é manter o relaxamento e permitir que as mensagens se integrem naturalmente à sua rotina.</div>
-    </div>
-
-    <div class="faq-item">
-      <div class="faq-q">E se eu não gostar?</div>
-      <div class="faq-a">Você tem 7 dias para testar sem risco. Se não sentir diferença, devolvemos 100% do seu investimento — simples assim. A decisão é sua e está totalmente segura.</div>
-    </div>
-  </div>
-</div>
-
+    <div class="section-spacer"></div>
 
     <!-- FINAL GUARANTEE -->
     <div class="container">
-        <div class="final-guarantee">
-        <div class="guarantee-icon">✓</div>
-        <h3 class="guarantee-title">Garantia Total de 7 Dias</h3>
-        <p class="guarantee-text">Se em 7 dias você não sentir nenhuma mudança, devolvemos 100% do seu investimento. Sem perguntas, sem complicação.</p>
-        </div>
+        <section class="final-guarantee">
+            <div class="guarantee-icon">✓</div>
+            <h3 class="guarantee-title">Garantia Total de 7 Dias</h3>
+            <p class="guarantee-text">Se em 7 dias você não sentir nenhuma mudança, devolvemos 100% do seu investimento. Sem perguntas, sem complicação.</p>
+        </section>
     </div>
+
+    <div class="section-spacer"></div>
 
     <!-- CTA FINAL -->
     <div class="container">
         <div class="cta-wrapper">
             <div class="arrow-down">👇</div>
-            <a href="https://pay.hotmart.com/N101998916J?off=6kcihxpj&checkoutMode=10" class="cta-btn" onclick="trackAddToCart()" target="_blank">Quero Começar Agora</a>
+            <a href="https://pay.hotmart.com/N101998916J?off=6kcihxpj&checkoutMode=10" class="cta-btn" onclick="trackAddToCart()" target="_blank">Garantir Meu Desconto de 90%</a>
+            <p class="cta-microcopy">✓ Última chance com esse preço especial</p>
         </div>
     </div>
 
