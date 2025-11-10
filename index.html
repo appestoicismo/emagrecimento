@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
-    <meta name="theme-color" content="#059669">
+    <meta name="theme-color" content="#667eea">
     <title>Alimentação Intuitiva - Reprograme Sua Mente Para Emagrecer</title>
     
     <!-- Meta Pixel Code -->
@@ -41,8 +41,9 @@
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
             line-height: 1.6;
-            color: #1f2937;
-            background: #ffffff;
+            color: #ffffff;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            background-attachment: fixed;
             font-size: 16px;
             -webkit-font-smoothing: antialiased;
             -moz-osx-font-smoothing: grayscale;
@@ -55,44 +56,42 @@
             display: block;
         }
 
-        /* ===== PALETA DE CORES OTIMIZADA ===== */
+        /* ===== PALETA DE CORES APPAUTOHIPNOSE ===== */
         :root {
-            /* Principais - Verde Saúde/Bem-estar */
-            --color-primary: #059669;
-            --color-primary-dark: #047857;
-            --color-primary-light: #10b981;
+            /* Gradiente Principal do Body */
+            --bg-dark-1: #0f0f23;
+            --bg-dark-2: #1a1a2e;
+            --bg-dark-3: #16213e;
             
-            /* Secundárias - Lavanda Calma/Hipnose */
-            --color-secondary: #8b5cf6;
-            --color-secondary-dark: #7c3aed;
-            --color-secondary-light: #a78bfa;
+            /* Gradiente Roxo Principal */
+            --color-primary: #667eea;
+            --color-primary-dark: #764ba2;
             
-            /* Urgência */
-            --color-urgency: #dc2626;
-            --color-urgency-dark: #b91c1c;
+            /* Backgrounds Secundários */
+            --bg-card: rgba(255, 255, 255, 0.05);
+            --bg-section: rgba(255, 255, 255, 0.02);
+            --bg-hover: rgba(255, 255, 255, 0.08);
             
-            /* Alerta/Atenção */
-            --color-warning: #f59e0b;
-            --color-warning-light: #fef3c7;
+            /* Cores de Texto */
+            --color-text-primary: #ffffff;
+            --color-text-secondary: #e0e0e8;
+            --color-text-light: #b8b8d1;
             
-            /* Neutros */
-            --color-text-primary: #1f2937;
-            --color-text-secondary: #6b7280;
-            --color-text-light: #9ca3af;
-            --color-bg-light: #f9fafb;
-            --color-bg-lighter: #f3f4f6;
-            --color-border: #e5e7eb;
+            /* Cores de Destaque */
+            --color-success: #2ed573;
+            --color-error: #ff4757;
+            --color-warning: #ffc107;
+            --color-warning-light: #ffe082;
             
-            /* Sucesso */
-            --color-success: #10b981;
-            --color-success-bg: #d1fae5;
-            --color-success-light: #ecfdf5;
+            /* Bordas */
+            --color-border: rgba(255, 255, 255, 0.1);
+            --border-hover: rgba(102, 126, 234, 0.3);
             
             /* Sombras */
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-sm: 0 1px 2px 0 rgba(102, 126, 234, 0.1);
+            --shadow-md: 0 4px 6px -1px rgba(102, 126, 234, 0.15);
+            --shadow-lg: 0 10px 15px -3px rgba(102, 126, 234, 0.2);
+            --shadow-xl: 0 20px 25px -5px rgba(102, 126, 234, 0.25);
         }
 
         .container {
@@ -112,10 +111,10 @@
 
         /* ===== HERO SECTION ===== */
         .hero {
-            background: linear-gradient(135deg, #f0fdf4 0%, #ffffff 100%);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
             padding: 48px 20px 40px;
             text-align: center;
-            border-bottom: 2px solid var(--color-success);
+            border-bottom: 2px solid var(--color-primary);
             margin-bottom: 48px;
         }
 
@@ -144,11 +143,11 @@
             margin-bottom: 24px;
             font-size: 17px;
             line-height: 1.65;
-            color: var(--color-text-primary);
+            color: var(--color-text-secondary);
         }
 
         .alert-box {
-            background: var(--color-warning-light);
+            background: rgba(255, 193, 7, 0.1);
             border-left: 4px solid var(--color-warning);
             padding: 20px 18px;
             margin: 28px 0;
@@ -158,26 +157,27 @@
         .alert-box p {
             font-size: 17px;
             line-height: 1.6;
-            color: var(--color-text-primary);
+            color: var(--color-warning-light);
             margin: 0;
         }
 
         .bold-purple {
-            color: var(--color-secondary-dark);
+            color: var(--color-primary);
             font-weight: 700;
         }
 
         .red-bold {
-            color: var(--color-urgency);
+            color: var(--color-error);
             font-weight: 700;
         }
 
         /* ===== COMO FUNCIONA ===== */
         .how-it-works {
             padding: 36px 20px 28px;
-            background: var(--color-bg-light);
+            background: var(--bg-card);
             margin: 40px -20px;
             border-radius: 12px;
+            border: 1px solid var(--color-border);
         }
 
         .how-it-works h2 {
@@ -191,7 +191,7 @@
         .how-it-works p {
             font-size: 17px;
             margin-bottom: 20px;
-            color: var(--color-text-primary);
+            color: var(--color-text-secondary);
             line-height: 1.65;
         }
 
@@ -205,7 +205,7 @@
             padding: 14px 0 14px 40px;
             position: relative;
             font-size: 17px;
-            color: var(--color-text-primary);
+            color: var(--color-text-secondary);
             line-height: 1.6;
             margin-bottom: 8px;
         }
@@ -222,10 +222,10 @@
         /* ===== APP DEMO VIDEO SECTION ===== */
         .app-demo-section {
             padding: 48px 0;
-            background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 100%);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
             margin: 48px -20px;
-            border-top: 2px solid #e0f2fe;
-            border-bottom: 2px solid #e0f2fe;
+            border-top: 2px solid var(--border-hover);
+            border-bottom: 2px solid var(--border-hover);
         }
 
         .app-demo-container {
@@ -257,7 +257,7 @@
             margin: 0 auto;
             border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 20px 40px rgba(102, 126, 234, 0.3);
             background: #000;
         }
 
@@ -271,7 +271,7 @@
             text-align: center;
             margin-top: 24px;
             font-size: 15px;
-            color: var(--color-text-secondary);
+            color: var(--color-text-light);
             font-style: italic;
         }
 
@@ -297,7 +297,7 @@
         .solution p {
             font-size: 17px;
             margin-bottom: 20px;
-            color: var(--color-text-primary);
+            color: var(--color-text-secondary);
             line-height: 1.65;
         }
 
@@ -312,7 +312,7 @@
             padding: 12px 0 12px 40px;
             position: relative;
             font-size: 17px;
-            color: var(--color-text-primary);
+            color: var(--color-text-secondary);
             line-height: 1.6;
             margin-bottom: 8px;
         }
@@ -328,7 +328,7 @@
 
         /* ===== GARANTIA BOX ===== */
         .guarantee-box {
-            background: var(--color-success-light);
+            background: rgba(46, 213, 115, 0.1);
             border-left: 4px solid var(--color-success);
             padding: 20px 18px;
             margin: 28px 0;
@@ -337,7 +337,7 @@
 
         .guarantee-box p {
             font-size: 16px;
-            color: var(--color-text-primary);
+            color: #b3ffb3;
             margin: 0;
             line-height: 1.6;
         }
@@ -376,7 +376,7 @@
             height: 56px;
             border-radius: 50%;
             object-fit: cover;
-            border: 3px solid var(--color-success-light);
+            border: 3px solid var(--color-primary);
             flex-shrink: 0;
         }
 
@@ -385,7 +385,7 @@
         }
 
         .stars {
-            color: #fbbf24;
+            color: var(--color-warning);
             font-size: 16px;
             margin-bottom: 4px;
         }
@@ -420,7 +420,7 @@
             text-decoration: none;
             padding: 20px 32px;
             border-radius: 12px;
-            box-shadow: 0 8px 16px rgba(5, 150, 105, 0.3);
+            box-shadow: 0 8px 16px rgba(102, 126, 234, 0.3);
             letter-spacing: 0.5px;
             transition: all 0.3s ease;
             cursor: pointer;
@@ -436,12 +436,12 @@
 
         .cta-btn:active {
             transform: scale(0.98);
-            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.4);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
         }
 
         .cta-microcopy {
             font-size: 14px;
-            color: var(--color-text-secondary);
+            color: var(--color-text-light);
             margin-top: 12px;
             font-weight: 500;
         }
@@ -473,14 +473,14 @@
         .credibility p {
             font-size: 17px;
             margin-bottom: 20px;
-            color: var(--color-text-primary);
+            color: var(--color-text-secondary);
             line-height: 1.65;
         }
 
         .badge {
             display: inline-block;
-            background: var(--color-bg-lighter);
-            color: var(--color-text-primary);
+            background: var(--bg-card);
+            color: var(--color-text-secondary);
             padding: 10px 16px;
             border-radius: 8px;
             font-size: 13px;
@@ -492,9 +492,10 @@
 
         /* ===== QUALIFICAÇÃO SECTION ===== */
         .qualification-section {
-            background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
             padding: 48px 20px;
             margin: 48px -20px;
+            border: 1px solid var(--border-hover);
         }
 
         .qualification-container {
@@ -517,16 +518,17 @@
             list-style: none;
             padding: 0;
             margin: 0 0 28px 0;
-            background: rgba(255, 255, 255, 0.95);
+            background: var(--bg-card);
             padding: 24px 18px;
             border-radius: 12px;
             box-shadow: var(--shadow-md);
+            border: 1px solid var(--color-border);
         }
 
         .qualification-list li {
             padding: 16px 0;
             font-size: 16px;
-            color: var(--color-text-primary);
+            color: var(--color-text-secondary);
             line-height: 1.6;
             border-bottom: 1px solid var(--color-border);
             display: flex;
@@ -551,7 +553,7 @@
         }
 
         .qualification-alert {
-            background: rgba(255, 255, 255, 0.98);
+            background: var(--bg-card);
             border-radius: 12px;
             padding: 20px 18px;
             display: flex;
@@ -571,7 +573,7 @@
             margin: 0;
             font-size: 16px;
             font-weight: 700;
-            color: var(--color-text-primary);
+            color: var(--color-warning-light);
             line-height: 1.5;
         }
 
@@ -591,7 +593,7 @@
         /* ===== MENSAGEM PROFUNDA ===== */
         .deep-message-section {
             padding: 48px 20px;
-            background: #ffffff;
+            background: transparent;
             line-height: 1.7;
         }
 
@@ -607,13 +609,13 @@
             font-size: 17px;
             margin-bottom: 24px;
             line-height: 1.7;
-            color: var(--color-text-primary);
+            color: var(--color-text-secondary);
         }
 
         .emphasis-light {
             font-size: 18px;
             font-style: italic;
-            color: var(--color-text-secondary);
+            color: var(--color-text-light);
             margin: 32px 0;
             text-align: center;
         }
@@ -625,7 +627,7 @@
         }
 
         .truth-box {
-            background: var(--color-warning-light);
+            background: rgba(255, 193, 7, 0.1);
             border-left: 4px solid var(--color-warning);
             padding: 20px 18px;
             margin: 32px 0;
@@ -636,7 +638,7 @@
             margin: 0;
             font-size: 17px;
             font-weight: 600;
-            color: var(--color-text-primary);
+            color: var(--color-warning-light);
             line-height: 1.6;
         }
 
@@ -651,13 +653,13 @@
         .no-diet-emphasis {
             font-size: 18px;
             font-weight: 700;
-            color: var(--color-primary-dark);
+            color: var(--color-primary);
             margin: 32px 0;
             text-align: center;
         }
 
         .final-statement {
-            background: linear-gradient(135deg, var(--color-success-light) 0%, var(--color-success-bg) 100%);
+            background: linear-gradient(135deg, rgba(46, 213, 115, 0.1) 0%, rgba(23, 192, 235, 0.1) 100%);
             padding: 28px 20px;
             border-radius: 12px;
             margin: 40px 0 0 0;
@@ -669,6 +671,7 @@
             font-size: 18px;
             text-align: center;
             line-height: 1.6;
+            color: var(--color-text-secondary);
         }
 
         .final-statement p:last-child {
@@ -684,7 +687,7 @@
 
         .new-beginning {
             font-weight: 600;
-            color: var(--color-primary-dark);
+            color: var(--color-success);
             margin-top: 20px !important;
             font-size: 18px !important;
         }
@@ -718,7 +721,7 @@
 
         /* ===== STACK DE VALOR ===== */
         .stack-box {
-            background: var(--color-bg-light);
+            background: var(--bg-card);
             padding: 24px 20px;
             margin: 28px 0;
             border-radius: 12px;
@@ -758,7 +761,7 @@
 
         .stack-desc {
             font-size: 14px;
-            color: var(--color-text-secondary);
+            color: var(--color-text-light);
             line-height: 1.5;
         }
 
@@ -795,12 +798,12 @@
 
         /* ===== TIMER DE URGÊNCIA ===== */
         .urgency-timer {
-            background: linear-gradient(135deg, var(--color-urgency) 0%, var(--color-urgency-dark) 100%);
+            background: linear-gradient(135deg, #ff6b7a 0%, #ff4757 100%);
             padding: 24px 20px;
             margin: 48px -20px;
             text-align: center;
             color: #ffffff;
-            box-shadow: 0 8px 24px rgba(220, 38, 38, 0.35);
+            box-shadow: 0 8px 24px rgba(255, 71, 87, 0.35);
         }
 
         .timer-warning {
@@ -881,7 +884,7 @@
 
         /* ===== ACESSO VITALÍCIO ===== */
         .lifetime-access-section {
-            background: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-secondary-dark) 100%);
+            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
             padding: 0;
             margin: 48px -20px;
             overflow: hidden;
@@ -938,14 +941,14 @@
 
         .lifetime-cta-btn {
             display: block;
-            background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-dark) 100%);
-            color: #ffffff;
+            background: #ffffff;
+            color: var(--color-primary-dark);
             font-size: 20px;
             font-weight: 800;
             text-decoration: none;
             padding: 20px 32px;
             border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(5, 150, 105, 0.4);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
             transition: all 0.3s ease;
             margin: 0 auto 20px;
             max-width: 400px;
@@ -958,7 +961,7 @@
 
         .lifetime-cta-btn:active {
             transform: scale(0.98);
-            box-shadow: 0 4px 12px rgba(5, 150, 105, 0.3);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
         }
 
         .lifetime-footer {
@@ -995,7 +998,7 @@
 
         /* ===== FAQ SECTION ===== */
         .faq-section {
-            background: #ffffff;
+            background: transparent;
             padding: 48px 0;
             margin: 48px 0;
         }
@@ -1010,7 +1013,7 @@
 
         .faq-item {
             margin-bottom: 12px;
-            background: var(--color-bg-light);
+            background: var(--bg-card);
             border-radius: 12px;
             overflow: hidden;
             border: 1px solid var(--color-border);
@@ -1031,7 +1034,7 @@
         }
 
         .faq-q:active {
-            background: var(--color-bg-lighter);
+            background: var(--bg-hover);
         }
 
         .faq-q::after {
@@ -1064,7 +1067,7 @@
 
         /* ===== FINAL GUARANTEE ===== */
         .final-guarantee {
-            background: var(--color-success-light);
+            background: rgba(46, 213, 115, 0.1);
             text-align: center;
             padding: 36px 20px;
             margin: 48px 0;
@@ -1080,24 +1083,25 @@
         .guarantee-title {
             font-size: 24px;
             font-weight: 700;
-            color: var(--color-primary-dark);
+            color: var(--color-text-primary);
             margin-bottom: 14px;
         }
 
         .guarantee-text {
             font-size: 16px;
-            color: var(--color-text-primary);
+            color: var(--color-text-secondary);
             line-height: 1.65;
         }
 
         /* ===== FOOTER ===== */
         footer {
-            background: var(--color-bg-light);
+            background: rgba(0, 0, 0, 0.3);
             text-align: center;
             padding: 32px 20px;
             font-size: 14px;
-            color: var(--color-text-secondary);
+            color: var(--color-text-light);
             line-height: 1.7;
+            border-top: 1px solid var(--color-border);
         }
 
         footer strong {
@@ -1107,7 +1111,7 @@
         }
 
         footer a {
-            color: var(--color-secondary);
+            color: var(--color-primary);
             text-decoration: none;
         }
 
@@ -1262,45 +1266,75 @@
     <!-- HERO -->
     <div class="hero">
         <h1>O Emagrecimento Que Acontece Quando a Mente Muda.</h1>
-        <p class="hero-sub">Reprograme seus hábitos em 21 dias — mesmo que você já tenha tentado de tudo.</p>
+        <p class="hero-sub">
+    O emagrecimento verdadeiro não começa no prato.<br>
+    Nem na academia forçada.<br>
+    Começa na <strong style="color: #667eea;">mente</strong> — quando você reprograma crenças, hábitos e identidade no subconsciente.
+</p>
     </div>
 
-    <!-- HOOK -->
-    <div class="container">
-        <section class="hook">
-            <p>Você já tentou de tudo: low carb, jejum, detox, sopas milagrosas, canetinhas, academia todo dia... e mesmo assim, o peso não diminuiu?</p>
+<div class="container">
+<section class="hook">
 
-            <div class="alert-box">
-                <p><strong>Enquanto seus hábitos e pensamentos forem os mesmos,</strong> o resultado também vai ser o mesmo: <span class="red-bold">Dieta muda o prato. Não muda os hábitos.</span></p>
-            </div>
+<p>Você já tentou low carb, jejum, detox, aplicativos, academia todo dia... e mesmo assim, o peso teima em não diminuir?</p>
 
-            <p>Não adianta tentar mudar o corpo, quando o que precisa mudar primeiro é a mente.</p>
+<p><strong>Eu entendo. E quero que você confirme mentalmente se já pensou algo assim:</strong></p>
 
-            <p><strong class="bold-purple">Porque o verdadeiro emagrecimento não acontece na dieta — acontece no subconsciente. É lá que tudo muda.</strong></p>
-        </section>
-        
-        <p>Agora que você entendeu por que as dietas falham, veja como esse método atua na prática:</p>
+<ul class="benefits-list" style="margin-top: 16px;">
+    <li>“Emagrecer é muito difícil pra mim”</li>
+    <li>“Eu começo, mas sempre acabo desistindo”</li>
+    <li>“Minha genética não ajuda”</li>
+    <li>“Eu só vou pra academia por obrigação”</li>
+</ul>
 
-        <!-- COMO FUNCIONA -->
-        <div class="how-it-works">
-            <h2>Como a Hipnoterapia Te Ajuda a Emagrecer</h2>
-            
-            <p>Os áudios de hipnoterapia relaxam seu corpo e levam sua mente a uma frequência Teta ou Delta (estágio antes do sono profundo) — o ponto onde o consciente adormece e o subconsciente aceita novas possibilidades.</p>
+<p>Essas frases parecem só pensamentos… mas são <strong class="bold-purple">crenças instaladas no subconsciente</strong>. E o seu corpo sempre obedece o que sua mente subconsciente acredita sobre você.</p>
 
-            <p><strong>O que muda na prática?</strong></p>
-            
-            <ul class="benefits-list">
-                <li>Aquela necessidade constante de doces simplesmente diminui ou some</li>
-                <li>O desejo por fast food perde força</li>
-                <li>A vontade de atividade física aparece naturalmente</li>
-            </ul>
+<p>Agora observa este ciclo — talvez você conheça bem:</p>
 
-            <p>As mudanças acontecem de forma natural, sem esforço, sem o sofrimento das dietas restritivas ou das academias forçadas. Seu peso diminui, as roupas voltam a servir e você de bem com o espelho diariamente.</p>
-        </div>
-        <p><em>Muitas mulheres já sentiram essa mudança acontecer — enquanto relaxam.</em></p>
-    </div>
+<div class="alert-box">
+<p>
+<strong>Gatilho:</strong> bate ansiedade, solidão ou estresse.<br>
+<strong>Rotina:</strong> você vai até a cozinha, pega algo pra comer — quase automático.<br>
+<strong>Recompensa:</strong> alívio por alguns minutos.<br>
+<strong>Resultado:</strong> culpa, frustração e a promessa de “segunda-feira eu recomeço”.
+</p>
+</div>
 
-    <div class="section-spacer"></div>
+<p>Isso não acontece porque você “não tem disciplina”.  
+Acontece porque seu <strong class="bold-purple">subconsciente aprendeu que comida = conforto e alívio emocional</strong>.</p>
+
+<p><strong>E tem mais um ponto que quase ninguém fala:</strong></p>
+
+<p>Se você se vê como alguém que <strong>“está sempre lutando contra o peso”</strong>, o seu subconsciente mantém essa "verdade" ativa.</p>
+
+<p><strong>O corpo segue a identidade.</strong>  
+Quando você passa a se ver internamente como alguém que se alimenta bem, sem exageros e que gosta de alguma atividade física… o comportamento muda sem esforço.</p>
+
+<p>E é aqui que entra o que fazemos no <strong>Protocolo Alimentação Intuitiva</strong>:</p>
+
+<p>Nos áudios de hipnoterapia, trabalhamos diretamente na raiz emocional — onde o peso se instala primeiro.</p>
+
+<ul class="benefits-list">
+    <li>Fugas emocionais</li>
+    <li>Traumas não resolvidos</li>
+    <li>Compulsões ligadas a momentos específicos</li>
+    <li>Sedentarismo</li>
+  </ul>
+
+<p>O emagrecimento acontece quando o inconsciente aceita uma nova realidade como natural — e o corpo passa a responder a esse novo comando interno.</p>
+
+<p><strong class="bold-purple">Não é uma luta contra a comida.</strong></p>
+<p><strong class="bold-purple">Não é sobre “forçar” academia.</strong></p>
+<p><strong class="bold-purple">Não é encontrar a “dieta perfeita”.</strong></p>
+
+<p>É uma reprogramação profunda e estratégica da mente.</p>
+
+<p><em>E quando a mente muda… o corpo apenas acompanha. E é possível fazer isso em 21 dias.</em></p>
+
+</section>
+</div>
+
+
 
     <!-- APP DEMO VIDEO SECTION -->
     <div class="app-demo-section">
@@ -1309,7 +1343,7 @@
             <p class="app-demo-subtitle">É assim que você vai emagrecer: sem complicação</p>
             
             <div class="video-wrapper">
-                <video controls playsinline poster="https://appestoicismo.github.io/emagrecimento/3.png">
+                <video controls playsinline 
                     <source src="https://emagrecimento.dantashipnoterapia.com.br/demoapp.mp4" type="video/mp4">
                     Seu navegador não suporta vídeo HTML5.
                 </video>
@@ -1323,17 +1357,19 @@
 
     <!-- SOLUÇÃO VISUAL -->
     <div class="container">
+      <p><strong>É Muito Fácil:</strong></p>
+      <ul class="steps">
+                <li>Você entra no aplicativo</li>
+                <li>Coloca seu fone de ouvido</li>
+                <li>Aperta Play e deixe seu subconsciente fazer o resto</li>
+            </ul>
         <section class="solution">
             <div class="solution-img">
                 <img src="https://appestoicismo.github.io/emagrecimento/3.png" alt="Reprogramação enquanto dorme" loading="lazy">
             </div>
 
-            <p><strong>É Muito Fácil:</strong></p>
-            <ul class="steps">
-                <li>Você entra no aplicativo</li>
-                <li>Coloca seu fone de ouvido</li>
-                <li>Aperta Play e deixe seu subconsciente fazer o resto</li>
-            </ul>
+            
+            
 
             <div class="guarantee-box">
                 <p>Se em <strong>7 dias</strong> você não sentir nenhuma mudança devolvemos <strong>100% do seu investimento</strong>. Você não tem risco de perder seu dinheiro.</p>
@@ -1410,7 +1446,7 @@
     <!-- CREDIBILIDADE -->
     <div class="container">
         <section class="credibility">
-            <h2>Por que a Hipnoterapia Funciona de Verdade</h2>
+            <h2>É comprovado cientificamente</h2>
             
             <p>A Hipnoterapia é validada pela neurociência e reconhecida por instituições como:</p>
             
@@ -1436,7 +1472,7 @@
                 <p><strong>O PROTOCOLO ALIMENTAÇÃO INTUITIVA é pra você que:</strong></p>
                 
                 <ul class="qualification-list">
-                    <li><span class="list-icon">👙</span><span>Quer se sentir linda e gostosa de biquíni sem cangas;</span></li>
+                    <li><span class="list-icon">👙</span><span>Quer se sentir linda, gostosa, usar biquíni sem cangas;</span></li>
                     <li><span class="list-icon">🔄</span><span>Já tentou várias vezes e para por falta de resultado;</span></li>
                     <li><span class="list-icon">💪</span><span>Tem dificuldade de eliminar gordura e ganhar tônus muscular;</span></li>
                     <li><span class="list-icon">😔</span><span>Sente vergonha ao olhar no espelho;</span></li>
